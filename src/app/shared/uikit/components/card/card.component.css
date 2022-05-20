@@ -1,0 +1,107 @@
+@import url('https://fonts.googleapis.com/css2?family=Hind+Madurai&display=swap');
+
+#container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    padding: 17px 14px 18px 19px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.05);
+    border-radius: 3px;
+
+}
+
+#deleteIcon {
+    position: absolute;
+    width: 10%;
+    height: 20px;
+    margin-left: 82%;
+}
+
+#title {
+    margin: 0px;
+    font-family: 'Hind Madurai';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 33px;
+}
+
+#text {
+    font-family: 'Hind Madurai';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 25px;
+    width: 90%;
+}
+
+#author {
+    font-family: 'Hind Madurai';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12.8px;
+    line-height: 18px;
+    color: rgba(0, 0, 0, 0.32);
+}
+
+#link {
+    font-family: 'Hind Madurai';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 25px;
+    text-decoration-line: underline;
+    color: #003594;
+}
+
+#copy {
+    position: absolute;
+    margin-left: 82%;
+    width: 10%;
+    height: 20px;
+    bottom: 15px
+}
+
+#deleteText {
+    font-family: 'Hind Madurai';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 21px;
+    line-height: 29px;
+
+}
+
+#back {
+    box-sizing: border-box;
+    width: 125px;
+    height: 51px;
+    border: 2px solid #161019;
+    border-radius: 9px;
+    font-family: 'Hind Madurai';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 25px;
+    background-color: rgba(255, 255, 255, 0);
+    margin-right: 14px;
+    margin-top: 20px;
+}
+
+#delete {
+    box-sizing: border-box;
+    width: 125px;
+    height: 51px;
+    background: #16101A;
+    border-radius: 9px;
+    font-family: 'Hind Madurai';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 25px;
+    color: #E77575;
+
+}
+
+#deleteContainer {
+    margin: 30px 0px 30px 0px;
+}

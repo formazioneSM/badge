@@ -1,0 +1,41 @@
+<div id="add">
+    <div id="head">
+        <p id="title">Aggiungi contenuto</p>
+        <img class="close" src="../../../assets/images/off_close.png" (click)="esc()">
+    </div>
+
+    <div class="steps" *ngIf="stepOne">
+        <p class="subtitle"><b>1 </b>di 2 Scelta tipologia</p>
+        <div *ngFor="let t of postTypes" class="scelta">
+            <app-card-aggiungi [selected]="t.selected" [icon]="t.icon" [title]="t.type" [text]="t.text"
+                (click)="selectCard(t)"></app-card-aggiungi>
+        </div>
+        <app-button (click)="goToSecondStep(postTypes)" id="buttonAvanti" [typeButton]="'button'"
+            [textButton]="'Avanti'" [disabled]="disabled">
+        </app-button>
+    </div>
+
+    <div *ngIf="!stepOne" [ngSwitch]="type">
+        <div *ngSwitchCase="'Bacheca'" class="steps">
+            <p class="subtitle"><b>2 </b>di 2 Scelta tipologia</p>
+
+            <form>
+
+                <app-textarea [textLabel]="'Contenuto*'" [placeholder]="'Inserisci qui il contenuto del tuo msg'"
+                    [background]="'var(--input-bg-color)'"></app-textarea>
+
+
+                <div class="buttonPubblicazione">
+                    <app-button [typeButton]="'submit'" [textButton]="'Pubblica'">
+                    </app-button>
+                </div>
+                <app-check-button (selectedValue)="getSelectedValue($event)" [configuration]="configuration"></app-check-button>
+            </form>
+
+
+        </div>
+        <div *ngSwitchCase="'Link'">Ciao</div>
+        <div *ngSwitchCase="'Convenzini'">Ciao</div>
+
+    </div>
+</div>

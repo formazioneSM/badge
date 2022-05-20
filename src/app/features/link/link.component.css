@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Hind+Madurai&display=swap');
+
+
+#container {
+    margin-left: 28px;
+    margin-top: 22px;
+}
+
+.buttonLink {
+    display: flex;
+    flex-direction: column;
+    width: 83vw;
+    height: 62px;
+    justify-content: center;
+    margin-bottom: 18px;
+    font-family: 'Hind Madurai';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 25px;
+}

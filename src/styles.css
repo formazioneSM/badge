@@ -1,0 +1,20 @@
+/* You can add global styles to this file, and also import other style files */
+@import './assets/fonts.css';
+
+body{
+    font-family: Gotham;
+}
+
+:root{
+    --bg-primary-color:#003594;
+    --primary-color: white;
+    --bg-secondary-color: #C1C1C1;
+    --secondary-color: #545454;
+    --border-color: #C6D1E4;
+    --input-bg-color: #F1F2F2;
+    --placeholder-color: rgba(0, 0, 0, 0.5);
+    --input-color: rgb(0, 0, 0)
+}
+body{
+    background-color: var(--primary-color);
+}

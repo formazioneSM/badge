@@ -1,0 +1,23 @@
+<div id="container">
+    <div id="head">
+        <h1 id="title">Badgeverso</h1>
+        <span id="point"></span>
+    </div>
+    <form id="login">
+        <div id="email">
+            <app-input [textLabel]="'Email*'" [placeholder]="'Inserisci la tua email'"
+                [backgroundInput]="'var(--input-bg-color)'">
+            </app-input>
+        </div>
+        <div id="password">
+            <app-input [textLabel]="'Password*'" [placeholder]="'Inserisci la tua password'"
+                [backgroundInput]="'var(--input-bg-color)'">
+            </app-input>
+        </div>
+        
+        <div id="buttonLogin">
+            <app-button  [typeButton]="'submit'" [textButton]="'Accedi'">
+            </app-button>
+        </div>
+    </form>
+</div>
