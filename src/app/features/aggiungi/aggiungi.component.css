@@ -68,3 +68,24 @@
 }
 
 
+
+}
+
+#label {
+    font-family: 'Hind Madurai';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 22px;
+    margin-top:20px;
+    margin-bottom: 13px;
+}
+
+.buttonPubblicazione {
+    width: 100%;
+    height: 54px;
+    margin-top: 38px;
+    padding: 0;
+    
+
+}
