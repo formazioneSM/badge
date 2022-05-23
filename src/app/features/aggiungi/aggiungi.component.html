@@ -29,8 +29,8 @@
                 <div id="label">
                     <label>Publica come*</label>
                 </div>
-                <div class="buttonCheck">
-                    <app-check-button (selectedValue)="getSelectedValue($event)" [configuration]="configuration">
+                <div class="buttonCheck" *ngFor="let c of configuration">
+                    <app-check-button (selectedValue)="getSelectedValue($event)" [configuration]="c.text">
                     </app-check-button>
                     
                 </div>
