@@ -21,15 +21,25 @@
 
             <form>
 
+
                 <app-textarea [textLabel]="'Contenuto*'" [placeholder]="'Inserisci qui il contenuto del tuo msg'"
-                    [background]="'var(--input-bg-color)'"></app-textarea>
+                    [background]="'var(--input-bg-color)'">
+                </app-textarea>
 
-
+                <div id="label">
+                    <label>Publica come*</label>
+                </div>
+                <div class="buttonCheck">
+                    <app-check-button (selectedValue)="getSelectedValue($event)" [configuration]="configuration">
+                    </app-check-button>
+                    
+                </div>
                 <div class="buttonPubblicazione">
+
                     <app-button [typeButton]="'submit'" [textButton]="'Pubblica'">
                     </app-button>
                 </div>
-                <app-check-button (selectedValue)="getSelectedValue($event)" [configuration]="configuration"></app-check-button>
+
             </form>
 
 

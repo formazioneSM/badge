@@ -10,7 +10,7 @@ export class AggiungiComponent implements OnInit {
  
   stepOne:boolean = true;
   type: string | undefined;
-  configuration = {text:'@hr', value:'hr'}
+  configuration = [{text:'@Maria Grazia Marra', value:'Maria Grazia Marra'},{text:'@hr', value:'hr'}]
 
   postTypes=[{
     type:'Bacheca',
