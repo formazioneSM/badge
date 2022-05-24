@@ -8,11 +8,13 @@ import { Router } from '@angular/router';
   styleUrls: ['./aggiungi.component.css']
 })
 export class AggiungiComponent implements OnInit, AfterViewInit {
+  formAddBacheca:FormGroup = {} as FormGroup;
   formAddLink:FormGroup = {} as FormGroup;
   formAddConvenzioni:FormGroup = {} as FormGroup;
   stepOne:boolean = true;
   type: string | undefined;
-  configuration = [{text:'@Maria Grazia Marra', value:'maria', selected:false},{text:'@hr', value:'hr', selected:false}]
+  configuration = [{text:'@Maria Grazia Marra', value:'maria', selected:false}
+                   ,{text:'@hr', value:'hr', selected:false}]
 
   postTypes=[{
     type:'Bacheca',
@@ -53,6 +55,12 @@ export class AggiungiComponent implements OnInit, AfterViewInit {
       titolo: ['', Validators.required],
       contenuto: ['', Validators.required],
       posizione: ['', Validators.required]
+    });
+
+    this.formAddBacheca = this._fb.group({
+      contenutoBacheca:['', Validators.required],
+      maria:[false , Validators.required],
+      hr:[false, Validators.required],
     })
   }
 
@@ -75,6 +83,17 @@ export class AggiungiComponent implements OnInit, AfterViewInit {
 
   get posizione() {
     return this.formAddConvenzioni?.get('posizione')
+  }
+
+  get contenutoBacheca(){
+    return this.formAddBacheca?.get('contenutoBacheca')
+  }
+
+  get maria(){
+    return this.formAddBacheca?.get('maria')
+  }
+  get hr(){
+    return this.formAddBacheca?.get('hr')
   }
 
   addLink(formAddLink: FormGroup){
@@ -111,12 +130,8 @@ export class AggiungiComponent implements OnInit, AfterViewInit {
   }
 
 
-  getSelectedValue(val:any){  
-    if(val.value ==='maria'){
-      this.maria?.nativeElement.click()
-    }else{
-      this.hr?.nativeElement.click()
-    }
+  getSelectedValue(val:any){
+
     this.configuration.forEach((c)=> {
       c.selected = false;
       if(c.text === val.text){
@@ -126,18 +141,12 @@ export class AggiungiComponent implements OnInit, AfterViewInit {
     console.log(val)
   }
     
-  @ViewChild('maria') set mariaContent(mariaContent: ElementRef) {
-    if(mariaContent) { // initially setter gets called with undefined
-        this.maria = mariaContent;
-    }
- }
-  @ViewChild('hr') set hrContent(hrContent: ElementRef) {
-    if(hrContent) { // initially setter gets called with undefined
-        this.hr = hrContent;
-    }
- }
- maria: ElementRef | undefined;
- hr: ElementRef | undefined;
+
+
+
+
+
+
 
 
   ngAfterViewInit() {

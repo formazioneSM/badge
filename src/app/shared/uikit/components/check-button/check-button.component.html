@@ -1,3 +1,6 @@
-<div (click)="emitValue()" [class.active]="configuration?.selected">
-    {{configuration?.text ?? ''}}
+<div [formGroup]="parentFormGroup" id="container">
+    <input type="checkbox" (change)="log($event)" [value]="configuration.selected" [id]="id" [checked]="configuration.selected" [name]="controlName" [formControlName]="controlName" #check class="checkButton">
+    <div id="wrapper" tabindex="0" (blur)="changeCheckboxState()" (click)="emitValue($event)" [class.active]="configuration?.selected">
+        {{configuration?.text ?? ''}}
+    </div>
 </div>

@@ -1,4 +1,3 @@
-
 <div id="add">
     <div id="head">
         <p id="title">Aggiungi contenuto</p>
@@ -21,12 +20,16 @@
         <div *ngSwitchCase="'Bacheca'">
             <p class="subtitle"><b>2 </b>di 2 Scelta tipologia</p>
 
-            <form>
+            <form [formGroup]="formAddBacheca">
 
                 <div class="textarea">
                     <app-textarea [textLabel]="'Contenuto*'" [placeholder]="'Inserisci qui il contenuto del tuo msg'"
-                        [background]="'var(--input-bg-color)'">
+                        [parentFormGroup]="formAddBacheca" [controlName]="'contenutoBacheca'"
+                        [name]="'contenutoBacheca'" [background]="'var(--input-bg-color)'">
                     </app-textarea>
+                    <div *ngIf="contenutoBacheca?.touched && contenutoBacheca?.invalid" class="validation">
+                        <p>Campo obbligatorio</p>
+                    </div>
                 </div>
 
                 <div id="label">
@@ -34,22 +37,19 @@
                 </div>
                 <div class="buttonCheck" *ngFor="let c of configuration">
 
-                    <app-check-button (selectedValue)="getSelectedValue($event)" [configuration]="c">
+                    <app-check-button (selectedValue)="getSelectedValue($event)" [configuration]="c"
+                        [parentFormGroup]="formAddBacheca" [controlName]="c.value" [name]="c.value" [id]="c.value">
                     </app-check-button>
 
                 </div>
-                <div id="radioContainer">
-                    <label>@Maria Grazia</label>
-                    <input type="radio" name="nome" #maria>
-                    <label>@hr</label>
-                    <input type="radio" name="nome" #hr>
+                <div *ngIf="maria?.touched && maria?.errors || hr?.touched && hr?.errors" class="validation">
+                    <p>Campo obbligatorio</p>
                 </div>
 
-                <app-button class="btn" [typeButton]="'submit'" [textButton]="'Pubblica'">
+                <app-button class="btn" [typeButton]="'submit'" [textButton]="'Pubblica'"  [disabled]="formAddBacheca.invalid" >
                 </app-button>
 
             </form>
-
 
         </div>
         <div *ngSwitchCase="'Link'">
