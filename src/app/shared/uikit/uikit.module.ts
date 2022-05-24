@@ -7,6 +7,7 @@ import { CardComponent } from './components/card/card.component';
 import { CardAggiungiComponent } from './components/card-aggiungi/card-aggiungi.component';
 import { TextareaComponent } from './components/textarea/textarea.component';
 import { CheckButtonComponent } from './components/check-button/check-button.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -21,7 +22,8 @@ import { CheckButtonComponent } from './components/check-button/check-button.com
     CheckButtonComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    ReactiveFormsModule
   ],
   exports: [
     InputComponent,

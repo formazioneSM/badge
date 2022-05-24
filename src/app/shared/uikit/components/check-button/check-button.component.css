@@ -16,6 +16,7 @@ div {
     background-color: var(--primary-color);
     color: #00102E;
     padding-left: 20px;
+    box-sizing: border-box;
     
 }
 
@@ -25,3 +26,4 @@ div {
     background-color: var(--bg-primary-color);
     color: var(--primary-color);
 }
+

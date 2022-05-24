@@ -52,16 +52,21 @@
 
 }
 
-#buttonAvanti {
-    width: 80vw;
+.textarea {
+    width: 100%;
+}
+
+.btn {
+    width: 100%;
     height: 62px;
     display: flex;
     justify-content: center;
+    margin-top: 27px;
 
 }
 
-form{
-    width: 83vw;
+form {
+    width: 80vw;
     height: 100%;
 
 }
@@ -80,7 +85,7 @@ form{
     font-weight: 400;
     font-size: 16px;
     line-height: 22px;
-    margin-top:20px;
+    margin-top: 20px;
     margin-bottom: 13px;
 }
 
@@ -88,7 +93,21 @@ form{
     width: 100%;
     height: 54px;
     margin-top: 38px;
-    padding: 0;
-    
+}
 
+.marginInput {
+    margin-bottom: 18px;
+}
+
+.validation {
+    font-family: 'Hind Madurai';
+    font-style: normal;
+    color: var(--bg-primary-color);
+    font-weight: bold;
+
+}
+#radioContainer{
+    position: fixed;
+    /* visibility: hidden; */
+    pointer-events: none;
 }

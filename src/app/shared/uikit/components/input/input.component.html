@@ -1,2 +1,5 @@
-<label>{{textLabel}}</label>
-<input placeholder="{{placeholder}}" [ngStyle]="{'background': backgroundInput, 'height': height ?? '48px'}">
+<div [formGroup]="parentFormGroup">
+    <label [for]="for">{{textLabel}}</label>
+    <input [formControlName]="controlName" [name]="name" [placeholder]="placeholder"
+        [ngStyle]="{'background': backgroundInput, 'height': height ?? '48px'}">
+</div>

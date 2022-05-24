@@ -20,12 +20,14 @@ textarea {
     font-size: 16px;
     line-height: 22px;
     resize: none;
-    padding: 10px 0px 0px 15px;
     margin-top: 10px;
+    padding: 10px 0px 0px 15px;
+    box-sizing: border-box;
 
 }
 textarea::placeholder {
     color: var(--placeholder-color);
+
 }
 
 textarea:focus {

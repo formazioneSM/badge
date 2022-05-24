@@ -1,9 +1,10 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
-// interface Configuration{
-//   text:string;
-//   value:string;
-// }
+interface Configuration{
+  text:string;
+  value:string;
+  selected: boolean;
+}
 
 @Component({
   selector: 'app-check-button',
@@ -12,8 +13,8 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 })
 export class CheckButtonComponent implements OnInit {
 
- @Input('active') active: boolean = false;
- @Input('configuration') configuration: string | undefined;
+
+ @Input('configuration') configuration: Configuration | undefined;
  @Output('selectedValue') selectedValue = new EventEmitter();
 
   constructor() { }
@@ -22,8 +23,7 @@ export class CheckButtonComponent implements OnInit {
   }
 
   emitValue(){
-   this.active = !this.active; 
-   this.selectedValue.emit(this.active? this.configuration : {})
+   this.selectedValue.emit( this.configuration)
   }
 
 }
