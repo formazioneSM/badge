@@ -9,6 +9,7 @@ import { AuthService } from '../../shared/uikit/services/auth.service';
 })
 export class LoginComponent implements OnInit {
   form: FormGroup = {} as FormGroup;
+  errorMessage = '';
 
   constructor(private _fb: FormBuilder, private authService: AuthService) {}
   apiResponse!: {} | any;
@@ -27,6 +28,7 @@ export class LoginComponent implements OnInit {
     return this.form?.get('password');
   }
 
+  // chiamata login api e gestione degli errori
   onSubmitLogin() {
     console.log(this.form.value.email);
     this.authService
@@ -35,6 +37,9 @@ export class LoginComponent implements OnInit {
         this.apiResponse = res;
         console.log(res);
         this.authService.apiToken = this.apiResponse.token;
+      },
+      err => {
+          this.errorMessage = "C'è stato un errore: " + err.error.message
       });
   }
 }
