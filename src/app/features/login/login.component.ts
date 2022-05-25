@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../shared/uikit/services/auth.service';
+import jwt_decode from "jwt-decode";
 
 @Component({
   selector: 'app-login',
@@ -18,6 +19,7 @@ export class LoginComponent implements OnInit {
       email: ['', [Validators.email, Validators.required]],
       password: ['', Validators.required],
     });
+    console.log(jwt_decode('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c'));
   }
   get email() {
     return this.form?.get('email');
@@ -35,6 +37,9 @@ export class LoginComponent implements OnInit {
         this.apiResponse = res;
         console.log(res);
         this.authService.apiToken = this.apiResponse.token;
+        // console.log(this.jwtHelper.decodeToken(this.authService.apiToken)); // token
       });
   }
+
+  
 }

@@ -5,6 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ScrollService } from './shared/uikit/services/scroll.service';
+import { NgxPermissionsModule } from 'ngx-permissions';
 
 
 @NgModule({
@@ -16,6 +17,7 @@ import { ScrollService } from './shared/uikit/services/scroll.service';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    NgxPermissionsModule.forRoot()
   ],
   providers: [ScrollService],
   bootstrap: [AppComponent]
