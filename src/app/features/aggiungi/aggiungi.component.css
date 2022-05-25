@@ -70,14 +70,25 @@ form {
     height: 100%;
 
 }
-
-
-.buttonCheck {
+.customRadio{
+    position: relative;
     width: 100%;
     height: 50px;
     margin-bottom: 13px;
-    /* border: 1px solid #C6D1E4; */
-        /* border-radius: 10px; */
+    border: 1px solid #C6D1E4; 
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+}
+.hiddenRadio{
+    position: absolute;
+    visibility: hidden;
+}
+.active {
+    background-color: var(--bg-primary-color)!important;
+    color: var(--primary-color)!important;
 }
 
 #label {

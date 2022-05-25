@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { timer } from 'rxjs';
 
 
 @Component({
@@ -8,13 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BachecaComponent implements OnInit {
 
+  toast:boolean = false
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  // changeScroll(e:any){
-  //   this._scrollService.setScroll(e.target.scrollTop)
-  // }
+ showToast(){
+   this.toast = true;
+   timer(2000).subscribe(() => console.log('ciao'))
 
+ }
 }

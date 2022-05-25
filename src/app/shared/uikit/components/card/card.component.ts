@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-card',
@@ -12,6 +12,7 @@ export class CardComponent implements OnInit {
   @Input('author') author: string | undefined;
   @Input('link') link: string | undefined;
   @Input('textLink') textLink: string | undefined;
+  @Output('deletePost') deletePost = new EventEmitter();
 
   
 
@@ -30,5 +31,9 @@ export class CardComponent implements OnInit {
 
   back(){
     this.isClicked = false;
+  }
+
+  delete(){
+    this.deletePost.emit();
   }
 }

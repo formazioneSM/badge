@@ -8,6 +8,8 @@ import { CardAggiungiComponent } from './components/card-aggiungi/card-aggiungi.
 import { TextareaComponent } from './components/textarea/textarea.component';
 import { CheckButtonComponent } from './components/check-button/check-button.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ToastComponent } from './components/toast/toast.component';
+
 
 
 
@@ -19,7 +21,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     CardComponent,
     CardAggiungiComponent,
     TextareaComponent,
-    CheckButtonComponent
+    CheckButtonComponent,
+    ToastComponent,
+
   ],
   imports: [
     CommonModule,
@@ -32,7 +36,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     CardComponent,
     CardAggiungiComponent,
     TextareaComponent,
-    CheckButtonComponent
+    CheckButtonComponent,
+    ToastComponent
   ]
 })
 export class UikitModule { }

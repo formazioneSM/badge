@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
   templateUrl: './aggiungi.component.html',
   styleUrls: ['./aggiungi.component.css']
 })
-export class AggiungiComponent implements OnInit, AfterViewInit {
+export class AggiungiComponent implements OnInit {
   formAddBacheca:FormGroup = {} as FormGroup;
   formAddLink:FormGroup = {} as FormGroup;
   formAddConvenzioni:FormGroup = {} as FormGroup;
@@ -42,9 +42,26 @@ export class AggiungiComponent implements OnInit, AfterViewInit {
   constructor(private _router: Router, private _fb: FormBuilder) { 
 
   }
-
+  preventDef(e:any){
+    e.stopPropagation();
+    // e.preventDefault();
+  }
+  triggerRadio(e:any, c:any){
+    e.stopPropagation();
+    e.preventDefault();
+    let element = e.target.firstChild;
+    element.click();
+    this.getSelectedValue(c);
+  }
   ngOnInit(): void {
     this.disabled = this.postTypes.every(p => !p?.selected);
+
+    this.formAddBacheca = this._fb.group({
+      contenutoBacheca:['', Validators.required],
+      // maria:[false , Validators.required],
+      // hr:[false, Validators.required],
+      radio:['', Validators.required]
+    })
     
     this.formAddLink = this._fb.group({
       nomeLink: ['', Validators.required],
@@ -57,11 +74,20 @@ export class AggiungiComponent implements OnInit, AfterViewInit {
       posizione: ['', Validators.required]
     });
 
-    this.formAddBacheca = this._fb.group({
-      contenutoBacheca:['', Validators.required],
-      maria:[false , Validators.required],
-      hr:[false, Validators.required],
-    })
+
+  }
+  get contenutoBacheca(){
+    return this.formAddBacheca?.get('contenutoBacheca')
+  }
+
+  // get maria(){
+  //   return this.formAddBacheca?.get('maria')
+  // }
+  // get hr(){
+  //   return this.formAddBacheca?.get('hr')
+  // }
+  get radio(){
+    return this.formAddBacheca?.get('radio')
   }
 
 
@@ -85,16 +111,10 @@ export class AggiungiComponent implements OnInit, AfterViewInit {
     return this.formAddConvenzioni?.get('posizione')
   }
 
-  get contenutoBacheca(){
-    return this.formAddBacheca?.get('contenutoBacheca')
+  addBacheca(formAddBacheca: FormGroup){
+    console.log(formAddBacheca.value)
   }
 
-  get maria(){
-    return this.formAddBacheca?.get('maria')
-  }
-  get hr(){
-    return this.formAddBacheca?.get('hr')
-  }
 
   addLink(formAddLink: FormGroup){
  
@@ -138,9 +158,10 @@ export class AggiungiComponent implements OnInit, AfterViewInit {
         c.selected = true
       }
     })
-    console.log(val)
   }
-    
+
+  //   console.log(val)
+  // }
 
 
 
@@ -149,8 +170,5 @@ export class AggiungiComponent implements OnInit, AfterViewInit {
 
 
 
-  ngAfterViewInit() {
-
-
-  }
+  
 }

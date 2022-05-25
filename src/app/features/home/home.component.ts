@@ -10,7 +10,7 @@ export class HomeComponent implements OnInit {
 
   actualScroll: number = 0;
   scroll:boolean = false;
-  admin:boolean = false;
+  admin:boolean = true;
 
   constructor(private _scrollService: ScrollService) {
     this._scrollService.getScroll().subscribe(s => {

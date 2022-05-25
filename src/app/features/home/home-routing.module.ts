@@ -3,7 +3,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { AggiungiComponent } from '../aggiungi/aggiungi.component';
 import { HomeComponent } from './home.component';
 
-// const routes: Routes = [{ path: '', component: HomeComponent }];
 const routes: Routes = [{
   path: '', component: HomeComponent, children: [{ path: 'bacheca', 
    loadChildren: () => import('../bacheca/bacheca.module').then(m => m.BachecaModule) }

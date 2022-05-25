@@ -20,7 +20,7 @@
         <div *ngSwitchCase="'Bacheca'">
             <p class="subtitle"><b>2 </b>di 2 Scelta tipologia</p>
 
-            <form [formGroup]="formAddBacheca">
+            <form [formGroup]="formAddBacheca" (ngSubmit)="addBacheca(formAddBacheca)">
 
                 <div class="textarea">
                     <app-textarea [textLabel]="'Contenuto*'" [placeholder]="'Inserisci qui il contenuto del tuo msg'"
@@ -35,21 +35,20 @@
                 <div id="label">
                     <label>Publica come*</label>
                 </div>
-                <div class="buttonCheck" *ngFor="let c of configuration">
-
-                    <app-check-button (selectedValue)="getSelectedValue($event)" [configuration]="c"
-                        [parentFormGroup]="formAddBacheca" [controlName]="c.value" [name]="c.value" [id]="c.value">
-                    </app-check-button>
+                <div  *ngFor="let c of configuration"  >
+                    <div class="customRadio" [class.active]="c.selected" (click)="triggerRadio($event, c)">
+                        <input type="radio" class="hiddenRadio" (click)="preventDef($event)"  name="radio" value="{{c.value}}" formControlName="radio">{{c.text}}
+                    </div>
 
                 </div>
-                <div *ngIf="maria?.touched && maria?.errors || hr?.touched && hr?.errors" class="validation">
-                    <p>Campo obbligatorio</p>
-                </div>
 
-                <app-button class="btn" [typeButton]="'submit'" [textButton]="'Pubblica'"  [disabled]="formAddBacheca.invalid" >
+                <app-button class="btn" [typeButton]="'submit'" [textButton]="'Pubblica'"
+                    [disabled]="formAddBacheca.invalid">
+
                 </app-button>
 
             </form>
+
 
         </div>
         <div *ngSwitchCase="'Link'">

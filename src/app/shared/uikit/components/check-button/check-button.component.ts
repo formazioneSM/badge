@@ -32,15 +32,17 @@ export class CheckButtonComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  changeCheckboxState(){
+  changeCheckboxState(e:any){
+    console.log(e.target)
     this.check?.nativeElement.click();
+    
   }
 
   emitValue(e:any){
-    if(!this.configuration.selected){
-      this.changeCheckboxState();
+    if(!this.configuration.selected && e.target.id === 'wrapper'){
+      this.changeCheckboxState(e);
     }
-    this.selectedValue.emit( this.configuration)
+    this.selectedValue.emit(this.configuration)
     
   }
 
