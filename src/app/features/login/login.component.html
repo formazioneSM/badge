@@ -3,11 +3,23 @@
     <h1 id="title">Badgeverso</h1>
     <span id="point"></span>
   </div>
-  <div *ngIf="errorMessage" class="error-message">
+  <!-- <div *ngIf="errorMessage" class="error-message">
     <div>
       {{ errorMessage }}
     </div>
+  </div> -->
+
+  <div [ngSwitch]="errorNumber">
+    <div class="error-message" *ngSwitchCase="'404'">
+      <i class="fa-solid fa-triangle-exclamation"></i> Nessun utente associato
+      alla mail inserita.
+    </div>
+    <div class="error-message" *ngSwitchCase="'401'">
+      <i class="fa-solid fa-triangle-exclamation"></i> La password inserita non è
+      corretta.
+    </div>
   </div>
+
   <div *ngIf="form">
     <form id="login" [formGroup]="form" (ngSubmit)="onSubmitLogin()">
       <div id="email">
