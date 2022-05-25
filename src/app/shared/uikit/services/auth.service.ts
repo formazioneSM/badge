@@ -7,6 +7,8 @@ import { Injectable } from '@angular/core';
 export class AuthService {
   constructor(private http: HttpClient) {}
 
+  apiToken: any = '';
+
   onLogin(email: any, password: any) {
     return this.http.post(`https://be-system.herokuapp.com/api/auth/login`, {
       email: email,

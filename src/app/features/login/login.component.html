@@ -4,13 +4,13 @@
         <span id="point"></span>
     </div>
     <div *ngIf="form">
-        <form id="login" [formGroup]="form">
+        <form id="login" [formGroup]="form" (ngSubmit)="onSubmitLogin()">
             <div id="email">
                 <app-input [textLabel]="'Email*'" [placeholder]="'Inserisci la tua email'"
                     [backgroundInput]="'var(--input-bg-color)'" [for]="'email'" [parentFormGroup]="form" [controlName]="'email'"
                     [name]="'email'">
                 </app-input>
-                <div *ngIf="!email?.errors && email?.touched" >
+                <div *ngIf="email?.errors && email?.touched" >
                     <p class="validation">Campo obbligatorio</p>
                 </div>
             </div>
