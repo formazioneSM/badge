@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 })
 export class AuthService {
   constructor(private http: HttpClient) {}
-
+  variabile!:any
   apiToken: any = '';
 
   onLogin(email: any, password: any) {
@@ -16,3 +16,5 @@ export class AuthService {
     });
   }
 }
+
+
