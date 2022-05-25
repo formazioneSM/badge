@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../shared/uikit/services/auth.service';
 import jwt_decode from "jwt-decode";
+import { NgxPermissionsService } from 'ngx-permissions';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -13,15 +15,15 @@ export class LoginComponent implements OnInit {
 //   errorMessage: string = '';
   errorNumber: string | undefined;
 
-  constructor(private _fb: FormBuilder, private authService: AuthService) {}
+  constructor(private _fb: FormBuilder, private authService: AuthService,public permissionsService:NgxPermissionsService,public router:Router) {}
   apiResponse!: {} | any;
+  role!:any
 
   ngOnInit(): void {
     this.form = this._fb.group({
       email: ['', [Validators.email, Validators.required]],
       password: ['', Validators.required],
     });
-    console.log(jwt_decode('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c'));
   }
   get email() {
     return this.form?.get('email');
@@ -40,16 +42,28 @@ export class LoginComponent implements OnInit {
         (res) => {
           this.apiResponse = res;
           console.log(res);
-          this.authService.apiToken = this.apiResponse.token;
+          this.authService.apiToken = jwt_decode(this.apiResponse.token) ;
+
+          this.isAdminOrUser(this.authService.apiToken.admin)
         },
         (err) => {
           console.log(err);
         //   this.errorMessage = "C'è stato un errore: " + err.error.message;
           this.errorNumber = err.status;
-          console.log(this.errorNumber)
         }
       );
   }
-
+  isAdminOrUser(input:any){
+    if(input==false){
+      this.permissionsService.loadPermissions(["USER"]);
+      window.alert("Welcome User")
+      this.router.navigate(['../home'])
+    }
+    else {
+      this.permissionsService.loadPermissions(["ADMIN"]);
+      window.alert("Welcome Admin")
+      this.router.navigate(['../home'])
+    }
+  }
   
 }
