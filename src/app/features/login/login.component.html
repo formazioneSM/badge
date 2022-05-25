@@ -46,6 +46,7 @@
           [parentFormGroup]="form"
           [controlName]="'password'"
           [name]="'password'"
+          [type]=type
         >
         </app-input>
         <div *ngIf="password?.touched && password?.invalid">

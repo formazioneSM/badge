@@ -11,6 +11,7 @@ export class LoginComponent implements OnInit {
   form: FormGroup = {} as FormGroup;
 //   errorMessage: string = '';
   errorNumber: string | undefined;
+  type:string = "password"
 
   constructor(private _fb: FormBuilder, private authService: AuthService) {}
   apiResponse!: {} | any;
