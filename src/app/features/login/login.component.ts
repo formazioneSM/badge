@@ -10,6 +10,8 @@ import jwt_decode from "jwt-decode";
 })
 export class LoginComponent implements OnInit {
   form: FormGroup = {} as FormGroup;
+//   errorMessage: string = '';
+  errorNumber: string | undefined;
 
   constructor(private _fb: FormBuilder, private authService: AuthService) {}
   apiResponse!: {} | any;
@@ -29,16 +31,24 @@ export class LoginComponent implements OnInit {
     return this.form?.get('password');
   }
 
+  // chiamata login api e gestione degli errori
   onSubmitLogin() {
     console.log(this.form.value.email);
     this.authService
       .onLogin(this.form.value.email, this.form.value.password)
-      .subscribe((res) => {
-        this.apiResponse = res;
-        console.log(res);
-        this.authService.apiToken = this.apiResponse.token;
-        // console.log(this.jwtHelper.decodeToken(this.authService.apiToken)); // token
-      });
+      .subscribe(
+        (res) => {
+          this.apiResponse = res;
+          console.log(res);
+          this.authService.apiToken = this.apiResponse.token;
+        },
+        (err) => {
+          console.log(err);
+        //   this.errorMessage = "C'è stato un errore: " + err.error.message;
+          this.errorNumber = err.status;
+          console.log(this.errorNumber)
+        }
+      );
   }
 
   
