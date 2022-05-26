@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { timer } from 'rxjs';
+import {Subscription, timer } from 'rxjs';
 
 
 @Component({
@@ -9,15 +9,29 @@ import { timer } from 'rxjs';
 })
 export class BachecaComponent implements OnInit {
 
-  toast:boolean = false
+  toast:boolean = false;
+  startTimer: Subscription | undefined;
+  card:boolean = true;
   constructor() { }
 
   ngOnInit(): void {
   }
 
  showToast(){
+  this.card = false;
    this.toast = true;
-   timer(2000).subscribe(() => console.log('ciao'))
+   this.startTimer = timer(3000).subscribe(() => {
+     console.log('ciao')
+     this.toast = false;
+    })
+
+ }
+
+ stopDelete(e:any){
+   
+   this.startTimer?.unsubscribe();
+   this.card = true;
+   this.toast = false;
 
  }
 }

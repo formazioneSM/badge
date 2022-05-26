@@ -38,8 +38,8 @@
     text-align: center;
     height: 6rem;
 
-
 }
+
 
 .button {
     margin-right: 25px;
@@ -61,43 +61,49 @@
 #wrapper {
     height: 100vh;
     overflow: auto;
+    position: relative;
 
 }
 
 .roundButtonsSide.active button {
     background-color: var(--bg-primary-color) !important;
 }
-
-.roundButtonsSide {
-    display: flex;
+#container{
+    overflow: hidden;
+}
+.containerVerticalButtons {
+    display: flex!important;
     flex-direction: column !important;
-    margin-left: 27px;
-    position: absolute !important;
-    margin-top: 10px;
-    text-align: center;
+    position:fixed !important;
     z-index: 10;
     right: 0;
-    align-items: center !important;
-    height: 100vh;
-    background-color: transparent !important;
-    top: 0;
-    justify-content: center;
-    height: 100vh;
+    top:0;
+    align-content: center!important;
+    justify-content: center!important;
+    height: 100%!important;
+    animation-name: transizioneMargin;
+    animation-duration: 1s;
 }
 
-.buttonScroll {
+
+.containerVerticalButtons .button{
+    margin-right: 5px;
     width: 54px;
     height: 54px;
-    margin-right: 10px;
     margin-bottom: 10px;
     border-radius: 50%;
     background: white;
 }
 
 .backArrow {
-  position: absolute;
-  bottom: 0;
-  width: 48px;
-  height: 48px;
-  margin-bottom: 14px;
+    position: absolute;
+    bottom: 0;
+    width: 48px;
+    height: 48px;
+    margin-bottom: 14px;
 }
+@keyframes transizioneMargin{
+    from {right:-50%;}
+    to{right: 0;}
+}
+

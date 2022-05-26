@@ -25,9 +25,10 @@ img{
     margin: auto;
 
 }
-a{
+#container div{
    margin-left: auto;
    display: flex;
    align-items: center;
    margin-right: 20px;
+   text-decoration: underline;
 }
