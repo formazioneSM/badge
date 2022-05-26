@@ -18,6 +18,15 @@ export class AuthService {
       password: password,
     });
   }
+  OnRegister(name:string,surname:string,email:string,password:string,badge:string){
+    return this.http.post(`https://be-system.herokuapp.com/api/auth/register`, {
+      name: name,
+      surname: surname,
+      email: email,
+      password: password,
+      badge: badge
+    })
+  }
 
 
 

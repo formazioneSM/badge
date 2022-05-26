@@ -8,9 +8,12 @@ import { ScrollService } from './shared/uikit/services/scroll.service';
 import { NgxPermissionsModule } from 'ngx-permissions';
 
 
+
+
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent
+
 
   ],
   imports: [

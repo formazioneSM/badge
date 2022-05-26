@@ -1,0 +1,111 @@
+@import url('https://fonts.googleapis.com/css2?family=Hind+Madurai&display=swap');
+
+#container{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+}
+#head{
+    display: flex;
+    margin: auto;
+    margin-top: 80px; 
+    padding-bottom: 2rem;
+}
+
+#title {
+    font-family: Gotham-bold;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 29px;
+    line-height: 32px;
+    color: #000000;
+    margin-top: 0px;
+
+}
+
+#point {
+    position: relative;
+    width: 7px;
+    height: 7px;
+    top: 22px;
+    left: 2px;
+    background: var(--bg-primary-color);
+    border-radius: 50%;
+}
+
+#login {
+
+    /* margin-top: 80px; */
+    display: flex;
+    flex-direction: column;
+    width: 83vw;
+    height: 100%;
+    align-items: center;
+    margin-left: 25px;
+
+}
+
+#email{
+    position: relative;
+    width: 83vw;
+    height: 80px;
+    margin-top: 50px;
+}
+#name{
+    position: relative;
+    width: 83vw;
+    height: 80px;
+    
+}
+#surname{
+    position: relative;
+    width: 83vw;
+    height: 80px;
+    margin-top: 50px;
+}
+#badge{
+    position: relative;
+    width: 83vw;
+    height: 80px;
+    margin-top: 50px;
+}
+
+#password {
+
+    position: relative;
+    margin-top: 30px;
+    width: 83vw;
+    height: 80px;
+}
+
+#buttonLogin {
+    position: relative;
+    width: 83vw;
+    height: 54px;
+    margin-top: 50px;
+}
+.validation {
+    position: relative;
+    font-family: 'Hind Madurai';
+    font-style: normal;
+    color: var(--bg-primary-color);
+    font-weight: bold;
+   bottom: 10px;
+
+}
+
+.error-message {
+    padding: 1rem 2rem;
+    margin: 0 1.5rem;
+    background: rgba(255, 0, 0, 0.178);
+    border: 1px solid red;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.error-message i {
+    padding-right: 0.8rem;
+    color: red;
+}
