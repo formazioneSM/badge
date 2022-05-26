@@ -5,7 +5,12 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ScrollService } from './shared/uikit/services/scroll.service';
+import { LottieModule } from 'ngx-lottie';
+import player from 'lottie-web';
 
+export function playerFactory() {
+    return player;
+  }
 
 @NgModule({
   declarations: [
@@ -16,6 +21,7 @@ import { ScrollService } from './shared/uikit/services/scroll.service';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    LottieModule.forRoot({ player: playerFactory }),
   ],
   providers: [ScrollService],
   bootstrap: [AppComponent]

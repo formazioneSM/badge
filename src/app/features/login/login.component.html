@@ -1,13 +1,12 @@
+<div class="loader" *ngIf="isLoading">
+  <app-sm-loader></app-sm-loader>
+</div>
+
 <div id="container">
   <div id="head">
     <h1 id="title">Badgeverso</h1>
     <span id="point"></span>
   </div>
-  <!-- <div *ngIf="errorMessage" class="error-message">
-    <div>
-      {{ errorMessage }}
-    </div>
-  </div> -->
 
   <div [ngSwitch]="errorNumber">
     <div class="error-message" *ngSwitchCase="'404'">
@@ -15,8 +14,8 @@
       alla mail inserita.
     </div>
     <div class="error-message" *ngSwitchCase="'401'">
-      <i class="fa-solid fa-triangle-exclamation"></i> La password inserita non è
-      corretta.
+      <i class="fa-solid fa-triangle-exclamation"></i> La password inserita non
+      è corretta.
     </div>
   </div>
 
@@ -46,7 +45,7 @@
           [parentFormGroup]="form"
           [controlName]="'password'"
           [name]="'password'"
-          [type]=type
+          [type]="type"
         >
         </app-input>
         <div *ngIf="password?.touched && password?.invalid">
