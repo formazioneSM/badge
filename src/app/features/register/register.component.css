@@ -109,3 +109,16 @@
     padding-right: 0.8rem;
     color: red;
 }
+.ok-message {
+    padding: 1rem 2rem;
+    margin: 0 1.5rem;
+    background: rgb(0 255 78 / 18%);
+    border: 1px solid #ffffff;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+}
+.ok-message i {
+    padding-right: 0.8rem;
+    color: green;
+}

@@ -11,7 +11,7 @@ import { AuthService } from 'src/app/shared/uikit/services/auth.service';
 export class RegisterComponent implements OnInit {
   form: FormGroup = {} as FormGroup;
   errorNumber: any
-  resResponse!: Object;
+  res!: any;
   constructor(private _fb: FormBuilder,private authService:AuthService) { }
 
   ngOnInit(): void {
@@ -19,8 +19,8 @@ export class RegisterComponent implements OnInit {
       name: ['', [Validators.required]],
       cognome: ['', Validators.required],
       email: ['', [Validators.email, Validators.required]],
-      password: ['', Validators.required],
-      badge: ['', Validators.required],
+      password: ['', [Validators.required,Validators.minLength(6)]], // la password deve essere di almeno 6 caratteri
+      badge: ['', [Validators.required,Validators.pattern("^[0-9]*$")]], // il badge puo` contenere solo numeri
     });
     
     
@@ -28,14 +28,16 @@ export class RegisterComponent implements OnInit {
   }
   onSubmitRegister(){
     this.authService.OnRegister(this.name?.value,this.cognome?.value,this.email?.value,this.password?.value,this.badge?.value).subscribe(
-      (res)=>this.resResponse=res
-      ),
+      (res)=>{this.res=res;console.log(res)},
       (err:any) => {
+        console.log(err)
         
         this.errorNumber = err.status;
-        // gestire gli errori
+        console.log(this.errorNumber)
+
       }
-      console.log(this.resResponse,this.errorNumber)
+      )
+      // console.log(this.resResponse,this.errorNumber)
     
   }
 

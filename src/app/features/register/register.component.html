@@ -6,6 +6,17 @@
       <span id="point"></span>
     </div>
 
+
+    <div [ngSwitch]="errorNumber">
+      <div class="error-message" *ngSwitchCase="'409'">
+        <i class="fa-solid fa-triangle-exclamation"></i> La mail che hai inserito é gia registrata
+      </div>
+    </div>
+    <div *ngIf="this.res">
+      <div class="ok-message" >
+        <i class="fa-regular fa-circle-check"></i> Controlla la mail per attivare la registrazione
+      </div>
+    </div>
   
 
   
@@ -68,7 +79,7 @@
           >
           </app-input>
           <div *ngIf="password?.errors && password?.touched">
-            <p class="validation">Campo obbligatorio</p>
+            <p class="validation">Campo obbligatorio. La password deve contenere almeno sei caratteri</p>
           </div>
         </div>
         <div id="badge">
@@ -90,7 +101,7 @@
         <div id="buttonLogin">
           <app-button
             [typeButton]="'submit'"
-            [textButton]="'Accedi'"
+            [textButton]="'Registrati'"
             [disabled]="form.invalid"
           >
           </app-button>
