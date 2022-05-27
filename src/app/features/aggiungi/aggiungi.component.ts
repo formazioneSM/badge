@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild, AfterViewInit, ElementRef } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import {colorDefault} from '../../shared/utils/constants'
 
 @Component({
   selector: 'app-aggiungi',
@@ -8,6 +9,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./aggiungi.component.css']
 })
 export class AggiungiComponent implements OnInit {
+
+  bgcolor = colorDefault;
   formAddBacheca:FormGroup = {} as FormGroup;
   formAddLink:FormGroup = {} as FormGroup;
   formAddConvenzioni:FormGroup = {} as FormGroup;
@@ -58,8 +61,6 @@ export class AggiungiComponent implements OnInit {
 
     this.formAddBacheca = this._fb.group({
       contenutoBacheca:['', Validators.required],
-      // maria:[false , Validators.required],
-      // hr:[false, Validators.required],
       radio:['', Validators.required]
     })
     
@@ -80,12 +81,7 @@ export class AggiungiComponent implements OnInit {
     return this.formAddBacheca?.get('contenutoBacheca')
   }
 
-  // get maria(){
-  //   return this.formAddBacheca?.get('maria')
-  // }
-  // get hr(){
-  //   return this.formAddBacheca?.get('hr')
-  // }
+
   get radio(){
     return this.formAddBacheca?.get('radio')
   }
@@ -159,13 +155,6 @@ export class AggiungiComponent implements OnInit {
       }
     })
   }
-
-  //   console.log(val)
-  // }
-
-
-
-
 
 
 

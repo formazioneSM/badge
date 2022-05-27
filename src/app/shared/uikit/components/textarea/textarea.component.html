@@ -1,5 +1,8 @@
 <div [formGroup]="parentFormGroup">
     <label [for]="for">{{textLabel}}</label>
-    <textarea [formControlName]="controlName" [name]="name" placeholder="{{placeholder}}"
-        [ngStyle]="{'background': background}"></textarea>
+    <div id="containerInterno">
+        <textarea [formControlName]="controlName" [name]="name" placeholder="{{placeholder}}"
+            [ngStyle]="{'background': background, 'border': border}"></textarea>
+        <img src="../../../../../assets/images/palet_colori.png">
+    </div>
 </div>

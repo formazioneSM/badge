@@ -24,8 +24,8 @@
 
                 <div class="textarea">
                     <app-textarea [textLabel]="'Contenuto*'" [placeholder]="'Inserisci qui il contenuto del tuo msg'"
-                        [parentFormGroup]="formAddBacheca" [controlName]="'contenutoBacheca'"
-                        [name]="'contenutoBacheca'" [background]="'var(--input-bg-color)'">
+                        [parentFormGroup]="formAddBacheca" [border]="'#FEDD2E'" [controlName]="'contenutoBacheca'"
+                        [name]="'contenutoBacheca'" [background]="bgcolor">
                     </app-textarea>
                     <div *ngIf="contenutoBacheca?.touched && contenutoBacheca?.invalid" class="validation">
                         <p>Campo obbligatorio</p>
@@ -100,8 +100,8 @@
                     <div class="marginInput">
                         <app-textarea [textLabel]="'Contenuto*'"
                             [placeholder]="'Inserisci qui il contenuto del tuo msg'"
-                            [background]="'var(--input-bg-color)'" [for]="'contenuto'"
-                            [parentFormGroup]="formAddConvenzioni" [controlName]="'contenuto'" [name]="'contenuto'">
+                            [background]="'var(--input-bg-color)'" [border]="'1px solid #C6D1E4'" [for]="'contenuto'"
+                            [parentFormGroup]="formAddConvenzioni" [controlName]="'contenuto'" [name]="'contenuto'" >
                         </app-textarea>
                         <div *ngIf="contenuto?.touched && contenuto?.invalid" class="validation">
                             <p>Campo obbligatorio</p>
