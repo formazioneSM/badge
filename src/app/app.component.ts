@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import jwtDecode from 'jwt-decode';
 import { NgxPermissionsService } from 'ngx-permissions';
+import { AuthService } from './shared/uikit/services/auth.service';
 
 
 @Component({
@@ -12,7 +13,7 @@ import { NgxPermissionsService } from 'ngx-permissions';
 export class AppComponent implements OnInit {
   title = 'badgeverso';
 
-  constructor(public permissions: NgxPermissionsService, private router: Router) { }
+  constructor(public permissions: NgxPermissionsService, private router: Router,private authService:AuthService) { }
 
   isAdminOrUser(token: any) {
 
@@ -29,7 +30,7 @@ export class AppComponent implements OnInit {
     if (token) {
       let decodedToken: any = jwtDecode(token)
       this.isAdminOrUser(decodedToken)
-
+      this.authService.setLoginResponse(decodedToken)
     }
   }
 }

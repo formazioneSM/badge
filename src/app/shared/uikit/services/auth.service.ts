@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { LoginResponse } from '../../utils/interfaces';
 
 
 
@@ -9,12 +10,19 @@ import { Injectable } from '@angular/core';
 export class AuthService {
   constructor(private http: HttpClient) {}
   apiToken: any = '';
+  loginResponse!:LoginResponse
 
   onLogin(email: any, password: any) {
     return this.http.post(`https://be-system.herokuapp.com/api/auth/login`, {
       email: email,
       password: password,
     });
+  }
+
+  OnForgottenPassword(){
+    this.http.put(`https://be-system.herokuapp.com/auth/forgotPassword/`,
+      this.loginResponse?.id
+    )
   }
 
   OnRegister(name:string,surname:string,email:string,password:string,badge:string){
@@ -26,4 +34,9 @@ export class AuthService {
       badge: badge
     })
   }
+  setLoginResponse(loginResponse:LoginResponse){
+    this.loginResponse = loginResponse
+  }
+
+
 }
