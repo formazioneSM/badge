@@ -7,6 +7,14 @@ import { HttpClient } from '@angular/common/http';
 export class BachecaService {
   constructor(private http: HttpClient) {}
 
+  createNewPost(color: string, text: string, from: string) {
+    return this.http.post(`https://be-system.herokuapp.com/api/bacheca`, {
+      color: color,
+      text: text,
+      from: from,
+    });
+  }
+
   getPost(postId: number | string) {
     return this.http.get(
       `https://be-system.herokuapp.com/api/bacheca/${postId}`
@@ -14,9 +22,7 @@ export class BachecaService {
   }
 
   getAllPosts() {
-    return this.http.get(
-      `https://be-system.herokuapp.com/api/bacheca/all`
-    );
+    return this.http.get(`https://be-system.herokuapp.com/api/bacheca/all`);
   }
 
   deletePost(postId: number | string) {
@@ -25,9 +31,10 @@ export class BachecaService {
     );
   }
 
-  editPost(postId: number | string, color: string, text: string, from: string ) {
+  editPost(postId: number | string, color: string, text: string, from: string) {
     return this.http.put(
-      `https://be-system.herokuapp.com/api/bacheca/${postId}`, {
+      `https://be-system.herokuapp.com/api/bacheca/${postId}`,
+      {
         color: color,
         text: text,
         from: from,

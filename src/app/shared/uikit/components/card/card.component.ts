@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { BachecaService } from '../../services/bacheca.service';
 
 @Component({
   selector: 'app-card',
@@ -12,6 +13,7 @@ export class CardComponent implements OnInit {
   @Input('author') author: string | undefined;
   @Input('link') link: string | undefined;
   @Input('textLink') textLink: string | undefined;
+  @Input('postId') postId: any;
   @Output('deletePost') deletePost = new EventEmitter();
 
   
@@ -20,7 +22,7 @@ export class CardComponent implements OnInit {
   copy:boolean=true;
   isClicked: boolean = false;
 
-  constructor() { }
+  constructor(private bachecaService: BachecaService) { }
 
   ngOnInit(): void {
   }
@@ -34,6 +36,7 @@ export class CardComponent implements OnInit {
   }
 
   delete(){
-    this.deletePost.emit();
+    this.deletePost.emit(this.postId);
+    console.log(this.postId);
   }
 }
