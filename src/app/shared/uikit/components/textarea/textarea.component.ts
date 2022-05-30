@@ -10,10 +10,12 @@ export class TextareaComponent implements OnInit {
   @Input('textLabel') textLabel: string | undefined;
   @Input('placeholder') placeholder: string | undefined;
   @Input('background') background: string | undefined;
+  @Input('border') border: string | undefined;
   @Input('for') for: string | undefined;
   @Input('name') name: string | undefined;
   @Input('controlName') controlName: string = '';
   @Input('parentFormGroup') parentFormGroup: FormGroup = {} as FormGroup;
+  @Input('imgColor') imgColor: string = '';
 
 
   constructor() { }

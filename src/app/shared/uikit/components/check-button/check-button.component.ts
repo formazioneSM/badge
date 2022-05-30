@@ -1,9 +1,10 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 
 interface Configuration{
-  text:string;
-  value:string;
-  selected: boolean;
+  text?:string;
+  value?:string;
+  selected?: boolean;
 }
 
 @Component({
@@ -14,16 +15,35 @@ interface Configuration{
 export class CheckButtonComponent implements OnInit {
 
 
- @Input('configuration') configuration: Configuration | undefined;
+ @Input('configuration') configuration: Configuration = {};
  @Output('selectedValue') selectedValue = new EventEmitter();
+ @Input('name') name: string ="";
+ @Input('controlName') controlName: string = '';
+ @Input('parentFormGroup') parentFormGroup: FormGroup = {} as FormGroup;
+ @Input('id') id: string ="";
+ 
+ @ViewChild('check') check: ElementRef | undefined;
+
 
   constructor() { }
-
+  log(e:any){
+    console.log(e.target.value)
+  }
   ngOnInit(): void {
   }
 
-  emitValue(){
-   this.selectedValue.emit( this.configuration)
+  changeCheckboxState(e:any){
+    console.log(e.target)
+    this.check?.nativeElement.click();
+    
+  }
+
+  emitValue(e:any){
+    if(!this.configuration.selected && e.target.id === 'wrapper'){
+      this.changeCheckboxState(e);
+    }
+    this.selectedValue.emit(this.configuration)
+    
   }
 
 }

@@ -12,7 +12,6 @@ label {
 textarea {
     width: 100%;
     min-height: 170px;
-    border: 1px solid #C6D1E4;
     border-radius: 10px;
     font-family: 'Hind Madurai';
     font-style: normal;
@@ -23,6 +22,7 @@ textarea {
     margin-top: 10px;
     padding: 10px 0px 0px 15px;
     box-sizing: border-box;
+    position: relative;
 
 }
 textarea::placeholder {
@@ -33,4 +33,15 @@ textarea::placeholder {
 textarea:focus {
     outline: 1px solid var(--bg-primary-color);
 
+}
+#containerInterno{
+    display: flex;
+    flex-direction:column
+}
+
+img{
+    position: absolute;
+    right: 0;
+    margin-right: 55px;
+    margin-top: 150px;
 }

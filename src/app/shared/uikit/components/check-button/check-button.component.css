@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Hind+Madurai&display=swap');
 
 
-div {
+#wrapper{
     width: 100%;
     height: 100%;
     border-radius: 10px;
@@ -23,7 +23,17 @@ div {
 
 
 .active {
-    background-color: var(--bg-primary-color);
-    color: var(--primary-color);
+    background-color: var(--bg-primary-color)!important;
+    color: var(--primary-color)!important;
 }
 
+.checkButton{
+    position: fixed;
+    visibility: hidden;
+    pointer-events: none;
+
+}
+#container{
+    width: 100%;
+    height: 100%;
+}
