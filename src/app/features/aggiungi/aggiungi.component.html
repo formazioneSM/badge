@@ -23,11 +23,14 @@
             <form [formGroup]="formAddBacheca" (ngSubmit)="addBacheca(formAddBacheca)">
 
                 <div class="textarea">
-                    <app-textarea  [textLabel]="'Contenuto*'" [placeholder]="'Inserisci qui il contenuto del tuo msg'"
+                    <app-textarea [textLabel]="'Contenuto*'" [placeholder]="'Inserisci qui il contenuto del tuo msg'"
                         [parentFormGroup]="formAddBacheca" [border]="'#FEDD2E'" [controlName]="'contenutoBacheca'"
                         [name]="'contenutoBacheca'" [background]="bgcolor">
+                        <div id="containerColorPicker">
+                            <app-color-select (changeColor)="changeColorTextarea($event)"></app-color-select>
+                        </div>
                     </app-textarea>
-                    <app-color-select></app-color-select>
+
                     <div *ngIf="contenutoBacheca?.touched && contenutoBacheca?.invalid" class="validation">
                         <p>Campo obbligatorio</p>
                     </div>
@@ -36,9 +39,10 @@
                 <div id="label">
                     <label>Publica come*</label>
                 </div>
-                <div  *ngFor="let c of configuration"  >
+                <div *ngFor="let c of configuration">
                     <div class="customRadio" [class.active]="c.selected" (click)="triggerRadio($event, c)">
-                        <input type="radio" class="hiddenRadio" (click)="preventDef($event)"  name="radio" value="{{c.value}}" formControlName="radio">{{c.text}}
+                        <input type="radio" class="hiddenRadio" (click)="preventDef($event)" name="radio"
+                            value="{{c.value}}" formControlName="radio">{{c.text}}
                     </div>
 
                 </div>
@@ -102,7 +106,7 @@
                         <app-textarea [textLabel]="'Contenuto*'"
                             [placeholder]="'Inserisci qui il contenuto del tuo msg'"
                             [background]="'var(--input-bg-color)'" [border]="'1px solid #C6D1E4'" [for]="'contenuto'"
-                            [parentFormGroup]="formAddConvenzioni" [controlName]="'contenuto'" [name]="'contenuto'"  >
+                            [parentFormGroup]="formAddConvenzioni" [controlName]="'contenuto'" [name]="'contenuto'">
                         </app-textarea>
                         <div *ngIf="contenuto?.touched && contenuto?.invalid" class="validation">
                             <p>Campo obbligatorio</p>

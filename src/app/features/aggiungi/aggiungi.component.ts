@@ -9,7 +9,7 @@ import {colorDefault} from '../../shared/utils/constants'
   styleUrls: ['./aggiungi.component.css']
 })
 export class AggiungiComponent implements OnInit {
-
+ 
   bgcolor = colorDefault;
   formAddBacheca:FormGroup = {} as FormGroup;
   formAddLink:FormGroup = {} as FormGroup;
@@ -155,7 +155,11 @@ export class AggiungiComponent implements OnInit {
       }
     })
   }
+ 
+  changeColorTextarea(color: string){
+    this.bgcolor = color
 
+  }
 
 
 

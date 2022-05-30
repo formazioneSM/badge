@@ -1,7 +1,13 @@
 <div [formGroup]="parentFormGroup">
     <label [for]="for">{{textLabel}}</label>
 
-    <textarea [formControlName]="controlName" [name]="name" placeholder="{{placeholder}}"
-        [ngStyle]="{'background': background, 'border': border}"></textarea>
+    <div [ngStyle]="{'background': background, 'border': border}" id="containerTextarea">
+        <textarea [formControlName]="controlName" [name]="name" placeholder="{{placeholder}}">
+
+
+      </textarea>
+        <ng-content></ng-content>
+    </div>
+
 
 </div>
