@@ -9,12 +9,15 @@
 
     <div [ngSwitch]="errorNumber">
       <div class="error-message" *ngSwitchCase="'409'">
-        <i class="fa-solid fa-triangle-exclamation"></i> La mail che hai inserito é gia registrata
+        <i class="fa-solid fa-triangle-exclamation"></i> La mail che hai inserito é gia registrata.
+      </div>
+      <div class="error-message" *ngSwitchCase="'500'">
+        <i class="fa-solid fa-triangle-exclamation"></i> C`é un problema con il server,riprova piú tardi.
       </div>
     </div>
     <div *ngIf="this.res">
       <div class="ok-message" >
-        <i class="fa-regular fa-circle-check"></i> Controlla la mail per attivare la registrazione
+        <i class="fa-regular fa-circle-check"></i> Controlla la mail per attivare la registrazione.
       </div>
     </div>
   
