@@ -1,6 +1,8 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ScrollService } from 'src/app/shared/uikit/services/scroll.service';
 import { NgxPermissionsService } from 'ngx-permissions';
+import {  Router } from '@angular/router';
+import { AuthService } from 'src/app/shared/uikit/services/auth.service';
 
 @Component({
   selector: 'app-home',
@@ -14,14 +16,20 @@ export class HomeComponent implements OnInit {
   // admin:boolean = true;
 
 
-  constructor(private _scrollService: ScrollService,public permissions:NgxPermissionsService) {
+  constructor(private _scrollService: ScrollService,public permissions:NgxPermissionsService, private router:Router, 
+    private authService : AuthService) {
     this._scrollService.getScroll().subscribe(s => {
       this.actualScroll = s;
       console.log(s)
     })
   }
 
+
   ngOnInit(): void {
+    // let token = this.authService.apiToken
+    // this.isAdminOrUser(token)
+   console.log(this.permissions.getPermissions())
+
 
   }
 
@@ -35,6 +43,15 @@ export class HomeComponent implements OnInit {
   backTop(){
    this.scrollToTop.nativeElement.scrollTo( 0, 0 );
   }
+
+  isAdminOrUser(token:any){
+
+    this.permissions.loadPermissions(token.admin?["ADMIN"]:["USER"]);
+
+    this.router.navigate(['../home/bacheca'])
+
+
+}
 
 
 

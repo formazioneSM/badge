@@ -46,6 +46,7 @@ export class LoginComponent implements OnInit {
           this.isLoading = false;
           this.apiResponse = res;
           console.log(res);
+          localStorage.setItem('token', this.apiResponse.token)
           this.authService.apiToken = jwt_decode(this.apiResponse.token) ;
 
           this.isAdminOrUser(this.authService.apiToken.admin)
@@ -59,16 +60,12 @@ export class LoginComponent implements OnInit {
       );
   }
   isAdminOrUser(input:any){
-    if(input==false){
-      this.permissionsService.loadPermissions(["USER"]);
-      window.alert("Welcome User")
-      this.router.navigate(['../home'])
-    }
-    else {
-      this.permissionsService.loadPermissions(["ADMIN"]);
-      window.alert("Welcome Admin")
-      this.router.navigate(['../home'])
-    }
+
+      this.permissionsService.loadPermissions(input?["ADMIN"]:["USER"]);
+
+      this.router.navigate(['../home/bacheca'])
+
+
   }
   
 }

@@ -1,13 +1,14 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ScrollService } from './shared/uikit/services/scroll.service';
-import { LottieModule } from 'ngx-lottie';
 import player from 'lottie-web';
 import { NgxPermissionsModule } from 'ngx-permissions';
+import { LottieModule } from 'ngx-lottie';
+import { AuthInterceptor } from './shared/utils/auth.interceptor';
 
 export function playerFactory() {
     return player;
@@ -27,7 +28,12 @@ export function playerFactory() {
     LottieModule.forRoot({ player: playerFactory }),
     NgxPermissionsModule.forRoot()
   ],
-  providers: [ScrollService],
+  providers: [ScrollService,
+  {
+    provide:HTTP_INTERCEPTORS,
+    useClass: AuthInterceptor,
+    multi:true,
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
