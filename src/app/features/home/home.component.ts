@@ -20,7 +20,6 @@ export class HomeComponent implements OnInit {
     private authService : AuthService) {
     this._scrollService.getScroll().subscribe(s => {
       this.actualScroll = s;
-      console.log(s)
     })
   }
 
