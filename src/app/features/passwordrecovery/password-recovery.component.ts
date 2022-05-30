@@ -22,11 +22,8 @@ export class PasswordrecoveryComponent implements OnInit {
     return this.form?.get('email');
   }
 
-
   onSubmitRecoveryPassword(){
-    console.log(this.authService.loginResponse)
-    this.authService.OnForgottenPassword()
-
+    this.authService.OnForgottenPassword(this.email?.value).subscribe((res=>console.log(res)))
   }
-
+  
 }

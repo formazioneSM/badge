@@ -2,8 +2,6 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { LoginResponse } from '../../utils/interfaces';
 
-
-
 @Injectable({
   providedIn: 'root',
 })
@@ -19,9 +17,9 @@ export class AuthService {
     });
   }
 
-  OnForgottenPassword(){
-    this.http.put(`https://be-system.herokuapp.com/auth/forgotPassword/`,
-      this.loginResponse?.id
+  OnForgottenPassword(email:any){
+    return this.http.put(`https://be-system.herokuapp.com/api/auth/forgotPassword/${email}`,{
+    } 
     )
   }
 
@@ -37,6 +35,4 @@ export class AuthService {
   setLoginResponse(loginResponse:LoginResponse){
     this.loginResponse = loginResponse
   }
-
-
 }
