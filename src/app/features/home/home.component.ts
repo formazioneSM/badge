@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ScrollService } from 'src/app/shared/uikit/services/scroll.service';
+import { NgxPermissionsService } from 'ngx-permissions';
 
 @Component({
   selector: 'app-home',
@@ -12,7 +13,7 @@ export class HomeComponent implements OnInit {
   scroll:boolean = false;
   admin:boolean = false;
 
-  constructor(private _scrollService: ScrollService) {
+  constructor(private _scrollService: ScrollService,public permissions:NgxPermissionsService) {
     this._scrollService.getScroll().subscribe(s => {
       this.actualScroll = s;
     })

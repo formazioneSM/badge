@@ -7,14 +7,18 @@ import { AppComponent } from './app.component';
 import { ScrollService } from './shared/uikit/services/scroll.service';
 import { LottieModule } from 'ngx-lottie';
 import player from 'lottie-web';
+import { NgxPermissionsModule } from 'ngx-permissions';
 
 export function playerFactory() {
     return player;
   }
 
+
+
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent
+
 
   ],
   imports: [
@@ -22,6 +26,7 @@ export function playerFactory() {
     AppRoutingModule,
     HttpClientModule,
     LottieModule.forRoot({ player: playerFactory }),
+    NgxPermissionsModule.forRoot()
   ],
   providers: [ScrollService],
   bootstrap: [AppComponent]

@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../shared/uikit/services/auth.service';
+import jwt_decode from "jwt-decode";
+import { NgxPermissionsService } from 'ngx-permissions';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -14,8 +17,9 @@ export class LoginComponent implements OnInit {
   errorNumber: string | undefined;
   type: string = 'password';
 
-  constructor(private _fb: FormBuilder, private authService: AuthService) {}
+  constructor(private _fb: FormBuilder, private authService: AuthService,public permissionsService:NgxPermissionsService,public router:Router) {}
   apiResponse!: {} | any;
+  role!:any
 
   ngOnInit(): void {
     this.form = this._fb.group({
@@ -42,15 +46,29 @@ export class LoginComponent implements OnInit {
           this.isLoading = false;
           this.apiResponse = res;
           console.log(res);
-          this.authService.apiToken = this.apiResponse.token;
+          this.authService.apiToken = jwt_decode(this.apiResponse.token) ;
+
+          this.isAdminOrUser(this.authService.apiToken.admin)
         },
         (err) => {
           this.isLoading = false;
           console.log(err);
           //   this.errorMessage = "C'è stato un errore: " + err.error.message;
           this.errorNumber = err.status;
-          console.log(this.errorNumber);
         }
       );
   }
+  isAdminOrUser(input:any){
+    if(input==false){
+      this.permissionsService.loadPermissions(["USER"]);
+      window.alert("Welcome User")
+      this.router.navigate(['../home'])
+    }
+    else {
+      this.permissionsService.loadPermissions(["ADMIN"]);
+      window.alert("Welcome Admin")
+      this.router.navigate(['../home'])
+    }
+  }
+  
 }
