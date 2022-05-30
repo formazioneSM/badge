@@ -27,6 +27,7 @@
                         [parentFormGroup]="formAddBacheca" [border]="'#FEDD2E'" [controlName]="'contenutoBacheca'"
                         [name]="'contenutoBacheca'" [background]="bgcolor" [imgColor]="'/../../assets/images/palet_colori.png'">
                     </app-textarea>
+                    <app-color-select></app-color-select>
                     <div *ngIf="contenutoBacheca?.touched && contenutoBacheca?.invalid" class="validation">
                         <p>Campo obbligatorio</p>
                     </div>

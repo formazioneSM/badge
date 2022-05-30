@@ -39,7 +39,8 @@ import { ColorSelectComponent } from './components/color-select/color-select.com
     CardAggiungiComponent,
     TextareaComponent,
     CheckButtonComponent,
-    ToastComponent
+    ToastComponent,
+    ColorSelectComponent
   ]
 })
 export class UikitModule { }
