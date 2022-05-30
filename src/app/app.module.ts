@@ -9,6 +9,7 @@ import player from 'lottie-web';
 import { NgxPermissionsModule } from 'ngx-permissions';
 import { LottieModule } from 'ngx-lottie';
 import { AuthInterceptor } from './shared/utils/auth.interceptor';
+import { BachecaService } from './shared/uikit/services/bacheca.service';
 
 export function playerFactory() {
     return player;
@@ -29,6 +30,7 @@ export function playerFactory() {
     NgxPermissionsModule.forRoot()
   ],
   providers: [ScrollService,
+    BachecaService,
   {
     provide:HTTP_INTERCEPTORS,
     useClass: AuthInterceptor,

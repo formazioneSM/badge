@@ -10,14 +10,13 @@ export class AuthService {
   constructor(private http: HttpClient) {}
   apiToken: any = '';
 
-
-
   onLogin(email: any, password: any) {
     return this.http.post(`https://be-system.herokuapp.com/api/auth/login`, {
       email: email,
       password: password,
     });
   }
+
   OnRegister(name:string,surname:string,email:string,password:string,badge:string){
     return this.http.post(`https://be-system.herokuapp.com/api/auth/register`, {
       name: name,
@@ -27,9 +26,4 @@ export class AuthService {
       badge: badge
     })
   }
-
-
-
 }
-
-
