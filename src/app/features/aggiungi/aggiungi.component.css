@@ -102,7 +102,7 @@ form {
 .validation {
     font-family: 'Hind Madurai';
     font-style: normal;
-    color: var(--bg-primary-color);
+    color: red;
     font-weight: bold;
 
 }

@@ -36,6 +36,7 @@ input {
     color: var(--input-color);
     padding-left: 20px;
     outline: none;
+    position: relative;
 }
 
 input::placeholder {
@@ -48,4 +49,22 @@ input:focus, textarea:focus {
 
 :host{
     height: inherit;
+}
+
+input.ng-invalid.ng-touched {
+    border: 1px solid red;
+}
+
+.show-password {
+    opacity: 0.3;
+    position: absolute;
+    bottom: 1rem;
+    left: 90%;
+    z-index: 10;
+
+}
+
+.show-password:hover {
+    opacity: 1;
+    cursor: pointer;
 }

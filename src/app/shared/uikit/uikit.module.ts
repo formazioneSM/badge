@@ -8,6 +8,8 @@ import { CardAggiungiComponent } from './components/card-aggiungi/card-aggiungi.
 import { TextareaComponent } from './components/textarea/textarea.component';
 import { CheckButtonComponent } from './components/check-button/check-button.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { SmLoaderComponent } from './components/sm-loader/sm-loader.component';
+import { LottieModule } from 'ngx-lottie';
 
 
 
@@ -21,11 +23,13 @@ import { ReactiveFormsModule } from '@angular/forms';
     CardComponent,
     CardAggiungiComponent,
     TextareaComponent,
-    CheckButtonComponent
-  ],
-  imports: [
+    CheckButtonComponent,
+    SmLoaderComponent,
+],
+imports: [
     CommonModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    LottieModule,
   ],
   exports: [
     InputComponent,
@@ -34,7 +38,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     CardComponent,
     CardAggiungiComponent,
     TextareaComponent,
-    CheckButtonComponent
+    CheckButtonComponent,
+    SmLoaderComponent,
   ]
 })
 export class UikitModule { }
