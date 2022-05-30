@@ -32,10 +32,10 @@ import { NgxPermissionsModule } from 'ngx-permissions';
     CheckButtonComponent,
     ToastComponent,
     ColorSelectComponent,
-    
-],
-imports: [
-  NgxPermissionsModule,
+
+  ],
+  imports: [
+    NgxPermissionsModule,
     CommonModule,
     ReactiveFormsModule,
     LottieModule,
@@ -52,7 +52,7 @@ imports: [
     CheckButtonComponent,
     ToastComponent,
     ColorSelectComponent,
-  
+
   ]
 })
 export class UikitModule { }
