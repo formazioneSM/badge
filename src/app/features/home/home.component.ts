@@ -11,7 +11,7 @@ export class HomeComponent implements OnInit {
 
   actualScroll: number | undefined;
   scroll:boolean = false;
-  admin:boolean = true;
+  // admin:boolean = true;
 
 
   constructor(private _scrollService: ScrollService,public permissions:NgxPermissionsService) {

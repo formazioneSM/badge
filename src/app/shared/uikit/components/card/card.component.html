@@ -1,6 +1,6 @@
 <div id="container" [ngStyle]="{'background': background ?? ' #F0F0F0' }">
     <div *ngIf="!isClicked">
-        <div id="deleteIcon" *ngIf="admin" (click)="clicked()">
+        <div id="deleteIcon" *ngxPermissionsOnly="['ADMIN']" (click)="clicked()">
             <img src="../../../../../assets/images/cestino.png">
         </div>
 

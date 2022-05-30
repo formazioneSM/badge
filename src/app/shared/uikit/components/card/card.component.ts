@@ -16,7 +16,7 @@ export class CardComponent implements OnInit {
 
   
 
-  admin:boolean = true;
+  // admin:boolean = true;
   copy:boolean=true;
   isClicked: boolean = false;
 
