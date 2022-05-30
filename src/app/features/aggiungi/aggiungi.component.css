@@ -55,6 +55,16 @@
 .textarea {
     width: 100%;
     border: none;
+    
+}
+.textarea app-textarea{
+    position: relative;
+}
+.textarea app-color-select{
+    position: absolute;
+    right: 0;
+    margin-right: 5px;
+    /* margin-top: 150px; */
 }
 
 .btn {

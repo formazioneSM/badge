@@ -23,9 +23,9 @@
             <form [formGroup]="formAddBacheca" (ngSubmit)="addBacheca(formAddBacheca)">
 
                 <div class="textarea">
-                    <app-textarea [textLabel]="'Contenuto*'" [placeholder]="'Inserisci qui il contenuto del tuo msg'"
+                    <app-textarea  [textLabel]="'Contenuto*'" [placeholder]="'Inserisci qui il contenuto del tuo msg'"
                         [parentFormGroup]="formAddBacheca" [border]="'#FEDD2E'" [controlName]="'contenutoBacheca'"
-                        [name]="'contenutoBacheca'" [background]="bgcolor" [imgColor]="'/../../assets/images/palet_colori.png'">
+                        [name]="'contenutoBacheca'" [background]="bgcolor">
                     </app-textarea>
                     <app-color-select></app-color-select>
                     <div *ngIf="contenutoBacheca?.touched && contenutoBacheca?.invalid" class="validation">
