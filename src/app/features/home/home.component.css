@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Hind+Madurai&display=swap');
 
-#header {
+/* #header {
     display: flex;
     flex-direction: row;
     margin-left: 27px;
@@ -37,6 +37,117 @@
     line-height: 18px;
     text-align: center;
     height: 6rem;
+    animation-name:prova;
+    animation-duration: 10s;
+}
+
+
+.button {
+    margin-right: 25px;
+    width: 54px;
+    height: 54px;
+
+}
+
+.active {
+    background-color: var(--bg-primary-color) !important;
+    background: var(--bg-primary-color) !important;
+    width: 54px;
+    height: 54px;
+    border-radius: 50%;
+    font-weight: 500;
+
+}
+
+#wrapper {
+    height: 100vh;
+    overflow: auto;
+    position: relative;
+
+}
+
+.startAnimation {
+    display: flex!important;
+    flex-direction: column !important;
+    position:fixed !important;
+    z-index: 10;
+    right: 0;
+    top:0;
+    align-content: center!important;
+    justify-content: center!important;
+    height: 100%!important;
+    animation-name: transizioneMargin;
+    animation-duration: 1s;
+}
+
+
+.startAnimation .button{
+    margin-right: 5px;
+    width: 54px;
+    height: 54px;
+    margin-bottom: 10px;
+    border-radius: 50%;
+    background: var(--primary-color);
+}
+
+.backArrow {
+    position: absolute;
+    bottom: 0;
+    width: 48px;
+    height: 48px;
+    margin-bottom: 14px;
+}
+
+.endAnimation{
+    animation-name:prova;
+    animation-duration: 10s;
+} 
+@keyframes transizioneMargin{
+    from {right:-50%;}
+    to{right: 0;}
+}
+@keyframes prova{
+    from {right:0;}
+    to{right: -50%;}
+} */
+
+
+#header {
+    display: flex;
+    flex-direction: row;
+    margin-left: 27px;
+    margin-top: 36.5px;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 21px;
+    line-height: 26px;
+    color: var(--bg-primary-color);
+
+}
+
+#imgHello {
+    width: 33px;
+    height: 33px;
+    margin-right: 20px;
+}
+
+#hello {
+    margin-top: 10px;
+}
+
+.roundButtons {
+    display: flex;
+    flex-direction: row;
+    margin-left: 27px;
+    margin-top: 10px;
+    font-family: 'Hind Madurai';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 18px;
+    text-align: center;
+    height: 15vh;
 
 
 }
@@ -76,13 +187,26 @@
     margin-top: 10px;
     text-align: center;
     z-index: 10;
-    right: 0;
+    right:-50%;
     align-items: center !important;
     height: 100vh;
     background-color: transparent !important;
     top: 0;
     justify-content: center;
     height: 100vh;
+
+}
+.startAnimation{
+    right: 0;
+    animation-name: transizioneMargin;
+    animation-duration: .3s;
+
+}
+.endAnimation{
+    right: -50%;
+    animation-name: prova;
+    animation-duration: .3s;
+
 }
 
 .buttonScroll {
@@ -100,4 +224,19 @@
   width: 48px;
   height: 48px;
   margin-bottom: 14px;
+}
+
+.endAnimation{
+    animation-name:prova;
+    animation-duration: 1s;
+} 
+
+
+@keyframes transizioneMargin{
+    from {right:-50%;}
+    to{right: 0;}
+}
+@keyframes prova{
+    from {right:0;}
+    to{right: -50%;}
 }

@@ -1,18 +1,23 @@
 import { Component, OnInit, ViewChild, AfterViewInit, ElementRef } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import {colorDefault} from '../../shared/utils/constants'
 
 @Component({
   selector: 'app-aggiungi',
   templateUrl: './aggiungi.component.html',
   styleUrls: ['./aggiungi.component.css']
 })
-export class AggiungiComponent implements OnInit, AfterViewInit {
+export class AggiungiComponent implements OnInit {
+
+  bgcolor = colorDefault;
+  formAddBacheca:FormGroup = {} as FormGroup;
   formAddLink:FormGroup = {} as FormGroup;
   formAddConvenzioni:FormGroup = {} as FormGroup;
   stepOne:boolean = true;
   type: string | undefined;
-  configuration = [{text:'@Maria Grazia Marra', value:'maria', selected:false},{text:'@hr', value:'hr', selected:false}]
+  configuration = [{text:'@Maria Grazia Marra', value:'maria', selected:false}
+                   ,{text:'@hr', value:'hr', selected:false}]
 
   postTypes=[{
     type:'Bacheca',
@@ -40,9 +45,24 @@ export class AggiungiComponent implements OnInit, AfterViewInit {
   constructor(private _router: Router, private _fb: FormBuilder) { 
 
   }
-
+  preventDef(e:any){
+    e.stopPropagation();
+    // e.preventDefault();
+  }
+  triggerRadio(e:any, c:any){
+    e.stopPropagation();
+    e.preventDefault();
+    let element = e.target.firstChild;
+    element.click();
+    this.getSelectedValue(c);
+  }
   ngOnInit(): void {
     this.disabled = this.postTypes.every(p => !p?.selected);
+
+    this.formAddBacheca = this._fb.group({
+      contenutoBacheca:['', Validators.required],
+      radio:['', Validators.required]
+    })
     
     this.formAddLink = this._fb.group({
       nomeLink: ['', Validators.required],
@@ -53,7 +73,17 @@ export class AggiungiComponent implements OnInit, AfterViewInit {
       titolo: ['', Validators.required],
       contenuto: ['', Validators.required],
       posizione: ['', Validators.required]
-    })
+    });
+
+
+  }
+  get contenutoBacheca(){
+    return this.formAddBacheca?.get('contenutoBacheca')
+  }
+
+
+  get radio(){
+    return this.formAddBacheca?.get('radio')
   }
 
 
@@ -76,6 +106,11 @@ export class AggiungiComponent implements OnInit, AfterViewInit {
   get posizione() {
     return this.formAddConvenzioni?.get('posizione')
   }
+
+  addBacheca(formAddBacheca: FormGroup){
+    console.log(formAddBacheca.value)
+  }
+
 
   addLink(formAddLink: FormGroup){
  
@@ -111,37 +146,18 @@ export class AggiungiComponent implements OnInit, AfterViewInit {
   }
 
 
-  getSelectedValue(val:any){  
-    if(val.value ==='maria'){
-      this.maria?.nativeElement.click()
-    }else{
-      this.hr?.nativeElement.click()
-    }
+  getSelectedValue(val:any){
+
     this.configuration.forEach((c)=> {
       c.selected = false;
       if(c.text === val.text){
         c.selected = true
       }
     })
-    console.log(val)
   }
-    
-  @ViewChild('maria') set mariaContent(mariaContent: ElementRef) {
-    if(mariaContent) { // initially setter gets called with undefined
-        this.maria = mariaContent;
-    }
- }
-  @ViewChild('hr') set hrContent(hrContent: ElementRef) {
-    if(hrContent) { // initially setter gets called with undefined
-        this.hr = hrContent;
-    }
- }
- maria: ElementRef | undefined;
- hr: ElementRef | undefined;
 
 
-  ngAfterViewInit() {
 
 
-  }
+  
 }

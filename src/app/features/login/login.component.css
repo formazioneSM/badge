@@ -74,6 +74,15 @@
   bottom: 10px;
   color: red;
 }
+#forgottenPassword{
+    position: relative;
+    font-family: 'Hind Madurai';
+    font-style: normal;
+    color: var(--bg-primary-color);
+    font-weight: bold;
+    top: 25px;
+    text-align: center;
+}
 
 .error-message {
   padding: 1rem 2rem;

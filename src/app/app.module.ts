@@ -15,11 +15,10 @@ export function playerFactory() {
 
 
 
+
 @NgModule({
   declarations: [
-    AppComponent
-
-
+    AppComponent,
   ],
   imports: [
     BrowserModule,

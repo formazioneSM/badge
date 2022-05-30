@@ -9,7 +9,11 @@ import { TextareaComponent } from './components/textarea/textarea.component';
 import { CheckButtonComponent } from './components/check-button/check-button.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SmLoaderComponent } from './components/sm-loader/sm-loader.component';
+import { ToastComponent } from './components/toast/toast.component';
+import { ColorSelectComponent } from './components/color-select/color-select.component';
 import { LottieModule } from 'ngx-lottie';
+import { NgxPermissionsModule } from 'ngx-permissions';
+
 
 
 
@@ -25,8 +29,13 @@ import { LottieModule } from 'ngx-lottie';
     TextareaComponent,
     CheckButtonComponent,
     SmLoaderComponent,
+    CheckButtonComponent,
+    ToastComponent,
+    ColorSelectComponent,
+    
 ],
 imports: [
+  NgxPermissionsModule,
     CommonModule,
     ReactiveFormsModule,
     LottieModule,
@@ -40,6 +49,10 @@ imports: [
     TextareaComponent,
     CheckButtonComponent,
     SmLoaderComponent,
+    CheckButtonComponent,
+    ToastComponent,
+    ColorSelectComponent,
+  
   ]
 })
 export class UikitModule { }

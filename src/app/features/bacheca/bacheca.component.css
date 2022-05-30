@@ -5,6 +5,19 @@
     width: 75vw;
     height: auto;
 }
-.card{
+
+.card {
     margin-bottom: 15px;
+}
+
+#toast {
+    position: absolute;
+    bottom: 0;
+    width: 88vw;
+    height: 62px;
+    background: #FFFFFF;
+    border: 1px solid #C6D1E4;
+    border-radius: 10px;
+    margin-left: 20px;
+
 }

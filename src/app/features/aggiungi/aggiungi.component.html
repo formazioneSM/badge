@@ -1,4 +1,3 @@
-
 <div id="add">
     <div id="head">
         <p id="title">Aggiungi contenuto</p>
@@ -21,31 +20,32 @@
         <div *ngSwitchCase="'Bacheca'">
             <p class="subtitle"><b>2 </b>di 2 Scelta tipologia</p>
 
-            <form>
+            <form [formGroup]="formAddBacheca" (ngSubmit)="addBacheca(formAddBacheca)">
 
                 <div class="textarea">
                     <app-textarea [textLabel]="'Contenuto*'" [placeholder]="'Inserisci qui il contenuto del tuo msg'"
-                        [background]="'var(--input-bg-color)'">
+                        [parentFormGroup]="formAddBacheca" [border]="'#FEDD2E'" [controlName]="'contenutoBacheca'"
+                        [name]="'contenutoBacheca'" [background]="bgcolor" [imgColor]="'/../../assets/images/palet_colori.png'">
                     </app-textarea>
+                    <app-color-select></app-color-select>
+                    <div *ngIf="contenutoBacheca?.touched && contenutoBacheca?.invalid" class="validation">
+                        <p>Campo obbligatorio</p>
+                    </div>
                 </div>
 
                 <div id="label">
                     <label>Publica come*</label>
                 </div>
-                <div class="buttonCheck" *ngFor="let c of configuration">
-
-                    <app-check-button (selectedValue)="getSelectedValue($event)" [configuration]="c">
-                    </app-check-button>
+                <div  *ngFor="let c of configuration"  >
+                    <div class="customRadio" [class.active]="c.selected" (click)="triggerRadio($event, c)">
+                        <input type="radio" class="hiddenRadio" (click)="preventDef($event)"  name="radio" value="{{c.value}}" formControlName="radio">{{c.text}}
+                    </div>
 
                 </div>
-                <div id="radioContainer">
-                    <label>@Maria Grazia</label>
-                    <input type="radio" name="nome" #maria>
-                    <label>@hr</label>
-                    <input type="radio" name="nome" #hr>
-                </div>
 
-                <app-button class="btn" [typeButton]="'submit'" [textButton]="'Pubblica'">
+                <app-button class="btn" [typeButton]="'submit'" [textButton]="'Pubblica'"
+                    [disabled]="formAddBacheca.invalid">
+
                 </app-button>
 
             </form>
@@ -101,8 +101,8 @@
                     <div class="marginInput">
                         <app-textarea [textLabel]="'Contenuto*'"
                             [placeholder]="'Inserisci qui il contenuto del tuo msg'"
-                            [background]="'var(--input-bg-color)'" [for]="'contenuto'"
-                            [parentFormGroup]="formAddConvenzioni" [controlName]="'contenuto'" [name]="'contenuto'">
+                            [background]="'var(--input-bg-color)'" [border]="'1px solid #C6D1E4'" [for]="'contenuto'"
+                            [parentFormGroup]="formAddConvenzioni" [controlName]="'contenuto'" [name]="'contenuto'"  >
                         </app-textarea>
                         <div *ngIf="contenuto?.touched && contenuto?.invalid" class="validation">
                             <p>Campo obbligatorio</p>
