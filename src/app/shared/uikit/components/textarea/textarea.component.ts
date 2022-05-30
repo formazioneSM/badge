@@ -15,6 +15,7 @@ export class TextareaComponent implements OnInit {
   @Input('name') name: string | undefined;
   @Input('controlName') controlName: string = '';
   @Input('parentFormGroup') parentFormGroup: FormGroup = {} as FormGroup;
+  @Input('imgColor') imgColor: string = '';
 
 
   constructor() { }

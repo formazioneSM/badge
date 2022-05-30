@@ -9,6 +9,7 @@ import { TextareaComponent } from './components/textarea/textarea.component';
 import { CheckButtonComponent } from './components/check-button/check-button.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ToastComponent } from './components/toast/toast.component';
+import { ColorSelectComponent } from './components/color-select/color-select.component';
 
 
 
@@ -23,6 +24,7 @@ import { ToastComponent } from './components/toast/toast.component';
     TextareaComponent,
     CheckButtonComponent,
     ToastComponent,
+    ColorSelectComponent,
 
   ],
   imports: [
