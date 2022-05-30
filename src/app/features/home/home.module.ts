@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { HomeRoutingModule } from './home-routing.module';
 import { HomeComponent } from './home.component';
 import { UikitModule } from 'src/app/shared/uikit/uikit.module';
+import { NgxPermissionsModule } from 'ngx-permissions';
 
 
 
@@ -14,7 +15,8 @@ import { UikitModule } from 'src/app/shared/uikit/uikit.module';
   imports: [
     CommonModule,
     HomeRoutingModule,
-    UikitModule
+    UikitModule,
+    NgxPermissionsModule
   ]
 })
 export class HomeModule { }

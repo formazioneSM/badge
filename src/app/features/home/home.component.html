@@ -34,6 +34,9 @@
     </div>
     <div class="roundButtons" *ngIf="!actualScroll"  >
         <div *ngIf="admin" class="button">
+    <div id="roundButtons" *ngIf="actualScroll == 0">
+        <div  *ngxPermissionsOnly="['ADMIN']" class="button"> 
+            <!-- *ngxPermissionsOnly="['ADMIN']" -->
             <app-round-button  [routerLink]="'aggiungi'" [image]="'../../assets/images/aggiungi.png'"
                 [text]="'Aggiungi'" [border]="'none'" [background]="'#D8E3F8'"></app-round-button>
         </div>

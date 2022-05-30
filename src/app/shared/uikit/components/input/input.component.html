@@ -1,5 +1,6 @@
 <div [formGroup]="parentFormGroup">
     <label [for]="for">{{textLabel}}</label>
     <input [formControlName]="controlName" [name]="name" [placeholder]="placeholder"
-        [ngStyle]="{'background': backgroundInput, 'height': height ?? '48px'}">
+        [ngStyle]="{'background': backgroundInput, 'height': height ?? '48px'}" [type]="type" >
+        <span class="show-password"><i class="fa-solid fa-eye"></i></span>
 </div>
