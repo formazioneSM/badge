@@ -20,7 +20,7 @@
         <div *ngSwitchCase="'Bacheca'">
             <p class="subtitle"><b>2 </b>di 2 Scelta tipologia</p>
 
-            <form [formGroup]="formAddBacheca" (ngSubmit)="addBacheca(formAddBacheca)" >
+            <form [formGroup]="formAddBacheca" (ngSubmit)="onPostSubmit()">
 
                 <div class="textarea">
                     <app-textarea [boxshadow]="type=='Bacheca'" [textLabel]="'Contenuto*'" [placeholder]="'Inserisci qui il contenuto del tuo msg'"

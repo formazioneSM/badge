@@ -45,9 +45,11 @@ export class LoginComponent implements OnInit {
         (res) => {
           this.isLoading = false;
           this.apiResponse = res;
+          
           console.log(res);
+          console.log('response salvata nel servizio'+ this.authService.loginResponse)
           localStorage.setItem('token', this.apiResponse.token)
-          this.authService.apiToken = jwt_decode(this.apiResponse.token) ;
+          this.authService.setLoginResponse(jwt_decode(this.apiResponse.token))  ;
 
           this.isAdminOrUser(this.authService.apiToken.admin)
         },

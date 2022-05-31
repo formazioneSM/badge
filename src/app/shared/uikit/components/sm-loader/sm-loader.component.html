@@ -1,0 +1,6 @@
+<div class="loader-wrapper" *ngIf="loading">
+  <ng-lottie
+    [options]="options"
+    (animationCreated)="animationCreated($event)"
+  ></ng-lottie>
+</div>

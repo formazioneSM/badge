@@ -20,7 +20,6 @@ export class HomeComponent implements OnInit {
     private authService : AuthService) {
     this._scrollService.getScroll().subscribe(s => {
       this.actualScroll = s;
-      console.log(s)
     })
   }
 
@@ -45,14 +44,12 @@ export class HomeComponent implements OnInit {
   }
 
   isAdminOrUser(token:any){
-
     this.permissions.loadPermissions(token.admin?["ADMIN"]:["USER"]);
-
     this.router.navigate(['../home/bacheca'])
-
-
 }
 
-
+get username(){
+  return this.authService.loginResponse?.name?? ''
+}
 
 }

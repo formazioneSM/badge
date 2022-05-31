@@ -30,7 +30,7 @@
 <div (scroll)="changeScroll($event)" id="wrapper" #scrollToTop>
     <div id="header">
         <img id="imgHello" src="../../../assets/images/hello.png">
-        <p id="hello">Ciao, <b>Lorenzo!</b></p>
+        <p id="hello">Ciao, <b> {{username}}</b></p>
     </div>
     <div class="roundButtons" *ngIf="!actualScroll">
         <div class="button" *ngxPermissionsOnly="['ADMIN']">
