@@ -99,7 +99,7 @@
   color: red;
 }
 
-.loader {
+/* .loader {
     position: absolute;
     display: flex;
     flex-direction: column;
@@ -111,4 +111,4 @@
     z-index: 20;
     margin: 0;
     padding: 0;
-}
+} */
