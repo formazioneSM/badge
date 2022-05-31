@@ -24,7 +24,7 @@ export class BachecaComponent implements OnInit {
     this.toast = true;
     this.startTimer = timer(3000).subscribe(() => {
         console.log('ciao');
-        let index = this.posts.findIndex((p:any) => p.id === id);
+        let index = this.posts.findIndex((p:any) => p._id == id);
         this.posts.splice(index, 1)
         this.toast = false;
     this.bachecaService.deletePost(id).subscribe((res:any)=> console.log(res));
