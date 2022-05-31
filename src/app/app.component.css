@@ -1,0 +1,9 @@
+#appToastStyleContainer{
+    border: 1px solid gray !important; 
+    border-radius: 10px;
+    position: absolute;
+    bottom: 20px;
+    right: 40px;
+
+
+}

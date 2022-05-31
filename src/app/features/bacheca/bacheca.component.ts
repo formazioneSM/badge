@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription, timer } from 'rxjs';
 import { BachecaService } from 'src/app/shared/uikit/services/bacheca.service';
+import { ToastService } from 'src/app/shared/uikit/services/toast.service';
 
 
 @Component({
@@ -13,30 +14,32 @@ export class BachecaComponent implements OnInit {
   startTimer: Subscription | undefined;
   card: boolean = true;
   posts: any = [];
-  constructor(private bachecaService: BachecaService) {}
-
+  constructor(private bachecaService: BachecaService,public toastService:ToastService) {}
+  
   ngOnInit(): void {
     this.loadPosts();
   }
+  
+  
 
-  showToast(id: string) {
-    this.card = false;
-    this.toast = true;
-    this.startTimer = timer(3000).subscribe(() => {
-        console.log('ciao');
-        let index = this.posts.findIndex((p:any) => p._id == id);
-        this.posts.splice(index, 1)
-        this.toast = false;
-    this.bachecaService.deletePost(id).subscribe((res:any)=> console.log(res));
+  // showToast(id: string) {
+  //   this.card = false;
+  //   this.toast = true;
+  //   this.startTimer = timer(3000).subscribe(() => {
+  //       console.log('ciao');
+  //       let index = this.posts.findIndex((p:any) => p._id == id);
+  //       this.posts.splice(index, 1)
+  //       this.toast = false;
+  //   this.bachecaService.deletePost(id).subscribe((res:any)=> console.log(res));
 
-    });
-  }
+  //   });
+  // }
 
-  stopDelete(e: any) {
-    this.startTimer?.unsubscribe();
-    this.card = true;
-    this.toast = false;
-  }
+  // stopDelete(e: any) {
+  //   this.startTimer?.unsubscribe();
+  //   this.card = true;
+  //   this.toast = false;
+  // }
 
   loadPosts() {
     this.bachecaService.getAllPosts().subscribe((posts) => {
@@ -44,4 +47,7 @@ export class BachecaComponent implements OnInit {
         console.log(this.posts);
       });
   }
+
+  
+  
 }

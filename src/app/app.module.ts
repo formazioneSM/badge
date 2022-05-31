@@ -13,6 +13,7 @@ import { BachecaService } from './shared/uikit/services/bacheca.service';
 import { SmLoaderComponent } from '../app/shared/uikit/components/sm-loader/sm-loader.component';
 import { LoaderService } from './shared/uikit/services/loader.service';
 import { LoaderInterceptor } from './shared/utils/loader.interceptor';
+import { UikitModule } from './shared/uikit/uikit.module';
 
 export function playerFactory() {
   return player;
@@ -21,6 +22,7 @@ export function playerFactory() {
 @NgModule({
   declarations: [AppComponent, SmLoaderComponent],
   imports: [
+    UikitModule,
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,

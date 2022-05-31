@@ -8,7 +8,7 @@
     <span id="point"></span>
   </div>
 
-  <div [ngSwitch]="errorNumber">
+  <!-- <div [ngSwitch]="errorNumber">
     <div class="error-message" *ngSwitchCase="'404'">
       <i class="fa-solid fa-triangle-exclamation"></i> Nessun utente associato
       alla mail inserita.
@@ -17,7 +17,7 @@
       <i class="fa-solid fa-triangle-exclamation"></i> La password inserita non
       è corretta.
     </div>
-  </div>
+  </div> -->
 
   <div *ngIf="form">
     <form id="login" [formGroup]="form" (ngSubmit)="onSubmitLogin()">

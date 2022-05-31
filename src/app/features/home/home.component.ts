@@ -3,6 +3,7 @@ import { ScrollService } from 'src/app/shared/uikit/services/scroll.service';
 import { NgxPermissionsService } from 'ngx-permissions';
 import {  Router } from '@angular/router';
 import { AuthService } from 'src/app/shared/uikit/services/auth.service';
+import { ToastService } from 'src/app/shared/uikit/services/toast.service';
 
 @Component({
   selector: 'app-home',
@@ -17,7 +18,7 @@ export class HomeComponent implements OnInit {
 
 
   constructor(private _scrollService: ScrollService,public permissions:NgxPermissionsService, private router:Router, 
-    private authService : AuthService) {
+    private authService : AuthService,public toastService:ToastService) {
     this._scrollService.getScroll().subscribe(s => {
       this.actualScroll = s;
     })
@@ -50,6 +51,11 @@ export class HomeComponent implements OnInit {
 
 get username(){
   return this.authService.loginResponse?.name?? ''
+}
+OnClickLogOut(){
+  this.authService.onLogOut()
+  // this.toastService.inputMethod() // sacro ! 
+
 }
 
 }
