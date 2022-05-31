@@ -164,19 +164,14 @@ export class AggiungiComponent implements OnInit {
   onPostSubmit() {
     this.bachecaService
       .createNewPost(
-        'yellow',
+        this.bgcolor,
         this.formAddBacheca.value.contenutoBacheca,
-        this.formAddBacheca.value.radio
+        this.formAddBacheca.value.radio,
+        
       )
       .subscribe(
       (err: any) => {
         console.log(err);
       });
-      
   }
-
-
-
-
-  
 }
