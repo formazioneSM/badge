@@ -55,6 +55,21 @@
 .textarea {
     width: 100%;
     border: none;
+    position: relative;
+    
+}
+
+/* .textarea div{
+    position: absolute;
+    right: 0;
+    margin-right: 15px;
+    
+} */
+#containerColorPicker{
+   
+    right: 0;
+    bottom: 0;
+    margin: auto 27px 27px auto;
 }
 
 .btn {

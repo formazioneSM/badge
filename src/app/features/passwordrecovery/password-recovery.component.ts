@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from 'src/app/shared/uikit/services/auth.service';
 
 @Component({
   selector: 'app-password-recovery',
@@ -8,7 +9,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class PasswordrecoveryComponent implements OnInit {
 
-  constructor(private _fb: FormBuilder) { }
+  constructor(private _fb: FormBuilder,public authService:AuthService) { }
   form: FormGroup = {} as FormGroup;
 
   ngOnInit(): void {
@@ -21,9 +22,8 @@ export class PasswordrecoveryComponent implements OnInit {
     return this.form?.get('email');
   }
 
-
   onSubmitRecoveryPassword(){
-    console.log(this.email?.value)
+    this.authService.OnForgottenPassword(this.email?.value).subscribe((res=>console.log(res)))
   }
-
+  
 }

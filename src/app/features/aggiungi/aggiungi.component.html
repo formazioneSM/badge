@@ -27,7 +27,7 @@
                         [parentFormGroup]="formAddBacheca" [border]="'#FEDD2E'" [controlName]="'contenutoBacheca'"
                         [name]="'contenutoBacheca'" [background]="bgcolor">
                         <div id="containerColorPicker">
-                            <app-color-select></app-color-select>
+                            <app-color-select (changeColor)="changeColorTextarea($event)"></app-color-select>
                         </div>
                     </app-textarea>
 

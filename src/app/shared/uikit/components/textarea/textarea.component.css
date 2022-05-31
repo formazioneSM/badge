@@ -9,39 +9,36 @@ label {
 
 }
 
-textarea {
-    width: 100%;
+#containerTextarea{
     min-height: 170px;
     border-radius: 10px;
+    padding: 10px 0px 0px 15px;
+    margin-top: 10px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+textarea{
+    background-color: transparent;
+    border: none;
+    outline: none;
     font-family: 'Hind Madurai';
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
     line-height: 22px;
     resize: none;
-    margin-top: 10px;
-    padding: 10px 0px 0px 15px;
-    box-sizing: border-box;
-    position: relative;
-
+    width: 90%;
+    height: 100%;
+    flex: 1;
 }
+
 textarea::placeholder {
     color: var(--placeholder-color);
-
 }
 
-textarea:focus {
-    outline: 1px solid var(--bg-primary-color);
+#containerTextarea textarea:focus {
+    border: 1px solid var(--bg-primary-color);
 
-}
-#containerInterno{
-    display: flex;
-    flex-direction:column
-}
-
-img{
-    position: absolute;
-    right: 0;
-    margin-right: 55px;
-    margin-top: 150px;
 }
