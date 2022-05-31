@@ -10,6 +10,7 @@ import { NgxPermissionsModule } from 'ngx-permissions';
 import { LottieModule } from 'ngx-lottie';
 import { AuthInterceptor } from './shared/utils/auth.interceptor';
 import { BachecaService } from './shared/uikit/services/bacheca.service';
+import { UikitModule } from './shared/uikit/uikit.module';
 
 export function playerFactory() {
     return player;
@@ -23,6 +24,7 @@ export function playerFactory() {
     AppComponent,
   ],
   imports: [
+    UikitModule,
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
