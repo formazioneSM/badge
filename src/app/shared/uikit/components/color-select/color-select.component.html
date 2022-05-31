@@ -1,3 +1,7 @@
-<div>
+<div id="container" (click)="open_palette()" >
     <img src="../../../../../assets/images/palet_colori.png">
+
+</div>
+<div [ngStyle]="{'visibility': clickPalette? 'visible': 'hidden'}" id="containerColor" tabindex="0" (blur)="closePalette()" #containerColor>
+    <div *ngFor="let c of colors" class="colori" [ngStyle]="{'background-color': c.color}" (click)="individuaColore(c)" [class.selected]="c.selected == true"></div>
 </div>
