@@ -1,17 +1,18 @@
-#container{
+#container {
     position: absolute;
-    
+
 
 }
 
-.colori{
+.colori {
     width: 21px;
     height: 21px;
     border-radius: 50%;
     margin-bottom: 13px;
-    
+
 }
-#containerColor{
+
+#containerColor {
     position: absolute;
     width: 47px;
     height: auto;
@@ -23,9 +24,17 @@
     align-items: center;
     padding-top: 13px;
     box-sizing: border-box;
-    z-index: 100;
+    z-index: 1;
+    right: 0;
+
 
 }
-.selected{
-    border: 1px solid red;
+
+.overlay {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1;
 }

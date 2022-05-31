@@ -1,7 +1,14 @@
-<div id="container" (click)="open_palette()" >
+<div id="container" (click)="open_palette()">
     <img src="../../../../../assets/images/palet_colori.png">
 
 </div>
-<div [ngStyle]="{'visibility': clickPalette? 'visible': 'hidden'}" id="containerColor" tabindex="0" (blur)="closePalette()" #containerColor>
-    <div *ngFor="let c of colors" class="colori" [ngStyle]="{'background-color': c.color}" (click)="individuaColore(c)" [class.selected]="c.selected == true"></div>
+
+
+<div *ngIf="clickPalette" class="overlay" (mousedown)="open_palette()"></div>
+
+<div [ngStyle]="{'visibility': clickPalette? 'visible': 'hidden'}" id="containerColor" #containerColor>
+
+    <div *ngFor="let c of colors" class="colori"
+        [ngStyle]="{'background-color': c.color, 'border': c.selected?'1px solid' + c.color : 'none', 'box-shadow': c.selected?  '0px 0px 0px 2px white, 0px 0px 0px 4px' + c.color : 'none' }"
+        (click)="individuaColore(c)" [class.selected]="c.selected"></div>
 </div>

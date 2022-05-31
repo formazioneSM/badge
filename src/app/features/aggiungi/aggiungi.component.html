@@ -20,14 +20,14 @@
         <div *ngSwitchCase="'Bacheca'">
             <p class="subtitle"><b>2 </b>di 2 Scelta tipologia</p>
 
-            <form [formGroup]="formAddBacheca" (ngSubmit)="addBacheca(formAddBacheca)">
+            <form [formGroup]="formAddBacheca" (ngSubmit)="addBacheca(formAddBacheca)" >
 
                 <div class="textarea">
-                    <app-textarea [textLabel]="'Contenuto*'" [placeholder]="'Inserisci qui il contenuto del tuo msg'"
+                    <app-textarea [boxshadow]="type=='Bacheca'" [textLabel]="'Contenuto*'" [placeholder]="'Inserisci qui il contenuto del tuo msg'"
                         [parentFormGroup]="formAddBacheca" [border]="'#FEDD2E'" [controlName]="'contenutoBacheca'"
                         [name]="'contenutoBacheca'" [background]="bgcolor">
                         <div id="containerColorPicker">
-                            <app-color-select (changeColor)="changeColorTextarea($event)"></app-color-select>
+                            <app-color-select (changeColor)="changeColorTextarea($event)" ></app-color-select>
                         </div>
                     </app-textarea>
 

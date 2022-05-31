@@ -230,9 +230,7 @@
     animation-name:prova;
     animation-duration: 1s;
 } 
-/* .container{
-    overflow: hidden;
-} */
+
 
 @keyframes transizioneMargin{
     from {right:-50%;}
