@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { base_path } from 'src/app/shared/utils/constants';
+
 
 @Injectable({
   providedIn: 'root',
@@ -8,7 +10,7 @@ export class BachecaService {
   constructor(private http: HttpClient) {}
 
   createNewPost(color: string, text: string, from: string) {
-    return this.http.post(`https://be-system.herokuapp.com/api/bacheca`, {
+    return this.http.post(`${base_path}/bacheca`, {
       color: color,
       text: text,
       from: from,
@@ -17,23 +19,23 @@ export class BachecaService {
 
   getPost(postId: number | string) {
     return this.http.get(
-      `https://be-system.herokuapp.com/api/bacheca/${postId}`
+      `${base_path}/bacheca/${postId}`
     );
   }
 
   getAllPosts() {
-    return this.http.get(`https://be-system.herokuapp.com/api/bacheca/all`);
+    return this.http.get(`${base_path}/bacheca/all`);
   }
 
   deletePost(postId: number | string) {
     return this.http.delete(
-      `https://be-system.herokuapp.com/api/bacheca/${postId}`
+      `${base_path}/bacheca/${postId}`
     );
   }
 
   editPost(postId: number | string, color: string, text: string, from: string) {
     return this.http.put(
-      `https://be-system.herokuapp.com/api/bacheca/${postId}`,
+      `${base_path}/bacheca/${postId}`,
       {
         color: color,
         text: text,

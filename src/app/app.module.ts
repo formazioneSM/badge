@@ -4,14 +4,14 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ScrollService } from './shared/uikit/services/scroll.service';
+import { ScrollService } from './shared/uikit/services/scroll/scroll.service';
 import player from 'lottie-web';
 import { NgxPermissionsModule } from 'ngx-permissions';
 import { LottieModule } from 'ngx-lottie';
 import { AuthInterceptor } from './shared/utils/auth.interceptor';
-import { BachecaService } from './shared/uikit/services/bacheca.service';
+import { BachecaService } from './shared/uikit/services/bacheca/bacheca.service';
 import { SmLoaderComponent } from '../app/shared/uikit/components/sm-loader/sm-loader.component';
-import { LoaderService } from './shared/uikit/services/loader.service';
+import { LoaderService } from './shared/uikit/services/loader/loader.service';
 import { LoaderInterceptor } from './shared/utils/loader.interceptor';
 
 export function playerFactory() {

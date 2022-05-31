@@ -1,18 +1,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Hind+Madurai&display=swap');
 
 #add {
-    margin-left: 24px;
-    margin-right: 33px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    
 
 }
 
 #head {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
     align-items: center;
     margin-top: 36px;
-    width: 100%;
+    width: 80vw;
     height: 100%;
 }
 
@@ -25,10 +27,14 @@
     color: var(--bg-primary-color);
 
 }
-
+.back{
+    margin-right: 15px;
+}
 .close {
     width: 20px;
     height: 20px;
+    margin-left: auto;
+
 }
 
 .subtitle {
@@ -59,12 +65,6 @@
     
 }
 
-/* .textarea div{
-    position: absolute;
-    right: 0;
-    margin-right: 15px;
-    
-} */
 #containerColorPicker{
    
     right: 0;

@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { BachecaService } from '../../services/bacheca.service';
+import { BachecaService } from '../../services/bacheca/bacheca.service';
 
 @Component({
   selector: 'app-card',

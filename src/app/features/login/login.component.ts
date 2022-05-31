@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { AuthService } from '../../shared/uikit/services/auth.service';
+import { AuthService } from '../../shared/uikit/services/auth/auth.service';
 import jwt_decode from "jwt-decode";
 import { NgxPermissionsService } from 'ngx-permissions';
 import { Router } from '@angular/router';

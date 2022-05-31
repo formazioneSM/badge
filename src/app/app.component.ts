@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import jwtDecode from 'jwt-decode';
 import { NgxPermissionsService } from 'ngx-permissions';
-import { AuthService } from './shared/uikit/services/auth.service';
+import { AuthService } from './shared/uikit/services/auth/auth.service';
 
 
 @Component({
