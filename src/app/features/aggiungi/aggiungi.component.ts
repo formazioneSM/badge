@@ -154,10 +154,12 @@ export class AggiungiComponent implements OnInit {
       }
     });
   }
-
-  changeColorTextarea(color: string) {
-    this.bgcolor = color;
+ 
+  changeColorTextarea(c: any){
+    this.bgcolor = c.color
+    c.selected = true;
   }
+
 
   onPostSubmit() {
     this.bachecaService

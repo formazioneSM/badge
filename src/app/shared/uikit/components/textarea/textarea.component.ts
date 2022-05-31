@@ -16,9 +16,12 @@ export class TextareaComponent implements OnInit {
   @Input('controlName') controlName: string = '';
   @Input('parentFormGroup') parentFormGroup: FormGroup = {} as FormGroup;
   @Input('imgColor') imgColor: string = '';
+  @Input('boxshadow') boxshadow:boolean = false;
+
+  
 
 
-  constructor() { }
+  constructor( ) { }
 
   ngOnInit(): void {
   }
