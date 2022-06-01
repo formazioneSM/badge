@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { BachecaService } from '../../services/bacheca.service';
+import { ToastService } from '../../services/toast.service';
 
 @Component({
   selector: 'app-card',
@@ -22,7 +23,7 @@ export class CardComponent implements OnInit {
   copy:boolean=true;
   isClicked: boolean = false;
 
-  constructor(private bachecaService: BachecaService) { }
+  constructor(private bachecaService: BachecaService, private toastService: ToastService) { }
 
   ngOnInit(): void {
   }
@@ -37,6 +38,9 @@ export class CardComponent implements OnInit {
 
   delete(){
     this.deletePost.emit(this.postId);
+    // this.toastService.newEvent.emit(this.postId);
+
     console.log(this.postId);
+    
   }
 }

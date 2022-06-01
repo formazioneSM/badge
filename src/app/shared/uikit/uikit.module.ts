@@ -8,7 +8,7 @@ import { CardAggiungiComponent } from './components/card-aggiungi/card-aggiungi.
 import { TextareaComponent } from './components/textarea/textarea.component';
 import { CheckButtonComponent } from './components/check-button/check-button.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { SmLoaderComponent } from './components/sm-loader/sm-loader.component';
+// import { SmLoaderComponent } from './components/sm-loader/sm-loader.component';
 import { ToastComponent } from './components/toast/toast.component';
 import { ColorSelectComponent } from './components/color-select/color-select.component';
 import { LottieModule } from 'ngx-lottie';
@@ -28,7 +28,7 @@ import { NgxPermissionsModule } from 'ngx-permissions';
     CardAggiungiComponent,
     TextareaComponent,
     CheckButtonComponent,
-    SmLoaderComponent,
+    // SmLoaderComponent,
     CheckButtonComponent,
     ToastComponent,
     ColorSelectComponent,
@@ -48,7 +48,7 @@ import { NgxPermissionsModule } from 'ngx-permissions';
     CardAggiungiComponent,
     TextareaComponent,
     CheckButtonComponent,
-    SmLoaderComponent,
+    // SmLoaderComponent,
     CheckButtonComponent,
     ToastComponent,
     ColorSelectComponent,

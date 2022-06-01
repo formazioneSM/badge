@@ -9,7 +9,7 @@ label {
 
 }
 
-#containerTextarea{
+.containerTextarea{
     min-height: 170px;
     border-radius: 10px;
     padding: 10px 0px 0px 15px;
@@ -17,6 +17,7 @@ label {
     position: relative;
     display: flex;
     flex-direction: column;
+
 }
 
 textarea{
@@ -38,7 +39,9 @@ textarea::placeholder {
     color: var(--placeholder-color);
 }
 
-#containerTextarea textarea:focus {
-    border: 1px solid var(--bg-primary-color);
-
+.focusShadow:focus-within{
+    box-shadow: inset rgb(0 0 0 / 13%) 0px 0px 0px 2px;
+}
+.focus:focus-within{
+    border: 1px solid var(--bg-primary-color)!important;
 }

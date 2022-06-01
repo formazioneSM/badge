@@ -6,7 +6,7 @@ import {colors_palette} from '../../../utils/constants'
   templateUrl: './color-select.component.html',
   styleUrls: ['./color-select.component.css']
 })
-export class ColorSelectComponent implements OnInit, AfterViewInit {
+export class ColorSelectComponent implements OnInit{
 
   colors = colors_palette.map(c => ({color:c, selected:false}));
   clickPalette:boolean = false;
@@ -18,28 +18,31 @@ export class ColorSelectComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {
   }
 
-  ngAfterViewInit(): void {
-    
-    this.containerColor?.nativeElement.click();
-  }
+
   open_palette(){
-    this.clickPalette = true;
-    this.containerColor?.nativeElement.click();
+    this.clickPalette = !this.clickPalette;
+    this.containerColor?.nativeElement.blur();
   }
 
   individuaColore(c:any){
     this.colors.forEach((co)=> {
-      c.selected = false;
+      co.selected = false;
       if(co.color == c.color){
         c.selected = true;
         console.log(c.selected)
       }
+     
     })
-    this.changeColor.emit(c.color)
+    
+    this.changeColor.emit(c)
     this.clickPalette = false;
+
+
   }
 
-  closePalette(){
+  closePalette(c:any){
     this.clickPalette = false;
+
+
   }
 }

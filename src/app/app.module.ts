@@ -10,34 +10,36 @@ import { NgxPermissionsModule } from 'ngx-permissions';
 import { LottieModule } from 'ngx-lottie';
 import { AuthInterceptor } from './shared/utils/auth.interceptor';
 import { BachecaService } from './shared/uikit/services/bacheca.service';
+import { SmLoaderComponent } from '../app/shared/uikit/components/sm-loader/sm-loader.component';
+import { LoaderService } from './shared/uikit/services/loader.service';
+import { LoaderInterceptor } from './shared/utils/loader.interceptor';
 import { UikitModule } from './shared/uikit/uikit.module';
 
 export function playerFactory() {
-    return player;
-  }
-
-
-
+  return player;
+}
 
 @NgModule({
-  declarations: [
-    AppComponent,
-  ],
+  declarations: [AppComponent, SmLoaderComponent],
   imports: [
     UikitModule,
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     LottieModule.forRoot({ player: playerFactory }),
-    NgxPermissionsModule.forRoot()
+    NgxPermissionsModule.forRoot(),
   ],
-  providers: [ScrollService,
+  providers: [
+    ScrollService,
     BachecaService,
-  {
-    provide:HTTP_INTERCEPTORS,
-    useClass: AuthInterceptor,
-    multi:true,
-  }],
-  bootstrap: [AppComponent]
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true,
+    },
+    LoaderService,
+    { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true },
+  ],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

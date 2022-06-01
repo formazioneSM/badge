@@ -11,9 +11,11 @@ export class ToastService {
 
   newEvent:EventEmitter<any> = new EventEmitter()
 
+  isVisibleUndo: boolean = false; // per far visualizzare undo
+
   
 
-  constructor() { }
+  constructor() {}
   test!:any
 
   
@@ -24,7 +26,7 @@ export class ToastService {
   }
 
   setMessage(message:any){
-    this.newEvent.emit(message)    
+    this.newEvent.emit(message)
   }
 
     // showToast(id: string) {
