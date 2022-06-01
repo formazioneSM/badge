@@ -1,0 +1,75 @@
+
+#container {
+    position: relative;
+}
+
+#tooltipContainer {
+    position: absolute;
+    bottom: 0;
+    right: -38px;
+    z-index: 35;
+    /* border-radius: 4px; */
+
+}
+
+#questionMark {
+    position: absolute;
+}
+
+#toolTip {
+    position: relative;
+    min-width: 180px;
+
+}
+
+#toolTip p {
+    padding: 0.8rem;
+    background: #00102E;
+    border-radius: 4px;
+    color: white;
+    font-family: SF Pro Display;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 18px;
+
+}
+
+/* #tailShadow {
+    position:absolute;
+    bottom:-8px;
+    left:28px;
+    width:0;height:0;
+    border:solid 2px #fff;
+    box-shadow:0 0 10px 1px #555;
+} */
+
+#tail1 {
+    position: absolute;
+    bottom: -20px;
+    right: 18px;
+    width: 0;
+    height: 0;
+    border-color: #00102E transparent transparent transparent;
+    border-width: 10px;
+    border-style: solid;
+}
+
+#tail2 {
+    position: absolute;
+    bottom: -18px;
+    right: 18px;
+    width: 0;
+    height: 0;
+    border-color: #00102E transparent transparent transparent;
+    border-width: 10px;
+    border-style: solid;
+}
+.overlay {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}

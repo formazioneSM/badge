@@ -34,7 +34,6 @@ export class LoginComponent implements OnInit {
   get password() {
     return this.form?.get('password');
   }
-
   // chiamata login api e gestione degli errori
   onSubmitLogin() {
     this.isLoading = true;
