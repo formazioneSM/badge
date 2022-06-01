@@ -13,7 +13,7 @@ export class ToastService {
 
   
 
-  constructor() { }
+  constructor() {}
   test!:any
 
   
