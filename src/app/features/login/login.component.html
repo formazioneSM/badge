@@ -30,6 +30,7 @@
           [parentFormGroup]="form"
           [controlName]="'email'"
           [name]="'email'"
+          [type]="'email'"
         >
         </app-input>
         <div *ngIf="email?.errors && email?.touched">
@@ -45,7 +46,7 @@
           [parentFormGroup]="form"
           [controlName]="'password'"
           [name]="'password'"
-          [type]="type"
+          [type]="'password'"
         >
         </app-input>
         <div *ngIf="password?.touched && password?.invalid">
