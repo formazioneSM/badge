@@ -8,7 +8,8 @@ import {
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { colorDefault } from '../../shared/utils/constants';
-import { BachecaService } from 'src/app/shared/uikit/services/bacheca.service';
+import { BachecaService } from 'src/app/shared/uikit/services/bacheca/bacheca.service';
+import { ConvenzioniService } from 'src/app/shared/uikit/services/convenzioni/convenzioni.service';
 
 @Component({
   selector: 'app-aggiungi',
@@ -16,6 +17,8 @@ import { BachecaService } from 'src/app/shared/uikit/services/bacheca.service';
   styleUrls: ['./aggiungi.component.css'],
 })
 export class AggiungiComponent implements OnInit {
+
+  newConvenzione: any = [];
   bgcolor = colorDefault;
   formAddBacheca: FormGroup = {} as FormGroup;
   formAddLink: FormGroup = {} as FormGroup;
@@ -52,7 +55,8 @@ export class AggiungiComponent implements OnInit {
   constructor(
     private _router: Router,
     private _fb: FormBuilder,
-    private bachecaService: BachecaService
+    private bachecaService: BachecaService,
+    private convenzioniService: ConvenzioniService
   ) {}
   preventDef(e: any) {
     e.stopPropagation();
@@ -81,7 +85,8 @@ export class AggiungiComponent implements OnInit {
     this.formAddConvenzioni = this._fb.group({
       titolo: ['', Validators.required],
       contenuto: ['', Validators.required],
-      posizione: ['', Validators.required],
+      titoloLink: ['', Validators.required],
+      url: ['', Validators.required],
     });
   }
   get contenutoBacheca() {
@@ -108,8 +113,11 @@ export class AggiungiComponent implements OnInit {
     return this.formAddConvenzioni?.get('contenuto');
   }
 
-  get posizione() {
-    return this.formAddConvenzioni?.get('posizione');
+  get titoloLink() {
+    return this.formAddConvenzioni?.get('titoloLink');
+  }
+  get url() {
+    return this.formAddLink?.get('url');
   }
 
   addBacheca(formAddBacheca: FormGroup) {
@@ -121,11 +129,23 @@ export class AggiungiComponent implements OnInit {
   }
 
   addConvenzione(formAddConvenzioni: FormGroup) {
-    console.log(formAddConvenzioni.value);
+   this.convenzioniService.addNewConvenzione(
+    this.formAddConvenzioni.value.titolo,
+    this.formAddConvenzioni.value.contenuto,
+    this.formAddConvenzioni.value.titoloLink,
+    this.formAddConvenzioni.value.url,
+
+   ).subscribe(c => {
+     this.newConvenzione.push(c)
+     this._router.navigate(['home/convenzioni']);
+   })
   }
 
   esc() {
     this._router.navigate(['home/bacheca']);
+  }
+  backStepOne(){
+   this.stepOne = true;
   }
 
   goToSecondStep(typeOfPost: any) {

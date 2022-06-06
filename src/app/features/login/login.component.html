@@ -1,5 +1,5 @@
 <!-- <div class="loader" *ngIf="isLoading"> -->
-  <!-- <app-sm-loader></app-sm-loader> -->
+<!-- <app-sm-loader></app-sm-loader> -->
 <!-- </div> -->
 
 <div id="container">
@@ -22,46 +22,34 @@
   <div *ngIf="form">
     <form id="login" [formGroup]="form" (ngSubmit)="onSubmitLogin()">
       <div id="email">
-        <app-input
-          [textLabel]="'Email*'"
-          [placeholder]="'Inserisci la tua email'"
-          [backgroundInput]="'var(--input-bg-color)'"
-          [for]="'email'"
-          [parentFormGroup]="form"
-          [controlName]="'email'"
-          [name]="'email'"
-        >
+        <app-input [textLabel]="'Email*'" [placeholder]="'Inserisci la tua email'"
+          [backgroundInput]="'var(--input-bg-color)'" [for]="'email'" [parentFormGroup]="form" [controlName]="'email'"
+          [name]="'email'">
         </app-input>
-        <div *ngIf="email?.errors && email?.touched">
+        <div *ngIf="email?.errors && email?.touched ">
           <p class="validation">Campo obbligatorio</p>
         </div>
       </div>
       <div id="password">
-        <app-input
-          [textLabel]="'Password*'"
-          [placeholder]="'Inserisci la tua password'"
-          [backgroundInput]="'var(--input-bg-color)'"
-          [for]="'password'"
-          [parentFormGroup]="form"
-          [controlName]="'password'"
-          [name]="'password'"
-          [type]="type"
-        >
+        <app-input [textLabel]="'Password*'" [placeholder]="'Inserisci la tua password'"
+          [backgroundInput]="'var(--input-bg-color)'" [for]="'password'" [parentFormGroup]="form"
+          [controlName]="'password'" [name]="'password'" [type]="type">
         </app-input>
+        <a id="forgottenPassword" [routerLink]="['/passwordrecovery']">Password dimenticata? </a>
         <div *ngIf="password?.touched && password?.invalid">
           <p class="validation">Campo obbligatorio</p>
         </div>
       </div>
 
       <div id="buttonLogin">
-        <app-button
-          [typeButton]="'submit'"
-          [textButton]="'Accedi'"
-          [disabled]="form.invalid"
-        >
+        <app-button [typeButton]="'submit'" [textButton]="'Accedi'">
         </app-button>
-        <p id="forgottenPassword" [routerLink]="['/passwordrecovery']" >Hai dimenticato la password? </p> 
+
       </div>
     </form>
+    <p id="register">Nuovo nel badgeverso?<a [routerLink]="['/register']">Registrati</a></p>
   </div>
+</div>
+<div id="logo">
+ <img  src="../../../assets/images/logo.png">
 </div>
