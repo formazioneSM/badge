@@ -41,5 +41,11 @@ export class InputComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  onShowPasswordClicked() {}
+  onShowPasswordClicked() {
+    if (this.type == 'password') {
+      this.type = 'text';
+    } else if (this.type == 'text') {
+      this.type = 'password';
+    }
+  }
 }

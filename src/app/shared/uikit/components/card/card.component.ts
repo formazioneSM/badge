@@ -37,9 +37,10 @@ export class CardComponent implements OnInit {
   }
 
   delete(){
-    // this.deletePost.emit(this.postId);
-    this.toastService.newEvent.emit(this.postId);
+    this.deletePost.emit(this.postId);
+    // this.toastService.newEvent.emit(this.postId);
 
     console.log(this.postId);
+    
   }
 }
