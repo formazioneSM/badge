@@ -10,7 +10,7 @@ import { LoaderService } from '../../services/loader/loader.service';
 })
 export class SmLoaderComponent implements OnInit {
   options: AnimationOptions = {
-    path: '/assets/loaders/loader_blue.json',
+    path: 'assets/loaders/loader_blue.json',
   };
 
   loading = false;
