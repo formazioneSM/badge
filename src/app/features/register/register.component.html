@@ -1,115 +1,84 @@
-
-
 <div id="container">
-    <div id="head">
-      <h1 id="title">Badgeverso</h1>
-      <span id="point"></span>
+  <div id="head">
+    <h1 id="title">Registrazione</h1>
+    <p id="subtitle">Inserisci le tue informazioni, ma non tutto. 🙃</p>
+  </div>
+
+
+  <div [ngSwitch]="errorNumber">
+    <div class="error-message" *ngSwitchCase="'409'">
+      <i class="fa-solid fa-triangle-exclamation"></i> La mail che hai inserito é gia registrata.
     </div>
-
-
-    <!-- <div [ngSwitch]="errorNumber">
-      <div class="error-message" *ngSwitchCase="'409'">
-        <i class="fa-solid fa-triangle-exclamation"></i> La mail che hai inserito é gia registrata.
-      </div>
-      <div class="error-message" *ngSwitchCase="'500'">
-        <i class="fa-solid fa-triangle-exclamation"></i> C`é un problema con il server,riprova piú tardi.
-      </div>
-    </div> -->
-    <div *ngIf="this.res">
-      <div class="ok-message" >
-        <i class="fa-regular fa-circle-check"></i> Controlla la mail per attivare la registrazione.
-      </div>
-    </div>
-  
-
-  
-    <div *ngIf="form">
-      <form id="login" [formGroup]="form" (ngSubmit)="onSubmitRegister()">
-        <div id="name">
-          <app-input
-            [textLabel]="'Nome*'"
-            [placeholder]="'Inserisci il tuo nome'"
-            [backgroundInput]="'var(--input-bg-color)'"
-            [for]="'name'"
-            [parentFormGroup]="form"
-            [controlName]="'name'"
-            [name]="'name'"
-          >
-          </app-input>
-          <div *ngIf="name?.errors && name?.touched" >
-            <p class="validation">Campo obbligatorio</p>
-          </div>
-        </div>
-        <div id="surname">
-          <app-input
-            [textLabel]="'Cognome*'"
-            [placeholder]="'Inserisci il tuo cognome'"
-            [backgroundInput]="'var(--input-bg-color)'"
-            [for]="'cognome'"
-            [parentFormGroup]="form"
-            [controlName]="'cognome'"
-            [name]="'cognome'"
-          >
-          </app-input>
-          <div *ngIf="cognome?.errors && cognome?.touched">
-            <p class="validation">Campo obbligatorio</p>
-          </div>
-        </div>
-        <div id="email">
-          <app-input
-            [textLabel]="'Email*'"
-            [placeholder]="'Inserisci la tua email'"
-            [backgroundInput]="'var(--input-bg-color)'"
-            [for]="'email'"
-            [parentFormGroup]="form"
-            [controlName]="'email'"
-            [name]="'email'"
-          >
-          </app-input>
-          <div *ngIf="email?.errors && email?.touched">
-            <p class="validation">Campo obbligatorio</p>
-          </div>
-        </div>
-        <div id="password">
-          <app-input
-            [textLabel]="'Password*'"
-            [placeholder]="'Inserisci la tua password'"
-            [backgroundInput]="'var(--input-bg-color)'"
-            [for]="'password'"
-            [parentFormGroup]="form"
-            [controlName]="'password'"
-            [name]="'password'"
-          >
-          </app-input>
-          <div *ngIf="password?.errors && password?.touched">
-            <p class="validation">Campo obbligatorio. La password deve contenere almeno sei caratteri</p>
-          </div>
-        </div>
-        <div id="badge">
-          <app-input
-            [textLabel]="'Numero Badge*'"
-            [placeholder]="'Inserisci il numero del tuo badge'"
-            [backgroundInput]="'var(--input-bg-color)'"
-            [for]="'badge'"
-            [parentFormGroup]="form"
-            [controlName]="'badge'"
-            [name]="'badge'"
-          >
-          </app-input>
-          <div *ngIf="badge?.errors && badge?.touched" >
-            <p class="validation">Campo obbligatorio</p>
-          </div>
-        </div>
-  
-        <div id="buttonLogin">
-          <app-button
-            [typeButton]="'submit'"
-            [textButton]="'Registrati'"
-            [disabled]="form.invalid"
-          >
-          </app-button>
-        </div>
-      </form>
+    <div class="error-message" *ngSwitchCase="'500'">
+      <i class="fa-solid fa-triangle-exclamation"></i> C`é un problema con il server,riprova piú tardi.
     </div>
   </div>
-  
+  <div *ngIf="this.res">
+    <div class="ok-message">
+      <i class="fa-regular fa-circle-check"></i> Controlla la mail per attivare la registrazione.
+    </div>
+  </div>
+
+
+
+  <div *ngIf="form">
+    <form id="login" [formGroup]="form" (ngSubmit)="onSubmitRegister()">
+      <div id="name">
+        <app-input [textLabel]="'Nome*'" [placeholder]="'Inserisci il tuo nome'"
+          [backgroundInput]="'var(--input-bg-color)'" [for]="'name'" [parentFormGroup]="form" [controlName]="'name'"
+          [name]="'name'">
+        </app-input>
+        <div *ngIf="name?.errors && name?.touched">
+          <p class="validation">Campo obbligatorio</p>
+        </div>
+      </div>
+      <div id="surname">
+        <app-input [textLabel]="'Cognome*'" [placeholder]="'Inserisci il tuo cognome'"
+          [backgroundInput]="'var(--input-bg-color)'" [for]="'cognome'" [parentFormGroup]="form"
+          [controlName]="'cognome'" [name]="'cognome'">
+        </app-input>
+        <div *ngIf="cognome?.errors && cognome?.touched">
+          <p class="validation">Campo obbligatorio</p>
+        </div>
+      </div>
+      <div id="badge">
+        <app-input [textLabel]="'ID Badge*'" [placeholder]="'Inserisci il numero ID Badge'"
+          [backgroundInput]="'var(--input-bg-color)'" [for]="'badge'" [parentFormGroup]="form" [controlName]="'badge'"
+          [name]="'badge'">
+          <div id="tooltip">
+            <app-tooltip></app-tooltip>
+          </div>
+        </app-input>
+        <div *ngIf="badge?.errors && badge?.touched">
+          <p class="validation">Campo obbligatorio</p>
+        </div>
+      </div>
+      <div id="email">
+        <app-input [textLabel]="'Email*'" [placeholder]="'Inserisci la tua email di dominio'"
+          [backgroundInput]="'var(--input-bg-color)'" [for]="'email'" [parentFormGroup]="form" [controlName]="'email'"
+          [name]="'email'">
+        </app-input>
+        <div *ngIf="email?.errors && email?.touched">
+          <p class="validation">Campo obbligatorio</p>
+        </div>
+      </div>
+      <div id="password">
+        <app-input [textLabel]="'Password*'" [placeholder]="'4+ caratteri'" [backgroundInput]="'var(--input-bg-color)'"
+          [for]="'password'" [parentFormGroup]="form" [controlName]="'password'" [name]="'password'">
+        </app-input>
+        <div *ngIf="password?.errors && password?.touched">
+          <p class="validation">Campo obbligatorio. La password deve contenere almeno sei caratteri</p>
+        </div>
+      </div>
+      <div id="checkbox">
+        <app-checkbox>
+          <span>*Accetto i <a href="#">termini</a> e la <a href="#">privacy</a></span>
+        </app-checkbox>
+      </div>
+      <div id="buttonLogin">
+        <app-button [typeButton]="'submit'" [textButton]="'Registrati'" [disabled]="form.invalid">
+        </app-button>
+      </div>
+    </form>
+  </div>
+</div>

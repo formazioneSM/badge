@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { AuthService } from 'src/app/shared/uikit/services/auth.service';
-import { Router } from '@angular/router';
+import { AuthService } from 'src/app/shared/uikit/services/auth/auth.service';
 
 @Component({
   selector: 'app-password-recovery',

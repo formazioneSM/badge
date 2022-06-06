@@ -8,7 +8,7 @@ import {
   HttpInterceptor,
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { LoaderService } from '../uikit/services/loader.service';
+import { LoaderService } from '../uikit/services/loader/loader.service';
 
 @Injectable()
 export class LoaderInterceptor implements HttpInterceptor {

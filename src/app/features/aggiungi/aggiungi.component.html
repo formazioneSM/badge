@@ -1,5 +1,6 @@
 <div id="add">
     <div id="head">
+        <img  *ngIf="!stepOne" src="../../../assets/images/chevron_left.png" (click)="backStepOne()" class="back">
         <p id="title">Aggiungi contenuto</p>
         <img class="close" src="../../../assets/images/off_close.png" (click)="esc()">
     </div>
@@ -113,11 +114,20 @@
                         </div>
                     </div>
                     <div class="marginInput">
-                        <app-input [textLabel]="'Posizione*'" [placeholder]="'Inserisci il contenuto del tuo msg'"
-                            [backgroundInput]="'var(--input-bg-color)'" [for]="'posizione'"
-                            [parentFormGroup]="formAddConvenzioni" [controlName]="'posizione'" [name]="'posizione'">
+                        <app-input [textLabel]="'Titolo link*'" [placeholder]="'Inserisci un titolo'"
+                            [backgroundInput]="'var(--input-bg-color)'" [for]="'titoloLink'"
+                            [parentFormGroup]="formAddConvenzioni" [controlName]="'titoloLink'" [name]="'titoloLink'">
                         </app-input>
-                        <div *ngIf="posizione?.touched && posizione?.invalid" class="validation">
+                        <div *ngIf="titoloLink?.touched && titoloLink?.invalid" class="validation">
+                            <p>Campo obbligatorio</p>
+                        </div>
+                    </div>
+                    <div class="marginInput">
+                        <app-input [textLabel]="'Url*'" [placeholder]="'Inserisci un url'"
+                            [backgroundInput]="'var(--input-bg-color)'" [for]="'url'"
+                            [parentFormGroup]="formAddConvenzioni" [controlName]="'url'" [name]="'url'"><a></a>
+                        </app-input>
+                        <div *ngIf="url?.touched && url?.invalid" class="validation">
                             <p>Campo obbligatorio</p>
                         </div>
                     </div>

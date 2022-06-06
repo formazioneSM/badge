@@ -1,13 +1,12 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
-import { LoginResponse } from '../../utils/interfaces';
+import { LoginResponse } from '../../../utils/interfaces';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  constructor(private http: HttpClient,private route:Router) {}
+  constructor(private http: HttpClient) {}
   apiToken: any = '';
   loginResponse!:LoginResponse
 
@@ -35,9 +34,5 @@ export class AuthService {
   }
   setLoginResponse(loginResponse:LoginResponse){
     this.loginResponse = loginResponse
-  }
-  onLogOut(){
-    localStorage.removeItem('token')
-    this.route.navigate(['../login'])
   }
 }

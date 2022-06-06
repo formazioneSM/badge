@@ -41,18 +41,23 @@ input {
 
 input::placeholder {
     color: var(--placeholder-color);
+    font-family: 'Hind Madurai';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 22px;
 }
 
 input:focus, textarea:focus {
     border: 1px solid var(--bg-primary-color)
 }
 
-:host{
+:host {
     height: inherit;
 }
 
 input.ng-invalid.ng-touched {
-    border: 1px solid red;
+    border: 1px solid #EB5757;
 }
 
 .icon-container {
