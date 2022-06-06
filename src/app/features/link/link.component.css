@@ -19,3 +19,9 @@
     font-size: 18px;
     line-height: 25px;
 }
+#deleteIcon {
+    position: absolute;
+    width: 10%;
+    height: 29px;
+    margin-left: 85%;
+}

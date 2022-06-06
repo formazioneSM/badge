@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { LinkRoutingModule } from './link-routing.module';
 import { LinkComponent } from './link.component';
 import { UikitModule } from 'src/app/shared/uikit/uikit.module';
+import { NgxPermissionsModule } from 'ngx-permissions';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { UikitModule } from 'src/app/shared/uikit/uikit.module';
   imports: [
     CommonModule,
     LinkRoutingModule,
-    UikitModule
+    UikitModule,
+    NgxPermissionsModule
   ]
 })
 export class LinkModule { }
