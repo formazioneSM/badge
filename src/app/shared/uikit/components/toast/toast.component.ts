@@ -2,7 +2,7 @@ import { NgSwitchCase } from '@angular/common';
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { ToastService } from '../../services/toast.service';
 import { timer } from 'rxjs';
-import { BachecaService } from '../../services/bacheca.service';
+import { BachecaService } from '../../services/bacheca/bacheca.service';
 
 @Component({
   selector: 'app-toast',
@@ -12,13 +12,12 @@ import { BachecaService } from '../../services/bacheca.service';
 export class ToastComponent implements OnInit {
   @Input('icon') icon: string | undefined;
   @Input('text') text: any;
-
   @Output('noDeletePost') noDeletePost = new EventEmitter();
-
   isVisible: boolean = false;
-
-  constructor(public toastService: ToastService,public bachecaService:BachecaService) {}
-
+  constructor(
+    public toastService: ToastService,
+    public bachecaService: BachecaService
+  ) {}
   ngOnInit(): void {
     this.toastService.newEvent.subscribe((res) => {
       this.isVisible = true;
@@ -26,7 +25,6 @@ export class ToastComponent implements OnInit {
         this.isVisible = false;
         this.toastService.isVisibleUndo = false;
       });
-
       this.text = res;
       console.log(this.text);
       switch (this.text) {
@@ -44,15 +42,11 @@ export class ToastComponent implements OnInit {
       }
     });
   }
-
   noDelete(e: any) {
     this.noDeletePost.emit(e);
-    this.bachecaService.undoDeletedPost()
-    
-
-    console.log('click undo')
+    this.bachecaService.undoDeletedPost();
+    console.log('click undo');
   }
-
   //   hideToast() {
   //       this.isVisible = !this.isVisible;
   //   }

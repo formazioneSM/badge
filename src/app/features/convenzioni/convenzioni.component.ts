@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ConvenzioniService } from 'src/app/shared/uikit/services/convenzioni/convenzioni.service';
 
 @Component({
   selector: 'app-convenzioni',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ConvenzioniComponent implements OnInit {
 
-  constructor() { }
+
+  convenzioni: any = [];
+  constructor(private convenzioniService: ConvenzioniService) { }
 
   ngOnInit(): void {
+    this.convenzioniService.getAllCovenzioni().subscribe((c:any) => {
+      this.convenzioni = c;
+      console.log(this.convenzioni);
+    });
+
   }
 
 }

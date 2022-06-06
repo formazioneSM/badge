@@ -1,8 +1,8 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { ScrollService } from 'src/app/shared/uikit/services/scroll.service';
+import { ScrollService } from 'src/app/shared/uikit/services/scroll/scroll.service';
 import { NgxPermissionsService } from 'ngx-permissions';
 import {  Router } from '@angular/router';
-import { AuthService } from 'src/app/shared/uikit/services/auth.service';
+import { AuthService } from 'src/app/shared/uikit/services/auth/auth.service';
 import { ToastService } from 'src/app/shared/uikit/services/toast.service';
 
 @Component({

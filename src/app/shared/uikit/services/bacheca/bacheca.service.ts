@@ -1,9 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { ToastService } from './toast.service';
-import { toastMessages } from '../../utils/constants';
-
-
+import { ToastService } from '../toast.service';
+import { toastMessages } from 'src/app/shared/utils/constants';
 @Injectable({
   providedIn: 'root',
 })
@@ -12,7 +10,6 @@ export class BachecaService {
   posts: any = [];
   index!:number
   postUndo:any
- 
   createNewPost(color: string, text: string, from: string) {
     this.toastService.setMessage(toastMessages.contentCreatedSuccessfully);
     return this.http.post(`https://be-system.herokuapp.com/api/bacheca`, {
@@ -20,9 +17,7 @@ export class BachecaService {
       text: text,
       from: from,
     });
-
   }
-
   getPost(postId: number | string) {
     return this.http.get(
       `https://be-system.herokuapp.com/api/bacheca/${postId}`
@@ -37,18 +32,14 @@ export class BachecaService {
     this.toastService.isVisibleUndo = false;
     this.toastService.setMessage(toastMessages.contentUndoSuccessfully);
   }
-
-
   getAllPosts() {
     return this.http.get(`https://be-system.herokuapp.com/api/bacheca/all`);
   }
-
   deletePost(postId: number | string) {
     return this.http.delete(
       `https://be-system.herokuapp.com/api/bacheca/${postId}`
     );
   }
-
   editPost(postId: number | string, color: string, text: string, from: string) {
     return this.http.put(
       `https://be-system.herokuapp.com/api/bacheca/${postId}`,

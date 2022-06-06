@@ -13,9 +13,8 @@ import { ToastComponent } from './components/toast/toast.component';
 import { ColorSelectComponent } from './components/color-select/color-select.component';
 import { LottieModule } from 'ngx-lottie';
 import { NgxPermissionsModule } from 'ngx-permissions';
-
-
-
+import { TooltipComponent } from './components/tooltip/tooltip.component';
+import { CheckboxComponent } from './components/checkbox/checkbox.component';
 
 
 
@@ -32,6 +31,8 @@ import { NgxPermissionsModule } from 'ngx-permissions';
     CheckButtonComponent,
     ToastComponent,
     ColorSelectComponent,
+    TooltipComponent,
+    CheckboxComponent,
 
   ],
   imports: [
@@ -52,6 +53,9 @@ import { NgxPermissionsModule } from 'ngx-permissions';
     CheckButtonComponent,
     ToastComponent,
     ColorSelectComponent,
+    TooltipComponent,
+    CheckboxComponent,
+    
 
   ]
 })
