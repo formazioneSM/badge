@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription, timer } from 'rxjs';
 import { BachecaService } from 'src/app/shared/uikit/services/bacheca/bacheca.service';
+import { ToastService } from 'src/app/shared/uikit/services/toast.service';
 
 @Component({
   selector: 'app-bacheca',

@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { BachecaService } from '../../services/bacheca/bacheca.service';
+import { ToastService } from '../../services/toast.service';
 
 @Component({
   selector: 'app-card',
@@ -15,6 +16,7 @@ export class CardComponent implements OnInit {
   @Input('textLink') textLink: string | undefined;
   @Input('postId') postId: any;
   @Output('deletePost') deletePost = new EventEmitter();
+  
 
   
 

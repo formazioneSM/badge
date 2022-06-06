@@ -1,4 +1,6 @@
 <div [formGroup]="parentFormGroup">
+    <ng-content></ng-content>
+
   <label [for]="for">{{ textLabel }}</label>
   <input
     [formControlName]="controlName"
