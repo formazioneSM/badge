@@ -20,8 +20,8 @@
   </app-card>
 </div>
 
-<div class="cards">
-  <app-gradient-loader *ngFor="post of this.bachecaService.posts"></app-gradient-loader>
+<div *ngIf="loading" class="cards">
+  <app-gradient-loader *ngFor="let p of this.bachecaService.posts"></app-gradient-loader>
 </div>
 
 <!-- <div *ngIf="isPostLoading == true" class="cards">

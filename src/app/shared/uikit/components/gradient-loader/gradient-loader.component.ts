@@ -7,7 +7,7 @@ import { LoaderService } from '../../services/loader/loader.service';
   styleUrls: ['./gradient-loader.component.css'],
 })
 export class GradientLoaderComponent implements OnInit {
-  loading = false;
+  loading = true;
 
   constructor(private loaderService: LoaderService) {
     this.loaderService.isLoading.subscribe((v) => {

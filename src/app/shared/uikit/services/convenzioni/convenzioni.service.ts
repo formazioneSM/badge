@@ -7,10 +7,18 @@ import { base_path } from 'src/app/shared/utils/constants';
 })
 export class ConvenzioniService {
 
+    convenzioni: any = [];
   constructor(private http: HttpClient) { }
 
-  getAllCovenzioni(){
+  getAllConvenzioni(){
     return this.http.get(`${base_path}/convenzione/all`);
+  }
+
+  loadConvenzioni() {
+      this.getAllConvenzioni().subscribe((conv) => {
+          this.convenzioni = conv;
+          console.log(this.convenzioni);
+      })
   }
 
   addNewConvenzione( titolo: string, text:string, titoloLink: string, url:string){

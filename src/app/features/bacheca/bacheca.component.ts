@@ -23,7 +23,7 @@ export class BachecaComponent implements OnInit {
   ) {this.loaderService.isLoading.subscribe((v) => {
     console.log(v);
     this.loading = v;
-  });}
+  })}
 
   ngOnInit(): void {
     this.getAllPosts();
