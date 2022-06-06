@@ -2,6 +2,7 @@ import { NgSwitchCase } from '@angular/common';
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { ToastService } from '../../services/toast.service';
 import { timer } from 'rxjs';
+import { BachecaService } from '../../services/bacheca/bacheca.service';
 
 @Component({
   selector: 'app-toast',
@@ -11,22 +12,19 @@ import { timer } from 'rxjs';
 export class ToastComponent implements OnInit {
   @Input('icon') icon: string | undefined;
   @Input('text') text: any;
-
   @Output('noDeletePost') noDeletePost = new EventEmitter();
-
   isVisible: boolean = false;
-//   isVisibleUndo: boolean = false; // per far visualizzare undo
-
-  constructor(public toastService: ToastService) {}
-
+  constructor(
+    public toastService: ToastService,
+    public bachecaService: BachecaService
+  ) {}
   ngOnInit(): void {
     this.toastService.newEvent.subscribe((res) => {
       this.isVisible = true;
       timer(4000).subscribe(() => {
-        this.isVisible = !this.isVisible;
+        this.isVisible = false;
         this.toastService.isVisibleUndo = false;
       });
-
       this.text = res;
       console.log(this.text);
       switch (this.text) {
@@ -44,12 +42,11 @@ export class ToastComponent implements OnInit {
       }
     });
   }
-
   noDelete(e: any) {
     this.noDeletePost.emit(e);
-    console.log('click undo')
+    this.bachecaService.undoDeletedPost();
+    console.log('click undo');
   }
-
   //   hideToast() {
   //       this.isVisible = !this.isVisible;
   //   }
