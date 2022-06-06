@@ -1,7 +1,7 @@
 <div id="container" [ngStyle]="{'background': background ?? ' #F0F0F0' }">
     <div *ngIf="!isClicked">
         <div id="deleteIcon" *ngxPermissionsOnly="['ADMIN']" (click)="clicked()">
-            <img src="../../../../../assets/images/cestino.png">
+            <img src="assets/images/cestino.png">
         </div>
 
         <h5 id="title"><b>{{title}}</b></h5>
@@ -11,7 +11,7 @@
         <a href="{{link}}" id="link">{{textLink}}</a>
 
         <!-- <div id="copy" *ngIf="copy">
-            <img src="../../../../../assets/images/copy.png">
+            <img src="assets/images/copy.png">
         </div> -->
     </div>
     <div *ngIf="isClicked" id="deleteContainer">
