@@ -4,6 +4,7 @@ import { AuthService } from '../../shared/uikit/services/auth/auth.service';
 import jwt_decode from "jwt-decode";
 import { NgxPermissionsService } from 'ngx-permissions';
 import { Router } from '@angular/router';
+import { ToastService } from 'src/app/shared/uikit/services/toast.service';
 
 @Component({
   selector: 'app-login',
@@ -17,7 +18,7 @@ export class LoginComponent implements OnInit {
   errorNumber: string | undefined;
   type: string = 'password';
 
-  constructor(private _fb: FormBuilder, private authService: AuthService,public permissionsService:NgxPermissionsService,public router:Router) {}
+  constructor(private _fb: FormBuilder, private authService: AuthService,public permissionsService:NgxPermissionsService,public router:Router,public toastService:ToastService) {}
   apiResponse!: {} | any;
   role!:any
 
@@ -56,6 +57,7 @@ export class LoginComponent implements OnInit {
           this.isLoading = false;
           console.log(err);
           //   this.errorMessage = "C'è stato un errore: " + err.error.message;
+          this.toastService.setMessage(err.status)
           this.errorNumber = err.status;
         }
       );
@@ -65,7 +67,6 @@ export class LoginComponent implements OnInit {
       this.permissionsService.loadPermissions(input?["ADMIN"]:["USER"]);
 
       this.router.navigate(['../home/bacheca'])
-
 
   }
   

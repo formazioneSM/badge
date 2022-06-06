@@ -18,9 +18,6 @@ import { CheckboxComponent } from './components/checkbox/checkbox.component';
 
 
 
-
-
-
 @NgModule({
   declarations: [
     InputComponent,

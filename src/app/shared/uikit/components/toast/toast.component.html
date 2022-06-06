@@ -1,5 +1,5 @@
-<div id="container">
+<div *ngIf="this.isVisible" id="container">
     <img src="{{icon}}">
     <p>{{text}}</p>
-    <div (click)="noDelete($event)">Undo</div>
+    <div *ngIf="this.toastService.isVisibleUndo" (click)="noDelete($event)">Undo</div>
 </div>
