@@ -64,8 +64,8 @@
         </div>
       </div>
       <div id="password">
-        <app-input [textLabel]="'Password*'" [placeholder]="'4+ caratteri'" [backgroundInput]="'var(--input-bg-color)'"
-          [for]="'password'" [parentFormGroup]="form" [controlName]="'password'" [name]="'password'">
+        <app-input [textLabel]="'Password*'" [placeholder]="'6+ caratteri'" [backgroundInput]="'var(--input-bg-color)'"
+          [for]="'password'" [parentFormGroup]="form" [controlName]="'password'" [name]="'password'" [type]="'password'">
         </app-input>
         <div *ngIf="password?.errors && password?.touched">
           <p class="validation">Campo obbligatorio. La password deve contenere  almeno 8 caratteri,
@@ -73,9 +73,10 @@
         </div>
       </div>
       <div id="checkbox">
-        <app-checkbox>
+        <app-checkbox [parentFormGroup]="form" [controlName]="'checkbox'" [name]="'checkbox'"  >
           <span>*Accetto i <a href="#">termini</a> e la <a href="#">privacy</a></span>
         </app-checkbox>
+
       </div>
       <div id="buttonLogin">
         <app-button [typeButton]="'submit'" [textButton]="'Registrati'" [disabled]="form.invalid">

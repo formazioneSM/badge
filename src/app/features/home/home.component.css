@@ -123,6 +123,8 @@
     font-size: 21px;
     line-height: 26px;
     color: var(--bg-primary-color);
+    width: 85vw;
+    
 
 }
 
@@ -231,6 +233,13 @@
     animation-duration: 1s;
 } 
 
+#profile{
+    border-radius: 50%;
+    width: 29px;
+    height: 29px;
+    margin-left: auto;
+    margin-top: 7px;
+}
 
 @keyframes transizioneMargin{
     from {right:-50%;}

@@ -49,6 +49,16 @@ export class LoginComponent implements OnInit {
   get password() {
     return this.form?.get('password');
   }
+
+  addValidator(name: any) {
+    if (!this.form.get(name)?.hasValidator(Validators.required)) {
+      this.form.get(name)?.setValidators(Validators.required)
+      this.form.get(name)?.setValue(this.form.get(name)?.value)
+    }
+  }
+
+
+
   // chiamata login api e gestione degli errori
   onSubmitLogin() {
     this.isLoading = true;

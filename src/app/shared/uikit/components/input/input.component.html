@@ -3,6 +3,7 @@
 
   <label [for]="for">{{ textLabel }}</label>
   <input
+  (blur)="blurInput()"
     [formControlName]="controlName"
     [name]="name"
     [placeholder]="placeholder"

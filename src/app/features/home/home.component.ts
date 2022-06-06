@@ -52,10 +52,13 @@ export class HomeComponent implements OnInit {
 get username(){
   return this.authService.loginResponse?.name?? ''
 }
-OnClickLogOut(){
-  this.authService.onLogOut()
-  // this.toastService.inputMethod() // sacro ! 
+// OnClickLogOut(){
+//   this.authService.onLogOut()
+//   // this.toastService.inputMethod() // sacro ! 
 
-}
+// }
+ goToProfile(){
+  this.router.navigate(['../profilo'])
+ }
 
 }

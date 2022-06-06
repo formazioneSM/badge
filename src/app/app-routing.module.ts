@@ -16,11 +16,13 @@ const routes: Routes = [
   {path: 'add_Content', loadChildren: () => import('./features/aggiungi/aggiungi.module').then(m => m.AddContentModule) },
   {path:'register',loadChildren: () => import('./features/register/register.module').then(m => m.RegisterModule)},
   {path:'passwordrecovery',loadChildren: () => import('./features/passwordrecovery/password-recovery.module').then(m =>m.PasswordRecoveryModule)},
+  { path: 'profilo', loadChildren: () => import('./features/profilo/profilo.module').then(m => m.ProfiloModule) },
+  { path: 'impostazioni', loadChildren: () => import('./features/impostazioni/impostazioni.module').then(m => m.ImpostazioniModule) },
   {path:'**', redirectTo:'home'}
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)
+  imports: [RouterModule.forRoot(routes, {useHash:true})
   ],
   exports: [RouterModule]
 })
