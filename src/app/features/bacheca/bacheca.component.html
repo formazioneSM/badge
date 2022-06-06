@@ -11,9 +11,3 @@
     <app-card class="card" [background]="'#FEE979'" [text]="'Password wifi 11° Piano sys11@meraki13'"></app-card> -->
         <app-card *ngFor="let post of this.bachecaService.posts" class="card" background="{{post.color}}" text="{{post.text}}" author="{{post.from}}" postId="{{post._id}}" (deletePost)="onPostDelete($event)"></app-card>
 </div>
-<!-- <div id="toast" *ngIf="toast" >
-    <app-toast [icon]="'../assets/images/icona_toast_elimina.png'"
-        [text]="'Contenuto rimosso!'"></app-toast>
-</div> -->
-<!-- (noDeletePost)="stopDelete($event)"
-(deletePost)="showToast($event)" -->
