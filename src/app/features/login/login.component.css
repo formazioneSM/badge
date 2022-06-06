@@ -63,7 +63,7 @@
   position: relative;
   width: 83vw;
   height: 54px;
-  margin-top: 64px;
+  margin-top: 70px;
 }
 
 .validation {
@@ -82,10 +82,13 @@
   font-weight: 400;
   font-size: 16px;
   line-height: 22px;
-  position: absolute;
-  right: 0;
-  margin-top: 5px;
+  /* position: relative; */
+  /* right: 0; */
   color: var(--bg-primary-color);
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 10px;
+
 
 }
 

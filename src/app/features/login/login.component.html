@@ -19,15 +19,22 @@
     </div>
   </div> -->
 
-  <div *ngIf="form">
+  <div *ngIf="form" (blurForRed)="addValidator(form)">
     <form id="login" [formGroup]="form" (ngSubmit)="onSubmitLogin()">
       <div id="email">
         <app-input [textLabel]="'Email*'" [placeholder]="'Inserisci la tua email'"
           [backgroundInput]="'var(--input-bg-color)'" [for]="'email'" [parentFormGroup]="form" [controlName]="'email'"
           [name]="'email'">
         </app-input>
-        <div *ngIf="email?.errors && email?.touched ">
-          <p class="validation">Campo obbligatorio</p>
+        <div *ngIf="email?.errors?.['invalidEmail']">
+          <p class="validation">{{email?.errors?.['invalidEmail']}}</p>
+        </div>
+        <div *ngIf="email?.touched && email?.errors">
+          <div *ngIf="email?.errors?.['required']">
+            <p class="validation">Campo obbligatorio</p>
+          </div>
+
+ 
         </div>
       </div>
       <div id="password">
@@ -35,11 +42,20 @@
           [backgroundInput]="'var(--input-bg-color)'" [for]="'password'" [parentFormGroup]="form"
           [controlName]="'password'" [name]="'password'" [type]="type">
         </app-input>
-        <a id="forgottenPassword" [routerLink]="['/passwordrecovery']">Password dimenticata? </a>
-        <div *ngIf="password?.touched && password?.invalid">
-          <p class="validation">Campo obbligatorio</p>
+  
+        <div *ngIf="password?.errors?.['invalidPassword']">
+          <p class="validation">{{password?.errors?.['invalidPassword']}}</p>
         </div>
+        <div *ngIf="password?.touched && password?.errors">
+          <div *ngIf="password?.errors?.['required']">
+            <p class="validation">Campo obbligatorio</p>
+          </div>
+
+ 
+        </div>
+        <a id="forgottenPassword" [routerLink]="['/passwordrecovery']">Password dimenticata? </a>
       </div>
+      
 
       <div id="buttonLogin">
         <app-button [typeButton]="'submit'" [textButton]="'Accedi'">

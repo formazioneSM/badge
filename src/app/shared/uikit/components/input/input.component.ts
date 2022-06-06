@@ -36,6 +36,8 @@ export class InputComponent implements OnInit {
   @Input('controlName') controlName: string = '';
   @Input('parentFormGroup') parentFormGroup: FormGroup = {} as FormGroup;
   @Input('type') type: string | undefined;
+  @Output('blurForRer') blurForRed = new EventEmitter();
+
 
   constructor() {}
 
@@ -47,5 +49,9 @@ export class InputComponent implements OnInit {
     } else if (this.type == 'text') {
       this.type = 'password';
     }
+  }
+
+  blurInput(){
+   this.blurForRed.emit()
   }
 }

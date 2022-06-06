@@ -18,14 +18,14 @@ export class LoginComponent implements OnInit {
   errorNumber: string | undefined;
   type: string = 'password';
 
-  constructor(private _fb: FormBuilder, private authService: AuthService,public permissionsService:NgxPermissionsService,public router:Router,public toastService:ToastService) {}
+  constructor(private _fb: FormBuilder, private authService: AuthService, public permissionsService: NgxPermissionsService, public router: Router, public toastService: ToastService) { }
   apiResponse!: {} | any;
-  role!:any
+  role!: any
 
   ngOnInit(): void {
     this.form = this._fb.group({
-      email: ['', [Validators.email, Validators.required]],
-      password: ['', Validators.required],
+      email: [''],
+      password: [''],
     });
   }
   get email() {
@@ -35,6 +35,16 @@ export class LoginComponent implements OnInit {
   get password() {
     return this.form?.get('password');
   }
+
+  addValidator(name: any) {
+    if (!this.form.get(name)?.hasValidator(Validators.required)) {
+      this.form.get(name)?.setValidators(Validators.required)
+      this.form.get(name)?.setValue(this.form.get(name)?.value)
+    }
+  }
+
+
+
   // chiamata login api e gestione degli errori
   onSubmitLogin() {
     this.isLoading = true;
@@ -45,11 +55,11 @@ export class LoginComponent implements OnInit {
         (res) => {
           this.isLoading = false;
           this.apiResponse = res;
-          
+
           console.log(res);
-          console.log('response salvata nel servizio'+ this.authService.loginResponse)
+          console.log('response salvata nel servizio' + this.authService.loginResponse)
           localStorage.setItem('token', this.apiResponse.token)
-          this.authService.setLoginResponse(jwt_decode(this.apiResponse.token))  ;
+          this.authService.setLoginResponse(jwt_decode(this.apiResponse.token));
 
           this.isAdminOrUser(this.authService.apiToken.admin)
         },
@@ -57,17 +67,23 @@ export class LoginComponent implements OnInit {
           this.isLoading = false;
           console.log(err);
           //   this.errorMessage = "C'è stato un errore: " + err.error.message;
-          this.toastService.setMessage(err.status)
-          this.errorNumber = err.status;
+          // this.toastService.setMessage(err.status)
+          // this.errorNumber = err.error.extra;
+          if (err.error.extra.email) {
+            this.email?.setErrors({ invalidEmail: err.error.extra.email })
+          }
+          if (err.error.extra.password) {
+            this.password?.setErrors({ invalidPassword: err.error.extra.password })
+          }
         }
       );
   }
-  isAdminOrUser(input:any){
+  isAdminOrUser(input: any) {
 
-      this.permissionsService.loadPermissions(input?["ADMIN"]:["USER"]);
+    this.permissionsService.loadPermissions(input ? ["ADMIN"] : ["USER"]);
 
-      this.router.navigate(['../home/bacheca'])
+    this.router.navigate(['../home/bacheca'])
 
   }
-  
+
 }

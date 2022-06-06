@@ -21,6 +21,7 @@ export class RegisterComponent implements OnInit {
       email: ['', [Validators.email, Validators.required]],
       password: ['', [Validators.required, Validators.minLength(6)]], // la password deve essere di almeno 6 caratteri
       badge: ['', [Validators.required, Validators.pattern("^[0-9]*$")]], // il badge puo` contenere solo numeri
+      checkbox:[undefined, Validators.requiredTrue],
     });
 
 
@@ -57,6 +58,9 @@ export class RegisterComponent implements OnInit {
   }
   get badge() {
     return this.form?.get('badge');
+  }
+  get checkbox() {
+    return this.form?.get('checkbox');
   }
 
 
