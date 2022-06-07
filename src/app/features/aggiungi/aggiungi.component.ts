@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 import { colorDefault } from '../../shared/utils/constants';
 import { BachecaService } from 'src/app/shared/uikit/services/bacheca/bacheca.service';
 import { ConvenzioniService } from 'src/app/shared/uikit/services/convenzioni/convenzioni.service';
+import { LinkService } from 'src/app/shared/uikit/services/link/link.service';
 
 @Component({
   selector: 'app-aggiungi',
@@ -56,7 +57,8 @@ export class AggiungiComponent implements OnInit {
     private _router: Router,
     private _fb: FormBuilder,
     private bachecaService: BachecaService,
-    private convenzioniService: ConvenzioniService
+    private convenzioniService: ConvenzioniService,
+    private linkService:LinkService
   ) {}
   preventDef(e: any) {
     e.stopPropagation();
@@ -125,7 +127,8 @@ export class AggiungiComponent implements OnInit {
   }
 
   addLink(formAddLink: FormGroup) {
-    console.log(formAddLink.value);
+    console.log("nome link: "+formAddLink.value.nomeLink+" link: "+formAddLink.value.link );
+    this.linkService.addLink(formAddLink.value.nomeLink,formAddLink.value.link).subscribe((res)=>console.log(res))
   }
 
   addConvenzione(formAddConvenzioni: FormGroup) {
