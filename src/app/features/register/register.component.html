@@ -68,7 +68,8 @@
           [for]="'password'" [parentFormGroup]="form" [controlName]="'password'" [name]="'password'" [type]="'password'">
         </app-input>
         <div *ngIf="password?.errors && password?.touched">
-          <p class="validation">Campo obbligatorio. La password deve contenere almeno sei caratteri</p>
+          <p class="validation">Campo obbligatorio. La password deve contenere  almeno 8 caratteri,
+            di cui una maiuscola, almeno un numero e un carattere speciale</p>
         </div>
       </div>
       <div id="checkbox">

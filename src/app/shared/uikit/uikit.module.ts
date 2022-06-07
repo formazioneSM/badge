@@ -15,6 +15,7 @@ import { LottieModule } from 'ngx-lottie';
 import { NgxPermissionsModule } from 'ngx-permissions';
 import { TooltipComponent } from './components/tooltip/tooltip.component';
 import { CheckboxComponent } from './components/checkbox/checkbox.component';
+import { GradientLoaderComponent } from './components/gradient-loader/gradient-loader.component';
 
 
 
@@ -33,6 +34,7 @@ import { CheckboxComponent } from './components/checkbox/checkbox.component';
     ColorSelectComponent,
     TooltipComponent,
     CheckboxComponent,
+    GradientLoaderComponent,
 
   ],
   imports: [
@@ -55,6 +57,8 @@ import { CheckboxComponent } from './components/checkbox/checkbox.component';
     ColorSelectComponent,
     TooltipComponent,
     CheckboxComponent,
+    GradientLoaderComponent,
+
     
 
   ]

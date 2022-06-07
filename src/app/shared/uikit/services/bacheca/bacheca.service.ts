@@ -6,10 +6,11 @@ import { toastMessages } from 'src/app/shared/utils/constants';
   providedIn: 'root',
 })
 export class BachecaService {
-  constructor(private http: HttpClient,public toastService:ToastService) {}
+  constructor(private http: HttpClient, public toastService: ToastService) {}
   posts: any = [];
-  index!:number
-  postUndo:any
+  index!: number;
+  postUndo: any;
+
   createNewPost(color: string, text: string, from: string) {
     this.toastService.setMessage(toastMessages.contentCreatedSuccessfully);
     return this.http.post(`https://be-system.herokuapp.com/api/bacheca`, {
@@ -23,12 +24,16 @@ export class BachecaService {
       `https://be-system.herokuapp.com/api/bacheca/${postId}`
     );
   }
-  undoDeletedPost(){
-    this.createNewPost(this.postUndo.color,this.postUndo.text,this.postUndo.from).subscribe((res)=>{
-      if(res){
-        this.posts.splice(this.index,0,res)
+  undoDeletedPost() {
+    this.createNewPost(
+      this.postUndo.color,
+      this.postUndo.text,
+      this.postUndo.from
+    ).subscribe((res) => {
+      if (res) {
+        this.posts.splice(this.index, 0, res);
       }
-    })
+    });
     this.toastService.isVisibleUndo = false;
     this.toastService.setMessage(toastMessages.contentUndoSuccessfully);
   }
@@ -50,6 +55,7 @@ export class BachecaService {
       }
     );
   }
+  
   loadPosts() {
     this.getAllPosts().subscribe((posts) => {
       this.posts = posts;
