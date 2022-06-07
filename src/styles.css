@@ -22,6 +22,11 @@
 body{
     font-family: Gotham;
     background-color: var(--primary-color);
+    /* padding: 0 2rem; */
+}
+
+app-register, app-login {
+    display: flex;
     padding: 0 2rem;
 }
 

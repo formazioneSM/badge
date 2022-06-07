@@ -137,10 +137,10 @@
   margin-top: 5px;
 }
 
-.roundButtons {
+.roundButtons{
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
   margin: 0 auto;
   margin-top: 10px;
@@ -154,10 +154,33 @@
   width: 100%;
 }
 
+/* .roundButtons.user{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 0 auto;
+    margin-top: 10px;
+    font-family: "Hind Madurai";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 18px;
+    text-align: center;
+    padding: 2rem 0 3rem 0;
+    width: 100%;
+  } */
+
 .button {
   margin-right: 18px;
   width: 54px;
   height: 54px;
+  /* padding-right: 2rem; */
+
+}
+
+.roundButtons > * {
+    margin-right: 2rem;
 }
 
 .active {
@@ -172,6 +195,7 @@
 #wrapper {
   height: 100vh;
   overflow: auto;
+  padding: 2rem;
 }
 
 .roundButtonsSide.active button {
@@ -255,4 +279,13 @@
   to {
     right: -50%;
   }
+}
+
+@media only screen and (min-width: 1000px){
+    /*Big smartphones [426px -> 600px]*/
+    #wrapper {
+        padding: 0 1.5rem;
+        /* margin: 0 auto; */
+        /* width: 45%; */
+    }
 }

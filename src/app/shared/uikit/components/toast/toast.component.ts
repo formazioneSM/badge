@@ -46,7 +46,8 @@ export class ToastComponent implements OnInit {
   }
 
   noDelete() {
-    this.noDeletePost.emit(this.toastService.post);
+    debugger
+     this.noDeletePost.emit(this.toastService.post);
     // this.bachecaService.undoDeletedPost();
     // console.log('click undo');
   }

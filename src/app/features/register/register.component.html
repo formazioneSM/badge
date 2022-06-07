@@ -5,7 +5,7 @@
   </div>
 
 
-  <div [ngSwitch]="errorNumber">
+  <!-- <div [ngSwitch]="errorNumber">
     <div class="error-message" *ngSwitchCase="'409'">
       <i class="fa-solid fa-triangle-exclamation"></i> La mail che hai inserito é gia registrata.
     </div>
@@ -17,7 +17,7 @@
     <div class="ok-message">
       <i class="fa-regular fa-circle-check"></i> Controlla la mail per attivare la registrazione.
     </div>
-  </div>
+  </div> -->
 
 
 
@@ -83,6 +83,6 @@
         </app-button>
       </div>
     </form>
-    <p id="login">Hai già un account?<a [routerLink]="['/login']">Accedi</a></p>
+    <p id="go-to-login">Hai già un account?<a [routerLink]="['/login']">Accedi</a></p>
   </div>
 </div>

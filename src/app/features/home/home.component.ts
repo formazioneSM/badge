@@ -15,6 +15,7 @@ export class HomeComponent implements OnInit {
   actualScroll: number | undefined;
   scroll:boolean = false;
   // admin:boolean = true;
+  user = true;
 
 
   constructor(private _scrollService: ScrollService,public permissions:NgxPermissionsService, private router:Router, 
@@ -57,8 +58,6 @@ get username(){
 //   // this.toastService.inputMethod() // sacro ! 
 
 // }
- goToProfile(){
-  this.router.navigate(['../profilo'])
- }
+
 
 }

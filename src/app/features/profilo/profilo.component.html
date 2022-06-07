@@ -1,10 +1,30 @@
 <div id="container">
-    <div id="head">
-        <img class="back"  src="assets/images/chevron_left.png" (click)="goBack()">
-        <p id="title">Profilo</p>
-        <img id="impostazioni" src="assets/images/impostazioni.png" [routerLink]="'/impostazioni'" >
+  <div id="head">
+    <img class="back" src="assets/images/chevron_left.png" (click)="goBack()" />
+    <p id="title">Profilo</p>
+    <img
+      id="impostazioni"
+      src="assets/images/impostazioni.png"
+      [routerLink]="'/impostazioni'"
+    />
+  </div>
+  <div id="cardProfile">
+    <div id="parteLogo">
+      <img src="assets/images/logo_intero.png" />
     </div>
-    <div id="cardProfile">
-
+    <div id="containerImg">
+      <div id="editProfileImg">
+        <img src="assets/images/edit.png" />
+      </div>
+      <div id="profile">
+        <img src="assets/images/profile_without_border.png" />
+      </div>
     </div>
+    <div id="identity">
+      <p>
+        <b>Lorenzo</b><br />
+        Gravina<br /><span>ID 666</span>
+      </p>
+    </div>
+  </div>
 </div>
