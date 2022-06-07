@@ -1,5 +1,14 @@
-<div class="cards" *ngFor="let c of convenzioni">
-    <app-card class="card" title="{{c.titolo}}"
-        text="{{c.text}}" [link]="c.url"
-        textLink="{{c.titoloLink}}"></app-card>
+<div *ngIf="!loading" class="cards">
+  <app-card
+    *ngFor="let c of this.convenzioniService.convenzioni"
+    class="card"
+    title="{{ c.titolo }}"
+    text="{{ c.text }}"
+    [link]="c.url"
+    textLink="{{ c.titoloLink }}"
+  ></app-card>
+</div>
+
+<div *ngIf="loading" class="cards">
+  <app-gradient-loader *ngFor="let c of this.convenzioniService.convenzioni"></app-gradient-loader>
 </div>

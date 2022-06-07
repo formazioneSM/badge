@@ -56,12 +56,13 @@ input:focus, textarea:focus {
     height: inherit;
 }
 
-input.ng-invalid.ng-touched {
+input.ng-invalid.ng-touched  {
     border: 1px solid #EB5757;
 }
-
+input.ng-untouched.ng-pristine.ng-invalid{
+    border: 1px solid #EB5757;
+}
 .icon-container {
-    /* opacity: 0.3; */
     position: absolute;
     bottom: 15px;
     left: 90%;
