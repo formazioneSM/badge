@@ -12,4 +12,5 @@ export interface Post{
     "text"?: string,
     "from"?: string,
     "_id"?: string,
+    "__v"?: string,
 }
