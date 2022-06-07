@@ -19,7 +19,7 @@ export class AppComponent implements OnInit {
     private router: Router,
     private authService: AuthService,
     private bachecaService: BachecaService
-  ) {}
+  ) { }
 
   isAdminOrUser(token: any) {
     this.permissions.loadPermissions(token.admin ? ['ADMIN'] : ['USER']);
@@ -37,8 +37,10 @@ export class AppComponent implements OnInit {
 
   undoAction(post: Post) {
     switch (this.router.url) {
-      case '/home/bacheca':
+      case '/home/bacheca': {
         this.bachecaService.undoDeletedPost(post);
+        break;
+      }
     }
   }
 }

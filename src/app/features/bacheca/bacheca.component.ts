@@ -45,7 +45,7 @@ export class BachecaComponent implements OnInit {
     // this.bachecaService.index = index;
     // this.bachecaService.postUndo = this.posts[index];
     this.posts.splice(index, 1);
-    this.toastService.setMessage(toastMessages.contentDeletedSuccessfully);
+    // this.toastService.setMessage(toastMessages.contentDeletedSuccessfully);
     this.toastService.setPost(this.posts[index]);
     // Delete su backend
     this.bachecaService.deletePost(postId).subscribe((res: any) => {
