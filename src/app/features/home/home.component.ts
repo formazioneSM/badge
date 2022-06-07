@@ -57,8 +57,6 @@ get username(){
 //   // this.toastService.inputMethod() // sacro ! 
 
 // }
- goToProfile(){
-  this.router.navigate(['../profilo'])
- }
+
 
 }
