@@ -1,5 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Hind+Madurai&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Hind+Madurai&display=swap");
 
 /* #header {
     display: flex;
@@ -111,113 +111,107 @@
     to{right: -50%;}
 } */
 
-
 #header {
-    display: flex;
-    flex-direction: row;
-    margin-left: 27px;
-    margin-top: 36.5px;
-    font-family: 'Montserrat';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 21px;
-    line-height: 26px;
-    color: var(--bg-primary-color);
-    width: 85vw;
-    
-
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+  margin-top: 36.5px;
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 21px;
+  line-height: 26px;
+  color: var(--bg-primary-color);
+  /* width: 85vw; */
 }
 
 #imgHello {
-    width: 33px;
-    height: 33px;
-    margin-right: 20px;
+  width: 33px;
+  height: 33px;
+  margin-right: 20px;
 }
 
 #hello {
-    margin-top: 10px;
+  margin-top: 5px;
 }
 
 .roundButtons {
-    display: flex;
-    flex-direction: row;
-    margin-left: 27px;
-    margin-top: 10px;
-    font-family: 'Hind Madurai';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 13px;
-    line-height: 18px;
-    text-align: center;
-    height: 15vh;
-
-
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+  margin-top: 10px;
+  font-family: "Hind Madurai";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 18px;
+  text-align: center;
+  padding: 2rem 0 3rem 0;
+  width: 100%;
 }
 
 .button {
-    margin-right: 25px;
-    width: 54px;
-    height: 54px;
-
+  margin-right: 18px;
+  width: 54px;
+  height: 54px;
 }
 
 .active {
-    background-color: var(--bg-primary-color) !important;
-    background: var(--bg-primary-color) !important;
-    width: 54px;
-    height: 54px;
-    border-radius: 50%;
-    font-weight: 500;
-
+  background-color: var(--bg-primary-color) !important;
+  background: var(--bg-primary-color) !important;
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  font-weight: 500;
 }
 
 #wrapper {
-    height: 100vh;
-    overflow: auto;
-
+  height: 100vh;
+  overflow: auto;
 }
 
 .roundButtonsSide.active button {
-    background-color: var(--bg-primary-color) !important;
+  background-color: var(--bg-primary-color) !important;
 }
 
 .roundButtonsSide {
-    display: flex;
-    flex-direction: column !important;
-    margin-left: 27px;
-    position: fixed !important;
-    margin-top: 10px;
-    text-align: center;
-    z-index: 10;
-    right:-50%;
-    align-items: center !important;
-    height: 100vh;
-    background-color: transparent !important;
-    top: 0;
-    justify-content: center;
-    height: 100vh;
-
+  display: flex;
+  flex-direction: column !important;
+  margin-left: 27px;
+  position: fixed !important;
+  margin-top: 10px;
+  text-align: center;
+  z-index: 10;
+  right: -50%;
+  align-items: center !important;
+  height: 100vh;
+  background-color: transparent !important;
+  top: 0;
+  justify-content: center;
+  height: 100vh;
 }
-.startAnimation{
-    right: 0;
-    animation-name: transizioneMargin;
-    animation-duration: .3s;
-
+.startAnimation {
+  right: 0;
+  animation-name: transizioneMargin;
+  animation-duration: 0.3s;
 }
-.endAnimation{
-    right: -50%;
-    animation-name: prova;
-    animation-duration: .3s;
-
+.endAnimation {
+  right: -50%;
+  animation-name: prova;
+  animation-duration: 0.3s;
 }
 
 .buttonScroll {
-    width: 54px;
-    height: 54px;
-    margin-right: 10px;
-    margin-bottom: 10px;
-    border-radius: 50%;
-    background: white;
+  width: 54px;
+  height: 54px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  border-radius: 50%;
+  background: white;
 }
 
 .backArrow {
@@ -228,24 +222,37 @@
   margin-bottom: 14px;
 }
 
-.endAnimation{
-    animation-name:prova;
-    animation-duration: 1s;
-} 
-
-#profile{
-    border-radius: 50%;
-    width: 29px;
-    height: 29px;
-    margin-left: auto;
-    margin-top: 7px;
+.endAnimation {
+  animation-name: prova;
+  animation-duration: 1s;
 }
 
-@keyframes transizioneMargin{
-    from {right:-50%;}
-    to{right: 0;}
+#profile {
+  border-radius: 50%;
+  /* width: 29px; */
+  /* height: 29px; */
+  width: 2rem;
+  /* margin: 0 auto; */
+  /* margin-top: 7px; */
 }
-@keyframes prova{
-    from {right:0;}
-    to{right: -50%;}
+
+#welcome-wrapper {
+    display: flex;
+}
+
+@keyframes transizioneMargin {
+  from {
+    right: -50%;
+  }
+  to {
+    right: 0;
+  }
+}
+@keyframes prova {
+  from {
+    right: 0;
+  }
+  to {
+    right: -50%;
+  }
 }

@@ -1,5 +1,5 @@
 #container {
-    width: 100vw;
+    /* width: 100vw; */
     display: flex;
     flex-direction: column;
     padding-right: 20px;
@@ -37,7 +37,7 @@
 }
 
 #cardProfile {
-    width: 90vw;
+    /* width: 90vw; */
     height: 509px;
     background: linear-gradient(180deg, #FFFFFF 0%, #FFFFFF 100%);
     box-shadow: 0px 8px 40px rgba(0, 0, 0, 0.15), inset 0px -5px 0px rgba(0, 0, 0, 0.1);

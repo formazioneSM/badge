@@ -2,14 +2,14 @@
 
 
 #container {
-    margin-left: 28px;
+    margin: 0 auto;
     margin-top: 22px;
 }
 
 .buttonLink {
     display: flex;
     flex-direction: column;
-    width: 83vw;
+    /* width: 83vw; */
     height: 62px;
     justify-content: center;
     margin-bottom: 18px;

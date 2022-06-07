@@ -3,12 +3,3 @@
   bottom: 20px;
   right: 40px;
 }
-
-
-@media only screen and (min-width: 1000px){
-    /*Big smartphones [426px -> 600px]*/
-    body {
-        margin: 0 auto;
-        width: 50%;
-    }
-}

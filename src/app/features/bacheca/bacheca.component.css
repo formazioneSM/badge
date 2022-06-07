@@ -1,24 +1,22 @@
 .cards {
-    display: flex;
-    flex-direction: column;
-    margin-left: 27px;
-    width: 75vw;
-    height: auto;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  /* width: 75vw; */
+  height: auto;
 }
 
 .card {
-    margin-bottom: 15px;
+  margin-bottom: 1.5rem;
 }
 
 #toast {
-    position: absolute;
-    bottom: 0;
-    width: 88vw;
-    height: 62px;
-    background: #FFFFFF;
-    border: 1px solid #C6D1E4;
-    border-radius: 10px;
-    margin-left: 20px;
-
+  position: absolute;
+  bottom: 0;
+  /* width: 88vw; */
+  height: 62px;
+  background: #ffffff;
+  border: 1px solid #c6d1e4;
+  border-radius: 10px;
+  margin: 0 auto;
 }
-
