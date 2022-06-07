@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ToastService } from '../toast.service';
 import { toastMessages } from 'src/app/shared/utils/constants';
+import { Post } from '../../../utils/interfaces';
 @Injectable({
   providedIn: 'root',
 })
@@ -11,40 +12,32 @@ export class BachecaService {
   index!: number;
   postUndo: any;
 
-  createNewPost(color: string, text: string, from: string) {
+  createNewPost(post: Post) {
     this.toastService.setMessage(toastMessages.contentCreatedSuccessfully);
-    return this.http.post(`https://be-system.herokuapp.com/api/bacheca`, {
-      color: color,
-      text: text,
-      from: from,
-    });
+    return this.http.post(`https://be-system.herokuapp.com/api/bacheca`, post);
   }
+
+
   getPost(postId: number | string) {
     return this.http.get(
       `https://be-system.herokuapp.com/api/bacheca/${postId}`
     );
   }
-  undoDeletedPost() {
-    this.createNewPost(
-      this.postUndo.color,
-      this.postUndo.text,
-      this.postUndo.from
-    ).subscribe((res) => {
-      if (res) {
-        this.posts.splice(this.index, 0, res);
-      }
-    });
-    this.toastService.isVisibleUndo = false;
-    this.toastService.setMessage(toastMessages.contentUndoSuccessfully);
+
+  undoDeletedPost(post: Post) {
+    this.createNewPost(post);
   }
+
   getAllPosts() {
     return this.http.get(`https://be-system.herokuapp.com/api/bacheca/all`);
   }
+
   deletePost(postId: number | string) {
     return this.http.delete(
       `https://be-system.herokuapp.com/api/bacheca/${postId}`
     );
   }
+
   editPost(postId: number | string, color: string, text: string, from: string) {
     return this.http.put(
       `https://be-system.herokuapp.com/api/bacheca/${postId}`,
@@ -55,11 +48,8 @@ export class BachecaService {
       }
     );
   }
-  
-  loadPosts() {
-    this.getAllPosts().subscribe((posts) => {
-      this.posts = posts;
-      console.log(this.posts);
-    });
-  }
+
+//   loadPosts() {
+//     return this.getAllPosts();
+//   }
 }

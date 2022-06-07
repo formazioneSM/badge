@@ -4,6 +4,7 @@ import { ToastService } from '../../services/toast.service';
 import { timer } from 'rxjs';
 import { BachecaService } from '../../services/bacheca/bacheca.service';
 
+
 @Component({
   selector: 'app-toast',
   templateUrl: './toast.component.html',
@@ -13,6 +14,7 @@ export class ToastComponent implements OnInit {
   @Input('icon') icon: string | undefined;
   @Input('text') text: any;
   @Output('noDeletePost') noDeletePost = new EventEmitter();
+
   isVisible: boolean = false;
   constructor(
     public toastService: ToastService,
@@ -42,10 +44,11 @@ export class ToastComponent implements OnInit {
       }
     });
   }
-  noDelete(e: any) {
-    this.noDeletePost.emit(e);
-    this.bachecaService.undoDeletedPost();
-    console.log('click undo');
+
+  noDelete() {
+    this.noDeletePost.emit(this.toastService.post);
+    // this.bachecaService.undoDeletedPost();
+    // console.log('click undo');
   }
   //   hideToast() {
   //       this.isVisible = !this.isVisible;

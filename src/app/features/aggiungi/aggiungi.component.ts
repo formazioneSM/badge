@@ -18,7 +18,6 @@ import { LinkService } from 'src/app/shared/uikit/services/link/link.service';
   styleUrls: ['./aggiungi.component.css'],
 })
 export class AggiungiComponent implements OnInit {
-
   newConvenzione: any = [];
   bgcolor = colorDefault;
   formAddBacheca: FormGroup = {} as FormGroup;
@@ -58,7 +57,7 @@ export class AggiungiComponent implements OnInit {
     private _fb: FormBuilder,
     private bachecaService: BachecaService,
     private convenzioniService: ConvenzioniService,
-    private linkService:LinkService
+    private linkService: LinkService
   ) {}
   preventDef(e: any) {
     e.stopPropagation();
@@ -127,28 +126,36 @@ export class AggiungiComponent implements OnInit {
   }
 
   addLink(formAddLink: FormGroup) {
-    console.log("nome link: "+formAddLink.value.nomeLink+" link: "+formAddLink.value.link );
-    this.linkService.addLink(formAddLink.value.nomeLink,formAddLink.value.link).subscribe((res)=>console.log(res))
+    console.log(
+      'nome link: ' +
+        formAddLink.value.nomeLink +
+        ' link: ' +
+        formAddLink.value.link
+    );
+    this.linkService
+      .addLink(formAddLink.value.nomeLink, formAddLink.value.link)
+      .subscribe((res) => console.log(res));
   }
 
   addConvenzione(formAddConvenzioni: FormGroup) {
-   this.convenzioniService.addNewConvenzione(
-    this.formAddConvenzioni.value.titolo,
-    this.formAddConvenzioni.value.contenuto,
-    this.formAddConvenzioni.value.titoloLink,
-    this.formAddConvenzioni.value.url,
-
-   ).subscribe(c => {
-     this.newConvenzione.push(c)
-     this._router.navigate(['home/convenzioni']);
-   })
+    this.convenzioniService
+      .addNewConvenzione(
+        this.formAddConvenzioni.value.titolo,
+        this.formAddConvenzioni.value.contenuto,
+        this.formAddConvenzioni.value.titoloLink,
+        this.formAddConvenzioni.value.url
+      )
+      .subscribe((c) => {
+        this.newConvenzione.push(c);
+        this._router.navigate(['home/convenzioni']);
+      });
   }
 
   esc() {
     this._router.navigate(['home/bacheca']);
   }
-  backStepOne(){
-   this.stepOne = true;
+  backStepOne() {
+    this.stepOne = true;
   }
 
   goToSecondStep(typeOfPost: any) {
@@ -177,23 +184,21 @@ export class AggiungiComponent implements OnInit {
       }
     });
   }
- 
-  changeColorTextarea(c: any){
-    this.bgcolor = c.color
+
+  changeColorTextarea(c: any) {
+    this.bgcolor = c.color;
     c.selected = true;
   }
 
-
   onPostSubmit() {
-    this.bachecaService
-      .createNewPost(
-        this.bgcolor,
-        this.formAddBacheca.value.contenutoBacheca,
-        this.formAddBacheca.value.radio
-      )
-      .subscribe((err: any) => {
-        console.log(err);
-      });
+    let post = {
+      color: this.bgcolor,
+      text: this.formAddBacheca.value.contenutoBacheca,
+      from: this.formAddBacheca.value.radio,
+    };
+    this.bachecaService.createNewPost(post).subscribe((err: any) => {
+      console.log(err);
+    });
     this._router.navigate(['home/bacheca']);
   }
 }
