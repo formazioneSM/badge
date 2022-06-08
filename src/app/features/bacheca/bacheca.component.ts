@@ -17,7 +17,7 @@ export class BachecaComponent implements OnInit {
   card: boolean = true;
   loading = false;
   posts: Post[] = [];
-  
+//   placeholderArray = [];
   //   isPostLoading = false;
 
   constructor(
