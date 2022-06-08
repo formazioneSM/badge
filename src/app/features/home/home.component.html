@@ -9,9 +9,9 @@
     <!-- <a (click)="OnClickLogOut() " >vuoi fare log Out? cliccami!</a>  -->
     <!-- just for testing  -->
 
-    <img
+    <img *ngIf="user"
       id="profile"
-      src="assets/images/profile.png"
+      src="{{user.img}}"
       [routerLink]="'../profilo'"
     />
   </div>

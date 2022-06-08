@@ -6,3 +6,5 @@ export const toastMessages = {
     contentUndoSuccessfully:'Contenuto ripristinato con successo!',
     contentDeletedSuccessfully:'Contenuto rimosso con successo!'
 };
+
+export const temi = ['assets/images/tema1.png', 'assets/images/tema2.png', 'assets/images/tema3.png', 'assets/images/tema4.png']

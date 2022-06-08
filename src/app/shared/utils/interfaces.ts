@@ -4,7 +4,9 @@ export interface LoginResponse{
     "id": string,
     "name": string,
     "surname": string,
-    "iat": number
+    "iat": number,
+    "img":string,
+    "badge": string
 }
 
 export interface Post{
