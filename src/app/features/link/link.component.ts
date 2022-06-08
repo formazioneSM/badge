@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LinkService } from 'src/app/shared/uikit/services/link/link.service';
 import { NgxPermissionsService } from 'ngx-permissions';
+import { LoaderService } from 'src/app/shared/uikit/services/loader/loader.service';
 
 @Component({
   selector: 'app-link',
@@ -8,9 +9,13 @@ import { NgxPermissionsService } from 'ngx-permissions';
   styleUrls: ['./link.component.css']
 })
 export class LinkComponent implements OnInit {
+    loading = false;
   links!:any
 
-  constructor(private linkService:LinkService,private permissionsService: NgxPermissionsService) { }
+  constructor(private linkService:LinkService,private permissionsService: NgxPermissionsService, public loaderService: LoaderService) { this.loaderService.isLoading.subscribe((v) => {
+    console.log(v);
+    this.loading = v;
+  }); }
 
   ngOnInit(): void {
     this.linkService.loadAllLinks().subscribe((res)=>{this.links=res;console.log(this.links)})

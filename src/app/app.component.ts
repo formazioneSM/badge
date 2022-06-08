@@ -1,15 +1,19 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ChildrenOutletContexts, Router } from '@angular/router';
 import jwtDecode from 'jwt-decode';
 import { NgxPermissionsService } from 'ngx-permissions';
 import { AuthService } from './shared/uikit/services/auth/auth.service';
 import { BachecaService } from './shared/uikit/services/bacheca/bacheca.service';
+import { slideInAnimation } from './shared/utils/animation';
 import { Post } from './shared/utils/interfaces';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
+  animations: [
+      slideInAnimation
+  ]
 })
 export class AppComponent implements OnInit {
   title = 'badgeverso';
@@ -18,7 +22,7 @@ export class AppComponent implements OnInit {
     public permissions: NgxPermissionsService,
     private router: Router,
     private authService: AuthService,
-    private bachecaService: BachecaService
+    private bachecaService: BachecaService, private contexts: ChildrenOutletContexts
   ) { }
 
   isAdminOrUser(token: any) {
@@ -42,5 +46,9 @@ export class AppComponent implements OnInit {
         break;
       }
     }
+  }
+
+  getRouteAnimationData() {
+      return this.contexts.getContext('primary')?.route?.snapshot?.data?.['animation'];
   }
 }

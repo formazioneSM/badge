@@ -1,15 +1,30 @@
 <div id="container">
-    <div *ngFor="let link of links" >
-        <!-- <div>{{link.text}} {{link.url}}</div> -->
-        <div id="deleteIcon" *ngxPermissionsOnly="['ADMIN']" (click)="clicked(link._id)">
-           
-            <!-- aggiungere ngx permission -->
-            <img alt="cestino" src="../../../assets/images/cestino.png">
-        </div>
-        <a [href]="'http://'+link.url">
-            <app-button class="buttonLink" [typeButton]="'button'"  [textButton]="link.text"></app-button></a>
+  <div *ngIf="!loading">
+    <div *ngFor="let link of links">
+      <!-- <div>{{link.text}} {{link.url}}</div> -->
+      <div
+        id="deleteIcon"
+        *ngxPermissionsOnly="['ADMIN']"
+        (click)="clicked(link._id)"
+      >
+        <!-- aggiungere ngx permission -->
+        <img alt="cestino" src="../../../assets/images/cestino.png" />
+      </div>
+      <a [href]="'http://' + link.url">
+        <app-button
+          class="buttonLink"
+          [typeButton]="'button'"
+          [textButton]="link.text"
+        ></app-button
+      ></a>
     </div>
-    <!-- <app-button class="buttonLink"[typeButton]="'button'" [textButton]="'Giba'"></app-button>
+  </div>
+  <!-- <app-button class="buttonLink"[typeButton]="'button'" [textButton]="'Giba'"></app-button>
     <app-button class="buttonLink" [typeButton]="'button'" [textButton]="'Wiki aziendale'"></app-button>
     <app-button class="buttonLink" [typeButton]="'button'" [textButton]="'Guideline Brand SM'"></app-button> -->
+  <div *ngIf="loading" class="cards">
+    <app-gradient-loader
+      *ngFor="let l of [].constructor(4)"
+    ></app-gradient-loader>
+  </div>
 </div>

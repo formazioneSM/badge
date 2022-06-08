@@ -12,7 +12,7 @@
       <div id="editProfileImg" (click)="trigger()">
         <img src="assets/images/edit.png" />
       </div>
-      <div id="profile" [ngStyle]="{'background': 'url(' + user.img + ')', 'background-size': '100%'}" (click)="trigger()">
+      <div id="profile" [ngStyle]="{'background': 'url(' + imgUser + ')', 'background-size': '100%'}" (click)="trigger()">
 
         <input class="file-input" type="file" (change)="onFileSelected($event)"  #fileUpload  >
 

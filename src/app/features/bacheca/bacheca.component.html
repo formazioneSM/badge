@@ -8,7 +8,8 @@
     <app-card class="card" [background]="'#FEE979'" [text]="'Password wifi 11° Piano sys11@meraki13'"></app-card>
     <app-card class="card" [background]="'#FEE979'" [text]="'Password wifi 11° Piano sys11@meraki13'"></app-card>
     <app-card class="card" [background]="'#FEE979'" [text]="'Password wifi 11° Piano sys11@meraki13'"></app-card> -->
-  <app-card
+    
+    <app-card
     *ngFor="let post of this.posts"
     class="card"
     background="{{ post.color }}"
@@ -16,14 +17,13 @@
     author="{{ post.from }}"
     postId="{{ post._id }}"
     (deletePost)="onPostDelete($event)"
-  >
-  </app-card>
+    >
+</app-card>
 </div>
 
 <div *ngIf="loading" class="cards">
-  <app-gradient-loader *ngFor="let p of this.posts"></app-gradient-loader>
+  <app-gradient-loader *ngFor="let p of [].constructor(4)"></app-gradient-loader>
 </div>
-
 <!-- <div *ngIf="isPostLoading == true" class="cards">
   <div
     *ngFor="let post of this.bachecaService.posts"

@@ -33,7 +33,7 @@ export class AggiungiComponent implements OnInit {
   postTypes = [
     {
       type: 'Bacheca',
-      text: 'Avvisi e informazioni, permanenti e non ,per tutti i colleghi SM.',
+      text: 'Avvisi e informazioni, permanenti e non, per tutti i colleghi SM.',
       icon: 'assets/images/bacheca.png',
       selected: false,
     },
@@ -74,20 +74,23 @@ export class AggiungiComponent implements OnInit {
     this.disabled = this.postTypes.every((p) => !p?.selected);
 
     this.formAddBacheca = this._fb.group({
-      contenutoBacheca: ['', Validators.required],
+      contenutoBacheca: [
+        '',
+        [Validators.required, Validators.pattern(/[\S]/)],
+      ],
       radio: ['', Validators.required],
     });
 
     this.formAddLink = this._fb.group({
-      nomeLink: ['', Validators.required],
-      link: ['', Validators.required],
+      nomeLink: ['', [Validators.required, Validators.pattern(/[\S]/)]],
+      link: ['', [Validators.required, Validators.pattern(/[\S]/)]],
     });
 
     this.formAddConvenzioni = this._fb.group({
-      titolo: ['', Validators.required],
-      contenuto: ['', Validators.required],
-      titoloLink: ['', Validators.required],
-      url: ['', Validators.required],
+      titolo: ['', [Validators.required, Validators.pattern(/[\S]/)]],
+      contenuto: ['', [Validators.required, Validators.pattern(/[\S]/)]],
+      titoloLink: ['', [Validators.required, Validators.pattern(/[\S]/)]],
+      url: ['', [Validators.required, Validators.pattern(/[\S]/)]],
     });
   }
   get contenutoBacheca() {

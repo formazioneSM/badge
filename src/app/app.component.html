@@ -1,4 +1,7 @@
-<router-outlet></router-outlet>
+<app-sm-loader></app-sm-loader>
+<div [@routeAnimations]="getRouteAnimationData()">
+  <router-outlet></router-outlet>
+</div>
 <div id="appToastStyleContainer">
   <app-toast
     text="Contenuto rimosso!"
@@ -6,4 +9,3 @@
     (noDeletePost)="undoAction($event)"
   ></app-toast>
 </div>
-<app-sm-loader></app-sm-loader>
