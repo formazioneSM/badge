@@ -62,6 +62,7 @@ export class LoginComponent implements OnInit {
   // chiamata login api e gestione degli errori
   onSubmitLogin() {
     this.isLoading = true;
+    this.form.markAllAsTouched();
     console.log(this.form.value.email);
     this.authService
       .onLogin(this.form.value.email, this.form.value.password)

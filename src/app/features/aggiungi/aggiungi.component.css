@@ -1,136 +1,136 @@
-@import url('https://fonts.googleapis.com/css2?family=Hind+Madurai&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Hind+Madurai&display=swap");
 
 #add {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    
-
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
 }
 
 #head {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    margin-top: 36px;
-    width: 80vw;
-    height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 36px;
+  /* width: 80vw; */
+  height: 100%;
+  width: 100%;
+  padding-bottom: 2.5rem;
 }
 
 #title {
-    font-family: 'Hind Madurai';
-    font-style: normal;
-    font-weight: 600;
-    font-size: 21px;
-    line-height: 29px;
-    color: var(--bg-primary-color);
+  font-family: "Hind Madurai";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 21px;
+  line-height: 29px;
+  color: var(--bg-primary-color);
+}
 
+.back {
+  margin-right: 15px;
 }
-.back{
-    margin-right: 15px;
-}
+
 .close {
-    width: 20px;
-    height: 20px;
-    margin-left: auto;
-
+  width: 20px;
+  height: 20px;
 }
 
 .subtitle {
-    font-family: 'Hind Madurai';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 21px;
-    line-height: 29px;
-    color: var(--bg-primary-color);
+  font-family: "Hind Madurai";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 21px;
+  line-height: 29px;
+  color: var(--bg-primary-color);
+  padding-bottom: 2rem;
 }
 
 .steps {
-    width: 80vw;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
+  /* width: 80vw; */
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .scelta {
-    margin-bottom: 20px;
-
+  margin-bottom: 20px;
 }
 
 .textarea {
-    width: 100%;
-    border: none;
-    position: relative;
-    
+  width: 100%;
+  border: none;
+  position: relative;
 }
 
-#containerColorPicker{
-   
-    right: 0;
-    bottom: 0;
-    margin: auto 27px 27px auto;
+#containerColorPicker {
+  right: 0;
+  bottom: 0;
+  margin: auto 27px 27px auto;
 }
 
 .btn {
-    width: 100%;
-    height: 62px;
-    display: flex;
-    justify-content: center;
-    margin-top: 27px;
-
+  width: 100%;
+  height: 62px;
+  display: flex;
+  justify-content: center;
+  margin-top: 27px;
 }
 
 form {
-    width: 80vw;
-    height: 100%;
-
+  /* width: 80vw; */
+  width: 100%;
+  height: 100%;
 }
-.customRadio{
-    position: relative;
-    width: 100%;
-    height: 50px;
-    margin-bottom: 13px;
-    border: 1px solid #C6D1E4; 
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    padding: 20px;
-    box-sizing: border-box;
+.customRadio {
+  position: relative;
+  width: 100%;
+  height: 50px;
+  margin-bottom: 13px;
+  border: 1px solid #c6d1e4;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  box-sizing: border-box;
 }
-.hiddenRadio{
-    position: absolute;
-    visibility: hidden;
+.hiddenRadio {
+  position: absolute;
+  visibility: hidden;
 }
 .active {
-    background-color: var(--bg-primary-color)!important;
-    color: var(--primary-color)!important;
+  background-color: var(--bg-primary-color) !important;
+  color: var(--primary-color) !important;
 }
 
 #label {
-    font-family: 'Hind Madurai';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 22px;
-    margin-top: 20px;
-    margin-bottom: 13px;
+  font-family: "Hind Madurai";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 22px;
+  margin-top: 20px;
+  margin-bottom: 13px;
 }
 
 .buttonPubblicazione {
-    width: 100%;
-    height: 54px;
-    margin-top: 38px;
+  width: 100%;
+  height: 54px;
+  margin-top: 38px;
 }
 
 .marginInput {
-    margin-bottom: 18px;
+  margin-bottom: 18px;
 }
 
 .validation {
-    font-family: 'Hind Madurai';
-    font-style: normal;
-    color: red;
-    font-weight: bold;
+  font-family: "Hind Madurai";
+  font-style: normal;
+  color: red;
+  font-weight: bold;
+}
 
+#page-title-wrapper {
+    display: flex;
+    align-items: center;
 }

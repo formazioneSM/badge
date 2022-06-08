@@ -9,7 +9,7 @@
     <app-card class="card" [background]="'#FEE979'" [text]="'Password wifi 11° Piano sys11@meraki13'"></app-card>
     <app-card class="card" [background]="'#FEE979'" [text]="'Password wifi 11° Piano sys11@meraki13'"></app-card> -->
   <app-card
-    *ngFor="let post of this.bachecaService.posts"
+    *ngFor="let post of this.posts"
     class="card"
     background="{{ post.color }}"
     text="{{ post.text }}"
@@ -21,7 +21,7 @@
 </div>
 
 <div *ngIf="loading" class="cards">
-  <app-gradient-loader *ngFor="let p of this.bachecaService.posts"></app-gradient-loader>
+  <app-gradient-loader *ngFor="let p of this.posts"></app-gradient-loader>
 </div>
 
 <!-- <div *ngIf="isPostLoading == true" class="cards">

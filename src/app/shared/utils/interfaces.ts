@@ -6,3 +6,11 @@ export interface LoginResponse{
     "surname": string,
     "iat": number
 }
+
+export interface Post{
+    "color"?: string,
+    "text"?: string,
+    "from"?: string,
+    "_id"?: string,
+    "__v"?: string,
+}

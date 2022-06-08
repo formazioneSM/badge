@@ -1,22 +1,27 @@
-<div id="container" [ngStyle]="{'background': background ?? ' #F0F0F0' }">
-    <div *ngIf="!isClicked">
-        <div id="deleteIcon" *ngxPermissionsOnly="['ADMIN']" (click)="clicked()">
-            <img src="assets/images/cestino.png">
-        </div>
+<div id="container" [ngStyle]="{ background: background ?? ' #F0F0F0' }">
+  <div *ngIf="!isClicked" id="wrapper">
+    <div>
+      <div id="deleteIcon" *ngxPermissionsOnly="['ADMIN']" (click)="clicked()">
+        <img src="assets/images/cestino.png" />
+      </div>
 
-        <h5 id="title"><b>{{title}}</b></h5>
-        <p id="text">{{text}}</p>
+      <h5 id="title">
+        <b>{{ title }}</b>
+      </h5>
+    </div>
+    <div id="text-wrapper">
+      <p id="text">{{ text }}</p>
+    </div>
+    <span id="author">{{ author }}</span>
+    <a href="{{ link }}" id="link">{{ textLink }}</a>
 
-        <span id="author">{{author}}</span>
-        <a href="{{link}}" id="link">{{textLink}}</a>
-
-        <!-- <div id="copy" *ngIf="copy">
+    <!-- <div id="copy" *ngIf="copy">
             <img src="assets/images/copy.png">
         </div> -->
-    </div>
-    <div *ngIf="isClicked" id="deleteContainer">
-        <p class="deleteText"><b>Vuoi eliminare questo elemento?</b></p>
-        <button id="back" (click)="back()">Indietro</button>
-        <button id="delete" (click)="delete()">ELIMINA</button>
-    </div>
+  </div>
+  <div *ngIf="isClicked" id="deleteContainer">
+    <p class="deleteText"><b>Vuoi eliminare questo elemento?</b></p>
+    <button id="back" (click)="back()">Indietro</button>
+    <button id="delete" (click)="delete()">ELIMINA</button>
+  </div>
 </div>
