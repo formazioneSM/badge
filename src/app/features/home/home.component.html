@@ -29,6 +29,7 @@
         [background]="'#D8E3F8'"
       ></app-round-button>
     </div>
+    
     <app-round-button
       routerLinkActive="active"
       [routerLink]="'bacheca'"
@@ -56,6 +57,16 @@
       [border]="' 1px solid var(--bg-primary-color)'"
       [background]="'transparent'"
     ></app-round-button>
+    <div class="button invisible" *ngxPermissionsOnly="['USER']">
+        <!-- *ngxPermissionsOnly="['ADMIN']" -->
+        <app-round-button
+          [routerLink]="''"
+          [image]="''"
+          [text]="''"
+          [border]="'none'"
+          [background]="'transparent'"
+        ></app-round-button>
+      </div>
   </div>
 
   <div

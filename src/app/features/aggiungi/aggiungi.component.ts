@@ -33,7 +33,7 @@ export class AggiungiComponent implements OnInit {
   postTypes = [
     {
       type: 'Bacheca',
-      text: 'Avvisi e informazioni, permanenti e non ,per tutti i colleghi SM.',
+      text: 'Avvisi e informazioni, permanenti e non, per tutti i colleghi SM.',
       icon: 'assets/images/bacheca.png',
       selected: false,
     },

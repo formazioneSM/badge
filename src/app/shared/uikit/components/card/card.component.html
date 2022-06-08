@@ -20,8 +20,10 @@
         </div> -->
   </div>
   <div *ngIf="isClicked" id="deleteContainer">
-    <p class="deleteText"><b>Vuoi eliminare questo elemento?</b></p>
-    <button id="back" (click)="back()">Indietro</button>
-    <button id="delete" (click)="delete()">ELIMINA</button>
+    <p class="deleteText"><b>Vuoi eliminare questo contenuto?</b></p>
+    <div id="delete-buttons">
+      <button id="back" (click)="back()">Indietro</button>
+      <button id="delete" (click)="delete()">ELIMINA</button>
+    </div>
   </div>
 </div>

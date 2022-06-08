@@ -140,7 +140,7 @@
 .roundButtons{
   display: flex;
   flex-direction: row;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: center;
   margin: 0 auto;
   margin-top: 10px;
@@ -154,34 +154,21 @@
   width: 100%;
 }
 
-/* .roundButtons.user{
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: center;
-    margin: 0 auto;
-    margin-top: 10px;
-    font-family: "Hind Madurai";
-    font-style: normal;
-    font-weight: 400;
-    font-size: 13px;
-    line-height: 18px;
-    text-align: center;
-    padding: 2rem 0 3rem 0;
-    width: 100%;
-  } */
-
 .button {
-  margin-right: 18px;
+  /* margin-right: 18px; */
   width: 54px;
   height: 54px;
   /* padding-right: 2rem; */
 
 }
 
-.roundButtons > * {
-    margin-right: 2rem;
+.button.invisible {
+    pointer-events: none;
 }
+
+/* .roundButtons > * {
+    margin-right: 2rem;
+} */
 
 .active {
   background-color: var(--bg-primary-color) !important;

@@ -23,6 +23,7 @@
 #position {
     display: flex;
     padding: 15px 5px 10px 30px;
+    min-height: 88px;
 }
 
 .title {
