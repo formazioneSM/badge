@@ -4,9 +4,9 @@ import { NgxPermissionsService } from 'ngx-permissions';
 import { ChildrenOutletContexts, Router } from '@angular/router';
 import { AuthService } from 'src/app/shared/uikit/services/auth/auth.service';
 import { ToastService } from 'src/app/shared/uikit/services/toast.service';
-import { slideInAnimation } from 'src/app/shared/utils/animation';
 import jwtDecode from 'jwt-decode';
 import { UsersService } from 'src/app/shared/uikit/services/users/users.service';
+import { slideInAnimation } from 'src/app/shared/utils/animation';
 
 @Component({
   selector: 'app-home',
@@ -22,7 +22,9 @@ export class HomeComponent implements OnInit {
   user:any;
   decodeToken: any = '';
   imgUser: string = '';
-  defaulUserImg = 'assets/images/profile.png'
+  defaultUserImg = 'assets/images/profile.png'
+
+
 
   constructor(
     private _scrollService: ScrollService,
@@ -30,13 +32,10 @@ export class HomeComponent implements OnInit {
     private router: Router,
     private authService: AuthService,
     public toastService: ToastService,
-    private contexts: ChildrenOutletContexts
+    private contexts: ChildrenOutletContexts,
+    private userService: UsersService
   ) {
     this._scrollService.getScroll().subscribe((s) => {
-
-  constructor(private _scrollService: ScrollService,public permissions:NgxPermissionsService, private router:Router, 
-    private authService : AuthService,public toastService:ToastService, private userService: UsersService) {
-    this._scrollService.getScroll().subscribe(s => {
       this.actualScroll = s;
     });
   }
@@ -44,17 +43,17 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     // let token = this.authService.apiToken
     // this.isAdminOrUser(token)
-    console.log(this.permissions.getPermissions());
    console.log(this.permissions.getPermissions())
    let token: any = localStorage.getItem('token');
    this.decodeToken = jwtDecode(token)
    this.userService.getUser(this.decodeToken.badge).subscribe(res => {
      this.user = res;
      console.log(res)
-     this.imgUser = this.user.img !== '' ? this.user.img : this.defaulUserImg;
+     this.imgUser = this.user.img !== '' ? this.user.img : this.defaultUserImg;
    }, err => console.log(err)
    )
 
+    console.log(this.permissions.getPermissions());
   }
 
   changeScroll(e: any) {

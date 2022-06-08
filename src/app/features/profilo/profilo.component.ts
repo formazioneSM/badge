@@ -19,7 +19,7 @@ export class ProfiloComponent implements OnInit {
   user: any;
   imgUser: string = '';
   decodeToken: any = '';
-  defaulUserImg = 'assets/images/profile_without_border.png'
+  defaultUserImg = 'assets/images/profile_without_border.png'
   @ViewChild('fileUpload ') fileUpload: ElementRef | any;
 
 
@@ -34,7 +34,7 @@ export class ProfiloComponent implements OnInit {
     this.userService.getUser(this.decodeToken.badge).subscribe(res => {
       this.user = res;
       console.log(res)
-      this.imgUser = this.user.img !== '' ? this.user.img : this.defaulUserImg;
+      this.imgUser = this.user.img !== '' ? this.user.img : this.defaultUserImg;
     }, err => console.log(err)
     )
 
@@ -63,7 +63,7 @@ export class ProfiloComponent implements OnInit {
       this.fileName = file.name;
       let formData = new FormData();
       formData.append("file", file);
-      this.userService.imgFile(this.user.id, formData).subscribe((res: any) => {
+      this.userService.imgFile(this.user._id, formData).subscribe((res: any) => {
         this.imgUser = res.url
       })
 
