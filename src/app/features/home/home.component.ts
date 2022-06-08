@@ -4,6 +4,8 @@ import { NgxPermissionsService } from 'ngx-permissions';
 import {  Router } from '@angular/router';
 import { AuthService } from 'src/app/shared/uikit/services/auth/auth.service';
 import { ToastService } from 'src/app/shared/uikit/services/toast.service';
+import jwtDecode from 'jwt-decode';
+import { UsersService } from 'src/app/shared/uikit/services/users/users.service';
 
 @Component({
   selector: 'app-home',
@@ -15,11 +17,15 @@ export class HomeComponent implements OnInit {
   actualScroll: number | undefined;
   scroll:boolean = false;
   // admin:boolean = true;
-  user = true;
+  // user = true;
+  user:any;
+  decodeToken: any = '';
+  imgUser: string = '';
+  defaulUserImg = 'assets/images/profile.png'
 
 
   constructor(private _scrollService: ScrollService,public permissions:NgxPermissionsService, private router:Router, 
-    private authService : AuthService,public toastService:ToastService) {
+    private authService : AuthService,public toastService:ToastService, private userService: UsersService) {
     this._scrollService.getScroll().subscribe(s => {
       this.actualScroll = s;
     })
@@ -30,7 +36,14 @@ export class HomeComponent implements OnInit {
     // let token = this.authService.apiToken
     // this.isAdminOrUser(token)
    console.log(this.permissions.getPermissions())
-
+   let token: any = localStorage.getItem('token');
+   this.decodeToken = jwtDecode(token)
+   this.userService.getUser(this.decodeToken.badge).subscribe(res => {
+     this.user = res;
+     console.log(res)
+     this.imgUser = this.user.img !== '' ? this.user.img : this.defaulUserImg;
+   }, err => console.log(err)
+   )
 
   }
 
