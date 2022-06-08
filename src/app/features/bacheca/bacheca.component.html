@@ -8,6 +8,10 @@
     <app-card class="card" [background]="'#FEE979'" [text]="'Password wifi 11° Piano sys11@meraki13'"></app-card>
     <app-card class="card" [background]="'#FEE979'" [text]="'Password wifi 11° Piano sys11@meraki13'"></app-card>
     <app-card class="card" [background]="'#FEE979'" [text]="'Password wifi 11° Piano sys11@meraki13'"></app-card> -->
+  <div *ngIf="loading" class="cards">
+    <app-gradient-loader *ngFor="let p of this.posts"></app-gradient-loader>
+  </div>
+
   <app-card
     *ngFor="let post of this.posts"
     class="card"
@@ -18,10 +22,6 @@
     (deletePost)="onPostDelete($event)"
   >
   </app-card>
-</div>
-
-<div *ngIf="loading" class="cards">
-  <app-gradient-loader *ngFor="let p of this.posts"></app-gradient-loader>
 </div>
 
 <!-- <div *ngIf="isPostLoading == true" class="cards">

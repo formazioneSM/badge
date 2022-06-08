@@ -9,7 +9,7 @@ const routes: Routes = [
       import('./features/home/home.module').then((m) => m.HomeModule),
     canLoad: [NgxPermissionsGuard],
     data: {
-        animation: 'homePage',
+      animation: 'homePage',
       permissions: {
         only: ['ADMIN', 'USER'],
         redirectTo: 'login',
@@ -20,7 +20,7 @@ const routes: Routes = [
     path: 'login',
     loadChildren: () =>
       import('./features/login/login.module').then((m) => m.LoginModule),
-      data: { animation: 'loginPage'},
+    data: { animation: 'loginPage' },
   },
   {
     path: 'add_Content',
@@ -28,8 +28,7 @@ const routes: Routes = [
       import('./features/aggiungi/aggiungi.module').then(
         (m) => m.AddContentModule
       ),
-      data: { animation: 'addContentPage'},
-
+    data: { animation: 'addContentPage' },
   },
   {
     path: 'register',
@@ -37,8 +36,7 @@ const routes: Routes = [
       import('./features/register/register.module').then(
         (m) => m.RegisterModule
       ),
-      data: { animation: 'registerPage'},
-
+    data: { animation: 'registerPage' },
   },
   {
     path: 'passwordrecovery',
@@ -46,15 +44,13 @@ const routes: Routes = [
       import('./features/passwordrecovery/password-recovery.module').then(
         (m) => m.PasswordRecoveryModule
       ),
-      data: { animation: 'passwordrecoveryPage'},
-
+    data: { animation: 'passwordrecoveryPage' },
   },
   {
     path: 'profilo',
     loadChildren: () =>
       import('./features/profilo/profilo.module').then((m) => m.ProfiloModule),
-      data: { animation: 'profiloPage'},
-
+    data: { animation: 'profiloPage' },
   },
   {
     path: 'impostazioni',
@@ -62,8 +58,7 @@ const routes: Routes = [
       import('./features/impostazioni/impostazioni.module').then(
         (m) => m.ImpostazioniModule
       ),
-      data: { animation: 'impostazioniPage'},
-
+    data: { animation: 'impostazioniPage' },
   },
   { path: '**', redirectTo: 'home' },
 ];
