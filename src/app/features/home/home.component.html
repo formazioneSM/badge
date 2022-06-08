@@ -114,5 +114,7 @@
       (click)="backTop()"
     ></app-round-button>
   </div>
-  <router-outlet></router-outlet>
+  <div [@routeAnimations]="getRouteAnimationData()">
+    <router-outlet></router-outlet>
+  </div>
 </div>
