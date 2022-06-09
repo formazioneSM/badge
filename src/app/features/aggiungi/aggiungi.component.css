@@ -134,3 +134,6 @@ form {
     display: flex;
     align-items: center;
 }
+#convenzioni{
+  padding-bottom: 2rem;
+}

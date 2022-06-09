@@ -1,5 +1,5 @@
 <div (scroll)="changeScroll($event)" id="wrapper" #scrollToTop>
-  <div id="header">
+  <div id="header" [ngClass]="actualScroll ?? 0 > 0 ? 'paddingBottomScroll': ''">
     <div id="welcome-wrapper">
       <img id="imgHello" src="assets/images/hello.png" />
       <p id="hello">
