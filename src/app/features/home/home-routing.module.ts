@@ -37,6 +37,13 @@ const routes: Routes = [
         animation: 'aggiungiPage'
     },
   },
+  {
+    path: 'aggiungi/:id/:type',
+    component: AggiungiComponent,
+    data: {
+        animation: 'aggiungiPage'
+    },
+  },
 ];
 
 @NgModule({

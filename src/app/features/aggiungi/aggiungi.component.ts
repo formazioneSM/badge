@@ -6,8 +6,8 @@ import {
   ElementRef,
 } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
-import { colorDefault } from '../../shared/utils/constants';
+import { ActivatedRoute, Route, Router } from '@angular/router';
+import { colorDefault, types } from '../../shared/utils/constants';
 import { BachecaService } from 'src/app/shared/uikit/services/bacheca/bacheca.service';
 import { ConvenzioniService } from 'src/app/shared/uikit/services/convenzioni/convenzioni.service';
 import { LinkService } from 'src/app/shared/uikit/services/link/link.service';
@@ -18,6 +18,8 @@ import { LinkService } from 'src/app/shared/uikit/services/link/link.service';
   styleUrls: ['./aggiungi.component.css'],
 })
 export class AggiungiComponent implements OnInit {
+
+  modifica:boolean = false;
   newConvenzione: any = [];
   bgcolor = colorDefault;
   formAddBacheca: FormGroup = {} as FormGroup;
@@ -29,22 +31,22 @@ export class AggiungiComponent implements OnInit {
     { text: '@Maria Grazia Marra', value: 'maria', selected: false },
     { text: '@hr', value: 'hr', selected: false },
   ];
-
+  types=types;
   postTypes = [
     {
-      type: 'Bacheca',
+      type: this.types.BACHECA,
       text: 'Avvisi e informazioni, permanenti e non, per tutti i colleghi SM.',
       icon: 'assets/images/bacheca.png',
       selected: false,
     },
     {
-      type: 'Link',
+      type: this.types.LINK,
       text: 'Inserisci link utili e veloci che possono aiutare i colleghi.',
       icon: 'assets/images/link.png',
       selected: false,
     },
     {
-      type: 'Convenzioni',
+      type: this.types.CONVENZIONI,
       text: 'Inserisci le informazioni sulle convezioni attive!',
       icon: 'assets/images/convenzioni.png',
       selected: false,
@@ -57,7 +59,8 @@ export class AggiungiComponent implements OnInit {
     private _fb: FormBuilder,
     private bachecaService: BachecaService,
     private convenzioniService: ConvenzioniService,
-    private linkService: LinkService
+    private linkService: LinkService,
+    private route:ActivatedRoute
   ) {}
   preventDef(e: any) {
     e.stopPropagation();
@@ -92,6 +95,14 @@ export class AggiungiComponent implements OnInit {
       titoloLink: ['', [Validators.required, Validators.pattern(/[\S]/)]],
       url: ['', [Validators.required, Validators.pattern(/[\S]/)]],
     });
+
+    this.route.params.subscribe(val => {
+      let editParams = {}
+      editParams = val;      
+      this.modifica = true;
+      this.type= val['type']
+
+    } )
   }
   get contenutoBacheca() {
     return this.formAddBacheca?.get('contenutoBacheca');

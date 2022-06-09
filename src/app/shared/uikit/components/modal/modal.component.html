@@ -1,0 +1,38 @@
+<div *ngIf="modal" class="overlay" (mousedown)="visible()"></div>
+<div>
+    <div (mousedown)="visible()" id="scelta">
+        <svg width="4" height="16" viewBox="0 0 4 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M2 4C3.1 4 4 3.1 4 2C4 0.9 3.1 0 2 0C0.9 0 0 0.9 0 2C0 3.1 0.9 4 2 4Z" fill="#2E3A59" />
+            <path d="M2 6C0.9 6 0 6.9 0 8C0 9.1 0.9 10 2 10C3.1 10 4 9.1 4 8C4 6.9 3.1 6 2 6Z" fill="#2E3A59" />
+            <path d="M0 14C0 12.9 0.9 12 2 12C3.1 12 4 12.9 4 14C4 15.1 3.1 16 2 16C0.9 16 0 15.1 0 14Z"
+                fill="#2E3A59" />
+        </svg>
+    </div>
+    <div id="modal"  *ngIf="modal">
+        <div class="internalModal edit" (click)="modifica($event)">
+            <span>
+                <svg width="19" height="20" viewBox="0 0 19 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M11.9834 3.98122L0.669692 15.2949L0.424782 17.9889C0.368242 18.6109 0.889274 19.1319 1.51121 19.0754L4.20523 18.8304L15.5189 7.51675L11.9834 3.98122Z"
+                        fill="black" fill-opacity="0.75" />
+                    <path
+                        d="M16.226 6.80964L18.3474 4.68831C18.7379 4.29778 18.7379 3.66462 18.3474 3.27409L16.226 1.15277C15.8355 0.762248 15.2024 0.762248 14.8118 1.15277L12.6905 3.27411L16.226 6.80964Z"
+                        fill="black" fill-opacity="0.75" />
+                </svg>
+            </span>
+            <p>Modifica</p>
+        </div>
+        <hr>
+        <div class="internalModal delete" (click)="elimina($event)">
+            <span>
+                <svg width="18" height="21" viewBox="0 0 18 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M12 0.5H6C4.897 0.5 4 1.397 4 2.5V3.5H0V5.5H2V18.5C2 19.603 2.897 20.5 4 20.5H14C15.103 20.5 16 19.603 16 18.5V5.5H18V3.5H14V2.5C14 1.397 13.103 0.5 12 0.5ZM6 2.5H12V3.5H6V2.5ZM14 18.5H4V5.5H14V18.5Z"
+                        fill="#FF1313" />
+                </svg>
+            </span>
+            <p>Elimina</p>
+
+        </div>
+    </div>
+</div>
