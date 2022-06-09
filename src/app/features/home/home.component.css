@@ -162,6 +162,7 @@
 
 .button.invisible {
   pointer-events: none;
+  visibility: hidden;
 }
 
 /* .roundButtons > * {
