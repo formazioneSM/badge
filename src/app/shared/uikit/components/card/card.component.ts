@@ -23,6 +23,7 @@ export class CardComponent implements OnInit {
   // admin:boolean = true;
   copy:boolean=true;
   isClicked: boolean = false;
+  // showModal: boolean = false;
 
   constructor(private bachecaService: BachecaService, private toastService: ToastService) { }
 
@@ -31,6 +32,7 @@ export class CardComponent implements OnInit {
 
   clicked(){
    this.isClicked = true;
+  // this.showModal = true;
   }
 
   back(){
@@ -42,4 +44,5 @@ export class CardComponent implements OnInit {
     // this.toastService.newEvent.emit(this.postId);
     console.log(this.postId);
   }
+
 }

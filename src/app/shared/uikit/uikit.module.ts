@@ -16,6 +16,7 @@ import { NgxPermissionsModule } from 'ngx-permissions';
 import { TooltipComponent } from './components/tooltip/tooltip.component';
 import { CheckboxComponent } from './components/checkbox/checkbox.component';
 import { GradientLoaderComponent } from './components/gradient-loader/gradient-loader.component';
+import { ModalComponent } from './components/modal/modal.component';
 
 
 
@@ -35,6 +36,7 @@ import { GradientLoaderComponent } from './components/gradient-loader/gradient-l
     TooltipComponent,
     CheckboxComponent,
     GradientLoaderComponent,
+    ModalComponent,
 
   ],
   imports: [
@@ -58,6 +60,7 @@ import { GradientLoaderComponent } from './components/gradient-loader/gradient-l
     TooltipComponent,
     CheckboxComponent,
     GradientLoaderComponent,
+    ModalComponent
 
     
 

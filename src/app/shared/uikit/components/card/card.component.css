@@ -14,7 +14,7 @@
 #deleteIcon {
   position: absolute;
   right: 0;
-  width: 10%;
+
   height: 20px;
   margin-left: 12px;
   /* margin: 0 auto; */
@@ -117,8 +117,8 @@
   padding: 1rem;
 }
 
-#deleteContainer > p {
-    padding-bottom: 21px;
+#deleteContainer>p {
+  padding-bottom: 21px;
 }
 
 #wrapper {
@@ -128,12 +128,22 @@
 }
 
 #text-wrapper {
-    padding-bottom: 8px;
+  padding-bottom: 8px;
 }
 
 #delete-buttons {
-    display: flex;
-    flex-wrap: nowrap;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center;
+}
+
+
+#wrapperModal {
+  position: relative;
+
+}
+#modal{
+  position: absolute;
+  right: 5%;
 }
