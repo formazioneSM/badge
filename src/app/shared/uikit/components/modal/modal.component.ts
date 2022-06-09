@@ -7,7 +7,8 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 })
 export class ModalComponent implements OnInit {
 
-  @Output('deleteEvent') deleteEvent = new EventEmitter()
+  @Output('deleteEvent') deleteEvent = new EventEmitter();
+  @Output('editEvent') editEvent = new EventEmitter();
 
   constructor() { }
 
@@ -23,5 +24,9 @@ export class ModalComponent implements OnInit {
   elimina(e:any){
     // console.log('ciao')
     this.deleteEvent.emit(e)
+  }
+
+  modifica(e:any){
+    this.editEvent.emit(e)
   }
 }

@@ -1,4 +1,4 @@
-<div id="container" [ngStyle]="{ background: background ?? ' #F0F0F0' }">
+<div id="container" [ngStyle]="{ background: background ?? ' #F0F0F0' }" >
   <div *ngIf="!isClicked" id="wrapper">
     <div id="wrapperModal">
       <!-- <div id="deleteIcon"  >
@@ -18,7 +18,7 @@
       </h5>
     </div>
     <div id="modal" *ngxPermissionsOnly="['ADMIN']" >
-      <app-modal (deleteEvent)="clicked()"></app-modal>
+      <app-modal (deleteEvent)="clicked()" (editEvent)="editPost()"></app-modal>
     </div>
 
 

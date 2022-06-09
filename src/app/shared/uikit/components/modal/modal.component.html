@@ -9,7 +9,7 @@
         </svg>
     </div>
     <div id="modal"  *ngIf="modal">
-        <div class="internalModal edit">
+        <div class="internalModal edit" (click)="modifica($event)">
             <span>
                 <svg width="19" height="20" viewBox="0 0 19 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path
