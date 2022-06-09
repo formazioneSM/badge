@@ -13,7 +13,7 @@ export class LinkComponent implements OnInit {
   links!:any
 
   constructor(private linkService:LinkService,private permissionsService: NgxPermissionsService, public loaderService: LoaderService) { this.loaderService.isLoading.subscribe((v) => {
-    console.log(v);
+    // console.log(v);
     this.loading = v;
   }); }
 
