@@ -2,7 +2,7 @@
   <div id="head">
     <div id="page-title-wrapper">
       <img
-        *ngIf="!stepOne || !modifica"
+        *ngIf="!stepOne && !editParams.id"
         src="assets/images/chevron_left.png"
         (click)="backStepOne()"
         class="back"
@@ -12,7 +12,7 @@
     <img class="close" src="assets/images/off_close.png" (click)="esc()" />
   </div>
 
-  <div class="steps" *ngIf="stepOne && !modifica">
+  <div class="steps" *ngIf="stepOne">
     <p class="subtitle"><b>1 </b>di 2 Scelta tipologia</p>
     <div *ngFor="let t of postTypes" class="scelta">
       <app-card-aggiungi

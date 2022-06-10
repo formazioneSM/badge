@@ -26,6 +26,7 @@ export class HomeComponent implements OnInit {
 
 
 
+
   constructor(
     private _scrollService: ScrollService,
     public permissions: NgxPermissionsService,

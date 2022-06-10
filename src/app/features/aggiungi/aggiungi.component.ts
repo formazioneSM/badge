@@ -27,6 +27,8 @@ export class AggiungiComponent implements OnInit {
   formAddConvenzioni: FormGroup = {} as FormGroup;
   stepOne: boolean = true;
   type: string | undefined;
+  editParams:{id?:string, type?:string} = {}
+
   configuration = [
     { text: '@Maria Grazia Marra', value: 'maria', selected: false },
     { text: '@hr', value: 'hr', selected: false },
@@ -97,10 +99,16 @@ export class AggiungiComponent implements OnInit {
     });
 
     this.route.params.subscribe(val => {
-      let editParams = {}
-      editParams = val;      
+
+      this.editParams = val;      
       this.modifica = true;
       this.type= val['type']
+      if(this.editParams.id){
+        this.stepOne = false;
+      }else{
+        this.stepOne = true;
+      }
+      console.log(val)
 
     } )
   }
@@ -167,9 +175,11 @@ export class AggiungiComponent implements OnInit {
 
   esc() {
     this._router.navigate(['home/bacheca']);
+    this.modifica = false;
   }
   backStepOne() {
     this.stepOne = true;
+    this.modifica = false;
   }
 
   goToSecondStep(typeOfPost: any) {
