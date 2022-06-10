@@ -25,7 +25,7 @@ body{
     /* padding: 0 2rem; */
 }
 
-app-register, app-login, app-impostazioni, app-password-recovery, app-profilo, app-aggiungi {
+app-register, app-login, app-password-recovery, app-profilo, app-aggiungi {
     display: block;
     padding: 0 2rem;
 }

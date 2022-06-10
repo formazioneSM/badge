@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { ImpostazioniRoutingModule } from './impostazioni-routing.module';
 import { ImpostazioniComponent } from './impostazioni.component';
+import { UikitModule } from 'src/app/shared/uikit/uikit.module';
 
 
 @NgModule({
@@ -11,7 +12,8 @@ import { ImpostazioniComponent } from './impostazioni.component';
   ],
   imports: [
     CommonModule,
-    ImpostazioniRoutingModule
+    ImpostazioniRoutingModule,
+    UikitModule,
   ]
 })
 export class ImpostazioniModule { }

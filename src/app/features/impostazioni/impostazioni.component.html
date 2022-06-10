@@ -1,1 +1,37 @@
-<p>impostazioni works!</p>
+<div id="container">
+  <div id="head">
+    <img class="back" src="assets/images/chevron_left.png" />
+    <p id="title">Impostazioni</p>
+  </div>
+</div>
+
+<div>
+  <ul id="settings-list">
+    <li *ngFor="let link of settingsLinks; index as i" class="links">
+      <a href=""> {{ settingsLinks[i].linkTitle }}</a
+      ><span>
+        <svg
+          width="8"
+          height="14"
+          viewBox="0 0 8 14"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M1.70151 13.0105L7.71191 7.00009L1.70151 0.989683L0.287294 2.4039L4.88349 7.00009L0.287292 11.5963L1.70151 13.0105Z"
+            fill="#003594"
+          />
+        </svg>
+      </span>
+    </li>
+  </ul>
+
+</div>
+<div id="logout">
+  <app-button-logout
+  (click)="onLogout()"
+    class="btn"
+    [typeButton]="'submit'"
+    [textButton]="'Logout'"
+  ></app-button-logout>
+</div>
