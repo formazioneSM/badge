@@ -10,19 +10,19 @@ export class ImpostazioniComponent implements OnInit {
   settingsLinks: any = [
     {
       linkTitle: 'Modifica anagrafica',
-      link: '',
+      link: "/modifica-anagrafica",
     },
     {
       linkTitle: 'Modifica password',
-      link: '',
+      link: "/modifica-password",
     },
     {
       linkTitle: 'Termini e condizioni',
-      link: '',
+      link: "/termini-e-condizioni",
     },
     {
       linkTitle: 'FAQ',
-      link: '',
+      link: "/faq",
     },
     {
       linkTitle: 'Suggerimenti',

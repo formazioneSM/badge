@@ -18,12 +18,13 @@ import { UikitModule } from './shared/uikit/uikit.module';
 import { AggiungiComponent } from './features/aggiungi/aggiungi.component';
 import { AddContentModule } from './features/aggiungi/aggiungi.module';
 
+
 export function playerFactory() {
   return player;
 }
 
 @NgModule({
-  declarations: [AppComponent, SmLoaderComponent],
+  declarations: [AppComponent, SmLoaderComponent,],
   imports: [
     UikitModule,
     BrowserModule,

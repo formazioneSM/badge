@@ -46,6 +46,7 @@ const routes: Routes = [
       ),
     data: { animation: 'passwordrecoveryPage' },
   },
+
   {
     path: 'profilo',
     loadChildren: () =>
@@ -59,6 +60,38 @@ const routes: Routes = [
         (m) => m.ImpostazioniModule
       ),
     data: { animation: 'impostazioniPage' },
+  },
+  {
+    path: 'modifica-anagrafica',
+    loadChildren: () =>
+      import('./features/modifica-anagrafica/modifica-anagrafica.module').then(
+        (m) => m.ModificaAnagraficaModule
+      ),
+    data: { animation: 'modificaAnagraficaPage' },
+  },
+  {
+    path: 'termini-e-condizioni',
+    loadChildren: () =>
+      import('./features/termini-e-condizioni/termini-e-condizioni.module').then(
+        (m) => m.TerminiECondizioniModule
+      ),
+    data: { animation: 'terminiECondizioniPage' },
+  },
+  {
+    path: 'faq',
+    loadChildren: () =>
+      import('./features/faq/faq.module').then(
+        (m) => m.FaqModule
+      ),
+    data: { animation: 'faqPage' },
+  },
+  {
+    path: 'modifica-password',
+    loadChildren: () =>
+      import('./features/modifica-password/modifica-password.module').then(
+        (m) => m.ModificaPasswordModule
+      ),
+    data: { animation: 'modificaPasswordPage' },
   },
   { path: '**', redirectTo: 'home' },
 ];
