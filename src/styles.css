@@ -30,6 +30,10 @@ app-register, app-login, app-password-recovery, app-profilo, app-aggiungi {
     padding: 0 2rem;
 }
 
+.validation {
+    color: red!important;
+}
+
 @media only screen and (min-width: 500px){
     /*Big smartphones [426px -> 600px]*/
     body {
