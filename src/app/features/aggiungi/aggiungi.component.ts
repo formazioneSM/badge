@@ -118,10 +118,17 @@ export class AggiungiComponent implements OnInit {
           })
           console.log(post)
         })
-      } if(this.editParams.id && this.editParams.type === 'Link'){
+      } 
+      else if (this.editParams.id && this.editParams.type === 'Link'){
         this.stepOne = false;
         this.linkService.getLink(this.editParams.id).subscribe((link:any) =>{
           this.formAddLink?.setValue({nomeLink:link.text, link: link.url})
+        })
+      } 
+     else if(this.editParams.id && this.editParams.type === 'Convenzioni'){
+        this.stepOne = false;
+        this.convenzioniService.getConvenzione(this.editParams.id).subscribe((c:any) =>{
+          this.formAddConvenzioni?.setValue({titolo:c.titolo, contenuto:c.text, titoloLink:c.titoloLink, url:c.url})
         })
       } 
       
@@ -189,7 +196,11 @@ export class AggiungiComponent implements OnInit {
   }
 
   addConvenzione(formAddConvenzioni: FormGroup) {
-    this.convenzioniService
+    if (this.editParams.id && this.editParams.type === 'Convenzioni' ) {
+      this.convenzioniService.editConvenzione(this.editParams.id, this.formAddConvenzioni.value.titolo,this.formAddConvenzioni.value.text,this.formAddConvenzioni.value.titoloLink, this.formAddConvenzioni.value.url).subscribe()
+      this._router.navigate(['home/convenzioni']);
+    }else{
+      this.convenzioniService
       .addNewConvenzione(
         this.formAddConvenzioni.value.titolo,
         this.formAddConvenzioni.value.contenuto,
@@ -200,6 +211,8 @@ export class AggiungiComponent implements OnInit {
         this.newConvenzione.push(c);
         this._router.navigate(['home/convenzioni']);
       });
+    }
+
   }
 
   esc() {
@@ -252,10 +265,7 @@ export class AggiungiComponent implements OnInit {
       };
       this.bachecaService.editPost(editPosts, this.editParams.id).subscribe();
       this._router.navigate(['home/bacheca']);
-    } 
-    
-    
-    else {
+    } else {
 
       let post = {
         color: this.bgcolor,

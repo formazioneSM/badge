@@ -16,7 +16,7 @@
     text="{{ post.text }}"
     author="@{{ post.from }}"
     postId="{{ post._id }}"
-    (deletePost)="onPostDelete($event)"
+    (deletePost)="onPostDelete(post._id)"
     [isBacheca]=" true"
     >
 </app-card>

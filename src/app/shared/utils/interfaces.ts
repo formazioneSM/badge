@@ -16,3 +16,11 @@ export interface Post{
     "_id"?: string,
     "__v"?: string,
 }
+
+export interface Convenzione{
+    "titoloLink"?: string,
+    "text"?: string,
+    "url"?: string,
+    "titolo"?: string
+    "_id"?: string
+}
