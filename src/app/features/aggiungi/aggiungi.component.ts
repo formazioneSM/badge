@@ -105,13 +105,11 @@ export class AggiungiComponent implements OnInit {
       this.editParams = val;
       this.modifica = true;
       this.type = val['type']
-      if (this.editParams.id) {
+      if (this.editParams.id && this.editParams.type === 'Bacheca') {
         this.stepOne = false;
         this.bachecaService.getPost(this.editParams.id).subscribe((post: any) => {
-          // this.formAddBacheca.value.contenutoBacheca = post.text
           this.formAddBacheca?.setValue({ contenutoBacheca: post.text, radio: '' })
           this.bgcolor = post.color
-          // this.getSelectedValue(post.from)
           this.triggerRadio(undefined, post.from)
           this.configuration.forEach(c => {
             if (c.text === '@' + post.from) {
@@ -120,10 +118,18 @@ export class AggiungiComponent implements OnInit {
           })
           console.log(post)
         })
-      } else {
+      } if(this.editParams.id && this.editParams.type === 'Link'){
+        this.stepOne = false;
+        this.linkService.getLink(this.editParams.id).subscribe((link:any) =>{
+          this.formAddLink?.setValue({nomeLink:link.text, link: link.url})
+        })
+      } 
+      
+      
+      else {
         this.stepOne = true;
       }
-      // console.log(val)
+
 
     })
   }
@@ -169,9 +175,17 @@ export class AggiungiComponent implements OnInit {
       ' link: ' +
       formAddLink.value.link
     );
-    this.linkService
+      if(this.editParams.id && this.editParams.type === 'Link'){
+      this.linkService.editLink( this.editParams.id, this.formAddLink.value.nomeLink, this.formAddLink.value.link).subscribe()
+      this._router.navigate(['home/link']);   
+    } else{
+      this.linkService
       .addLink(formAddLink.value.nomeLink, formAddLink.value.link)
       .subscribe((res) => console.log(res));
+      this._router.navigate(['home/link']);
+    }
+
+
   }
 
   addConvenzione(formAddConvenzioni: FormGroup) {
@@ -230,7 +244,7 @@ export class AggiungiComponent implements OnInit {
   }
 
   onPostSubmit() {
-    if (this.editParams.id) {
+    if (this.editParams.id && this.editParams.type === 'Bacheca' ) {
       let editPosts = {
         color: this.bgcolor,
         text: this.formAddBacheca.value.contenutoBacheca,
@@ -238,7 +252,10 @@ export class AggiungiComponent implements OnInit {
       };
       this.bachecaService.editPost(editPosts, this.editParams.id).subscribe();
       this._router.navigate(['home/bacheca']);
-    } else {
+    } 
+    
+    
+    else {
 
       let post = {
         color: this.bgcolor,

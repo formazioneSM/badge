@@ -25,5 +25,13 @@ export class LinkService {
     return this.http.get(base_path+"/link/all")
   }
 
+  getLink(linkId:string){
+    return this.http.get(`${base_path}/link/${linkId}`)
+  }
+
+  editLink(id: string, text:string, url:string){
+    return this.http.put(`${base_path}/link/${id}`,{ text, url});
+  }
+
 
 }
