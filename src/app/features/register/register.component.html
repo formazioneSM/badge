@@ -1,4 +1,4 @@
-<div id="container">
+<div id="container" *ngIf="!isEmailSent">
   <div id="head">
     <h1 id="title">Registrazione</h1>
     <p id="subtitle">Inserisci le tue informazioni, ma non tutto. 🙃</p>
@@ -84,5 +84,26 @@
       </div>
     </form>
     <p id="go-to-login">Hai già un account?<a [routerLink]="['/login']">Accedi</a></p>
+  </div>
+
+</div>
+<div *ngIf="isEmailSent" class="email-sent">
+  <div class="forgot-container">
+    <div class="head email">
+      <h1 class="title email">Email inviata 🎉</h1>
+    </div>
+
+    <div>
+      <div class="message">
+          Controlla la tua casella di posta per verificare la corretta registrazione.
+      </div>
+      <div class="buttonContainer">
+        <app-button
+          [routerLink]="'/login'"
+          [typeButton]="'button'"
+          [textButton]="'Vai al Login'"
+        ></app-button>
+      </div>
+    </div>
   </div>
 </div>

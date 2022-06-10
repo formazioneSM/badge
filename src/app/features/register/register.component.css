@@ -174,3 +174,37 @@
 #go-to-login a {
   color: var(--bg-primary-color);
 }
+.forgot-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.email-sent {
+  padding-top: 70px;
+  display: flex;
+  flex-direction: column;
+  /* display: none; */
+}
+.head.email {
+  padding-bottom: 10px;
+}
+
+
+
+.title.email {
+  text-align: left;
+  margin-bottom: 0;
+  padding-bottom: 0;
+
+}
+.message {
+  /* margin: 0 2rem; */
+  font-family: "Hind Madurai";
+  padding-bottom: 3rem;
+}
+.buttonContainer {
+  /* width: 83vw; */
+  width: 100%;
+  height: 54px;
+  margin: 0 auto;
+}

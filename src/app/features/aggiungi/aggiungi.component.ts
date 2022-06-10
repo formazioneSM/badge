@@ -11,6 +11,8 @@ import { colorDefault, types } from '../../shared/utils/constants';
 import { BachecaService } from 'src/app/shared/uikit/services/bacheca/bacheca.service';
 import { ConvenzioniService } from 'src/app/shared/uikit/services/convenzioni/convenzioni.service';
 import { LinkService } from 'src/app/shared/uikit/services/link/link.service';
+import { Location } from '@angular/common';
+
 
 @Component({
   selector: 'app-aggiungi',
@@ -62,7 +64,8 @@ export class AggiungiComponent implements OnInit {
     private bachecaService: BachecaService,
     private convenzioniService: ConvenzioniService,
     private linkService: LinkService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private location: Location
   ) { }
   preventDef(e: any) {
     e.stopPropagation();
@@ -216,7 +219,7 @@ export class AggiungiComponent implements OnInit {
   }
 
   esc() {
-    this._router.navigate(['home/bacheca']);
+    this.location.back()
     this.modifica = false;
   }
   backStepOne() {

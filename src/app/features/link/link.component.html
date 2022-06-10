@@ -6,8 +6,8 @@
       <a [href]=" link.url" target="_blank">
         <app-button class="buttonLink" [typeButton]="'button'" [textButton]="link.text"></app-button>
       </a>
-      <div id="wrapper">
-        <div id="deleteIcon" *ngxPermissionsOnly="['ADMIN']">
+      <div id="wrapper" *ngxPermissionsOnly="['ADMIN']">
+        <div id="deleteIcon" >
           <!-- aggiungere ngx permission -->
 
           <app-modal (deleteEvent)="clicked(link._id)" (editEvent)="edit(link._id)"></app-modal>

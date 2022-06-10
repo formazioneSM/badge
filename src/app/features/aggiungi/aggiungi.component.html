@@ -7,7 +7,8 @@
         (click)="backStepOne()"
         class="back"
       />
-      <p id="title">Aggiungi contenuto</p>
+      <p id="title"  *ngIf="!editParams.id">Aggiungi contenuto</p>
+      <p id="title" *ngIf="editParams.id">Modifica contenuto</p>
     </div>
     <img class="close" src="assets/images/off_close.png" (click)="esc()" />
   </div>
@@ -35,7 +36,7 @@
 
   <div *ngIf="!stepOne || modifica" [ngSwitch]="type">
     <div *ngSwitchCase="types.BACHECA">
-      <p *ngIf="!modifica" class="subtitle"><b>2 </b>di 2 Scelta tipologia</p>
+      <p  *ngIf="!editParams.id" class="subtitle"><b>2 </b>di 2 Scelta tipologia</p>
 
       <form [formGroup]="formAddBacheca" (ngSubmit)="onPostSubmit()">
         <div class="textarea">
@@ -89,14 +90,14 @@
         <app-button
           class="btn"
           [typeButton]="'submit'"
-          [textButton]="'Pubblica'"
+          [textButton]="editParams.id?'Aggiorna':'Pubblica'"
           [disabled]="formAddBacheca.invalid"
         >
         </app-button>
       </form>
     </div>
     <div *ngSwitchCase="types.LINK">
-      <p class="subtitle"><b>2 </b>di 2 Scelta tipologia</p>
+      <p class="subtitle"  *ngIf="!editParams.id"><b>2 </b>di 2 Scelta tipologia</p>
       <div *ngIf="formAddLink">
         <form [formGroup]="formAddLink" (ngSubmit)="addLink(formAddLink)">
           <div class="marginInput">
@@ -135,7 +136,7 @@
           <app-button
             class="btn"
             [typeButton]="'submit'"
-            [textButton]="'Pubblica'"
+            [textButton]="editParams.id?'Aggiorna':'Pubblica'"
             [disabled]="formAddLink.invalid"
           >
           </app-button>
@@ -143,7 +144,7 @@
       </div>
     </div>
     <div *ngSwitchCase="types.CONVENZIONI" id="convenzioni">
-      <p class="subtitle"><b>2 </b>di 2 Scelta tipologia</p>
+      <p class="subtitle" *ngIf="!editParams.id"><b>2 </b>di 2 Scelta tipologia</p>
       <div *ngIf="formAddConvenzioni">
         <form
           [formGroup]="formAddConvenzioni"
@@ -219,7 +220,7 @@
           <app-button
             class="btn"
             [typeButton]="'submit'"
-            [textButton]="'Pubblica'"
+            [textButton]="editParams.id?'Aggiorna':'Pubblica'"
             [disabled]="formAddConvenzioni.invalid"
           >
           </app-button>
