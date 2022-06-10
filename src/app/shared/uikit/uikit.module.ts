@@ -19,6 +19,7 @@ import { GradientLoaderComponent } from './components/gradient-loader/gradient-l
 import { ModalComponent } from './components/modal/modal.component';
 import { AggiungiComponent } from 'src/app/features/aggiungi/aggiungi.component';
 import { AddContentModule } from 'src/app/features/aggiungi/aggiungi.module';
+import { ButtonLogoutComponent } from './components/button-logout/button-logout.component';
 
 
 
@@ -39,6 +40,7 @@ import { AddContentModule } from 'src/app/features/aggiungi/aggiungi.module';
     CheckboxComponent,
     GradientLoaderComponent,
     ModalComponent,
+    ButtonLogoutComponent,
 
   ],
   imports: [
@@ -50,6 +52,7 @@ import { AddContentModule } from 'src/app/features/aggiungi/aggiungi.module';
   exports: [
     InputComponent,
     ButtonComponent,
+    ButtonLogoutComponent,
     RoundButtonComponent,
     CardComponent,
     CardAggiungiComponent,
@@ -62,7 +65,7 @@ import { AddContentModule } from 'src/app/features/aggiungi/aggiungi.module';
     TooltipComponent,
     CheckboxComponent,
     GradientLoaderComponent,
-    ModalComponent
+    ModalComponent,
 
     
 

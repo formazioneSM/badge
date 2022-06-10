@@ -46,6 +46,7 @@ const routes: Routes = [
       ),
     data: { animation: 'passwordrecoveryPage' },
   },
+
   {
     path: 'profilo',
     loadChildren: () =>
@@ -60,6 +61,7 @@ const routes: Routes = [
       ),
     data: { animation: 'impostazioniPage' },
   },
+  { path: 'modifica-anagrafica', loadChildren: () => import('./features/modifica-anagrafica/modifica-anagrafica.module').then(m => m.ModificaAnagraficaModule) },
   { path: '**', redirectTo: 'home' },
 ];
 
