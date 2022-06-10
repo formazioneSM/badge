@@ -19,7 +19,7 @@ import { LinkService } from 'src/app/shared/uikit/services/link/link.service';
 })
 export class AggiungiComponent implements OnInit {
 
-  modifica:boolean = false;
+  modifica: boolean = false;
   newConvenzione: any = [];
   bgcolor = colorDefault;
   formAddBacheca: FormGroup = {} as FormGroup;
@@ -27,13 +27,13 @@ export class AggiungiComponent implements OnInit {
   formAddConvenzioni: FormGroup = {} as FormGroup;
   stepOne: boolean = true;
   type: string | undefined;
-  editParams:{id?:string, type?:string} = {}
+  editParams: { id?: string, type?: string } = {}
 
   configuration = [
-    { text: '@Maria Grazia Marra', value: 'maria', selected: false },
+    { text: '@Maria Grazia Marra', value: 'Maria Grazia Marra', selected: false },
     { text: '@hr', value: 'hr', selected: false },
   ];
-  types=types;
+  types = types;
   postTypes = [
     {
       type: this.types.BACHECA,
@@ -62,16 +62,18 @@ export class AggiungiComponent implements OnInit {
     private bachecaService: BachecaService,
     private convenzioniService: ConvenzioniService,
     private linkService: LinkService,
-    private route:ActivatedRoute
-  ) {}
+    private route: ActivatedRoute
+  ) { }
   preventDef(e: any) {
     e.stopPropagation();
     // e.preventDefault();
   }
   triggerRadio(e: any, c: any) {
-    e.stopPropagation();
-    e.preventDefault();
-    let element = e.target.firstChild;
+    if (e) {
+      e.stopPropagation();
+      e.preventDefault();
+    }
+    let element = e ? e.target.firstChild : document.getElementById('@' + c)?.firstChild;
     element.click();
     this.getSelectedValue(c);
   }
@@ -100,17 +102,30 @@ export class AggiungiComponent implements OnInit {
 
     this.route.params.subscribe(val => {
 
-      this.editParams = val;      
+      this.editParams = val;
       this.modifica = true;
-      this.type= val['type']
-      if(this.editParams.id){
+      this.type = val['type']
+      if (this.editParams.id) {
         this.stepOne = false;
-      }else{
+        this.bachecaService.getPost(this.editParams.id).subscribe((post: any) => {
+          // this.formAddBacheca.value.contenutoBacheca = post.text
+          this.formAddBacheca?.setValue({ contenutoBacheca: post.text, radio: '' })
+          this.bgcolor = post.color
+          // this.getSelectedValue(post.from)
+          this.triggerRadio(undefined, post.from)
+          this.configuration.forEach(c => {
+            if (c.text === '@' + post.from) {
+              c.selected = true;
+            }
+          })
+          console.log(post)
+        })
+      } else {
         this.stepOne = true;
       }
-      console.log(val)
+      // console.log(val)
 
-    } )
+    })
   }
   get contenutoBacheca() {
     return this.formAddBacheca?.get('contenutoBacheca');
@@ -150,9 +165,9 @@ export class AggiungiComponent implements OnInit {
   addLink(formAddLink: FormGroup) {
     console.log(
       'nome link: ' +
-        formAddLink.value.nomeLink +
-        ' link: ' +
-        formAddLink.value.link
+      formAddLink.value.nomeLink +
+      ' link: ' +
+      formAddLink.value.link
     );
     this.linkService
       .addLink(formAddLink.value.nomeLink, formAddLink.value.link)
@@ -215,14 +230,28 @@ export class AggiungiComponent implements OnInit {
   }
 
   onPostSubmit() {
-    let post = {
-      color: this.bgcolor,
-      text: this.formAddBacheca.value.contenutoBacheca,
-      from: this.formAddBacheca.value.radio,
-    };
-    this.bachecaService.createNewPost(post).subscribe((err: any) => {
-      console.log(err);
-    });
-    this._router.navigate(['home/bacheca']);
+    if (this.editParams.id) {
+      let editPosts = {
+        color: this.bgcolor,
+        text: this.formAddBacheca.value.contenutoBacheca,
+        from: this.formAddBacheca.value.radio,
+      };
+      this.bachecaService.editPost(editPosts, this.editParams.id).subscribe();
+      this._router.navigate(['home/bacheca']);
+    } else {
+
+      let post = {
+        color: this.bgcolor,
+        text: this.formAddBacheca.value.contenutoBacheca,
+        from: this.formAddBacheca.value.radio,
+      };
+      this.bachecaService.createNewPost(post).subscribe((err: any) => {
+        console.log(err);
+      });
+      this._router.navigate(['home/bacheca']);
+    }
   }
+
+
+
 }

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ToastService } from '../toast.service';
-import { toastMessages } from 'src/app/shared/utils/constants';
+import { base_path, toastMessages } from 'src/app/shared/utils/constants';
 import { Post } from '../../../utils/interfaces';
 @Injectable({
   providedIn: 'root',
@@ -38,15 +38,19 @@ export class BachecaService {
     );
   }
 
-  editPost(postId: number | string, color: string, text: string, from: string) {
-    return this.http.put(
-      `https://be-system.herokuapp.com/api/bacheca/${postId}`,
-      {
-        color: color,
-        text: text,
-        from: from,
-      }
-    );
+  // editPost(postId: number | string, color: string, text: string, from: string) {
+  //   return this.http.put(
+  //     `https://be-system.herokuapp.com/api/bacheca/${postId}`,
+  //     {
+  //       color: color,
+  //       text: text,
+  //       from: from,
+  //     }
+  //   );
+  // }
+
+  editPost(post: Post, postId:string){
+    return this.http.put(`${base_path}/bacheca/${postId}`, post);
   }
 
 //   loadPosts() {

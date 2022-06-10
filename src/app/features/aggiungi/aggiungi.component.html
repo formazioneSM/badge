@@ -72,6 +72,7 @@
             class="customRadio"
             [class.active]="c.selected"
             (click)="triggerRadio($event, c)"
+            [id]="c.text"
           >
             <input
               type="radio"
@@ -80,6 +81,7 @@
               name="radio"
               value="{{ c.value }}"
               formControlName="radio"
+             
             />{{ c.text }}
           </div>
         </div>

@@ -34,6 +34,7 @@ export class BachecaComponent implements OnInit {
   ngOnInit(): void {
     this.bachecaService.getAllPosts().subscribe((data: any) => {
         this.posts = data;
+        console.log(data)
     });
   }
 
