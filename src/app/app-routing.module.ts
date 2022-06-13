@@ -62,6 +62,9 @@ const routes: Routes = [
     data: { animation: 'impostazioniPage' },
   },
   { path: 'modifica-anagrafica', loadChildren: () => import('./features/modifica-anagrafica/modifica-anagrafica.module').then(m => m.ModificaAnagraficaModule) },
+  { path: 'modifica-password', loadChildren: () => import('./features/modifica-password/modifica-password.module').then(m => m.ModificaPasswordModule) },
+  { path: 'termini-e-condizioni', loadChildren: () => import('./features/termini-e-condizioni/termini-e-condizioni.module').then(m => m.TerminiECondizioniModule) },
+  { path: 'faq', loadChildren: () => import('./features/faq/faq.module').then(m => m.FaqModule) },
   { path: '**', redirectTo: 'home' },
 ];
 
