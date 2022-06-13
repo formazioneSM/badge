@@ -7,18 +7,17 @@ import { base_path } from 'src/app/shared/utils/constants';
 })
 export class ConvenzioniService {
 
-    convenzioni: any = [];
+
   constructor(private http: HttpClient) { }
 
   getAllConvenzioni(){
     return this.http.get(`${base_path}/convenzione/all`);
   }
 
-  loadConvenzioni() {
-      this.getAllConvenzioni().subscribe((conv) => {
-          this.convenzioni = conv;
-          console.log(this.convenzioni);
-      })
+  getConvenzione(convenzioneId:string){
+    return this.http.get(
+      `${base_path}/convenzione/${convenzioneId}`
+    );
   }
 
   addNewConvenzione( titolo: string, text:string, titoloLink: string, url:string){
@@ -35,4 +34,10 @@ export class ConvenzioniService {
       `${base_path}/convenzione/${id}`
     );
   }
+
+  editConvenzione(id: string, titolo:string, text:string, titoloLink:string, url:string){
+    return this.http.put(`${base_path}/convenzione/${id}`,{ titolo,text, titoloLink, url});
+  }
+
+
 }

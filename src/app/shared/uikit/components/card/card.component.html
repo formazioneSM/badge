@@ -1,5 +1,8 @@
 <div id="container" [ngStyle]="{ background: background ?? ' #F0F0F0' }" >
   <div *ngIf="!isClicked" id="wrapper">
+    <div id="modal" *ngxPermissionsOnly="['ADMIN']" >
+      <app-modal (deleteEvent)="clicked()" (editEvent)="editPost()"></app-modal>
+    </div>
     <div id="wrapperModal">
       <!-- <div id="deleteIcon"  >
         <img src="assets/images/cestino.png" /> -->
@@ -17,16 +20,14 @@
         <b>{{ title }}</b>
       </h5>
     </div>
-    <div id="modal" *ngxPermissionsOnly="['ADMIN']" >
-      <app-modal (deleteEvent)="clicked()" (editEvent)="editPost()"></app-modal>
-    </div>
+
 
 
     <div id="text-wrapper">
       <p id="text">{{ text }}</p>
     </div>
     <span id="author">{{ author }}</span>
-    <a href="{{ link }}" id="link">{{ textLink }}</a>
+    <a href="{{ link }}" target="_blank" id="link">{{ textLink }}</a>
 
 
   </div>
@@ -34,7 +35,7 @@
     <p class="deleteText"><b>Vuoi eliminare questo contenuto?</b></p>
     <div id="delete-buttons">
       <button id="back" (click)="back()">Indietro</button>
-      <button id="delete" (click)="delete()">ELIMINA</button>
+      <button id="delete" (click)="delete($event)">ELIMINA</button>
     </div>
   </div>
 </div>

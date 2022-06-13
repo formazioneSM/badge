@@ -1,11 +1,13 @@
 <div *ngIf="!loading" class="cards">
   <app-card
-    *ngFor="let c of this.convenzioniService.convenzioni"
+    *ngFor="let c of convenzioni"
     class="card"
     title="{{ c.titolo }}"
     text="{{ c.text }}"
     [link]="c.url"
     textLink="{{ c.titoloLink }}"
+    convenzioniId="{{ c._id }}"
+    (deletePost)="deleteConvenzione(c._id)"
   ></app-card>
 </div>
 

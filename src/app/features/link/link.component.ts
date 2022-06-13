@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { LinkService } from 'src/app/shared/uikit/services/link/link.service';
 import { NgxPermissionsService } from 'ngx-permissions';
 import { LoaderService } from 'src/app/shared/uikit/services/loader/loader.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { types } from 'src/app/shared/utils/constants';
 
 @Component({
   selector: 'app-link',
@@ -12,7 +14,7 @@ export class LinkComponent implements OnInit {
     loading = false;
   links!:any
 
-  constructor(private linkService:LinkService,private permissionsService: NgxPermissionsService, public loaderService: LoaderService) { this.loaderService.isLoading.subscribe((v) => {
+  constructor(private linkService:LinkService,private permissionsService: NgxPermissionsService, public loaderService: LoaderService, private router: Router) { this.loaderService.isLoading.subscribe((v) => {
     // console.log(v);
     this.loading = v;
   }); }
@@ -21,7 +23,7 @@ export class LinkComponent implements OnInit {
     this.linkService.loadAllLinks().subscribe((res)=>{this.links=res;console.log(this.links)})
     
   }
-
+  
   clicked(_id:string){
    
     console.log("indice ", typeof(_id))
@@ -34,6 +36,11 @@ export class LinkComponent implements OnInit {
     
   
     
+  }
+
+  edit(_id:string){
+    console.log(_id)
+    this.router.navigate(['home/aggiungi', _id, types.LINK])
   }
 
 }

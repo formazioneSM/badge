@@ -8,48 +8,35 @@ import { LoaderService } from 'src/app/shared/uikit/services/loader/loader.servi
   styleUrls: ['./convenzioni.component.css'],
 })
 export class ConvenzioniComponent implements OnInit {
-//   convenzioni: any = [];
+  convenzioni: any = [];
   loading = false;
 
-//   prove = [
-//     {
-//       ciao: 'ciao',
-//     },
-//     {
-//       ciao: 'ciao',
-//     },
-//     {
-//       ciao: 'ciao',
-//     },
-//     {
-//       ciao: 'ciao',
-//     },
-//     {
-//       ciao: 'ciao',
-//     },
-//     {
-//       ciao: 'ciao',
-//     },
-//   ];
-  
+
+
+
   constructor(
     public convenzioniService: ConvenzioniService,
     public loaderService: LoaderService
   ) {
     this.loaderService.isLoading.subscribe((v) => {
-    //   console.log(v);
       this.loading = v;
     });
   }
 
   ngOnInit(): void {
-    this.convenzioniService.loadConvenzioni();
+    this.convenzioniService.getAllConvenzioni().subscribe((c: any) => {
+      this.convenzioni = c;
+      console.log(this.convenzioni);
+    });
+  }
+  deleteConvenzione(_id: string) {
+    const index = this.convenzioni.findIndex((x: any) =>
+      x._id === _id
+    );
+    this.convenzioni.splice(index, 1)
+    this.convenzioniService.deleteConvenzioni(_id).subscribe((res:any) => (res))
   }
 
-//   getAllConvenzioni() {
-//     this.convenzioniService.getAllCovenzioni().subscribe((c: any) => {
-//       this.convenzioni = c;
-//       console.log(this.convenzioni);
-//     });
-//   }
+
+
 }

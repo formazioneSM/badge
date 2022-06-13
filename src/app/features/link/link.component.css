@@ -4,6 +4,7 @@
 #container {
     margin: 0 auto;
     margin-top: 22px;
+    
 }
 
 .buttonLink {
@@ -21,15 +22,10 @@
     line-height: 25px;
 }
 #deleteIcon {
-    /* position: absolute; */
-    /* width: 10%;
-    height: 29px; */
-    /* margin-left: 85%; */
-    width: 8%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding-left: 1.5rem;
+
+
+    position: absolute;
+    right: 5%;
 
 }
 .linkWrapper{
@@ -40,5 +36,13 @@
 }
 a{
     width: 100%;
-    /* padding-bottom: 1rem; */
+    text-decoration: none;
+}
+#wrapper{
+    width: 8%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-left: 1.5rem;
+    position: relative;
 }

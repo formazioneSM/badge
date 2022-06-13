@@ -26,7 +26,7 @@ export class UsersService {
     return this.http.put(`${base_path}/users/${badgeId}`, {
       name: name,
       surname: surname,
-      badgeId: badgeId,
+      badge: badgeId,
     });
   }
 }
