@@ -12,10 +12,10 @@ export class ImpostazioniComponent implements OnInit {
       linkTitle: 'Modifica anagrafica',
       link: "/modifica-anagrafica",
     },
-    {
-      linkTitle: 'Modifica password',
-      link: "/modifica-password",
-    },
+    // {
+    //   linkTitle: 'Modifica password',
+    //   link: "/modifica-password",
+    // },
     {
       linkTitle: 'Termini e condizioni',
       link: "/termini-e-condizioni",
@@ -26,7 +26,7 @@ export class ImpostazioniComponent implements OnInit {
     },
     {
       linkTitle: 'Suggerimenti',
-      link: '',
+    mailto: 'mailto:formazione@sysmanagement.it'
     },
   ];
 

@@ -1,0 +1,51 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Hind+Madurai:wght@700&display=swap');
+
+#container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    /* padding-right: 20px;
+    padding-left: 20px; */
+    box-sizing: border-box;
+    align-items: center;
+    padding: 0 2rem;
+}
+
+#head {
+    display: flex;
+    margin-top: 36.5px;
+    width: 100%;
+    align-items: center;
+    padding-bottom: 3rem;
+}
+
+.back {
+    margin-right: 15px;
+}
+
+#title {
+    font-family: Gotham-bold;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 21px;
+    line-height: 23px;
+
+}
+
+#subtitle {
+    font-family: 'Hind Madurai';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 21px;
+    line-height: 29px;
+    padding-bottom: 1rem;
+}
+
+#text {
+    font-family: 'Hind Madurai';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 25px;
+}

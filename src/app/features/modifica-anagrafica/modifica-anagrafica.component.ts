@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import jwtDecode from 'jwt-decode';
 import { AuthService } from 'src/app/shared/uikit/services/auth/auth.service';
 import { UsersService } from 'src/app/shared/uikit/services/users/users.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-modifica-anagrafica',
@@ -13,11 +15,14 @@ export class ModificaAnagraficaComponent implements OnInit {
   form: FormGroup = {} as FormGroup;
   res!: any;
   decodeToken: any;
+  user:any = {};
 
   constructor(
     private _fb: FormBuilder,
     private authService: AuthService,
-    private usersService: UsersService
+    private usersService: UsersService,
+    private router: Router,
+    private location: Location
   ) {}
 
   ngOnInit(): void {
@@ -35,11 +40,18 @@ export class ModificaAnagraficaComponent implements OnInit {
   }
 
   prefillInputs() {
-    this.form.setValue({
-      name: this.decodeToken.name,
-      cognome: this.decodeToken.surname,
-      badge: this.decodeToken.badge,
-    });
+    let badgeId = this.decodeToken.badge;
+    this.usersService.getUser(badgeId).subscribe( (u:any) => {
+      this.user = u
+      console.log(this.user.name)
+      this.form.setValue({
+      
+        name: this.user.name,
+        cognome: this.user.surname,
+        badge: this.user.badge,
+      });
+    })
+
   }
 
   onSubmitEdit() {
@@ -47,6 +59,8 @@ export class ModificaAnagraficaComponent implements OnInit {
       .editAnagrafica(this.form.value.name, this.form.value.cognome, this.form.value.badge)
       .subscribe((u: any) => {
         console.log(u)
+        this.router.navigate(['/impostazioni'])
+        
       });
     // console.log(this.resResponse,this.errorNumber)
   }
@@ -67,5 +81,9 @@ export class ModificaAnagraficaComponent implements OnInit {
   }
   get badge() {
     return this.form?.get('badge');
+  }
+
+  goBack(){
+    this.location.back()
   }
 }

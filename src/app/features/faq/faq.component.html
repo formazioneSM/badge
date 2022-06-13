@@ -1,0 +1,27 @@
+<div id="container">
+    <div id="head">
+        <img class="back" src="assets/images/chevron_left.png" (click)="goBack()" />
+        <p id="title">FAQ</p>
+    </div>
+</div>
+
+<div>
+    <ul id="settings-list">
+        <li *ngFor="let faq of faqs; index as i" class="faqs" (click)="open(i)">
+            <div id="titleWrapper">
+                <p> {{ faqs[i].faqTitle }}</p>
+
+                <span>
+                    <svg width="14" height="8" viewBox="0 0 14 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M0.989258 1.70151L6.99966 7.71191L13.0101 1.70151L11.5959 0.287293L6.99966 4.88349L2.40347 0.287292L0.989258 1.70151Z"
+                            fill="#003594" />
+                    </svg>
+                </span>
+            </div>
+            <div id="text" *ngIf="faqs[i].isClicked"> {{ faqs[i].text}}</div>
+        </li>
+
+    </ul>
+
+</div>

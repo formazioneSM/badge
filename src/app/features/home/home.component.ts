@@ -19,7 +19,7 @@ export class HomeComponent implements OnInit {
   scroll: boolean = false;
   // admin:boolean = true;
   // user = true;
-  user:any;
+  user:any = {};
   decodeToken: any = '';
   imgUser: string = '';
   defaultUserImg = 'assets/images/profile.png'
@@ -49,7 +49,7 @@ export class HomeComponent implements OnInit {
    this.decodeToken = jwtDecode(token)
    this.userService.getUser(this.decodeToken.badge).subscribe(res => {
      this.user = res;
-     console.log(res)
+     console.log(this.user.name)
      this.imgUser = this.user.img !== '' ? this.user.img : this.defaultUserImg;
    }, err => console.log(err)
    )
@@ -73,9 +73,9 @@ export class HomeComponent implements OnInit {
     this.router.navigate(['../home/bacheca']);
   }
 
-  get username() {
-    return this.authService.loginResponse?.name ?? '';
-  }
+  // get username() {
+  //   return this.authService.loginResponse?.name ?? '';
+  // }
   // OnClickLogOut(){
   //   this.authService.onLogOut()
   //   // this.toastService.inputMethod() // sacro !
