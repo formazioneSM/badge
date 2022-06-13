@@ -1,10 +1,10 @@
-<div *ngIf="this.isVisible || !this.isVisible" id="container">
+<div *ngIf="this.isVisible" id="container">
   <div id="img-wrapper">
     <!-- <img src="{{ icon }}" /> -->
     {{icon}}
   </div>
   <p>{{text}}</p>
-  <div  id="undo" (click)="noDelete()">undo</div>
+  <div *ngIf="this.toastService.isVisibleUndo" id="undo" (click)="noDelete()">undo</div>
 </div>
 
 
