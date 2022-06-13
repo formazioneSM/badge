@@ -10,7 +10,7 @@
         <div id="deleteIcon" >
           <!-- aggiungere ngx permission -->
 
-          <app-modal (deleteEvent)="clicked(link._id)" (editEvent)="edit(link._id)"></app-modal>
+          <app-modal (deleteEvent)="onLinkDelete(link._id)" (editEvent)="edit(link._id)"></app-modal>
         </div>
       </div>
     </div>

@@ -3,7 +3,7 @@ import { ScrollService } from 'src/app/shared/uikit/services/scroll/scroll.servi
 import { NgxPermissionsService } from 'ngx-permissions';
 import { ChildrenOutletContexts, Router } from '@angular/router';
 import { AuthService } from 'src/app/shared/uikit/services/auth/auth.service';
-import { ToastService } from 'src/app/shared/uikit/services/toast.service';
+import { ToastService } from 'src/app/shared/uikit/services/toast/toast.service';
 import jwtDecode from 'jwt-decode';
 import { UsersService } from 'src/app/shared/uikit/services/users/users.service';
 import { slideInAnimation } from 'src/app/shared/utils/animation';

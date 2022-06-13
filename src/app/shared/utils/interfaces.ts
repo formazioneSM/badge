@@ -24,3 +24,4 @@ export interface Convenzione{
     "titolo"?: string
     "_id"?: string
 }
+

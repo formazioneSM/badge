@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./impostazioni.component.css'],
 })
 export class ImpostazioniComponent implements OnInit {
+    
   settingsLinks: any = [
     {
       linkTitle: 'Modifica anagrafica',

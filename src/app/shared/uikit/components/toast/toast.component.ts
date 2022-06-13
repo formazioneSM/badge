@@ -1,6 +1,6 @@
 import { NgSwitchCase } from '@angular/common';
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
-import { ToastService } from '../../services/toast.service';
+import { ToastService } from '../../services/toast/toast.service';
 import { timer } from 'rxjs';
 import { BachecaService } from '../../services/bacheca/bacheca.service';
 import { Post } from 'src/app/shared/utils/interfaces';
@@ -22,6 +22,8 @@ export class ToastComponent implements OnInit {
     public toastService: ToastService,
     public bachecaService: BachecaService
   ) { }
+
+
   ngOnInit(): void {
     this.toastService.newPost.subscribe((post: Post) => {
       this.post = post;
@@ -39,22 +41,25 @@ export class ToastComponent implements OnInit {
         this.isVisible = false;
         this.toastService.isVisibleUndo = false;
       });
-      this.text = res;
+      
+      this.text = res.message;
+      this.icon = res.icon;
+
       console.log(this.text);
-      switch (this.text) {
-        case 404:
-          this.text = 'Nessun utente associato alla mail inserita.';
-          break;
-        case 401:
-          this.text = 'La password inserita non è corretta.';
-          break;
-        case 409:
-          this.text = 'La mail che hai inserito é gia registrata.';
-          break;
-        case 500:
-          this.text = 'C`é un problema con il server,riprova piú tardi.'
-          break;
-      }
+    //   switch (this.text) {
+    //     case 404:
+    //       this.text = 'Nessun utente associato alla mail inserita.';
+    //       break;
+    //     case 401:
+    //       this.text = 'La password inserita non è corretta.';
+    //       break;
+    //     case 409:
+    //       this.text = 'La mail che hai inserito é gia registrata.';
+    //       break;
+    //     case 500:
+    //       this.text = 'C`é un problema con il server,riprova piú tardi.'
+    //       break;
+    //   }
     });
   }
 

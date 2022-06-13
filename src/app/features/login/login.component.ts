@@ -4,7 +4,7 @@ import { AuthService } from '../../shared/uikit/services/auth/auth.service';
 import jwt_decode from 'jwt-decode';
 import { NgxPermissionsService } from 'ngx-permissions';
 import { Router } from '@angular/router';
-import { ToastService } from 'src/app/shared/uikit/services/toast.service';
+import { ToastService } from 'src/app/shared/uikit/services/toast/toast.service';
 
 @Component({
   selector: 'app-login',
