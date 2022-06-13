@@ -1,5 +1,5 @@
 import { Injectable, EventEmitter } from '@angular/core';
-import { Post } from '../../utils/interfaces';
+import { Post } from '../../../utils/interfaces';
 
 @Injectable({
   providedIn: 'root',

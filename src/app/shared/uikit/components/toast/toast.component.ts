@@ -1,6 +1,6 @@
 import { NgSwitchCase } from '@angular/common';
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
-import { ToastService } from '../../services/toast.service';
+import { ToastService } from '../../services/toast/toast.service';
 import { timer } from 'rxjs';
 import { BachecaService } from '../../services/bacheca/bacheca.service';
 import { Post } from 'src/app/shared/utils/interfaces';

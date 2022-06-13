@@ -65,7 +65,7 @@ const routes: Routes = [
   { path: 'modifica-password', loadChildren: () => import('./features/modifica-password/modifica-password.module').then(m => m.ModificaPasswordModule) },
   { path: 'termini-e-condizioni', loadChildren: () => import('./features/termini-e-condizioni/termini-e-condizioni.module').then(m => m.TerminiECondizioniModule) },
   { path: 'faq', loadChildren: () => import('./features/faq/faq.module').then(m => m.FaqModule) },
-  { path: '**', redirectTo: 'home' },
+  { path: '**', redirectTo: 'home/bacheca' },
 ];
 
 @NgModule({

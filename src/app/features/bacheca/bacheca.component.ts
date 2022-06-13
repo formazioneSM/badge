@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Subscription, timer } from 'rxjs';
 import { BachecaService } from 'src/app/shared/uikit/services/bacheca/bacheca.service';
 import { LoaderService } from 'src/app/shared/uikit/services/loader/loader.service';
-import { ToastService } from 'src/app/shared/uikit/services/toast.service';
+import { ToastService } from 'src/app/shared/uikit/services/toast/toast.service';
 import { toastMessages } from 'src/app/shared/utils/constants';
 import { Post } from '../../shared/utils/interfaces';
 

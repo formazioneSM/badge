@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { ToastService } from '../toast.service';
+import { ToastService } from '../toast/toast.service';
 import { base_path, toastMessages } from 'src/app/shared/utils/constants';
 import { Post } from '../../../utils/interfaces';
 @Injectable({
