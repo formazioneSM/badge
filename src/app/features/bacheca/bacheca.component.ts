@@ -72,6 +72,7 @@ export class BachecaComponent implements OnInit {
         this.toastService.setMessage(toastNames.DELETED_POST_SUCCESS);
       },
       (err) => {
+        this.toastService.isVisibleUndo = false;
         this.toastService.setMessage(toastNames.DELETED_POST_ERROR);
       }
     );

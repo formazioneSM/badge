@@ -38,6 +38,7 @@ export class LinkComponent implements OnInit {
 
 
   onLinkDelete(_id: string) {
+    this.toastService.isVisibleUndo = true;
     console.log('indice ', typeof _id);
     const index = this.links.findIndex((x: any) => x._id == _id);
     console.log(index);
@@ -47,7 +48,9 @@ export class LinkComponent implements OnInit {
         this.toastService.setMessage(toastNames.DELETED_LINK_SUCCESS)
     },(err) => {
         console.log(err);
+        this.toastService.isVisibleUndo = false;
         this.toastService.setMessage(toastNames.DELETED_LINK_ERROR)
+
     });
   }
 

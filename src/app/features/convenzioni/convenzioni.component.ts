@@ -30,6 +30,7 @@ export class ConvenzioniComponent implements OnInit {
     });
   }
   deleteConvenzione(_id: string) {
+    this.toastService.isVisibleUndo = true;
     const index = this.convenzioni.findIndex((x: any) => x._id === _id);
     this.convenzioni.splice(index, 1);
     this.convenzioniService.deleteConvenzioni(_id).subscribe(
@@ -37,6 +38,7 @@ export class ConvenzioniComponent implements OnInit {
         this.toastService.setMessage(toastNames.DELETED_CONV_SUCCESS);
       },
       (err) => {
+        this.toastService.isVisibleUndo = false;
         this.toastService.setMessage(toastNames.DELETED_CONV_ERROR);
       }
     );
