@@ -1,0 +1,68 @@
+<div id="container">
+  <div id="head">
+    <img class="back" src="assets/images/chevron_left.png" (click)="goBack()" />
+    <p id="title">Modifica anagrafica</p>
+  </div>
+
+  <div id="form-wrapper">
+    <div *ngIf="form">
+      <form id="login" [formGroup]="form" (ngSubmit)="onSubmitEdit()">
+        <div id="name">
+          <app-input
+            [textLabel]="'Nome*'"
+            [placeholder]="'Inserisci il tuo nome'"
+            [backgroundInput]="'var(--input-bg-color)'"
+            [for]="'name'"
+            [parentFormGroup]="form"
+            [controlName]="'name'"
+            [name]="'name'"
+          >
+          </app-input>
+          <div *ngIf="name?.errors && name?.touched">
+            <p class="validation">Campo obbligatorio</p>
+          </div>
+        </div>
+        <div id="surname">
+          <app-input
+            [textLabel]="'Cognome*'"
+            [placeholder]="'Inserisci il tuo cognome'"
+            [backgroundInput]="'var(--input-bg-color)'"
+            [for]="'cognome'"
+            [parentFormGroup]="form"
+            [controlName]="'cognome'"
+            [name]="'cognome'"
+          >
+          </app-input>
+          <div *ngIf="cognome?.errors && cognome?.touched">
+            <p class="validation">Campo obbligatorio</p>
+          </div>
+        </div>
+
+        <div id="badge">
+          <app-input
+            [textLabel]="'ID Badge*'"
+            [placeholder]="'Inserisci il numero ID Badge'"
+            [backgroundInput]="'var(--input-bg-color)'"
+            [for]="'badge'"
+            [parentFormGroup]="form"
+            [controlName]="'badge'"
+            [name]="'badge'"
+          >
+          </app-input>
+          <div *ngIf="badge?.errors && badge?.touched">
+            <p class="validation">Campo obbligatorio</p>
+          </div>
+        </div>
+
+        <div id="buttonLogin">
+          <app-button
+            [typeButton]="'submit'"
+            [textButton]="'Modifica'"
+            [disabled]="form.invalid"
+          >
+          </app-button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

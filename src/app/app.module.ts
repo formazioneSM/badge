@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -14,20 +15,24 @@ import { SmLoaderComponent } from '../app/shared/uikit/components/sm-loader/sm-l
 import { LoaderService } from './shared/uikit/services/loader/loader.service';
 import { LoaderInterceptor } from './shared/utils/loader.interceptor';
 import { UikitModule } from './shared/uikit/uikit.module';
+import { AggiungiComponent } from './features/aggiungi/aggiungi.component';
+import { AddContentModule } from './features/aggiungi/aggiungi.module';
+
 
 export function playerFactory() {
   return player;
 }
 
 @NgModule({
-  declarations: [AppComponent, SmLoaderComponent],
+  declarations: [AppComponent, SmLoaderComponent,],
   imports: [
     UikitModule,
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
     LottieModule.forRoot({ player: playerFactory }),
-    NgxPermissionsModule.forRoot(),
+    NgxPermissionsModule.forRoot()
   ],
   providers: [
     ScrollService,

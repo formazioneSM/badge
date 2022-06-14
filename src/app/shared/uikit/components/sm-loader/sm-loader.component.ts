@@ -16,12 +16,12 @@ export class SmLoaderComponent implements OnInit {
   loading = false;
 
   animationCreated(animationItem: AnimationItem): void {
-    console.log(animationItem);
+    // console.log(animationItem);
   }
 
   constructor(private loaderService: LoaderService) {
     this.loaderService.isLoading.subscribe((v) => {
-        console.log(v);
+        // console.log(v);
         this.loading = v;
       });
   }

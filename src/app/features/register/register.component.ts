@@ -11,6 +11,7 @@ export class RegisterComponent implements OnInit {
   form: FormGroup = {} as FormGroup;
   errorNumber: any;
   res!: any;
+  isEmailSent:boolean = false;
   constructor(private _fb: FormBuilder, private authService: AuthService) {}
 
   ngOnInit(): void {
@@ -28,9 +29,11 @@ export class RegisterComponent implements OnInit {
         ],
       ], // la password deve essere di almeno 6 caratteri
       badge: ['', [Validators.required, Validators.pattern('^[0-9]*$')]], // il badge puo` contenere solo numeri
+      checkbox: ['', [Validators.required]],
     });
   }
   onSubmitRegister() {
+    this.isEmailSent = true;
     this.authService
       .OnRegister(
         this.name?.value,
@@ -70,5 +73,8 @@ export class RegisterComponent implements OnInit {
   }
   get badge() {
     return this.form?.get('badge');
+  }
+  get checkbox() {
+    return this.form?.get('checkbox');
   }
 }

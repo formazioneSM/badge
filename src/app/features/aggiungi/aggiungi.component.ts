@@ -6,11 +6,13 @@ import {
   ElementRef,
 } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
-import { colorDefault } from '../../shared/utils/constants';
+import { ActivatedRoute, Route, Router } from '@angular/router';
+import { colorDefault, toastNames, types } from '../../shared/utils/constants';
 import { BachecaService } from 'src/app/shared/uikit/services/bacheca/bacheca.service';
 import { ConvenzioniService } from 'src/app/shared/uikit/services/convenzioni/convenzioni.service';
 import { LinkService } from 'src/app/shared/uikit/services/link/link.service';
+import { Location } from '@angular/common';
+import { ToastService } from 'src/app/shared/uikit/services/toast/toast.service';
 
 @Component({
   selector: 'app-aggiungi',
@@ -18,7 +20,7 @@ import { LinkService } from 'src/app/shared/uikit/services/link/link.service';
   styleUrls: ['./aggiungi.component.css'],
 })
 export class AggiungiComponent implements OnInit {
-
+  modifica: boolean = false;
   newConvenzione: any = [];
   bgcolor = colorDefault;
   formAddBacheca: FormGroup = {} as FormGroup;
@@ -26,26 +28,32 @@ export class AggiungiComponent implements OnInit {
   formAddConvenzioni: FormGroup = {} as FormGroup;
   stepOne: boolean = true;
   type: string | undefined;
+  editParams: { id?: string; type?: string } = {};
+
   configuration = [
-    { text: '@Maria Grazia Marra', value: 'maria', selected: false },
+    {
+      text: '@Maria Grazia Marra',
+      value: 'Maria Grazia Marra',
+      selected: false,
+    },
     { text: '@hr', value: 'hr', selected: false },
   ];
-
+  types = types;
   postTypes = [
     {
-      type: 'Bacheca',
-      text: 'Avvisi e informazioni, permanenti e non ,per tutti i colleghi SM.',
+      type: this.types.BACHECA,
+      text: 'Avvisi e informazioni, permanenti e non, per tutti i colleghi SM.',
       icon: 'assets/images/bacheca.png',
       selected: false,
     },
     {
-      type: 'Link',
+      type: this.types.LINK,
       text: 'Inserisci link utili e veloci che possono aiutare i colleghi.',
       icon: 'assets/images/link.png',
       selected: false,
     },
     {
-      type: 'Convenzioni',
+      type: this.types.CONVENZIONI,
       text: 'Inserisci le informazioni sulle convezioni attive!',
       icon: 'assets/images/convenzioni.png',
       selected: false,
@@ -58,16 +66,23 @@ export class AggiungiComponent implements OnInit {
     private _fb: FormBuilder,
     private bachecaService: BachecaService,
     private convenzioniService: ConvenzioniService,
-    private linkService:LinkService
+    private linkService: LinkService,
+    private route: ActivatedRoute,
+    private location: Location,
+    private toastService: ToastService
   ) {}
   preventDef(e: any) {
     e.stopPropagation();
     // e.preventDefault();
   }
   triggerRadio(e: any, c: any) {
-    e.stopPropagation();
-    e.preventDefault();
-    let element = e.target.firstChild;
+    if (e) {
+      e.stopPropagation();
+      e.preventDefault();
+    }
+    let element = e
+      ? e.target.firstChild
+      : document.getElementById('@' + c)?.firstChild;
     element.click();
     this.getSelectedValue(c);
   }
@@ -75,20 +90,64 @@ export class AggiungiComponent implements OnInit {
     this.disabled = this.postTypes.every((p) => !p?.selected);
 
     this.formAddBacheca = this._fb.group({
-      contenutoBacheca: ['', Validators.required],
+      contenutoBacheca: ['', [Validators.required, Validators.pattern(/[\S]/)]],
       radio: ['', Validators.required],
     });
 
     this.formAddLink = this._fb.group({
-      nomeLink: ['', Validators.required],
-      link: ['', Validators.required],
+      nomeLink: ['', [Validators.required, Validators.pattern(/[\S]/)]],
+      link: ['', [Validators.required, Validators.pattern(/[\S]/)]],
     });
 
     this.formAddConvenzioni = this._fb.group({
-      titolo: ['', Validators.required],
-      contenuto: ['', Validators.required],
-      titoloLink: ['', Validators.required],
-      url: ['', Validators.required],
+      titolo: ['', [Validators.required, Validators.pattern(/[\S]/)]],
+      contenuto: ['', [Validators.required, Validators.pattern(/[\S]/)]],
+      titoloLink: ['', [Validators.required, Validators.pattern(/[\S]/)]],
+      url: ['', [Validators.required, Validators.pattern(/[\S]/)]],
+    });
+
+    this.route.params.subscribe((val) => {
+      this.editParams = val;
+      this.modifica = true;
+      this.type = val['type'];
+      if (this.editParams.id && this.editParams.type === 'Bacheca') {
+        this.stepOne = false;
+        this.bachecaService
+          .getPost(this.editParams.id)
+          .subscribe((post: any) => {
+            this.formAddBacheca?.setValue({
+              contenutoBacheca: post.text,
+              radio: '',
+            });
+            this.bgcolor = post.color;
+            this.triggerRadio(undefined, post.from);
+            this.configuration.forEach((c) => {
+              if (c.text === '@' + post.from) {
+                c.selected = true;
+              }
+            });
+            console.log(post);
+          });
+      } else if (this.editParams.id && this.editParams.type === 'Link') {
+        this.stepOne = false;
+        this.linkService.getLink(this.editParams.id).subscribe((link: any) => {
+          this.formAddLink?.setValue({ nomeLink: link.text, link: link.url });
+        });
+      } else if (this.editParams.id && this.editParams.type === 'Convenzioni') {
+        this.stepOne = false;
+        this.convenzioniService
+          .getConvenzione(this.editParams.id)
+          .subscribe((c: any) => {
+            this.formAddConvenzioni?.setValue({
+              titolo: c.titolo,
+              contenuto: c.text,
+              titoloLink: c.titoloLink,
+              url: c.url,
+            });
+          });
+      } else {
+        this.stepOne = true;
+      }
     });
   }
   get contenutoBacheca() {
@@ -127,28 +186,78 @@ export class AggiungiComponent implements OnInit {
   }
 
   addLink(formAddLink: FormGroup) {
-    console.log("nome link: "+formAddLink.value.nomeLink+" link: "+formAddLink.value.link );
-    this.linkService.addLink(formAddLink.value.nomeLink,formAddLink.value.link).subscribe((res)=>console.log(res))
+    console.log(
+      'nome link: ' +
+        formAddLink.value.nomeLink +
+        ' link: ' +
+        formAddLink.value.link
+    );
+    if (this.editParams.id && this.editParams.type === 'Link') {
+      this.linkService
+        .editLink(
+          this.editParams.id,
+          this.formAddLink.value.nomeLink,
+          this.formAddLink.value.link
+        )
+        .subscribe();
+      this._router.navigate(['home/link']);
+    } else {
+      this.linkService
+        .addLink(formAddLink.value.nomeLink, formAddLink.value.link)
+        .subscribe(
+          (res) => {
+            console.log(res);
+            this.toastService.setMessage(toastNames.ADDED_LINK_SUCCESS);
+          },
+          (err) => {
+            console.log(err);
+            this.toastService.setMessage(toastNames.ADDED_LINK_ERROR);
+          }
+        );
+      this._router.navigate(['home/link']);
+    }
   }
 
   addConvenzione(formAddConvenzioni: FormGroup) {
-   this.convenzioniService.addNewConvenzione(
-    this.formAddConvenzioni.value.titolo,
-    this.formAddConvenzioni.value.contenuto,
-    this.formAddConvenzioni.value.titoloLink,
-    this.formAddConvenzioni.value.url,
-
-   ).subscribe(c => {
-     this.newConvenzione.push(c)
-     this._router.navigate(['home/convenzioni']);
-   })
+    if (this.editParams.id && this.editParams.type === 'Convenzioni') {
+      this.convenzioniService
+        .editConvenzione(
+          this.editParams.id,
+          this.formAddConvenzioni.value.titolo,
+          this.formAddConvenzioni.value.text,
+          this.formAddConvenzioni.value.titoloLink,
+          this.formAddConvenzioni.value.url
+        )
+        .subscribe();
+      this._router.navigate(['home/convenzioni']);
+    } else {
+      this.convenzioniService
+        .addNewConvenzione(
+          this.formAddConvenzioni.value.titolo,
+          this.formAddConvenzioni.value.contenuto,
+          this.formAddConvenzioni.value.titoloLink,
+          this.formAddConvenzioni.value.url
+        )
+        .subscribe(
+          (c) => {
+            this.newConvenzione.push(c);
+            this.toastService.setMessage(toastNames.ADDED_CONV_SUCCESS);
+            this._router.navigate(['home/convenzioni']);
+          },
+          (err) => {
+            this.toastService.setMessage(toastNames.ADDED_CONV_ERROR);
+          }
+        );
+    }
   }
 
   esc() {
-    this._router.navigate(['home/bacheca']);
+    this.location.back();
+    this.modifica = false;
   }
-  backStepOne(){
-   this.stepOne = true;
+  backStepOne() {
+    this.stepOne = true;
+    this.modifica = false;
   }
 
   goToSecondStep(typeOfPost: any) {
@@ -177,23 +286,40 @@ export class AggiungiComponent implements OnInit {
       }
     });
   }
- 
-  changeColorTextarea(c: any){
-    this.bgcolor = c.color
+
+  changeColorTextarea(c: any) {
+    this.bgcolor = c.color;
     c.selected = true;
   }
 
-
   onPostSubmit() {
-    this.bachecaService
-      .createNewPost(
-        this.bgcolor,
-        this.formAddBacheca.value.contenutoBacheca,
-        this.formAddBacheca.value.radio
-      )
-      .subscribe((err: any) => {
-        console.log(err);
-      });
-    this._router.navigate(['home/bacheca']);
+    if (this.editParams.id && this.editParams.type === 'Bacheca') {
+      let editPosts = {
+        color: this.bgcolor,
+        text: this.formAddBacheca.value.contenutoBacheca,
+        from: this.formAddBacheca.value.radio,
+      };
+      this.bachecaService.editPost(editPosts, this.editParams.id).subscribe();
+      this._router.navigate(['home/bacheca']);
+    } else {
+      let post = {
+        color: this.bgcolor,
+        text: this.formAddBacheca.value.contenutoBacheca,
+        from: this.formAddBacheca.value.radio,
+      };
+      this.bachecaService.createNewPost(post).subscribe(
+        (res) => {
+          console.log(res);
+          this.toastService.setDeletedContent({});
+          this.toastService.setMessage(toastNames.ADDED_POST_SUCCESS);
+        },
+        (err) => {
+          console.log(err);
+          this.toastService.setDeletedContent({});
+          this.toastService.setMessage(toastNames.ADDED_POST_ERROR);
+        }
+      );
+      this._router.navigate(['home/bacheca']);
+    }
   }
 }

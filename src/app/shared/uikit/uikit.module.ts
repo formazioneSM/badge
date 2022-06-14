@@ -16,6 +16,10 @@ import { NgxPermissionsModule } from 'ngx-permissions';
 import { TooltipComponent } from './components/tooltip/tooltip.component';
 import { CheckboxComponent } from './components/checkbox/checkbox.component';
 import { GradientLoaderComponent } from './components/gradient-loader/gradient-loader.component';
+import { ModalComponent } from './components/modal/modal.component';
+import { AggiungiComponent } from 'src/app/features/aggiungi/aggiungi.component';
+import { AddContentModule } from 'src/app/features/aggiungi/aggiungi.module';
+import { ButtonLogoutComponent } from './components/button-logout/button-logout.component';
 
 
 
@@ -35,17 +39,20 @@ import { GradientLoaderComponent } from './components/gradient-loader/gradient-l
     TooltipComponent,
     CheckboxComponent,
     GradientLoaderComponent,
+    ModalComponent,
+    ButtonLogoutComponent,
 
   ],
   imports: [
     NgxPermissionsModule,
     CommonModule,
     ReactiveFormsModule,
-    LottieModule,
+    LottieModule
   ],
   exports: [
     InputComponent,
     ButtonComponent,
+    ButtonLogoutComponent,
     RoundButtonComponent,
     CardComponent,
     CardAggiungiComponent,
@@ -58,6 +65,7 @@ import { GradientLoaderComponent } from './components/gradient-loader/gradient-l
     TooltipComponent,
     CheckboxComponent,
     GradientLoaderComponent,
+    ModalComponent,
 
     
 

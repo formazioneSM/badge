@@ -4,7 +4,7 @@ import { AuthService } from '../../shared/uikit/services/auth/auth.service';
 import jwt_decode from 'jwt-decode';
 import { NgxPermissionsService } from 'ngx-permissions';
 import { Router } from '@angular/router';
-import { ToastService } from 'src/app/shared/uikit/services/toast.service';
+import { ToastService } from 'src/app/shared/uikit/services/toast/toast.service';
 
 @Component({
   selector: 'app-login',
@@ -35,9 +35,9 @@ export class LoginComponent implements OnInit {
         '',
         [
           Validators.required,
-          Validators.pattern(
-            '^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&_*-]).{8,}$'
-          ),
+          // Validators.pattern(
+          //   '^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&_*-]).{8,}$'
+          // ),
         ],
       ],
     });
@@ -62,6 +62,7 @@ export class LoginComponent implements OnInit {
   // chiamata login api e gestione degli errori
   onSubmitLogin() {
     this.isLoading = true;
+    this.form.markAllAsTouched();
     console.log(this.form.value.email);
     this.authService
       .onLogin(this.form.value.email, this.form.value.password)
@@ -83,7 +84,7 @@ export class LoginComponent implements OnInit {
           this.isLoading = false;
           console.log(err);
           //   this.errorMessage = "C'è stato un errore: " + err.error.message;
-          this.toastService.setMessage(err.status);
+          // this.toastService.setMessage(err.status);
           this.errorNumber = err.status;
         }
       );

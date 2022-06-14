@@ -1,11 +1,13 @@
 .cards {
     display: flex;
     flex-direction: column;
-    margin-left: 27px;
-    width: 75vw;
+    margin: 0 auto;
+    /* width: 75vw; */
     height: auto;
 }
 .card{
     margin-top: 10px;
     margin-bottom: 15px;
+    /* min-width: 75vw;
+    min-height: 100px ; */
 }

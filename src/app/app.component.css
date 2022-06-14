@@ -1,6 +1,15 @@
-#appToastStyleContainer{
-    
-    position: absolute;
-    bottom: 20px;
-    right: 40px;
+#appToastStyleContainer {
+  position: absolute;
+  width: 336px;
+  height: 62px;
+  bottom: 20px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@media only screen and (min-width: 800px){
+    /*Big smartphones [426px -> 600px]*/
+    #appToastStyleContainer {
+        width: 35%;
+    }
 }

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ConvenzioniService } from 'src/app/shared/uikit/services/convenzioni/convenzioni.service';
 import { LoaderService } from 'src/app/shared/uikit/services/loader/loader.service';
+import { ToastService } from 'src/app/shared/uikit/services/toast/toast.service';
+import { toastNames } from 'src/app/shared/utils/constants';
 
 @Component({
   selector: 'app-convenzioni',
@@ -8,48 +10,35 @@ import { LoaderService } from 'src/app/shared/uikit/services/loader/loader.servi
   styleUrls: ['./convenzioni.component.css'],
 })
 export class ConvenzioniComponent implements OnInit {
-//   convenzioni: any = [];
+  convenzioni: any = [];
   loading = false;
 
-//   prove = [
-//     {
-//       ciao: 'ciao',
-//     },
-//     {
-//       ciao: 'ciao',
-//     },
-//     {
-//       ciao: 'ciao',
-//     },
-//     {
-//       ciao: 'ciao',
-//     },
-//     {
-//       ciao: 'ciao',
-//     },
-//     {
-//       ciao: 'ciao',
-//     },
-//   ];
-  
   constructor(
     public convenzioniService: ConvenzioniService,
-    public loaderService: LoaderService
+    public loaderService: LoaderService,
+    private toastService: ToastService
   ) {
     this.loaderService.isLoading.subscribe((v) => {
-      console.log(v);
       this.loading = v;
     });
   }
 
   ngOnInit(): void {
-    this.convenzioniService.loadConvenzioni();
+    this.convenzioniService.getAllConvenzioni().subscribe((c: any) => {
+      this.convenzioni = c;
+      console.log(this.convenzioni);
+    });
   }
-
-//   getAllConvenzioni() {
-//     this.convenzioniService.getAllCovenzioni().subscribe((c: any) => {
-//       this.convenzioni = c;
-//       console.log(this.convenzioni);
-//     });
-//   }
+  deleteConvenzione(_id: string) {
+    const index = this.convenzioni.findIndex((x: any) => x._id === _id);
+    this.convenzioni.splice(index, 1);
+    this.convenzioniService.deleteConvenzioni(_id).subscribe(
+      (res: any) => {
+        this.toastService.setMessage(toastNames.DELETED_CONV_SUCCESS);
+      },
+      (err) => {
+        this.toastService.setMessage(toastNames.DELETED_CONV_ERROR);
+      }
+    );
+  }
 }

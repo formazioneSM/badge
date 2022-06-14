@@ -1,10 +1,29 @@
 <div id="container">
-    <div id="head">
-        <img class="back"  src="assets/images/chevron_left.png" (click)="goBack()">
-        <p id="title">Profilo</p>
-        <img id="impostazioni" src="assets/images/impostazioni.png" [routerLink]="'/impostazioni'" >
+  <div id="head">
+    <img class="back" src="assets/images/chevron_left.png" [routerLink]="'/home/bacheca'" />
+    <p id="title">Profilo</p>
+    <img id="impostazioni" src="assets/images/impostazioni.png" [routerLink]="'/impostazioni'" />
+  </div>
+  <div id="cardProfile" *ngIf="user">
+    <div id="parteLogo" [ngStyle]="{'background':  selectedTheme == 0 ? 'var(--bg-primary-color)' : 'url(' +  temiDisponibili[selectedTheme] +')'}" (click)="cambioTema()">
+      <img src="assets/images/logo_intero.png" />
     </div>
-    <div id="cardProfile">
+    <div id="containerImg">
+      <div id="editProfileImg" (click)="trigger()">
+        <img src="assets/images/edit.png" />
+      </div>
+      <div id="profile" [ngStyle]="{'background': 'url(' + imgUser + ')', 'background-size': '100%'}" (click)="trigger()">
+
+        <input class="file-input" type="file" (change)="onFileSelected($event)"  #fileUpload  >
+
+      </div>
 
     </div>
+    <div id="identity">
+      <p>
+        <b>{{user.name}}</b><br />
+        {{user.surname}}<br /><span>ID {{user.badge}}</span>
+      </p>
+    </div>
+  </div>
 </div>

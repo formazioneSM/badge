@@ -1,0 +1,130 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
+
+#container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  /* padding-right: 20px;
+    padding-left: 20px; */
+  box-sizing: border-box;
+  align-items: center;
+  padding: 0 2rem;
+}
+
+#head {
+  display: flex;
+  margin-top: 36.5px;
+  width: 100%;
+  align-items: center;
+  padding-bottom: 2rem;
+}
+
+.back {
+  margin-right: 15px;
+}
+
+#title {
+  font-family: Gotham-bold;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 21px;
+  line-height: 23px;
+}
+
+#form-wrapper {
+    width: 100%;
+}
+
+#login {
+  /* margin-top: 80px; */
+  display: flex;
+  flex-direction: column;
+  /* width: 83vw; */
+  height: 100%;
+  align-items: center;
+  /* margin-left: 25px; */
+}
+
+#name {
+  position: relative;
+  /* width: 83vw; */
+  width: 100%;
+
+  height: 80px;
+}
+
+#surname {
+  position: relative;
+  /* width: 83vw; */
+  width: 100%;
+
+  height: 80px;
+  margin-top: 30px;
+}
+
+#badge {
+  position: relative;
+  /* width: 83vw; */
+  width: 100%;
+
+  height: 80px;
+  margin-top: 30px;
+}
+
+#buttonLogin {
+  position: relative;
+  /* width: 83vw; */
+  width: 100%;
+
+  height: 54px;
+  margin: 3rem auto 2rem auto;
+}
+
+.validation {
+  position: relative;
+  font-family: "Hind Madurai";
+  font-style: normal;
+  color: var(--bg-primary-color);
+  font-weight: bold;
+  /* bottom: -3px; */
+  padding-top: 5px;
+}
+
+#logout {
+  width: 319px;
+  height: 54px;
+  justify-content: center;
+  font-family: "Hind Madurai";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 25px;
+  position: fixed;
+  bottom: 3%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.links {
+  height: 58px;
+  width: 100%;
+  border-bottom: 1px solid lightgray;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem;
+}
+
+.links > a {
+  text-decoration: none;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  color: inherit;
+  font-family: "Hind Madurai";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 25px;
+}

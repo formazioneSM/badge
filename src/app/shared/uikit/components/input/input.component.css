@@ -59,9 +59,11 @@ input:focus, textarea:focus {
 input.ng-invalid.ng-touched  {
     border: 1px solid #EB5757;
 }
-input.ng-untouched.ng-pristine.ng-invalid{
+
+/* input.ng-untouched.ng-pristine.ng-invalid{
     border: 1px solid #EB5757;
-}
+} */
+
 .icon-container {
     position: absolute;
     bottom: 15px;
@@ -79,6 +81,13 @@ input.ng-untouched.ng-pristine.ng-invalid{
     top: -18px;
     position: absolute;
 }
+
+.show-password{
+    top: -17px;
+    position: absolute;
+
+}
+
 /* .show-password:hover {
     opacity: 1;
     cursor: pointer;

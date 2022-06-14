@@ -1,172 +1,210 @@
-@import url('https://fonts.googleapis.com/css2?family=Hind+Madurai&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Hind+Madurai&display=swap");
 
 #container {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    height: 100%;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
 }
 
 #head {
-    margin-top: 70px;
-    padding-bottom: 2rem;
-    margin-left: 28px;
+  padding-top: 70px;
+  padding-bottom: 2rem;
+  /* margin: 0 auto; */
 }
 
 #title {
-    font-family: Gotham-bold;
-    font-style: normal;
-    font-weight: 700;
-    font-size: 29px;
-    line-height: 32px;
-    color: #000000;
-    margin-bottom: 3px;
-
-
+  font-family: Gotham-bold;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 29px;
+  line-height: 32px;
+  color: #000000;
+  margin-bottom: 3px;
 }
 
 #subtitle {
-    font-family: 'Hind Madurai';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 22px;
-    margin-top: 0px;
-
+  font-family: "Hind Madurai";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 22px;
+  margin-top: 0px;
 }
 
 #point {
-    position: relative;
-    width: 7px;
-    height: 7px;
-    top: 22px;
-    left: 2px;
-    background: var(--bg-primary-color);
-    border-radius: 50%;
+  position: relative;
+  width: 7px;
+  height: 7px;
+  top: 22px;
+  left: 2px;
+  background: var(--bg-primary-color);
+  border-radius: 50%;
 }
 
 #login {
-
-    /* margin-top: 80px; */
-    display: flex;
-    flex-direction: column;
-    width: 83vw;
-    height: 100%;
-    align-items: center;
-    margin-left: 25px;
-
+  /* margin-top: 80px; */
+  display: flex;
+  flex-direction: column;
+  /* width: 83vw; */
+  height: 100%;
+  align-items: center;
+  /* margin-left: 25px; */
 }
 
 #email {
-    position: relative;
-    width: 83vw;
-    height: 80px;
-    margin-top: 30px;
+  position: relative;
+  /* width: 83vw; */
+  width: 100%;
+  height: 80px;
+  margin-top: 30px;
 }
 
 #name {
-    position: relative;
-    width: 83vw;
-    height: 80px;
+  position: relative;
+  /* width: 83vw; */
+  width: 100%;
 
+  height: 80px;
 }
 
 #surname {
-    position: relative;
-    width: 83vw;
-    height: 80px;
-    margin-top: 30px;
+  position: relative;
+  /* width: 83vw; */
+  width: 100%;
+
+  height: 80px;
+  margin-top: 30px;
 }
 
 #badge {
-    position: relative;
-    width: 83vw;
-    height: 80px;
-    margin-top: 30px;
+  position: relative;
+  /* width: 83vw; */
+  width: 100%;
+
+  height: 80px;
+  margin-top: 30px;
 }
 
 #password {
+  position: relative;
+  margin-top: 30px;
+  /* width: 83vw; */
+  width: 100%;
 
-    position: relative;
-    margin-top: 30px;
-    width: 83vw;
-    height: 80px;
+  height: 80px;
 }
 
 #buttonLogin {
-    position: relative;
-    width: 83vw;
-    height: 54px;
-    margin-top: 50px;
+  position: relative;
+  /* width: 83vw; */
+  width: 100%;
+
+  height: 54px;
+  margin: 3rem auto 2rem auto;
 }
 
 .validation {
-    position: relative;
-    font-family: 'Hind Madurai';
-    font-style: normal;
-    color: var(--bg-primary-color);
-    font-weight: bold;
-    bottom: 10px;
-    padding-bottom: 2rem;
+  position: relative;
+  font-family: "Hind Madurai";
+  font-style: normal;
+  color: var(--bg-primary-color);
+  font-weight: bold;
+  /* bottom: -3px; */
+  padding-top: 5px;
 }
 
 .error-message {
-    padding: 1rem 2rem;
-    margin: 0 1.5rem;
-    background: rgba(255, 0, 0, 0.178);
-    border: 1px solid red;
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
+  padding: 1rem 2rem;
+  margin: 0 1.5rem;
+  background: rgba(255, 0, 0, 0.178);
+  border: 1px solid red;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
 }
 
 .error-message i {
-    padding-right: 0.8rem;
-    color: red;
+  padding-right: 0.8rem;
+  color: red;
 }
 
 .ok-message {
-    padding: 1rem 2rem;
-    margin: 0 1.5rem;
-    background: rgb(0 255 78 / 18%);
-    border: 1px solid #ffffff;
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
+  padding: 1rem 2rem;
+  margin: 0 1.5rem;
+  background: rgb(0 255 78 / 18%);
+  border: 1px solid #ffffff;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
 }
 
 .ok-message i {
-    padding-right: 0.8rem;
-    color: green;
+  padding-right: 0.8rem;
+  color: green;
 }
 
 #tooltip {
-    position: absolute;
-    right: 24px;
-
+  position: absolute;
+  right: 24px;
 }
 
 #checkbox a {
-    color: var(--bg-primary-color);
+  color: var(--bg-primary-color);
 }
 
 #checkbox {
-    width: 83vw;
-    margin-top: 30px;
+  /* width: 83vw; */
+  /* margin-top: 30px; */
+  width: 100%;
 }
 
-#login {
-    font-family: 'Hind Madurai';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 22px;
-    color: #504F4F;
-    display: flex;
-    justify-content: center;
+#go-to-login {
+  font-family: "Hind Madurai";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 22px;
+  color: #504f4f;
+  display: flex;
+  justify-content: center;
+  padding-bottom: 2rem;
 }
 
-#login a {
-    color: var(--bg-primary-color);
+#go-to-login a {
+  color: var(--bg-primary-color);
+}
+.forgot-container {
+  display: flex;
+  flex-direction: column;
+}
 
+.email-sent {
+  padding-top: 70px;
+  display: flex;
+  flex-direction: column;
+  /* display: none; */
+}
+.head.email {
+  padding-bottom: 10px;
+}
+
+
+
+.title.email {
+  text-align: left;
+  margin-bottom: 0;
+  padding-bottom: 0;
+
+}
+.message {
+  /* margin: 0 2rem; */
+  font-family: "Hind Madurai";
+  padding-bottom: 3rem;
+}
+.buttonContainer {
+  /* width: 83vw; */
+  width: 100%;
+  height: 54px;
+  margin: 0 auto;
 }
