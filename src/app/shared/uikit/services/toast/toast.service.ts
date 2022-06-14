@@ -1,6 +1,7 @@
 import { Injectable, EventEmitter } from '@angular/core';
 import { Subject } from 'rxjs';
 import { toast } from 'src/app/shared/utils/constants';
+import { timer } from 'rxjs';
 import { Post } from '../../../utils/interfaces';
 
 @Injectable({
@@ -11,7 +12,7 @@ export class ToastService {
   newPost: EventEmitter<any> = new EventEmitter();
 
   isVisibleUndo: boolean = false; // per far visualizzare undo
-  deletedContent: Subject<any> = new Subject();
+  annulla: Subject<any> = new Subject();
 
   constructor() {}
 
@@ -27,7 +28,14 @@ export class ToastService {
     this.newEvent.emit(newToast);
   }
 
-  setDeletedContent(content: any) {
-    this.deletedContent.next(content);
-  }
+  
+
+  // annullaTimer(f:any , time:any){
+  //   timer(time).subscribe(f)
+  // }
+
+  annullaTimer=timer(4500)
+  
+
+
 }

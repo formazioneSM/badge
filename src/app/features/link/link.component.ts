@@ -15,6 +15,8 @@ import { ToastService } from 'src/app/shared/uikit/services/toast/toast.service'
 export class LinkComponent implements OnInit {
   loading = false;
   links!: any;
+  linksOld:any;
+  annulla:any
 
   constructor(
     private linkService: LinkService,
@@ -30,25 +32,47 @@ export class LinkComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.toastService.annulla.subscribe((res)=>{
+      console.log(res)
+      if(res){
+        this.links = this.linksOld
+        this.toastService.annulla.next(false)
+        this.annulla.unsubscribe()
+      }
+    } )
+
+
     this.linkService.loadAllLinks().subscribe((res) => {
       this.links = res;
+      this.linksOld = [...this.links]
       console.log(this.links);
     });
   }
 
 
   onLinkDelete(_id: string) {
-    console.log('indice ', typeof _id);
-    const index = this.links.findIndex((x: any) => x._id == _id);
-    console.log(index);
-    this.links.splice(index, 1);
-    this.linkService.deleteLink(_id).subscribe((res) => {
-        console.log(res);
-        this.toastService.setMessage(toastNames.DELETED_LINK_SUCCESS)
-    },(err) => {
-        console.log(err);
-        this.toastService.setMessage(toastNames.DELETED_LINK_ERROR)
-    });
+
+    this.links = this.links.filter((l:any) => l._id != _id);
+    this.toastService.setMessage(toastNames.DELETED_LINK_SUCCESS)
+
+
+    this.annulla = this.toastService.annullaTimer.subscribe((res)=>{     
+      this.linkService.deleteLink(_id).subscribe(
+  (res: any) => {
+  },
+  (err) => {
+    this.toastService.setMessage(toastNames.DELETED_POST_ERROR);
+  }
+);
+  
+})
+    // this.linkService.deleteLink(_id).subscribe((res) => {
+       
+        
+    // },(err) => {
+    //     console.log(err);
+    //     this.toastService.setMessage(toastNames.DELETED_LINK_ERROR)
+    // });
   }
 
   edit(_id: string) {
