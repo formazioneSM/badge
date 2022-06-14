@@ -1,11 +1,11 @@
 <app-sm-loader></app-sm-loader>
 <div [@routeAnimations]="getRouteAnimationData()">
   <router-outlet></router-outlet>
-</div>
-<div id="appToastStyleContainer">
-  <app-toast
-    text="Contenuto rimosso!"
-    [icon]="'assets/images/icona_toast_elimina.png'"
-    (noDeletePost)="undoAction($event)"
-  ></app-toast>
+  <div id="appToastStyleContainer">
+    <app-toast
+      [text]=""
+      [icon]=""
+      (noDeletePost)="undoAction()"
+    ></app-toast>
+  </div>
 </div>

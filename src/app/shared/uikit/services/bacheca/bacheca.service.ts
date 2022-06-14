@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { ToastService } from '../toast/toast.service';
 import { base_path, toastMessages } from 'src/app/shared/utils/constants';
 import { Post } from '../../../utils/interfaces';
+import { Subject } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
@@ -10,10 +11,10 @@ export class BachecaService {
   constructor(private http: HttpClient, public toastService: ToastService) {}
   posts: any = [];
   index!: number;
-  postUndo: any;
+  postUndo: Subject<any> = new Subject();
+
 
   createNewPost(post: Post) {
-    this.toastService.setMessage(toastMessages.contentCreatedSuccessfully);
     return this.http.post(`https://be-system.herokuapp.com/api/bacheca`, post);
   }
 
@@ -25,7 +26,8 @@ export class BachecaService {
   }
 
   undoDeletedPost(post: Post) {
-    this.createNewPost(post);
+    // this.createNewPost(post);
+    this.postUndo.next(post);
   }
 
   getAllPosts() {
