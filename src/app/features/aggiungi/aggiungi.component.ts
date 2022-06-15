@@ -310,12 +310,12 @@ export class AggiungiComponent implements OnInit {
       this.bachecaService.createNewPost(post).subscribe(
         (res) => {
           console.log(res);
-          this.toastService.setDeletedContent({});
+          // this.toastService.setDeletedContent({});
           this.toastService.setMessage(toastNames.ADDED_POST_SUCCESS);
         },
         (err) => {
           console.log(err);
-          this.toastService.setDeletedContent({});
+          // this.toastService.setDeletedContent({});
           this.toastService.setMessage(toastNames.ADDED_POST_ERROR);
         }
       );

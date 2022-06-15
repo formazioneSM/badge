@@ -14,7 +14,7 @@ import { Post } from 'src/app/shared/utils/interfaces';
 export class ToastComponent implements OnInit {
   @Input('icon') icon: string | undefined;
   @Input('text') text: any;
-  @Output('noDeletePost') noDeletePost = new EventEmitter();
+  @Output('emitAnnulla') emitAnnulla = new EventEmitter();
 
   isVisible: boolean = false;
   post: any;
@@ -63,8 +63,10 @@ export class ToastComponent implements OnInit {
     });
   }
 
-  noDelete() {
-    this.noDeletePost.emit(this.post);
+  onEmitAnnulla() {
+    // this.emitAnnulla.emit(e);
+    this.toastService.annulla.next(true)
+    this.isVisible=false
     // this.noDeletePost.emit(this.toastService.post);
     // this.bachecaService.undoDeletedPost();
     // console.log('click undo');
