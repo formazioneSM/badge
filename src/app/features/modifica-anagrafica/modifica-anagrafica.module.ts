@@ -5,6 +5,7 @@ import { ModificaAnagraficaRoutingModule } from './modifica-anagrafica-routing.m
 import { ModificaAnagraficaComponent } from './modifica-anagrafica.component';
 import { UikitModule } from 'src/app/shared/uikit/uikit.module';
 import { ReactiveFormsModule } from '@angular/forms';
+import { NgxPermissionsModule } from 'ngx-permissions';
 
 
 @NgModule({
@@ -16,6 +17,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     ModificaAnagraficaRoutingModule,
     UikitModule,
     ReactiveFormsModule,
+    NgxPermissionsModule
   ]
 })
 export class ModificaAnagraficaModule { }
