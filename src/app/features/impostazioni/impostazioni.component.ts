@@ -27,7 +27,7 @@ export class ImpostazioniComponent implements OnInit {
     },
     {
       linkTitle: 'Suggerimenti',
-    mailto: 'mailto:formazione@sysmanagement.it'
+    mailto: 'mailto:formazione@sysmanagement.it?subject=Badgeverso%20-%20Suggerimenti&body=Inviaci%20qualche%20suggerimento!'
     },
   ];
 
