@@ -44,7 +44,7 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     // let token = this.authService.apiToken
     // this.isAdminOrUser(token)
-    
+
     console.log(this.permissions.getPermissions())
     let token: any = localStorage.getItem('token');
     this.decodeToken = jwtDecode(token)
