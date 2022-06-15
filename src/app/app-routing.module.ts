@@ -51,13 +51,14 @@ const routes: Routes = [
     path: 'profilo',
     loadChildren: () =>
       import('./features/profilo/profilo.module').then((m) => m.ProfiloModule),
-      canLoad: [NgxPermissionsGuard],
-    data: { animation: 'profiloPage',
-    permissions: {
-      only: ['ADMIN', 'USER'],
-      redirectTo: 'login',
-    }, },
-    
+    canLoad: [NgxPermissionsGuard],
+    data: {
+      animation: 'profiloPage',
+      permissions: {
+        only: ['ADMIN', 'USER'],
+        redirectTo: 'login',
+      },
+    },
   },
   {
     path: 'impostazioni',
@@ -66,29 +67,55 @@ const routes: Routes = [
         (m) => m.ImpostazioniModule
       ),
     canLoad: [NgxPermissionsGuard],
-    data: { animation: 'impostazioniPage',
+    data: {
+      animation: 'impostazioniPage',
 
-    permissions: {
-      only: ['ADMIN', 'USER'],
-      redirectTo: 'login',
-    }, },
+      permissions: {
+        only: ['ADMIN', 'USER'],
+        redirectTo: 'login',
+      },
+    },
   },
-  { path: 'modifica-anagrafica', loadChildren: () => import('./features/modifica-anagrafica/modifica-anagrafica.module').then(m => m.ModificaAnagraficaModule),    
-  canLoad: [NgxPermissionsGuard],   
-  data: {
-  permissions: {
-    only: ['ADMIN', 'USER'],
-    redirectTo: 'login',
-  }, }, },
-  { path: 'modifica-password', loadChildren: () => import('./features/modifica-password/modifica-password.module').then(m => m.ModificaPasswordModule),    
-  canLoad: [NgxPermissionsGuard],  
-  data: {
-    permissions: {
-      only: ['ADMIN', 'USER'],
-      redirectTo: 'login',
-    }, } },
-  { path: 'termini-e-condizioni', loadChildren: () => import('./features/termini-e-condizioni/termini-e-condizioni.module').then(m => m.TerminiECondizioniModule) },
-  { path: 'faq', loadChildren: () => import('./features/faq/faq.module').then(m => m.FaqModule)},
+  {
+    path: 'modifica-anagrafica',
+    loadChildren: () =>
+      import('./features/modifica-anagrafica/modifica-anagrafica.module').then(
+        (m) => m.ModificaAnagraficaModule
+      ),
+    canLoad: [NgxPermissionsGuard],
+    data: {
+      permissions: {
+        only: ['ADMIN', 'USER'],
+        redirectTo: 'login',
+      },
+    },
+  },
+  {
+    path: 'modifica-password',
+    loadChildren: () =>
+      import('./features/modifica-password/modifica-password.module').then(
+        (m) => m.ModificaPasswordModule
+      ),
+    canLoad: [NgxPermissionsGuard],
+    data: {
+      permissions: {
+        only: ['ADMIN', 'USER'],
+        redirectTo: 'login',
+      },
+    },
+  },
+  {
+    path: 'termini-e-condizioni',
+    loadChildren: () =>
+      import(
+        './features/termini-e-condizioni/termini-e-condizioni.module'
+      ).then((m) => m.TerminiECondizioniModule),
+  },
+  {
+    path: 'faq',
+    loadChildren: () =>
+      import('./features/faq/faq.module').then((m) => m.FaqModule),
+  },
   { path: '**', redirectTo: 'home/bacheca' },
 ];
 

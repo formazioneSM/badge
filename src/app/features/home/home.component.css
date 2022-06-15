@@ -136,6 +136,12 @@
   margin-top: 5px;
 }
 
+#img-loader-wrapper {
+    height: 35px;
+    width: 35px;
+    
+}
+
 .roundButtons {
   display: flex;
   flex-direction: row;

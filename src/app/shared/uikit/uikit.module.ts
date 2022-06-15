@@ -18,6 +18,7 @@ import { GradientLoaderComponent } from './components/gradient-loader/gradient-l
 import { ModalComponent } from './components/modal/modal.component';
 import { ButtonLogoutComponent } from './components/button-logout/button-logout.component';
 import { SmLoaderComponent } from './components/sm-loader/sm-loader.component';
+import { ImgLoaderComponent } from './components/img-loader/img-loader.component';
 
 
 
@@ -39,6 +40,7 @@ import { SmLoaderComponent } from './components/sm-loader/sm-loader.component';
     GradientLoaderComponent,
     ModalComponent,
     ButtonLogoutComponent,
+    ImgLoaderComponent,
 
   ],
   imports: [
@@ -64,6 +66,7 @@ import { SmLoaderComponent } from './components/sm-loader/sm-loader.component';
     CheckboxComponent,
     GradientLoaderComponent,
     ModalComponent,
+    ImgLoaderComponent,
 
     
 

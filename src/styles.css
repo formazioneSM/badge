@@ -1,63 +1,74 @@
 /* You can add global styles to this file, and also import other style files */
-@import './assets/fonts.css';
+@import "./assets/fonts.css";
+@import url("https://fonts.googleapis.com/css2?family=Hind+Madurai&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Hind+Madurai:wght@500&family=Montserrat:wght@700&display=swap");
 
-
-:root{
-    --bg-primary-color:#003594;
-    --primary-color: white;
-    --bg-secondary-color: #C1C1C1;
-    --secondary-color: #545454;
-    --border-color: #C6D1E4;
-    --input-bg-color: #F1F2F2;
-    --placeholder-color: rgba(0, 0, 0, 0.5);
-    --input-color: rgb(0, 0, 0)
+:root {
+  --bg-primary-color: #003594;
+  --primary-color: white;
+  --bg-secondary-color: #c1c1c1;
+  --secondary-color: #545454;
+  --border-color: #c6d1e4;
+  --input-bg-color: #f1f2f2;
+  --placeholder-color: rgba(0, 0, 0, 0.5);
+  --input-color: rgb(0, 0, 0);
 }
 
 * {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
-body{
-    font-family: Gotham;
-    background-color: var(--primary-color);
-    /* padding: 0 2rem; */
+body {
+  font-family: Gotham;
+  background-color: var(--primary-color);
+  /* padding: 0 2rem; */
 }
 
-app-register, app-login, app-password-recovery, app-profilo, app-aggiungi {
-    display: block;
-    padding: 0 2rem;
+app-register,
+app-login,
+app-password-recovery,
+app-profilo,
+app-aggiungi {
+  display: block;
+  padding: 0 2rem;
 }
 
 .validation {
-    color: red!important;
+  font-family: "Hind Madurai";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 22px;
+  color: #eb5757;
+  margin-top: 5px;
 }
 
-@media only screen and (min-width: 500px){
-    body {
-        margin: 0 auto;
-        width: 80%;
-    }
+@media only screen and (min-width: 500px) {
+  body {
+    margin: 0 auto;
+    width: 80%;
+  }
 }
 
-@media only screen and (min-width: 700px){
-    body {
-        margin: 0 auto;
-        width: 65%;
-    }
+@media only screen and (min-width: 700px) {
+  body {
+    margin: 0 auto;
+    width: 65%;
+  }
 }
 
-@media only screen and (min-width: 800px){
-    body {
-        margin: 0 auto;
-        width: 55%;
-    }
+@media only screen and (min-width: 800px) {
+  body {
+    margin: 0 auto;
+    width: 55%;
+  }
 }
 
-@media only screen and (min-width: 900px){
-    body {
-        margin: 0 auto;
-        width: 45%;
-    }
+@media only screen and (min-width: 900px) {
+  body {
+    margin: 0 auto;
+    width: 45%;
+  }
 }
