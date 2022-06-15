@@ -7,6 +7,7 @@ const routes: Routes = [
   {
     path: '',
     component: HomeComponent,
+    
     children: [
       {
         path: 'bacheca',
@@ -44,6 +45,7 @@ const routes: Routes = [
         animation: 'aggiungiPage'
     },
   },
+  { path: 'home', redirectTo: 'home/bacheca' },
 ];
 
 @NgModule({
