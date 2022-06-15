@@ -151,6 +151,7 @@
   text-align: center;
   padding: 2rem 0 3rem 0;
   width: 100%;
+
 }
 
 .button {
@@ -172,10 +173,10 @@
 .active {
   background-color: var(--bg-primary-color) !important;
   background: var(--bg-primary-color) !important;
-  width: 54px;
-  height: 54px;
-  border-radius: 50%;
-  font-weight: 500;
+  width: 54px!important;
+  height: 54px!important;
+  border-radius: 50%!important;
+  font-weight: 500!important;
 }
 
 #wrapper {
@@ -191,18 +192,35 @@
 .roundButtonsSide {
   display: flex;
   flex-direction: column !important;
-  /* margin-left: 27px; */
   position: fixed !important;
-  /* margin-top: 10px; */
   text-align: center;
   z-index: 10;
   right: -50%;
+  margin: auto 0;
   align-items: center !important;
-  height: 100vh;
   background-color: transparent !important;
-  top: 0;
+  top: 50%;
+  transform: translateY(-50%);
   justify-content: center;
-  height: 100vh;
+  
+
+}
+.roundButtonsSideScrollTop {
+  display: flex;
+  flex-direction: column !important;
+  position: fixed!important;
+  text-align: center;
+  z-index: 10;
+
+  margin: auto 0;
+  align-items: center !important;
+  background-color: transparent !important;
+
+  justify-content: center;
+  bottom: 0;
+  margin-right: 9px;
+  right: -50%;
+
 }
 
 .buttonSide {

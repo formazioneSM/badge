@@ -37,7 +37,10 @@ export class LinkComponent implements OnInit {
       if(res){
         this.links = this.linksOld
         this.toastService.annulla.next(false)
-        this.annulla.unsubscribe()
+        if(this.annulla){
+
+          this.annulla.unsubscribe()
+        }
       }
     } )
 
@@ -51,6 +54,7 @@ export class LinkComponent implements OnInit {
 
 
   onLinkDelete(_id: string) {
+    this.toastService.isVisibleUndo = true;
 
     this.links = this.links.filter((l:any) => l._id != _id);
     this.toastService.setMessage(toastNames.DELETED_LINK_SUCCESS)

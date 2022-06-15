@@ -31,7 +31,10 @@ export class ConvenzioniComponent implements OnInit {
       if(res){
         this.convenzioni = this.convenzioniOld
         this.toastService.annulla.next(false)
-        this.annulla.unsubscribe()
+        if(this.annulla){
+
+          this.annulla.unsubscribe()
+        }
       }
     } )
     this.convenzioniService.getAllConvenzioni().subscribe((c: any) => {
@@ -41,6 +44,7 @@ export class ConvenzioniComponent implements OnInit {
     });
   }
   deleteConvenzione(_id: string) {
+    this.toastService.isVisibleUndo = true;
     this.convenzioni = this.convenzioni.filter((c:any) => c._id != _id);
     this.toastService.setMessage(toastNames.DELETED_CONV_SUCCESS);
     this.annulla = this.toastService.annullaTimer.subscribe((res)=>{     
