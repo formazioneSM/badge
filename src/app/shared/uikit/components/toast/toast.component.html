@@ -1,12 +1,12 @@
-<div *ngIf="this.isVisible " id="container">
-  <div id="img-wrapper">
-    <!-- <img src="{{ icon }}" /> -->
-    {{icon}}
+<div id="appToastStyleContainer" *ngIf="this.isVisible">
+  <div  id="container">
+    <div id="img-wrapper">
+      <!-- <img src="{{ icon }}" /> -->
+      {{icon}}
+    </div>
+    <p>{{text}}</p>
+    <div *ngIf="this.toastService.isVisibleUndo" id="undo" (click)="onEmitAnnulla()">Annulla</div>
   </div>
-  <p>{{text}}</p>
-  <div *ngIf="this.toastService.isVisibleUndo" id="undo" (click)="onEmitAnnulla()">Annulla</div>
 </div>
-
-
 
 <!-- <div *ngIf="this.toastService.isVisibleUndo" (click)="noDelete()" >Undo</div> -->

@@ -39,7 +39,10 @@ export class BachecaComponent implements OnInit {
       if(res){
         this.posts = this.postsOld
         this.toastService.annulla.next(false)
-        this.annulla.unsubscribe()
+        if(this.annulla){
+
+          this.annulla.unsubscribe()
+        }
       }
     } )
     
@@ -90,6 +93,7 @@ export class BachecaComponent implements OnInit {
       (res: any) => {
       },
       (err) => {
+        this.toastService.isVisibleUndo = false;
         this.toastService.setMessage(toastNames.DELETED_POST_ERROR);
       }
     );
