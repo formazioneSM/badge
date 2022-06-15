@@ -1,4 +1,3 @@
-
 <app-sm-loader></app-sm-loader>
 <div id="container" *ngIf="!isEmailSent">
   <div id="head">
@@ -66,17 +65,24 @@
         </div>
       </div>
       <div id="password">
-        <app-input [textLabel]="'Password*'" [placeholder]="'6+ caratteri'" [backgroundInput]="'var(--input-bg-color)'"
-          [for]="'password'" [parentFormGroup]="form" [controlName]="'password'" [name]="'password'" [type]="'password'">
+        <app-input [textLabel]="'Password*'" [placeholder]="'8+ caratteri'" [backgroundInput]="'var(--input-bg-color)'"
+          [for]="'password'" [parentFormGroup]="form" [controlName]="'password'" [name]="'password'"
+          [type]="'password'">
         </app-input>
         <div *ngIf="password?.errors && password?.touched">
-          <p class="validation">Campo obbligatorio. La password deve contenere  almeno 8 caratteri,
-            di cui una maiuscola, almeno un numero e un carattere speciale</p>
+          <div *ngIf="password?.errors?.['required']">
+            <p class="validation">Campo obbligatorio.</p>
+          </div>
+          <div class="validation" *ngIf="password?.errors?.['pattern']" style="font-size: 9px;">
+            <p >Deve contenere almeno 8 caratteri, una maiuscola, un numero e un carattere speciale.
+            </p>
+          </div>
+
         </div>
       </div>
       <div id="checkbox">
-        <app-checkbox [parentFormGroup]="form" [controlName]="'checkbox'" [name]="'checkbox'"  >
-          <span>*Accetto i <a href="#">termini</a> e la <a href="#">privacy</a></span>
+        <app-checkbox [parentFormGroup]="form" [controlName]="'checkbox'" [name]="'checkbox'">
+          <span>*Accetto i <a [routerLink]="'/termini-e-condizioni'">termini</a> e la <a [routerLink]="'/termini-e-condizioni'">privacy</a></span>
         </app-checkbox>
 
       </div>
@@ -97,14 +103,10 @@
 
     <div>
       <div class="message">
-          Controlla la tua casella di posta per verificare la corretta registrazione.
+        Controlla la tua casella di posta per verificare la corretta registrazione.
       </div>
       <div class="buttonContainer">
-        <app-button
-          [routerLink]="'/login'"
-          [typeButton]="'button'"
-          [textButton]="'Vai al Login'"
-        ></app-button>
+        <app-button [routerLink]="'/login'" [typeButton]="'button'" [textButton]="'Vai al Login'"></app-button>
       </div>
     </div>
   </div>

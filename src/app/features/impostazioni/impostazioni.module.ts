@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { ImpostazioniRoutingModule } from './impostazioni-routing.module';
 import { ImpostazioniComponent } from './impostazioni.component';
 import { UikitModule } from 'src/app/shared/uikit/uikit.module';
+import { NgxPermissionsModule } from 'ngx-permissions';
 
 
 @NgModule({
@@ -14,6 +15,7 @@ import { UikitModule } from 'src/app/shared/uikit/uikit.module';
     CommonModule,
     ImpostazioniRoutingModule,
     UikitModule,
+    NgxPermissionsModule
   ]
 })
 export class ImpostazioniModule { }
