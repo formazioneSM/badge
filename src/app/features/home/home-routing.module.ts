@@ -29,6 +29,8 @@ const routes: Routes = [
           ),
           data: { animation: 'convenzioniPage'},
       },
+      {path:'', redirectTo:'bacheca'}
+
     ],
   },
   {
@@ -45,6 +47,7 @@ const routes: Routes = [
         animation: 'aggiungiPage'
     }
   },
+
 ];
 
 @NgModule({
