@@ -43,9 +43,8 @@ const routes: Routes = [
     component: AggiungiComponent,
     data: {
         animation: 'aggiungiPage'
-    },
+    }
   },
-  { path: 'home', redirectTo: 'home/bacheca' },
 ];
 
 @NgModule({
