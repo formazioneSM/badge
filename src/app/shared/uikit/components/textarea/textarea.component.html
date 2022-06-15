@@ -1,13 +1,18 @@
 <div [formGroup]="parentFormGroup">
-    <label [for]="for">{{textLabel}}</label>
+  <label [for]="for">{{ textLabel }}</label>
 
-    <div [ngStyle]="{'background': background, 'border': border}" class="containerTextarea" [class.focusShadow]="boxshadow" [class.focus]="!boxshadow">
-        <textarea  [formControlName]="controlName" [name]="name" placeholder="{{placeholder}}">
-
-
-      </textarea>
-        <ng-content></ng-content>
-    </div>
-
-
+  <div
+    [ngStyle]="{ background: background, border: border }"
+    class="containerTextarea"
+    [class.focusShadow]="boxshadow"
+    [class.focus]="!boxshadow"
+  >
+    <textarea
+      [formControlName]="controlName"
+      [name]="name"
+      placeholder="{{ placeholder }}"
+    >
+    </textarea>
+    <ng-content></ng-content>
+  </div>
 </div>

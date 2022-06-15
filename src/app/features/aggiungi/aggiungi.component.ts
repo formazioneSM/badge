@@ -177,8 +177,9 @@ export class AggiungiComponent implements OnInit {
   get titoloLink() {
     return this.formAddConvenzioni?.get('titoloLink');
   }
+
   get url() {
-    return this.formAddLink?.get('url');
+    return this.formAddConvenzioni?.get('url');
   }
 
   addBacheca(formAddBacheca: FormGroup) {

@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { ProfiloRoutingModule } from './profilo-routing.module';
 import { ProfiloComponent } from './profilo.component';
 import { NgxPermissionsModule } from 'ngx-permissions';
+import { UikitModule } from 'src/app/shared/uikit/uikit.module';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { NgxPermissionsModule } from 'ngx-permissions';
   imports: [
     CommonModule,
     ProfiloRoutingModule,
-    NgxPermissionsModule
+    NgxPermissionsModule,
+    UikitModule,
   ]
 })
 export class ProfiloModule { }

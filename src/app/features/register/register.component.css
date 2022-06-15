@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Hind+Madurai&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Hind+Madurai:wght@500&family=Montserrat:wght@700&display=swap");
 
 #container {
   display: flex;
@@ -105,13 +106,13 @@
 }
 
 .validation {
-  position: relative;
-  font-family: "Hind Madurai";
-  font-style: normal;
-  color: var(--bg-primary-color);
-  font-weight: bold;
-  /* bottom: -3px; */
-  padding-top: 5px;
+    font-family: "Hind Madurai";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 22px;
+    color: #eb5757;
+    margin-top: 5px;
 }
 
 .error-message {

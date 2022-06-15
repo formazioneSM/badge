@@ -9,142 +9,172 @@ import {
 } from '@angular/animations';
 
 export const slideInAnimation = trigger('routeAnimations', [
-  transition('profiloPage => *', [
+  // Animazioni al ritorno
+
+  transition('linkPage => bachecaPage', [
     style({ position: 'relative' }),
-    query(
-      ':enter, :leave',
-      [
-        style({
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          width: '100%',
-        }),
-      ],
-      { optional: true }
-    ),
-    query(':enter', [style({ left: '-100%' })], { optional: true }),
-    query(':leave', animateChild(), { optional: true }),
-    group([
-      query(
-        ':leave',
-        [animate('300ms ease-out', style({ left: '100%', opacity: 0 }))],
-        { optional: true }
-      ),
-      query(':enter', [animate('300ms ease-out', style({ left: '0%' }))], {
-        optional: true,
+    query(':enter, :leave', [
+      style({
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        width: '100%',
       }),
-      query('@*', animateChild(), { optional: true }),
+    ]),
+    query(':enter', [style({ left: '-100%' })]),
+    query(':leave', animateChild()),
+    group([
+      query(':leave', [animate('300ms ease-out', style({ left: '100%' }))]),
+      query(':enter', [animate('300ms ease-out', style({ left: '0%' }))]),
     ]),
   ]),
 
-  transition('* => profiloPage', [
+  transition('convenzioniPage => linkPage', [
     style({ position: 'relative' }),
-    query(
-      ':enter, :leave',
-      [
-        style({
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          width: '100%',
-        }),
-      ],
-      { optional: true }
-    ),
-    query(':enter', [style({ left: '100%' })], { optional: true }),
-    query(':leave', animateChild(), { optional: true }),
+    query(':enter, :leave', [
+      style({
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        width: '100%',
+      }),
+    ]),
+    query(':enter', [style({ left: '-100%' })]),
+    query(':leave', animateChild()),
     group([
-      query(':leave', [animate('300ms ease-out', style({ left: '-100%' }))], {
-        optional: true,
-      }),
-      query(':enter', [animate('300ms ease-out', style({ left: '0%' }))], {
-        optional: true,
-      }),
+      query(':leave', [animate('300ms ease-out', style({ left: '100%' }))]),
+      query(':enter', [animate('300ms ease-out', style({ left: '0%' }))]),
     ]),
   ]),
 
+  transition('convenzioniPage => bachecaPage', [
+    style({ position: 'relative' }),
+    query(':enter, :leave', [
+      style({
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        width: '100%',
+      }),
+    ]),
+    query(':enter', [style({ left: '-100%' })]),
+    query(':leave', animateChild()),
+    group([
+      query(':leave', [animate('300ms ease-out', style({ left: '100%' }))]),
+      query(':enter', [animate('300ms ease-out', style({ left: '0%' }))]),
+    ]),
+  ]),
 
   transition('aggiungiPage => *', [
     style({ position: 'relative' }),
-    query(
-      ':enter, :leave',
-      [
-        style({
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          width: '100%',
-        }),
-      ],
-      { optional: true }
-    ),
-    query(':enter', [style({ left: '-100%' })], { optional: true }),
-    query(':leave', animateChild(), { optional: true }),
-    group([
-      query(
-        ':leave',
-        [animate('300ms ease-out', style({ left: '100%', opacity: 0 }))],
-        { optional: true }
-      ),
-      query(':enter', [animate('300ms ease-out', style({ left: '0%' }))], {
-        optional: true,
+    query(':enter, :leave', [
+      style({
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        width: '100%',
       }),
-      query('@*', animateChild(), { optional: true }),
+    ]),
+    query(':enter', [style({ left: '-100%' })]),
+    query(':leave', animateChild()),
+    group([
+      query(':leave', [animate('300ms ease-out', style({ left: '100%' }))]),
+      query(':enter', [animate('300ms ease-out', style({ left: '0%' }))]),
     ]),
   ]),
 
-  transition('* => aggiungiPage', [
+// Animazioni all'entrata
+
+transition('* => aggiungiPage', [
     style({ position: 'relative' }),
-    query(
-      ':enter, :leave',
-      [
-        style({
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          width: '100%',
-        }),
-      ],
-      { optional: true }
-    ),
-    query(':enter', [style({ left: '100%' })], { optional: true }),
-    query(':leave', animateChild(), { optional: true }),
+    query(':enter, :leave', [
+      style({
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        width: '100%',
+      }),
+    ]),
+    query(':enter', [style({ left: '100%' })]),
+    query(':leave', animateChild()),
     group([
-      query(':leave', [animate('300ms ease-out', style({ left: '-100%' }))], {
-        optional: true,
-      }),
-      query(':enter', [animate('300ms ease-out', style({ left: '0%' }))], {
-        optional: true,
-      }),
+      query(':leave', [animate('300ms ease-out', style({ left: '-100%' }))]),
+      query(':enter', [animate('300ms ease-out', style({ left: '0%' }))]),
     ]),
   ]),
 
-
-
-  transition('* => *', [
+transition('bachecaPage => linkPage', [
     style({ position: 'relative' }),
-    query(
-      ':enter, :leave',
-      [
-        style({
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          width: '100%',
-        }),
-      ],
-      { optional: true }
-    ),
-    query(':enter', [style({ left: '100%' })], { optional: true }),
-    query(':leave', animateChild(), { optional: true }),
-    group([
-      query(':leave', [animate('300ms ease-out', style({ left: '-100%' }))], {
-        optional: true,
-      }),
-      query(':enter', [animate('300ms ease-out', style({ left: '0%' }))], {
-        optional: true,
+    query(':enter, :leave', [
+      style({
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        width: '100%',
       }),
     ]),
+    query(':enter', [style({ left: '100%' })]),
+    query(':leave', animateChild()),
+    group([
+      query(':leave', [animate('300ms ease-out', style({ left: '-100%' }))]),
+      query(':enter', [animate('300ms ease-out', style({ left: '0%' }))]),
+    ]),
   ]),
+
+  transition('linkPage => convenzioniPage', [
+    style({ position: 'relative' }),
+    query(':enter, :leave', [
+      style({
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        width: '100%',
+      }),
+    ]),
+    query(':enter', [style({ left: '100%' })]),
+    query(':leave', animateChild()),
+    group([
+      query(':leave', [animate('300ms ease-out', style({ left: '-100%' }))]),
+      query(':enter', [animate('300ms ease-out', style({ left: '0%' }))]),
+    ]),
+  ]),
+
+  transition('bachecaPage => convenzioniPage', [
+    style({ position: 'relative' }),
+    query(':enter, :leave', [
+      style({
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        width: '100%',
+      }),
+    ]),
+    query(':enter', [style({ left: '100%' })]),
+    query(':leave', animateChild()),
+    group([
+      query(':leave', [animate('300ms ease-out', style({ left: '-100%' }))]),
+      query(':enter', [animate('300ms ease-out', style({ left: '0%' }))]),
+    ]),
+  ]),
+
+//   transition('* <=> *', [
+//     style({ position: 'relative' }),
+//     query(':enter, :leave', [
+//       style({
+//         position: 'absolute',
+//         top: 0,
+//         left: 0,
+//         width: '100%',
+//       }),
+//     ]),
+//     query(':enter', [style({ left: '-100%' })]),
+//     query(':leave', animateChild()),
+//     group([
+//       query(':leave', [
+//         animate('200ms ease-out', style({ left: '100%', opacity: 0 })),
+//       ]),
+//       query(':enter', [animate('300ms ease-out', style({ left: '0%' }))]),
+//       query('@*', animateChild()),
+//     ]),
+//   ]),
 ]);

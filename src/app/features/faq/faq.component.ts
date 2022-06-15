@@ -14,13 +14,13 @@ export class FaqComponent implements OnInit {
       indice: 0,
       isClicked: false,
       faqTitle: 'Perchè esiste il Badgeverso?',
-      text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur ultrices ligula risus, sit amet pretium dui iaculis hendrerit.",
+      text: "Il Badgeverso è stato creato per facilitare la comunicazione all'interno dell'azienda. (In realtà però è solo un'esercitazione 🙃)",
     },
     {
       indice: 1,
       isClicked: false,
       faqTitle: 'Chi ha sviluppato il Badgeverso?',
-      text: "Il badgeverso è stato sviluppato da un manipolo di eroi che ogni giorno ha creduto in un progetto completamente inutile. EROI!",
+      text: "Il Badgeverso è stato sviluppato da un manipolo di eroi che ogni giorno ha creduto in un progetto completamente inutile. EROI!",
     }
   ];
 
