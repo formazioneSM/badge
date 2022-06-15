@@ -11,7 +11,6 @@ import { NgxPermissionsModule } from 'ngx-permissions';
 import { LottieModule } from 'ngx-lottie';
 import { AuthInterceptor } from './shared/utils/auth.interceptor';
 import { BachecaService } from './shared/uikit/services/bacheca/bacheca.service';
-import { SmLoaderComponent } from '../app/shared/uikit/components/sm-loader/sm-loader.component';
 import { LoaderService } from './shared/uikit/services/loader/loader.service';
 import { LoaderInterceptor } from './shared/utils/loader.interceptor';
 import { UikitModule } from './shared/uikit/uikit.module';
@@ -24,7 +23,7 @@ export function playerFactory() {
 }
 
 @NgModule({
-  declarations: [AppComponent, SmLoaderComponent,],
+  declarations: [AppComponent],
   imports: [
     UikitModule,
     BrowserModule,

@@ -1,11 +1,7 @@
-<app-sm-loader></app-sm-loader>
+<!-- <app-sm-loader></app-sm-loader> -->
 <div [@routeAnimations]="getRouteAnimationData()">
   <router-outlet></router-outlet>
-  <div id="appToastStyleContainer">
-    <app-toast
-      [text]=""
-      [icon]=""
-      (noDeletePost)="undoAction()"
-    ></app-toast>
-  </div>
+
+  <app-toast [text]="" [icon]="" (noDeletePost)="undoAction()"></app-toast>
+
 </div>

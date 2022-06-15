@@ -18,7 +18,7 @@ import { Post } from './shared/utils/interfaces';
 })
 export class AppComponent implements OnInit {
   title = 'badgeverso';
-  deletedContent: any = {};
+  // deletedContent: any = {};
 //   toastMessage = '';
 
 @Output('undo') undo = new EventEmitter();
@@ -37,9 +37,9 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.toastService.deletedContent.subscribe((res) => {
-        this.deletedContent = res;
-    })
+    // this.toastService.deletedContent.subscribe((res) => {
+    //     this.deletedContent = res;
+    // })
 
     let token: any = localStorage.getItem('token');
     if (token) {
@@ -53,7 +53,7 @@ export class AppComponent implements OnInit {
 
     switch (this.router.url) {
       case '/home/bacheca': {
-        this.bachecaService.undoDeletedPost(this.deletedContent);
+        // this.bachecaService.undoDeletedPost(this.deletedContent);
         break;
       }
     }

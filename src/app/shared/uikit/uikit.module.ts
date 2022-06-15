@@ -8,7 +8,6 @@ import { CardAggiungiComponent } from './components/card-aggiungi/card-aggiungi.
 import { TextareaComponent } from './components/textarea/textarea.component';
 import { CheckButtonComponent } from './components/check-button/check-button.component';
 import { ReactiveFormsModule } from '@angular/forms';
-// import { SmLoaderComponent } from './components/sm-loader/sm-loader.component';
 import { ToastComponent } from './components/toast/toast.component';
 import { ColorSelectComponent } from './components/color-select/color-select.component';
 import { LottieModule } from 'ngx-lottie';
@@ -17,9 +16,8 @@ import { TooltipComponent } from './components/tooltip/tooltip.component';
 import { CheckboxComponent } from './components/checkbox/checkbox.component';
 import { GradientLoaderComponent } from './components/gradient-loader/gradient-loader.component';
 import { ModalComponent } from './components/modal/modal.component';
-import { AggiungiComponent } from 'src/app/features/aggiungi/aggiungi.component';
-import { AddContentModule } from 'src/app/features/aggiungi/aggiungi.module';
 import { ButtonLogoutComponent } from './components/button-logout/button-logout.component';
+import { SmLoaderComponent } from './components/sm-loader/sm-loader.component';
 
 
 
@@ -32,7 +30,7 @@ import { ButtonLogoutComponent } from './components/button-logout/button-logout.
     CardAggiungiComponent,
     TextareaComponent,
     CheckButtonComponent,
-    // SmLoaderComponent,
+    SmLoaderComponent,
     CheckButtonComponent,
     ToastComponent,
     ColorSelectComponent,
@@ -58,7 +56,7 @@ import { ButtonLogoutComponent } from './components/button-logout/button-logout.
     CardAggiungiComponent,
     TextareaComponent,
     CheckButtonComponent,
-    // SmLoaderComponent,
+    SmLoaderComponent,
     CheckButtonComponent,
     ToastComponent,
     ColorSelectComponent,
