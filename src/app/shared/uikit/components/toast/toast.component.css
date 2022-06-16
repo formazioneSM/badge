@@ -58,3 +58,8 @@ img {
         width: 35%;
     }
 }
+@media only screen and (max-width: 400px){
+  #appToastStyleContainer {
+      width: 320px;
+  }
+}

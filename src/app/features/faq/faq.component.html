@@ -2,7 +2,7 @@
   <div id="head">
 
     <svg
-      class="back"
+      class="back cursor-pointer"
       (click)="goBack()"
       width="8"
       height="14"
@@ -22,7 +22,7 @@
 
 <div>
   <ul id="settings-list">
-    <li *ngFor="let faq of faqs; index as i" class="faqs" (click)="open(i)">
+    <li *ngFor="let faq of faqs; index as i" class="faqs cursor-pointer" (click)="open(i)">
       <div id="titleWrapper">
         <p>{{ faqs[i].faqTitle }}</p>
 

@@ -5,7 +5,7 @@
       <svg
         *ngIf="!stepOne && !editParams.id"
         (click)="backStepOne()"
-        class="back"
+        class="back cursor-pointer"
         width="8"
         height="14"
         viewBox="0 0 8 14"
@@ -23,7 +23,7 @@
     </div>
 
     <svg
-      class="close"
+      class="close cursor-pointer"
       (click)="esc()"
       width="20"
       height="20"
@@ -42,7 +42,7 @@
 
   <div class="steps" *ngIf="stepOne">
     <p class="subtitle"><b>1 </b>di 2 Scelta tipologia</p>
-    <div *ngFor="let t of postTypes" class="scelta">
+    <div *ngFor="let t of postTypes" class="scelta cursor-pointer">
       <app-card-aggiungi
         [selected]="t.selected"
         [icon]="t.icon"
