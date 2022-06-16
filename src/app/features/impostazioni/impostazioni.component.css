@@ -11,6 +11,15 @@
   align-items: center;
   padding: 0 2rem;
 }
+.socialBar{
+  position: fixed;
+  bottom: 3%;
+  left: 6.5rem;
+  width: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
 
 #head {
   display: flex;
@@ -46,7 +55,7 @@
   font-size: 18px;
   line-height: 25px;
   position: fixed;
-  bottom: 3%;
+  bottom: 10%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
@@ -74,3 +83,29 @@
   font-size: 18px;
   line-height: 25px;
 }
+.info{ 
+    position: fixed;
+    bottom: 21%;
+    left: 3.5rem;
+    width: 300px;
+}
+.divider{
+  border-bottom: 1px solid lightgray;
+  width: 77%;
+  left: 12%;
+  
+  position: fixed;
+  bottom: 9.5%;
+}
+
+/* @media only screen and (min-width: 800px) {
+  .socialBar{
+    position: fixed;
+    bottom: 150px;
+    left: 8.5rem;
+    width: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+} */
