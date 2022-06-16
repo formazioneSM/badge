@@ -24,8 +24,8 @@ export const slideInAnimation = trigger('routeAnimations', [
     query(':enter', [style({ left: '-100%' })]),
     query(':leave', animateChild()),
     group([
-      query(':leave', [animate('300ms ease-out', style({ left: '100%' }))]),
-      query(':enter', [animate('300ms ease-out', style({ left: '0%' }))]),
+      query(':leave', [animate('300ms ease-in-out', style({ left: '150%' }))]),
+      query(':enter', [animate('300ms ease-in-out', style({ left: '0%' }))]),
     ]),
   ]),
 
@@ -42,8 +42,8 @@ export const slideInAnimation = trigger('routeAnimations', [
     query(':enter', [style({ left: '-100%' })]),
     query(':leave', animateChild()),
     group([
-      query(':leave', [animate('300ms ease-out', style({ left: '100%' }))]),
-      query(':enter', [animate('300ms ease-out', style({ left: '0%' }))]),
+      query(':leave', [animate('300ms ease-in-out', style({ left: '150%' }))]),
+      query(':enter', [animate('300ms ease-in-out', style({ left: '0%' }))]),
     ]),
   ]),
 
@@ -60,8 +60,8 @@ export const slideInAnimation = trigger('routeAnimations', [
     query(':enter', [style({ left: '-100%' })]),
     query(':leave', animateChild()),
     group([
-      query(':leave', [animate('300ms ease-out', style({ left: '100%' }))]),
-      query(':enter', [animate('300ms ease-out', style({ left: '0%' }))]),
+      query(':leave', [animate('300ms ease-in-out', style({ left: '150%' }))]),
+      query(':enter', [animate('300ms ease-in-out', style({ left: '0%' }))]),
     ]),
   ]),
 
@@ -78,8 +78,8 @@ export const slideInAnimation = trigger('routeAnimations', [
     query(':enter', [style({ left: '-100%' })]),
     query(':leave', animateChild()),
     group([
-      query(':leave', [animate('300ms ease-out', style({ left: '100%' }))]),
-      query(':enter', [animate('300ms ease-out', style({ left: '0%' }))]),
+      query(':leave', [animate('300ms ease-in-out', style({ left: '150%' }))]),
+      query(':enter', [animate('300ms ease-in-out', style({ left: '0%' }))]),
     ]),
   ]),
 
@@ -98,8 +98,8 @@ transition('* => aggiungiPage', [
     query(':enter', [style({ left: '100%' })]),
     query(':leave', animateChild()),
     group([
-      query(':leave', [animate('300ms ease-out', style({ left: '-100%' }))]),
-      query(':enter', [animate('300ms ease-out', style({ left: '0%' }))]),
+      query(':leave', [animate('300ms ease-in-out', style({ left: '-150%' }))]),
+      query(':enter', [animate('300ms ease-in-out', style({ left: '0%' }))]),
     ]),
   ]),
 
@@ -116,8 +116,8 @@ transition('bachecaPage => linkPage', [
     query(':enter', [style({ left: '100%' })]),
     query(':leave', animateChild()),
     group([
-      query(':leave', [animate('300ms ease-out', style({ left: '-100%' }))]),
-      query(':enter', [animate('300ms ease-out', style({ left: '0%' }))]),
+      query(':leave', [animate('300ms ease-in-out', style({ left: '-150%' }))]),
+      query(':enter', [animate('300ms ease-in-out', style({ left: '0%' }))]),
     ]),
   ]),
 
@@ -134,8 +134,8 @@ transition('bachecaPage => linkPage', [
     query(':enter', [style({ left: '100%' })]),
     query(':leave', animateChild()),
     group([
-      query(':leave', [animate('300ms ease-out', style({ left: '-100%' }))]),
-      query(':enter', [animate('300ms ease-out', style({ left: '0%' }))]),
+      query(':leave', [animate('300ms ease-in-out', style({ left: '-150%' }))]),
+      query(':enter', [animate('300ms ease-in-out', style({ left: '0%' }))]),
     ]),
   ]),
 
@@ -152,8 +152,8 @@ transition('bachecaPage => linkPage', [
     query(':enter', [style({ left: '100%' })]),
     query(':leave', animateChild()),
     group([
-      query(':leave', [animate('300ms ease-out', style({ left: '-100%' }))]),
-      query(':enter', [animate('300ms ease-out', style({ left: '0%' }))]),
+      query(':leave', [animate('300ms ease-in-out', style({ left: '-150%' }))]),
+      query(':enter', [animate('300ms ease-in-out', style({ left: '0%' }))]),
     ]),
   ]),
 
