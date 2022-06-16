@@ -21,7 +21,7 @@ export const slideInAnimation = trigger('routeAnimations', [
         width: '100%',
       }),
     ]),
-    query(':enter', [style({ left: '-100%' })]),
+    query(':enter', [style({ left: '-200%' })]),
     query(':leave', animateChild()),
     group([
       query(':leave', [animate('300ms ease-in-out', style({ left: '150%' }))]),
@@ -39,7 +39,7 @@ export const slideInAnimation = trigger('routeAnimations', [
         width: '100%',
       }),
     ]),
-    query(':enter', [style({ left: '-100%' })]),
+    query(':enter', [style({ left: '-200%' })]),
     query(':leave', animateChild()),
     group([
       query(':leave', [animate('300ms ease-in-out', style({ left: '150%' }))]),
@@ -57,7 +57,7 @@ export const slideInAnimation = trigger('routeAnimations', [
         width: '100%',
       }),
     ]),
-    query(':enter', [style({ left: '-100%' })]),
+    query(':enter', [style({ left: '-200%' })]),
     query(':leave', animateChild()),
     group([
       query(':leave', [animate('300ms ease-in-out', style({ left: '150%' }))]),
@@ -75,7 +75,7 @@ export const slideInAnimation = trigger('routeAnimations', [
         width: '100%',
       }),
     ]),
-    query(':enter', [style({ left: '-100%' })]),
+    query(':enter', [style({ left: '-200%' })]),
     query(':leave', animateChild()),
     group([
       query(':leave', [animate('300ms ease-in-out', style({ left: '150%' }))]),
@@ -95,7 +95,7 @@ transition('* => aggiungiPage', [
         width: '100%',
       }),
     ]),
-    query(':enter', [style({ left: '100%' })]),
+    query(':enter', [style({ left: '200%' })]),
     query(':leave', animateChild()),
     group([
       query(':leave', [animate('300ms ease-in-out', style({ left: '-150%' }))]),
@@ -113,7 +113,7 @@ transition('bachecaPage => linkPage', [
         width: '100%',
       }),
     ]),
-    query(':enter', [style({ left: '100%' })]),
+    query(':enter', [style({ left: '200%' })]),
     query(':leave', animateChild()),
     group([
       query(':leave', [animate('300ms ease-in-out', style({ left: '-150%' }))]),
@@ -131,7 +131,7 @@ transition('bachecaPage => linkPage', [
         width: '100%',
       }),
     ]),
-    query(':enter', [style({ left: '100%' })]),
+    query(':enter', [style({ left: '200%' })]),
     query(':leave', animateChild()),
     group([
       query(':leave', [animate('300ms ease-in-out', style({ left: '-150%' }))]),
@@ -149,7 +149,7 @@ transition('bachecaPage => linkPage', [
         width: '100%',
       }),
     ]),
-    query(':enter', [style({ left: '100%' })]),
+    query(':enter', [style({ left: '200%' })]),
     query(':leave', animateChild()),
     group([
       query(':leave', [animate('300ms ease-in-out', style({ left: '-150%' }))]),
