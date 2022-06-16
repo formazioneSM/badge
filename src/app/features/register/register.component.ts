@@ -45,16 +45,16 @@ export class RegisterComponent implements OnInit {
       .subscribe(
         (res) => {
           this.res = res;
-          console.log(res);
+
         },
         (err: any) => {
-          console.log(err);
+
 
           this.errorNumber = err.status;
-          console.log(this.errorNumber);
+
         }
       );
-    // console.log(this.resResponse,this.errorNumber)
+
   }
 
   get name() {

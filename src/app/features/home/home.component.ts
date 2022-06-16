@@ -17,8 +17,6 @@ import { slideInAnimation } from 'src/app/shared/utils/animation';
 export class HomeComponent implements OnInit {
   actualScroll: number | undefined;
   scroll: boolean = false;
-  // admin:boolean = true;
-  // user = true;
   user: any = {};
   decodeToken: any = '';
   imgUser: string = '';
@@ -42,20 +40,18 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // let token = this.authService.apiToken
-    // this.isAdminOrUser(token)
 
-    console.log(this.permissions.getPermissions())
+
+
     let token: any = localStorage.getItem('token');
     this.decodeToken = jwtDecode(token)
     this.userService.getUser(this.decodeToken.badge).subscribe(res => {
       this.user = res;
-      console.log(this.user.name)
       this.imgUser = this.user.img !== '' ? this.user.img : this.defaultUserImg;
-    }, err => console.log(err)
+    }
     )
 
-    console.log(this.permissions.getPermissions());
+
   }
 
   changeScroll(e: any) {
@@ -73,15 +69,6 @@ export class HomeComponent implements OnInit {
     this.permissions.loadPermissions(token.admin ? ['ADMIN'] : ['USER']);
     this.router.navigate(['../home/bacheca']);
   }
-
-  // get username() {
-  //   return this.authService.loginResponse?.name ?? '';
-  // }
-  // OnClickLogOut(){
-  //   this.authService.onLogOut()
-  //   // this.toastService.inputMethod() // sacro !
-
-  // }
 
   getRouteAnimationData() {
     return this.contexts.getContext('primary')?.route?.snapshot?.data?.[

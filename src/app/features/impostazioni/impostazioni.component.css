@@ -1,12 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
 @import url('https://fonts.googleapis.com/css2?family=Hind+Madurai:wght@500&family=Montserrat:wght@700&display=swap');
 
-#container {
+.container {
   width: 100%;
   display: flex;
   flex-direction: column;
-  /* padding-right: 20px;
-    padding-left: 20px; */
   box-sizing: border-box;
   align-items: center;
   padding: 0 2rem;
@@ -14,7 +12,8 @@
 .socialBar{
   position: fixed;
   bottom: 3%;
-  left: 6.5rem;
+  left: 50%;
+  transform: translateX(-50%);
   width: 200px;
   display: flex;
   align-items: center;
@@ -91,21 +90,10 @@
 }
 .divider{
   border-bottom: 1px solid lightgray;
-  width: 77%;
-  left: 12%;
-  
+  width: 260px;
+  left: 50%;
+  transform: translateX(-50%);
   position: fixed;
   bottom: 9.5%;
+  margin-bottom: 0.5rem;
 }
-
-/* @media only screen and (min-width: 800px) {
-  .socialBar{
-    position: fixed;
-    bottom: 150px;
-    left: 8.5rem;
-    width: 200px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-} */

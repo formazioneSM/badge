@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import {colors_palette} from '../../../utils/constants'
 
 @Component({
@@ -29,7 +29,6 @@ export class ColorSelectComponent implements OnInit{
       co.selected = false;
       if(co.color == c.color){
         c.selected = true;
-        console.log(c.selected)
       }
      
     })

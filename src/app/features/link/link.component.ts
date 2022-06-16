@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LinkService } from 'src/app/shared/uikit/services/link/link.service';
-import { NgxPermissionsService } from 'ngx-permissions';
 import { LoaderService } from 'src/app/shared/uikit/services/loader/loader.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import {  Router } from '@angular/router';
 import { toastNames, types } from 'src/app/shared/utils/constants';
 import { ToastService } from 'src/app/shared/uikit/services/toast/toast.service';
 
@@ -20,20 +19,18 @@ export class LinkComponent implements OnInit {
 
   constructor(
     private linkService: LinkService,
-    private permissionsService: NgxPermissionsService,
     public loaderService: LoaderService,
     private router: Router,
     private toastService: ToastService,
   ) {
     this.loaderService.isLoading.subscribe((v) => {
-      // console.log(v);
+
       this.loading = v;
     });
   }
 
   ngOnInit(): void {
     this.toastService.annulla.subscribe((res)=>{
-      console.log(res)
       if(res){
         this.links = this.linksOld
         this.toastService.annulla.next(false)
@@ -48,7 +45,6 @@ export class LinkComponent implements OnInit {
     this.linkService.loadAllLinks().subscribe((res) => {
       this.links = res;
       this.linksOld = [...this.links]
-      console.log(this.links);
     });
   }
 
@@ -70,17 +66,11 @@ export class LinkComponent implements OnInit {
 );
   
 })
-    // this.linkService.deleteLink(_id).subscribe((res) => {
-       
-        
-    // },(err) => {
-    //     console.log(err);
-    //     this.toastService.setMessage(toastNames.DELETED_LINK_ERROR)
-    // });
+
   }
 
   edit(_id: string) {
-    console.log(_id);
+
     this.router.navigate(['home/aggiungi', _id, types.LINK]);
   }
 }

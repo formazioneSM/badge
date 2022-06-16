@@ -13,10 +13,6 @@ export class ImpostazioniComponent implements OnInit {
       linkTitle: 'Modifica anagrafica',
       link: "/modifica-anagrafica",
     },
-    // {
-    //   linkTitle: 'Modifica password',
-    //   link: "/modifica-password",
-    // },
     {
       linkTitle: 'Termini e condizioni',
       link: "/termini-e-condizioni",
@@ -34,7 +30,6 @@ export class ImpostazioniComponent implements OnInit {
   constructor(private router: Router) {}
 
   ngOnInit(): void {
-    console.log(this.settingsLinks[0].icon);
   }
 
   onLogout() {

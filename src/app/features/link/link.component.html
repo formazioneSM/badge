@@ -1,14 +1,12 @@
 <div id="container">
   <div *ngIf="!loading">
     <div *ngFor="let link of links" class="linkWrapper">
-      <!-- <div>{{link.text}} {{link.url}}</div> -->
 
       <a [href]=" link.url" target="_blank">
         <app-button class="buttonLink" [typeButton]="'button'" [textButton]="link.text"></app-button>
       </a>
       <div id="wrapper" *ngxPermissionsOnly="['ADMIN']">
         <div id="deleteIcon" >
-          <!-- aggiungere ngx permission -->
 
           <app-modal (deleteEvent)="onLinkDelete(link._id)" (editEvent)="edit(link._id)"></app-modal>
         </div>
@@ -17,9 +15,6 @@
 
 
   </div>
-  <!-- <app-button class="buttonLink"[typeButton]="'button'" [textButton]="'Giba'"></app-button>
-    <app-button class="buttonLink" [typeButton]="'button'" [textButton]="'Wiki aziendale'"></app-button>
-    <app-button class="buttonLink" [typeButton]="'button'" [textButton]="'Guideline Brand SM'"></app-button> -->
   <div *ngIf="loading" class="cards">
     <app-gradient-loader *ngFor="let l of [].constructor(4)"></app-gradient-loader>
   </div>
