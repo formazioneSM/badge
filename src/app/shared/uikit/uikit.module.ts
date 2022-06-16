@@ -18,6 +18,7 @@ import { GradientLoaderComponent } from './components/gradient-loader/gradient-l
 import { ModalComponent } from './components/modal/modal.component';
 import { ButtonLogoutComponent } from './components/button-logout/button-logout.component';
 import { SmLoaderComponent } from './components/sm-loader/sm-loader.component';
+import { NgScrollbarModule } from 'ngx-scrollbar';
 
 
 
@@ -43,6 +44,7 @@ import { SmLoaderComponent } from './components/sm-loader/sm-loader.component';
   ],
   imports: [
     NgxPermissionsModule,
+    NgScrollbarModule,
     CommonModule,
     ReactiveFormsModule,
     LottieModule

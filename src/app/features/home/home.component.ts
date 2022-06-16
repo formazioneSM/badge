@@ -23,6 +23,7 @@ export class HomeComponent implements OnInit {
   decodeToken: any = '';
   imgUser: string = '';
   defaultUserImg = 'assets/images/profile.png'
+  salutando:boolean = false
 
 
 
@@ -71,6 +72,13 @@ export class HomeComponent implements OnInit {
   isAdminOrUser(token: any) {
     this.permissions.loadPermissions(token.admin ? ['ADMIN'] : ['USER']);
     this.router.navigate(['../home/bacheca']);
+  }
+
+  saluta(){
+    this.salutando = true 
+    setTimeout(() => {
+      this.salutando = false
+    }, 2000);
   }
 
   // get username() {

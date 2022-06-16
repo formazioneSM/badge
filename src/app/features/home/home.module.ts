@@ -4,6 +4,7 @@ import { HomeRoutingModule } from './home-routing.module';
 import { HomeComponent } from './home.component';
 import { UikitModule } from 'src/app/shared/uikit/uikit.module';
 import { NgxPermissionsModule } from 'ngx-permissions';
+import { NgScrollbarModule } from 'ngx-scrollbar';
 
 @NgModule({
   declarations: [
@@ -11,6 +12,7 @@ import { NgxPermissionsModule } from 'ngx-permissions';
   ],
   imports: [
     CommonModule,
+    NgScrollbarModule,
     HomeRoutingModule,
     UikitModule,
     NgxPermissionsModule
