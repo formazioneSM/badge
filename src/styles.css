@@ -44,7 +44,9 @@ app-aggiungi {
   color: #eb5757;
   margin-top: 5px;
 }
-
+.cursor-pointer{
+ cursor: pointer;
+}
 @media only screen and (min-width: 500px) {
   body {
     margin: 0 auto;
@@ -72,3 +74,4 @@ app-aggiungi {
     width: 45%;
   }
 }
+

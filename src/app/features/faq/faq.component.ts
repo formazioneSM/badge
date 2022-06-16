@@ -8,7 +8,6 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FaqComponent implements OnInit {
 
-  // isClicked: boolean = false;
   faqs: any = [
     {
       indice: 0,
@@ -30,11 +29,9 @@ export class FaqComponent implements OnInit {
   ngOnInit(): void {
   }
   open(i:any) {
-    // this.isClicked = !this.isClicked
     if(this.faqs[i].indice == i){
       this.faqs[i].isClicked = !this.faqs[i].isClicked;
     }
-    console.log(i)
   }
   goBack(){
     this.location.back()

@@ -17,6 +17,7 @@
       id="profile"
       [src]="imgUser"
       [routerLink]="'../profilo'"
+      class="cursor-pointer"
     />
     <div *ngIf="!imgUser" id="img-loader-wrapper">
         <app-img-loader></app-img-loader>
@@ -26,7 +27,7 @@
   <!-- just for testing  -->
 
   <div class="roundButtons" *ngIf="!actualScroll">
-    <div class="button" *ngxPermissionsOnly="['ADMIN']">
+    <div class="button " *ngxPermissionsOnly="['ADMIN']">
       <!-- *ngxPermissionsOnly="['ADMIN']" -->
       <app-round-button
         [routerLink]="['aggiungi']"

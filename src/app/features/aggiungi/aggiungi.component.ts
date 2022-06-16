@@ -126,7 +126,6 @@ export class AggiungiComponent implements OnInit {
                 c.selected = true;
               }
             });
-            console.log(post);
           });
       } else if (this.editParams.id && this.editParams.type === 'Link') {
         this.stepOne = false;
@@ -183,16 +182,10 @@ export class AggiungiComponent implements OnInit {
   }
 
   addBacheca(formAddBacheca: FormGroup) {
-    console.log(formAddBacheca.value);
   }
 
   addLink(formAddLink: FormGroup) {
-    console.log(
-      'nome link: ' +
-        formAddLink.value.nomeLink +
-        ' link: ' +
-        formAddLink.value.link
-    );
+
     if (this.editParams.id && this.editParams.type === 'Link') {
       this.linkService
         .editLink(
@@ -207,11 +200,11 @@ export class AggiungiComponent implements OnInit {
         .addLink(formAddLink.value.nomeLink, formAddLink.value.link)
         .subscribe(
           (res) => {
-            console.log(res);
+
             this.toastService.setMessage(toastNames.ADDED_LINK_SUCCESS);
           },
           (err) => {
-            console.log(err);
+
             this.toastService.setMessage(toastNames.ADDED_LINK_ERROR);
           }
         );
@@ -264,7 +257,7 @@ export class AggiungiComponent implements OnInit {
   goToSecondStep(typeOfPost: any) {
     let foundedType = typeOfPost.find((n: any) => n.selected).type;
     this.stepOne = false;
-    console.log(foundedType);
+
     this.type = foundedType;
   }
 
@@ -310,13 +303,13 @@ export class AggiungiComponent implements OnInit {
       };
       this.bachecaService.createNewPost(post).subscribe(
         (res) => {
-          console.log(res);
-          // this.toastService.setDeletedContent({});
+
+
           this.toastService.setMessage(toastNames.ADDED_POST_SUCCESS);
         },
         (err) => {
-          console.log(err);
-          // this.toastService.setDeletedContent({});
+
+
           this.toastService.setMessage(toastNames.ADDED_POST_ERROR);
         }
       );

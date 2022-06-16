@@ -1,8 +1,7 @@
 <div id="container">
   <div id="head">
-    <!-- <img class="back" src="assets/images/chevron_left.png" [routerLink]="'/home/bacheca'" /> -->
     <svg
-      class="back"
+      class="back cursor-pointer"
       [routerLink]="'/home/bacheca'"
       width="8"
       height="14"
@@ -26,6 +25,7 @@
       viewBox="0 0 20 20"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      class="cursor-pointer"
     >
       <path
         fill-rule="evenodd"
@@ -204,7 +204,7 @@
       </svg>
     </div>
     <div id="containerImg">
-      <div id="editProfileImg" (click)="trigger()">
+      <div id="editProfileImg" (click)="trigger()" class="cursor-pointer">
         <svg
           width="19"
           height="20"
@@ -226,7 +226,7 @@
       </div>
       <div
         *ngIf="!isUploadingUserImg"
-        class="profile"
+        class="profile cursor-pointer"
         [ngStyle]="{
           background: 'url(' + imgUser + ')',
           'background-size': '100%'

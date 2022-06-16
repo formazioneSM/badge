@@ -35,11 +35,9 @@ export class ProfiloComponent implements OnInit {
     this.userService.getUser(this.decodeToken.badge).subscribe(
       (res) => {
         this.user = res;
-        console.log(res);
         this.imgUser =
           this.user.img !== '' ? this.user.img : this.defaultUserImg;
       },
-      (err) => console.log(err)
     );
   }
 

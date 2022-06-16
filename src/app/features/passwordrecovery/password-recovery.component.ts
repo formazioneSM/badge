@@ -25,7 +25,7 @@ export class PasswordrecoveryComponent implements OnInit {
   onSubmitRecoveryPassword() {
       this.authService
       .OnForgottenPassword(this.email?.value)
-      .subscribe((res) => console.log(res));
+      .subscribe();
       this.isEmailSent = true;
     }
 

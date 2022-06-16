@@ -1,4 +1,3 @@
-import { NgSwitchCase } from '@angular/common';
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { ToastService } from '../../services/toast/toast.service';
 import { timer } from 'rxjs';
@@ -45,33 +44,16 @@ export class ToastComponent implements OnInit {
       this.text = res.message;
       this.icon = res.icon;
 
-      console.log(this.text);
-    //   switch (this.text) {
-    //     case 404:
-    //       this.text = 'Nessun utente associato alla mail inserita.';
-    //       break;
-    //     case 401:
-    //       this.text = 'La password inserita non è corretta.';
-    //       break;
-    //     case 409:
-    //       this.text = 'La mail che hai inserito é gia registrata.';
-    //       break;
-    //     case 500:
-    //       this.text = 'C`é un problema con il server,riprova piú tardi.'
-    //       break;
-    //   }
+
+
     });
   }
 
   onEmitAnnulla() {
-    // this.emitAnnulla.emit(e);
+
     this.toastService.annulla.next(true)
     this.isVisible=false
-    // this.noDeletePost.emit(this.toastService.post);
-    // this.bachecaService.undoDeletedPost();
-    // console.log('click undo');
+
   }
-  //   hideToast() {
-  //       this.isVisible = !this.isVisible;
-  //   }
+
 }
