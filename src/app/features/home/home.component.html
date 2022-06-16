@@ -9,8 +9,7 @@
         Ciao, <b> {{ user.name }}</b>
       </p>
     </div>
-    <!-- <a (click)="OnClickLogOut() " >vuoi fare log Out? cliccami!</a>  -->
-    <!-- just for testing  -->
+
 
     <img
     *ngIf="imgUser"
@@ -23,12 +22,11 @@
         <app-img-loader></app-img-loader>
     </div>
   </div>
-  <!-- <a (click)="OnClickLogOut() " >vuoi fare log Out? cliccami!</a>  -->
-  <!-- just for testing  -->
+
 
   <div class="roundButtons" *ngIf="!actualScroll">
     <div class="button " *ngxPermissionsOnly="['ADMIN']">
-      <!-- *ngxPermissionsOnly="['ADMIN']" -->
+     
       <app-round-button
         [routerLink]="['aggiungi']"
         [image]="'assets/images/aggiungi.png'"
@@ -66,7 +64,7 @@
       [background]="'transparent'"
     ></app-round-button>
     <div class="button invisible" *ngxPermissionsOnly="['USER']">
-      <!-- *ngxPermissionsOnly="['ADMIN']" -->
+     
       <app-round-button
         [routerLink]="''"
         [image]="''"

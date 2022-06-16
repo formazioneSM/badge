@@ -7,8 +7,7 @@ div {
 }
 
 button {
-    /* width: 54px;
-    height: 54px; */
+
     width: 100%;
     height: 70%;
     border-radius: 50%;
@@ -21,7 +20,7 @@ button {
 img {
     width: 23px;
     height: 25px;
-    /* margin-top: 5px; */
+
 }
 
 

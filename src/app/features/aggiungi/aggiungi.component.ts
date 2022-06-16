@@ -73,7 +73,7 @@ export class AggiungiComponent implements OnInit {
   ) {}
   preventDef(e: any) {
     e.stopPropagation();
-    // e.preventDefault();
+
   }
   triggerRadio(e: any, c: any) {
     if (e) {

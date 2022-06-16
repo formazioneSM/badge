@@ -24,10 +24,9 @@ export class CardComponent implements OnInit {
 
   
 
-  // admin:boolean = true;
+
   copy:boolean=true;
   isClicked: boolean = false;
-  // showModal: boolean = false;
 
   constructor(private bachecaService: BachecaService, private toastService: ToastService, private router: Router) { }
 
@@ -36,7 +35,7 @@ export class CardComponent implements OnInit {
 
   clicked(){
    this.isClicked = true;
-  // this.showModal = true;
+
   }
 
   back(){

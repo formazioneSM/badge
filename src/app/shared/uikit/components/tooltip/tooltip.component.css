@@ -8,7 +8,6 @@
     bottom: 20px;
     right: -38px;
     z-index: 35;
-    /* border-radius: 4px; */
 
 }
 
@@ -35,14 +34,6 @@
 
 }
 
-/* #tailShadow {
-    position:absolute;
-    bottom:-8px;
-    left:28px;
-    width:0;height:0;
-    border:solid 2px #fff;
-    box-shadow:0 0 10px 1px #555;
-} */
 
 #tail1 {
     position: absolute;
