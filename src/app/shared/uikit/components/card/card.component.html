@@ -28,8 +28,8 @@
   <div *ngIf="isClicked" id="deleteContainer">
     <p id="deleteText">Vuoi eliminare questo contenuto?</p>
     <div id="delete-buttons">
-      <button id="back" (click)="back()">Indietro</button>
-      <button id="delete" (click)="delete($event)">ELIMINA</button>
+      <button id="back" (click)="back()" class="cursor-pointer">Indietro</button>
+      <button id="delete" (click)="delete($event)"  class="cursor-pointer">ELIMINA</button>
     </div>
   </div>
 </div>
