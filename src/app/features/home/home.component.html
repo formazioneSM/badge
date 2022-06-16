@@ -1,5 +1,5 @@
 <div (scroll)="changeScroll($event)" id="wrapper" #scrollToTop>
-    <ng-scrollbar [autoHeightDisabled]="false" >
+   
     <div id="header" [ngClass]="actualScroll ?? 0 > 0 ? 'paddingBottomScroll': ''">
       <div id="welcome-wrapper">
         <img id="imgHello" src="assets/images/hello.png" (click)="saluta()" [class.saluta]="salutando" />
@@ -61,5 +61,5 @@
   <div [@routeAnimations]="getRouteAnimationData()">
     <router-outlet></router-outlet>
   </div>
-</ng-scrollbar>
+
 </div>
