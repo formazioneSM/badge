@@ -10,6 +10,7 @@ div {
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.05);
   border-radius: 3px;
   padding: 0px 14px 0px 19px;
+  overflow: hidden;
 }
 
 /* text */
