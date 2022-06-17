@@ -19,6 +19,7 @@ export const slideInAnimation = trigger('routeAnimations', [
         top: 0,
         left: 0,
         width: '100%',
+        overflow: 'hidden',
       }),
     ]),
     query(':enter', [style({ left: '-200%' })]),
@@ -37,6 +38,8 @@ export const slideInAnimation = trigger('routeAnimations', [
         top: 0,
         left: 0,
         width: '100%',
+        overflow: 'hidden',
+
       }),
     ]),
     query(':enter', [style({ left: '-200%' })]),
@@ -55,6 +58,8 @@ export const slideInAnimation = trigger('routeAnimations', [
         top: 0,
         left: 0,
         width: '100%',
+        overflow: 'hidden',
+
       }),
     ]),
     query(':enter', [style({ left: '-200%' })]),
@@ -73,6 +78,8 @@ export const slideInAnimation = trigger('routeAnimations', [
         top: 0,
         left: 0,
         width: '100%',
+        overflow: 'hidden',
+
       }),
     ]),
     query(':enter', [style({ left: '-200%' })]),
@@ -93,6 +100,8 @@ transition('* => aggiungiPage', [
         top: 0,
         left: 0,
         width: '100%',
+        overflow: 'hidden',
+
       }),
     ]),
     query(':enter', [style({ left: '200%' })]),
@@ -111,6 +120,8 @@ transition('bachecaPage => linkPage', [
         top: 0,
         left: 0,
         width: '100%',
+        overflow: 'hidden',
+
       }),
     ]),
     query(':enter', [style({ left: '200%' })]),
@@ -129,6 +140,8 @@ transition('bachecaPage => linkPage', [
         top: 0,
         left: 0,
         width: '100%',
+        overflow: 'hidden',
+
       }),
     ]),
     query(':enter', [style({ left: '200%' })]),
@@ -147,6 +160,8 @@ transition('bachecaPage => linkPage', [
         top: 0,
         left: 0,
         width: '100%',
+        overflow: 'hidden',
+
       }),
     ]),
     query(':enter', [style({ left: '200%' })]),
