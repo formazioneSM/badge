@@ -34,7 +34,7 @@ export class AppComponent implements OnInit {
 
   isAdminOrUser(token: any) {
     this.permissions.loadPermissions(token.admin ? ['ADMIN'] : ['USER']);
-    // this.router.navigate(['../home/bacheca']);
+
   }
 
   ngOnInit() {
@@ -45,22 +45,6 @@ export class AppComponent implements OnInit {
       this.isAdminOrUser(decodedToken);
       this.authService.setLoginResponse(decodedToken);
     }
-    // console.log(localStorage.getItem('rotta'))
-    // this.router.events.pipe(
-    //   filter((event: any) => event instanceof NavigationEnd)
-    // ).subscribe((event: NavigationEnd) => {
-    //   this.rottaAttuale = event.url
-
-    //     localStorage.setItem('rotta', this.rottaAttuale)
-
-    //     localStorage.getItem('rotta')
-
-
-
-
-
-
-    // })
 
   }
 
