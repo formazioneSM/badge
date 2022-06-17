@@ -77,7 +77,7 @@ export class HomeComponent implements OnInit{
     this.salutando = true 
     setTimeout(() => {
       this.salutando = false
-    }, 400);
+    }, 3000);
   }
 
   getRouteAnimationData() {
