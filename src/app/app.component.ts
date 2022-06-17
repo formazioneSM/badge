@@ -1,7 +1,8 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { ChildrenOutletContexts, Router } from '@angular/router';
+import { ChildrenOutletContexts, NavigationEnd, Router } from '@angular/router';
 import jwtDecode from 'jwt-decode';
 import { NgxPermissionsService } from 'ngx-permissions';
+import { filter } from 'rxjs/operators';
 import { AuthService } from './shared/uikit/services/auth/auth.service';
 import { BachecaService } from './shared/uikit/services/bacheca/bacheca.service';
 import { ToastService } from './shared/uikit/services/toast/toast.service';
@@ -13,30 +14,30 @@ import { Post } from './shared/utils/interfaces';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
   animations: [
-      slideInAnimation
+    slideInAnimation
   ]
 })
 export class AppComponent implements OnInit {
   title = 'badgeverso';
+  rottaAttuale: string = '';
 
-
-@Output('undo') undo = new EventEmitter();
+  @Output('undo') undo = new EventEmitter();
 
   constructor(
     public permissions: NgxPermissionsService,
     private router: Router,
     private authService: AuthService,
-    private bachecaService: BachecaService, private contexts: ChildrenOutletContexts,
-    private toastService: ToastService
-  ) { }
+    private contexts: ChildrenOutletContexts,
+  ) {
+
+  }
 
   isAdminOrUser(token: any) {
     this.permissions.loadPermissions(token.admin ? ['ADMIN'] : ['USER']);
-    this.router.navigate(['../home/bacheca']);
+    // this.router.navigate(['../home/bacheca']);
   }
 
   ngOnInit() {
-
 
     let token: any = localStorage.getItem('token');
     if (token) {
@@ -44,6 +45,23 @@ export class AppComponent implements OnInit {
       this.isAdminOrUser(decodedToken);
       this.authService.setLoginResponse(decodedToken);
     }
+    // console.log(localStorage.getItem('rotta'))
+    // this.router.events.pipe(
+    //   filter((event: any) => event instanceof NavigationEnd)
+    // ).subscribe((event: NavigationEnd) => {
+    //   this.rottaAttuale = event.url
+
+    //     localStorage.setItem('rotta', this.rottaAttuale)
+
+    //     localStorage.getItem('rotta')
+
+
+
+
+
+
+    // })
+
   }
 
   undoAction() {
@@ -57,6 +75,6 @@ export class AppComponent implements OnInit {
   }
 
   getRouteAnimationData() {
-      return this.contexts.getContext('primary')?.route?.snapshot?.data?.['animation'];
+    return this.contexts.getContext('primary')?.route?.snapshot?.data?.['animation'];
   }
 }

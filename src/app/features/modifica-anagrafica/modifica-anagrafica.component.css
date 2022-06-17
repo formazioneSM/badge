@@ -74,12 +74,13 @@
 }
 
 .validation {
-  position: relative;
   font-family: "Hind Madurai";
   font-style: normal;
-  color: var(--bg-primary-color);
-  font-weight: bold;
-  padding-top: 5px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 22px;
+  color: #eb5757;
+  margin-top: 5px;
 }
 
 #logout {

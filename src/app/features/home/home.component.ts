@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
 import { ScrollService } from 'src/app/shared/uikit/services/scroll/scroll.service';
 import { NgxPermissionsService } from 'ngx-permissions';
 import { ChildrenOutletContexts, Router } from '@angular/router';
@@ -15,7 +15,7 @@ import { LoaderService } from 'src/app/shared/uikit/services/loader/loader.servi
   styleUrls: ['./home.component.css'],
   animations: [slideInAnimation],
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit{
   actualScroll: number | undefined;
   scroll: boolean = false;
   user: any = {};
@@ -23,7 +23,7 @@ export class HomeComponent implements OnInit {
   imgUser: string = '';
   defaultUserImg = 'assets/images/profile.png'
   salutando:boolean = false;
-  loading = false;
+  loading:boolean = true;
 
 
 
@@ -36,24 +36,20 @@ export class HomeComponent implements OnInit {
     public toastService: ToastService,
     private contexts: ChildrenOutletContexts,
     private userService: UsersService,
-    public loaderService: LoaderService
   ) {
     this._scrollService.getScroll().subscribe((s) => {
       this.actualScroll = s;
     });
-    this.loaderService.isLoading.subscribe((v) => {
-      this.loading = v;
-    });
+
   }
 
   ngOnInit(): void {
-
-
 
     let token: any = localStorage.getItem('token');
     this.decodeToken = jwtDecode(token)
     this.userService.getUser(this.decodeToken.badge).subscribe(res => {
       this.user = res;
+      this.loading = false;
       this.imgUser = this.user.img !== '' ? this.user.img : this.defaultUserImg;
     }
     )
@@ -81,7 +77,7 @@ export class HomeComponent implements OnInit {
     this.salutando = true 
     setTimeout(() => {
       this.salutando = false
-    }, 2000);
+    }, 400);
   }
 
   getRouteAnimationData() {
