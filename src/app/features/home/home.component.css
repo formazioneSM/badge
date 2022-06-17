@@ -31,7 +31,7 @@
   /* border: 3px solid rgb(255, 255, 255);  creates padding around scroll thumb */
 }
 .saluta{
-  animation: saluta 0.5s;
+  animation: saluta 0.3s infinite;
 }
 
 #header {

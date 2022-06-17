@@ -14,7 +14,7 @@ import { ToastService } from 'src/app/shared/uikit/services/toast/toast.service'
 export class LoginComponent implements OnInit {
   isLoading = false;
   form: FormGroup = {} as FormGroup;
-  errorNumber: string | undefined;
+  errorMessage: string | undefined;
   type: string = 'password';
 
   constructor(
@@ -42,14 +42,6 @@ export class LoginComponent implements OnInit {
     return this.form?.get('password');
   }
 
-  addValidator(name: any) {
-    if (!this.form.get(name)?.hasValidator(Validators.required)) {
-      this.form.get(name)?.setValidators(Validators.required)
-      this.form.get(name)?.setValue(this.form.get(name)?.value)
-    }
-  }
-
-
 
   // chiamata login api e gestione degli errori
   onSubmitLogin() {
@@ -68,7 +60,9 @@ export class LoginComponent implements OnInit {
         },
         (err) => {
           this.isLoading = false;
-          this.errorNumber = err.status;
+          this.email?.setErrors({'invalidEmail': err.error.extra.email})
+          this.password?.setErrors({'invalidPassword': err.error.extra.password})
+          
         }
       );
   }

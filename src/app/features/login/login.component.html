@@ -1,63 +1,60 @@
-
 <app-sm-loader></app-sm-loader>
 <div id="login-wrapper">
-<div id="container">
-  <div id="head">
-    <h1 id="title">Badgeverso</h1>
-    <span id="point"></span>
+  <div id="container">
+    <div id="head">
+      <h1 id="title">Badgeverso</h1>
+      <span id="point"></span>
+    </div>
+
+
+
+    <div *ngIf="form">
+      <form id="login" [formGroup]="form" (ngSubmit)="onSubmitLogin()">
+        <div id="email">
+          <app-input [textLabel]="'Email*'" [placeholder]="'Inserisci la tua email'"
+            [backgroundInput]="'var(--input-bg-color)'" [for]="'email'" [parentFormGroup]="form" [controlName]="'email'"
+            [name]="'email'">
+          </app-input>
+          <div *ngIf="email?.errors?.['invalidEmail']">
+            <p class="validation">{{email?.errors?.['invalidEmail']}}</p>
+          </div>
+          <div *ngIf="email?.touched && email?.errors">
+            <div *ngIf="email?.errors?.['required']">
+              <p class="validation">Campo obbligatorio</p>
+            </div>
+
+          </div>
+        </div>
+        <div id="password">
+          <app-input [textLabel]="'Password*'" [placeholder]="'Inserisci la tua password'"
+            [backgroundInput]="'var(--input-bg-color)'" [for]="'password'" [parentFormGroup]="form"
+            [controlName]="'password'" [name]="'password'" [type]="type">
+          </app-input>
+          <div *ngIf="password?.touched && password?.errors">
+            <div *ngIf="password?.errors?.['required']">
+              <p class="validation">Campo obbligatorio</p>
+            </div>
+            <div  *ngIf="password?.errors?.['invalidPassword']">
+              <p class="validation">{{password?.errors?.['invalidPassword']}}</p>
+            </div>
+
+
+          </div>
+          <a id="forgottenPassword" [routerLink]="['/passwordrecovery']">Password dimenticata? </a>
+        </div>
+
+
+        <div id="buttonLogin">
+          <app-button [typeButton]="'submit'" [textButton]="'Accedi'">
+          </app-button>
+
+        </div>
+      </form>
+      <p id="register">Nuovo nel badgeverso?<a [routerLink]="['/register']">Registrati</a></p>
+    </div>
   </div>
 
-
-
-  <div *ngIf="form" (blurForRed)="addValidator(form)">
-    <form id="login" [formGroup]="form" (ngSubmit)="onSubmitLogin()">
-      <div id="email">
-        <app-input [textLabel]="'Email*'" [placeholder]="'Inserisci la tua email'"
-          [backgroundInput]="'var(--input-bg-color)'" [for]="'email'" [parentFormGroup]="form" [controlName]="'email'"
-          [name]="'email'">
-        </app-input>
-        <div *ngIf="email?.errors?.['invalidEmail']">
-          <p class="validation">{{email?.errors?.['invalidEmail']}}</p>
-        </div>
-        <div *ngIf="email?.touched && email?.errors">
-          <div *ngIf="email?.errors?.['required']">
-            <p class="validation">Campo obbligatorio</p>
-          </div>
-
- 
-        </div>
-      </div>
-      <div id="password">
-        <app-input [textLabel]="'Password*'" [placeholder]="'Inserisci la tua password'"
-          [backgroundInput]="'var(--input-bg-color)'" [for]="'password'" [parentFormGroup]="form"
-          [controlName]="'password'" [name]="'password'" [type]="type">
-        </app-input>
-  
-        <div *ngIf="password?.errors?.['invalidPassword']">
-          <p class="validation">{{password?.errors?.['invalidPassword']}}</p>
-        </div>
-        <div *ngIf="password?.touched && password?.errors">
-          <div *ngIf="password?.errors?.['required']">
-            <p class="validation">Campo obbligatorio</p>
-          </div>
-
- 
-        </div>
-        <a id="forgottenPassword" [routerLink]="['/passwordrecovery']">Password dimenticata? </a>
-      </div>
-      
-
-      <div id="buttonLogin" >
-        <app-button [typeButton]="'submit'" [textButton]="'Accedi'">
-        </app-button>
-
-      </div>
-    </form>
-    <p id="register">Nuovo nel badgeverso?<a [routerLink]="['/register']">Registrati</a></p>
+  <div id="logo">
+    <img src="assets/icons/Declinato.svg">
   </div>
-</div>
-
-<div id="logo">
- <img src="assets/icons/Declinato.svg">
-</div>
 </div>

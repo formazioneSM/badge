@@ -5,9 +5,8 @@
     <div id="header" [ngClass]="actualScroll ?? 0 > 0 ? 'paddingBottomScroll': ''">
 
       <div id="welcome-wrapper">
-        <img id="imgHello" src="assets/images/hello.png" (click)="saluta()" [class.saluta]="salutando" />
-        <p id="hello">
-
+        <img id="imgHello" src="assets/images/hello.png" (click)="saluta()" [class.saluta]="salutando || loading" />
+        <p id="hello" *ngIf=" !loading">
           Ciao, <b> {{user.name}}</b>
         </p>
       </div>
