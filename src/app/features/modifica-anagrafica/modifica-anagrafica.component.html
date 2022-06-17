@@ -64,7 +64,13 @@
           >
           </app-input>
           <div *ngIf="badge?.errors && badge?.touched">
-            <p class="validation">Campo obbligatorio</p>
+            <div *ngIf="badge?.errors?.['required']">
+              <p class="validation">Campo obbligatorio</p>
+            </div>
+
+            <div *ngIf="badge?.errors?.['pattern']">
+              <p class="validation">Inserire solo numeri</p>
+            </div>
           </div>
         </div>
 
