@@ -7,6 +7,7 @@ import { ToastService } from 'src/app/shared/uikit/services/toast/toast.service'
 import jwtDecode from 'jwt-decode';
 import { UsersService } from 'src/app/shared/uikit/services/users/users.service';
 import { slideInAnimation } from 'src/app/shared/utils/animation';
+import { LoaderService } from 'src/app/shared/uikit/services/loader/loader.service';
 
 @Component({
   selector: 'app-home',
@@ -21,6 +22,8 @@ export class HomeComponent implements OnInit {
   decodeToken: any = '';
   imgUser: string = '';
   defaultUserImg = 'assets/images/profile.png'
+  salutando:boolean = false;
+  loading = false;
 
 
 
@@ -32,10 +35,14 @@ export class HomeComponent implements OnInit {
     private authService: AuthService,
     public toastService: ToastService,
     private contexts: ChildrenOutletContexts,
-    private userService: UsersService
+    private userService: UsersService,
+    public loaderService: LoaderService
   ) {
     this._scrollService.getScroll().subscribe((s) => {
       this.actualScroll = s;
+    });
+    this.loaderService.isLoading.subscribe((v) => {
+      this.loading = v;
     });
   }
 
@@ -68,6 +75,13 @@ export class HomeComponent implements OnInit {
   isAdminOrUser(token: any) {
     this.permissions.loadPermissions(token.admin ? ['ADMIN'] : ['USER']);
     this.router.navigate(['../home/bacheca']);
+  }
+
+  saluta(){
+    this.salutando = true 
+    setTimeout(() => {
+      this.salutando = false
+    }, 2000);
   }
 
   getRouteAnimationData() {

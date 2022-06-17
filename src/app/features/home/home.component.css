@@ -1,10 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Hind+Madurai&display=swap");
 
-#imgHello:hover {
+/* #imgHello:hover {
   animation: saluta 0.5s;
   
-}
+} */
 @keyframes saluta {
   0% { transform: translate(1px, 1px) rotate(0deg); }
   10% { transform: translate(-1px, -2px) rotate(-1deg); }
@@ -18,7 +18,21 @@
   90% { transform: translate(1px, 2px) rotate(0deg); }
   100% { transform: translate(1px, -2px) rotate(-1deg); }
 }
+*::-webkit-scrollbar {
+  width: 3px;               /* width of the entire scrollbar */
+}
 
+*::-webkit-scrollbar-track {
+  background: rgba(243, 243, 243, 0);        /* color of the tracking area */
+}
+*::-webkit-scrollbar-thumb {
+  background-color: rgb(117, 117, 117);    /* color of the scroll thumb */
+  border-radius: 20px;       /* roundness of the scroll thumb */
+  /* border: 3px solid rgb(255, 255, 255);  creates padding around scroll thumb */
+}
+.saluta{
+  animation: saluta 0.5s;
+}
 
 #header {
   display: flex;
@@ -213,4 +227,5 @@
     padding: 2 1.5rem;
 
   }
+
 }

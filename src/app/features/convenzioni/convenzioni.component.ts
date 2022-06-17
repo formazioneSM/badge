@@ -15,6 +15,7 @@ export class ConvenzioniComponent implements OnInit {
   annulla:any;
   loading = false;
 
+
   constructor(
     public convenzioniService: ConvenzioniService,
     public loaderService: LoaderService,

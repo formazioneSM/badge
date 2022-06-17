@@ -29,6 +29,7 @@ export class AggiungiComponent implements OnInit {
   stepOne: boolean = true;
   type: string | undefined;
   editParams: { id?: string; type?: string } = {};
+  http: string = 'http://'
 
   configuration = [
     {
@@ -70,7 +71,7 @@ export class AggiungiComponent implements OnInit {
     private route: ActivatedRoute,
     private location: Location,
     private toastService: ToastService
-  ) {}
+  ) { }
   preventDef(e: any) {
     e.stopPropagation();
 
@@ -196,8 +197,23 @@ export class AggiungiComponent implements OnInit {
         .subscribe();
       this._router.navigate(['home/link']);
     } else {
-      this.linkService
-        .addLink(formAddLink.value.nomeLink, formAddLink.value.link)
+      if (this.formAddLink.value.link.includes('http://') || this.formAddLink.value.link.includes('https://')) {
+        this.linkService
+          .addLink(formAddLink.value.nomeLink, formAddLink.value.link)
+          .subscribe(
+            (res) => {
+
+              this.toastService.setMessage(toastNames.ADDED_LINK_SUCCESS);
+            },
+            (err) => {
+
+              this.toastService.setMessage(toastNames.ADDED_LINK_ERROR);
+            }
+          );
+        this._router.navigate(['home/link']);
+      }else{
+        this.linkService
+        .addLink(formAddLink.value.nomeLink, this.http + formAddLink.value.link)
         .subscribe(
           (res) => {
 
@@ -209,6 +225,7 @@ export class AggiungiComponent implements OnInit {
           }
         );
       this._router.navigate(['home/link']);
+      }
     }
   }
 
@@ -218,30 +235,55 @@ export class AggiungiComponent implements OnInit {
         .editConvenzione(
           this.editParams.id,
           this.formAddConvenzioni.value.titolo,
-          this.formAddConvenzioni.value.text,
+          this.formAddConvenzioni.value.contenuto,
           this.formAddConvenzioni.value.titoloLink,
           this.formAddConvenzioni.value.url
         )
         .subscribe();
       this._router.navigate(['home/convenzioni']);
     } else {
-      this.convenzioniService
-        .addNewConvenzione(
-          this.formAddConvenzioni.value.titolo,
-          this.formAddConvenzioni.value.contenuto,
-          this.formAddConvenzioni.value.titoloLink,
-          this.formAddConvenzioni.value.url
-        )
-        .subscribe(
-          (c) => {
-            this.newConvenzione.push(c);
-            this.toastService.setMessage(toastNames.ADDED_CONV_SUCCESS);
-            this._router.navigate(['home/convenzioni']);
-          },
-          (err) => {
-            this.toastService.setMessage(toastNames.ADDED_CONV_ERROR);
-          }
-        );
+      if (this.formAddConvenzioni.value.url.includes('http://') || this.formAddConvenzioni.value.url.includes('https://')) {
+        this.convenzioniService
+          .addNewConvenzione(
+            this.formAddConvenzioni.value.titolo,
+            this.formAddConvenzioni.value.contenuto,
+            this.formAddConvenzioni.value.titoloLink,
+            this.formAddConvenzioni.value.url
+
+          )
+          .subscribe(
+            (c) => {
+              this.newConvenzione.push(c);
+              this.toastService.setMessage(toastNames.ADDED_CONV_SUCCESS);
+              this._router.navigate(['home/convenzioni']);
+            },
+            (err) => {
+              this.toastService.setMessage(toastNames.ADDED_CONV_ERROR);
+            }
+          );
+      }
+
+      else {
+        this.convenzioniService
+          .addNewConvenzione(
+            this.formAddConvenzioni.value.titolo,
+            this.formAddConvenzioni.value.contenuto,
+            this.formAddConvenzioni.value.titoloLink,
+            this.http + this.formAddConvenzioni.value.url
+
+          )
+          .subscribe(
+            (c) => {
+              this.newConvenzione.push(c);
+              this.toastService.setMessage(toastNames.ADDED_CONV_SUCCESS);
+              this._router.navigate(['home/convenzioni']);
+            },
+            (err) => {
+              this.toastService.setMessage(toastNames.ADDED_CONV_ERROR);
+            }
+          );
+      }
+
     }
   }
 
