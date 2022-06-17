@@ -26,6 +26,7 @@
 }
 .saluta{
   animation: saluta 0.8s infinite;
+  transform-origin: bottom right;
 }
 
 #header {
