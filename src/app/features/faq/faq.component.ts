@@ -8,19 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FaqComponent implements OnInit {
 
-  // isClicked: boolean = false;
   faqs: any = [
     {
       indice: 0,
       isClicked: false,
       faqTitle: 'Perchè esiste il Badgeverso?',
-      text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur ultrices ligula risus, sit amet pretium dui iaculis hendrerit.",
+      text: "Il Badgeverso è stato creato per facilitare la comunicazione all'interno dell'azienda. (In realtà però è solo un'esercitazione 🙃)",
     },
     {
       indice: 1,
       isClicked: false,
       faqTitle: 'Chi ha sviluppato il Badgeverso?',
-      text: "Il badgeverso è stato sviluppato da un manipolo di eroi che ogni giorno ha creduto in un progetto completamente inutile. EROI!",
+      text: "Il Badgeverso è stato sviluppato da un manipolo di eroi che ogni giorno ha creduto in un progetto completamente inutile. EROI!",
     }
   ];
 
@@ -30,11 +29,9 @@ export class FaqComponent implements OnInit {
   ngOnInit(): void {
   }
   open(i:any) {
-    // this.isClicked = !this.isClicked
     if(this.faqs[i].indice == i){
       this.faqs[i].isClicked = !this.faqs[i].isClicked;
     }
-    console.log(i)
   }
   goBack(){
     this.location.back()

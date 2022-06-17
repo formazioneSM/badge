@@ -27,13 +27,13 @@ export class CheckButtonComponent implements OnInit {
 
   constructor() { }
   log(e:any){
-    console.log(e.target.value)
+
   }
   ngOnInit(): void {
   }
 
   changeCheckboxState(e:any){
-    console.log(e.target)
+
     this.check?.nativeElement.click();
     
   }

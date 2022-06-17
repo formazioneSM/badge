@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Hind+Madurai&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Hind+Madurai:wght@500&family=Montserrat:wght@700&display=swap");
 
 #container {
   display: flex;
@@ -10,7 +11,7 @@
 #head {
   padding-top: 70px;
   padding-bottom: 2rem;
-  /* margin: 0 auto; */
+
 }
 
 #title {
@@ -43,18 +44,16 @@
 }
 
 #login {
-  /* margin-top: 80px; */
+
   display: flex;
   flex-direction: column;
-  /* width: 83vw; */
   height: 100%;
   align-items: center;
-  /* margin-left: 25px; */
+
 }
 
 #email {
   position: relative;
-  /* width: 83vw; */
   width: 100%;
   height: 80px;
   margin-top: 30px;
@@ -62,7 +61,6 @@
 
 #name {
   position: relative;
-  /* width: 83vw; */
   width: 100%;
 
   height: 80px;
@@ -70,18 +68,14 @@
 
 #surname {
   position: relative;
-  /* width: 83vw; */
   width: 100%;
-
   height: 80px;
   margin-top: 30px;
 }
 
 #badge {
   position: relative;
-  /* width: 83vw; */
   width: 100%;
-
   height: 80px;
   margin-top: 30px;
 }
@@ -89,29 +83,25 @@
 #password {
   position: relative;
   margin-top: 30px;
-  /* width: 83vw; */
   width: 100%;
-
   height: 80px;
 }
 
 #buttonLogin {
   position: relative;
-  /* width: 83vw; */
   width: 100%;
-
   height: 54px;
   margin: 3rem auto 2rem auto;
 }
 
 .validation {
-  position: relative;
-  font-family: "Hind Madurai";
-  font-style: normal;
-  color: var(--bg-primary-color);
-  font-weight: bold;
-  /* bottom: -3px; */
-  padding-top: 5px;
+    font-family: "Hind Madurai";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 22px;
+    color: #eb5757;
+    margin-top: 5px;
 }
 
 .error-message {
@@ -154,8 +144,6 @@
 }
 
 #checkbox {
-  /* width: 83vw; */
-  /* margin-top: 30px; */
   width: 100%;
 }
 
@@ -183,7 +171,6 @@
   padding-top: 70px;
   display: flex;
   flex-direction: column;
-  /* display: none; */
 }
 .head.email {
   padding-bottom: 10px;
@@ -198,13 +185,14 @@
 
 }
 .message {
-  /* margin: 0 2rem; */
+
   font-family: "Hind Madurai";
   padding-bottom: 3rem;
 }
 .buttonContainer {
-  /* width: 83vw; */
+
   width: 100%;
   height: 54px;
   margin: 0 auto;
 }
+

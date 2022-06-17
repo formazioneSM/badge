@@ -7,6 +7,7 @@ const routes: Routes = [
   {
     path: '',
     component: HomeComponent,
+    
     children: [
       {
         path: 'bacheca',
@@ -28,6 +29,8 @@ const routes: Routes = [
           ),
           data: { animation: 'convenzioniPage'},
       },
+      {path:'', redirectTo:'bacheca'}
+
     ],
   },
   {
@@ -42,8 +45,9 @@ const routes: Routes = [
     component: AggiungiComponent,
     data: {
         animation: 'aggiungiPage'
-    },
+    }
   },
+
 ];
 
 @NgModule({

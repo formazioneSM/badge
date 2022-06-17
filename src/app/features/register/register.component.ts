@@ -27,7 +27,7 @@ export class RegisterComponent implements OnInit {
             '^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&_*-]).{8,}$'
           ),
         ],
-      ], // la password deve essere di almeno 6 caratteri
+      ], // la password deve essere di almeno 8 caratteri
       badge: ['', [Validators.required, Validators.pattern('^[0-9]*$')]], // il badge puo` contenere solo numeri
       checkbox: ['', [Validators.required]],
     });
@@ -45,16 +45,16 @@ export class RegisterComponent implements OnInit {
       .subscribe(
         (res) => {
           this.res = res;
-          console.log(res);
+
         },
         (err: any) => {
-          console.log(err);
+
 
           this.errorNumber = err.status;
-          console.log(this.errorNumber);
+
         }
       );
-    // console.log(this.resResponse,this.errorNumber)
+
   }
 
   get name() {

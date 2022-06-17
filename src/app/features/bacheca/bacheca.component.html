@@ -1,13 +1,4 @@
 <div *ngIf="!loading" class="cards">
-  <!-- <app-card *ngIf="card" class="card" [background]="'#93E396'"
-        [text]="'Domani 26 gennaio dalle ore 8:30/9:00 alle ore 13:00/14:00 sarà interrotta l\'aduzione idrica per la necessità di interventi di manutenzione straordinaria ed inderogabili all\'impianto condominiale.'"
-        [author]="'@Ilaria'" (deletePost)="showToast()"></app-card>
-
-    <app-card class="card" [background]="'#FEE979'" [text]="'Benvenuto a Dario Riviezzo, nuovo collega DevOps! 🎉'">
-    </app-card>
-    <app-card class="card" [background]="'#FEE979'" [text]="'Password wifi 11° Piano sys11@meraki13'"></app-card>
-    <app-card class="card" [background]="'#FEE979'" [text]="'Password wifi 11° Piano sys11@meraki13'"></app-card>
-    <app-card class="card" [background]="'#FEE979'" [text]="'Password wifi 11° Piano sys11@meraki13'"></app-card> -->
     
     <app-card
     *ngFor="let post of this.posts"
@@ -25,17 +16,4 @@
 <div *ngIf="loading" class="cards">
   <app-gradient-loader *ngFor="let p of [].constructor(4)"></app-gradient-loader>
 </div>
-<!-- <div *ngIf="isPostLoading == true" class="cards">
-  <div
-    *ngFor="let post of this.bachecaService.posts"
-    class="post-loader-container"
-  >
-  </div>
-</div> -->
 
-<!-- <div id="toast" *ngIf="toast" >
-    <app-toast [icon]="'../assets/images/icona_toast_elimina.png'"
-        [text]="'Contenuto rimosso!'"></app-toast>
-</div> -->
-<!-- (noDeletePost)="stopDelete($event)"
-(deletePost)="showToast($event)" -->

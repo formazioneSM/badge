@@ -1,28 +1,47 @@
 <div id="container">
-    <div id="head">
-        <img class="back" src="assets/images/chevron_left.png" (click)="goBack()" />
-        <p id="title">FAQ</p>
-    </div>
+  <div id="head">
+
+    <svg
+      class="back cursor-pointer"
+      (click)="goBack()"
+      width="8"
+      height="14"
+      viewBox="0 0 8 14"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M6.29849 0.989502L0.288086 6.99991L6.29849 13.0103L7.71271 11.5961L3.11651 6.99991L7.71271 2.40372L6.29849 0.989502Z"
+        fill="#003594"
+      />
+    </svg>
+
+    <p id="title">FAQ</p>
+  </div>
 </div>
 
 <div>
-    <ul id="settings-list">
-        <li *ngFor="let faq of faqs; index as i" class="faqs" (click)="open(i)">
-            <div id="titleWrapper">
-                <p> {{ faqs[i].faqTitle }}</p>
+  <ul id="settings-list">
+    <li *ngFor="let faq of faqs; index as i" class="faqs cursor-pointer" (click)="open(i)">
+      <div id="titleWrapper">
+        <p>{{ faqs[i].faqTitle }}</p>
 
-                <span [class.freccia]="faqs[i].isClicked">
-
-                    <svg width="14" height="8" viewBox="0 0 14 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            d="M0.989258 1.70151L6.99966 7.71191L13.0101 1.70151L11.5959 0.287293L6.99966 4.88349L2.40347 0.287292L0.989258 1.70151Z"
-                            fill="#003594" />
-                    </svg>
-                </span>
-            </div>
-            <div id="text" *ngIf="faqs[i].isClicked"> {{ faqs[i].text}}</div>
-        </li>
-
-    </ul>
-
+        <span [class.freccia]="faqs[i].isClicked">
+          <svg
+            width="14"
+            height="8"
+            viewBox="0 0 14 8"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M0.989258 1.70151L6.99966 7.71191L13.0101 1.70151L11.5959 0.287293L6.99966 4.88349L2.40347 0.287292L0.989258 1.70151Z"
+              fill="#003594"
+            />
+          </svg>
+        </span>
+      </div>
+      <div id="text" *ngIf="faqs[i].isClicked">{{ faqs[i].text }}</div>
+    </li>
+  </ul>
 </div>

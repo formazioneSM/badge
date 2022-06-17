@@ -1,9 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Hind+Madurai&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Hind+Madurai:wght@500&family=Montserrat:wght@700&display=swap");
+
 
 #add {
   display: flex;
   flex-direction: column;
-  /* align-items: center; */
+
 }
 
 #head {
@@ -12,7 +14,7 @@
   justify-content: space-between;
   align-items: center;
   margin-top: 36px;
-  /* width: 80vw; */
+
   height: 100%;
   width: 100%;
   padding-bottom: 2.5rem;
@@ -47,7 +49,7 @@
 }
 
 .steps {
-  /* width: 80vw; */
+
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -78,7 +80,7 @@
 }
 
 form {
-  /* width: 80vw; */
+
   width: 100%;
   height: 100%;
 }
@@ -127,10 +129,13 @@ form {
 }
 
 .validation {
-  font-family: "Hind Madurai";
-  font-style: normal;
-  color: red;
-  font-weight: bold;
+    font-family: "Hind Madurai";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 22px;
+    color: #eb5757;
+    margin-top: 5px;
 }
 
 #page-title-wrapper {

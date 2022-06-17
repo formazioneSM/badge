@@ -14,8 +14,7 @@ import { ToastService } from 'src/app/shared/uikit/services/toast/toast.service'
 export class LoginComponent implements OnInit {
   isLoading = false;
   form: FormGroup = {} as FormGroup;
-  //   errorMessage: string = '';
-  errorNumber: string | undefined;
+  errorMessage: string | undefined;
   type: string = 'password';
 
   constructor(
@@ -31,14 +30,7 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     this.form = this._fb.group({
       email: ['', [Validators.email, Validators.required]],
-      password: [
-        '',
-        [
-          Validators.required,
-          // Validators.pattern(
-          //   '^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&_*-]).{8,}$'
-          // ),
-        ],
+      password: ['',[Validators.required],
       ],
     });
   }
@@ -50,31 +42,17 @@ export class LoginComponent implements OnInit {
     return this.form?.get('password');
   }
 
-  addValidator(name: any) {
-    if (!this.form.get(name)?.hasValidator(Validators.required)) {
-      this.form.get(name)?.setValidators(Validators.required)
-      this.form.get(name)?.setValue(this.form.get(name)?.value)
-    }
-  }
-
-
 
   // chiamata login api e gestione degli errori
   onSubmitLogin() {
     this.isLoading = true;
     this.form.markAllAsTouched();
-    console.log(this.form.value.email);
-    this.authService
+      this.authService
       .onLogin(this.form.value.email, this.form.value.password)
       .subscribe(
         (res) => {
           this.isLoading = false;
           this.apiResponse = res;
-
-          console.log(res);
-          console.log(
-            'response salvata nel servizio' + this.authService.loginResponse
-          );
           localStorage.setItem('token', this.apiResponse.token);
           this.authService.setLoginResponse(jwt_decode(this.apiResponse.token));
 
@@ -82,10 +60,9 @@ export class LoginComponent implements OnInit {
         },
         (err) => {
           this.isLoading = false;
-          console.log(err);
-          //   this.errorMessage = "C'è stato un errore: " + err.error.message;
-          // this.toastService.setMessage(err.status);
-          this.errorNumber = err.status;
+          this.email?.setErrors({'invalidEmail': err.error.extra.email})
+          this.password?.setErrors({'invalidPassword': err.error.extra.password})
+          
         }
       );
   }

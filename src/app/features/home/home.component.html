@@ -1,9 +1,12 @@
-<div (scroll)="changeScroll($event)" id="wrapper" #scrollToTop>
+
+
+<div  (scroll)="changeScroll($event)" id="wrapper" #scrollToTop>
    
     <div id="header" [ngClass]="actualScroll ?? 0 > 0 ? 'paddingBottomScroll': ''">
+
       <div id="welcome-wrapper">
-        <img id="imgHello" src="assets/images/hello.png" (click)="saluta()" [class.saluta]="salutando" />
-        <p id="hello">
+        <img id="imgHello" src="assets/images/hello.png" (click)="saluta()" [class.saluta]="salutando || loading" />
+        <p id="hello" *ngIf=" !loading">
           Ciao, <b> {{user.name}}</b>
         </p>
       </div>
@@ -31,8 +34,14 @@
     [image]="'assets/images/convenzioni.png'" [text]="'Convenzioni'" [border]="' 1px solid var(--bg-primary-color)'"
     [background]="'transparent'"></app-round-button>
     <div class="button invisible" *ngxPermissionsOnly="['USER']">
-      <!-- *ngxPermissionsOnly="['ADMIN']" -->
-      <app-round-button [routerLink]="''" [image]="''" [text]="''" [border]="'none'" [background]="'transparent'">
+     
+      <app-round-button
+        [routerLink]="''"
+        [image]="''"
+        [text]="''"
+        [border]="'none'"
+        [background]="'transparent'"
+      >
       </app-round-button>
     </div>
   </div>
@@ -63,3 +72,6 @@
   </div>
 
 </div>
+<!-- <div >
+  <app-gradient-loader></app-gradient-loader>
+</div> -->

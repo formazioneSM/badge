@@ -7,6 +7,7 @@ import { ToastService } from 'src/app/shared/uikit/services/toast/toast.service'
 import jwtDecode from 'jwt-decode';
 import { UsersService } from 'src/app/shared/uikit/services/users/users.service';
 import { slideInAnimation } from 'src/app/shared/utils/animation';
+import { LoaderService } from 'src/app/shared/uikit/services/loader/loader.service';
 
 @Component({
   selector: 'app-home',
@@ -17,13 +18,12 @@ import { slideInAnimation } from 'src/app/shared/utils/animation';
 export class HomeComponent implements OnInit {
   actualScroll: number | undefined;
   scroll: boolean = false;
-  // admin:boolean = true;
-  // user = true;
-  user:any = {};
+  user: any = {};
   decodeToken: any = '';
   imgUser: string = '';
   defaultUserImg = 'assets/images/profile.png'
-  salutando:boolean = false
+  salutando:boolean = false;
+  loading = false;
 
 
 
@@ -35,27 +35,30 @@ export class HomeComponent implements OnInit {
     private authService: AuthService,
     public toastService: ToastService,
     private contexts: ChildrenOutletContexts,
-    private userService: UsersService
+    private userService: UsersService,
+    public loaderService: LoaderService
   ) {
     this._scrollService.getScroll().subscribe((s) => {
       this.actualScroll = s;
     });
+    this.loaderService.isLoading.subscribe((v) => {
+      this.loading = v;
+    });
   }
 
   ngOnInit(): void {
-    // let token = this.authService.apiToken
-    // this.isAdminOrUser(token)
-   console.log(this.permissions.getPermissions())
-   let token: any = localStorage.getItem('token');
-   this.decodeToken = jwtDecode(token)
-   this.userService.getUser(this.decodeToken.badge).subscribe(res => {
-     this.user = res;
-     console.log(this.user.name)
-     this.imgUser = this.user.img !== '' ? this.user.img : this.defaultUserImg;
-   }, err => console.log(err)
-   )
 
-    console.log(this.permissions.getPermissions());
+
+
+    let token: any = localStorage.getItem('token');
+    this.decodeToken = jwtDecode(token)
+    this.userService.getUser(this.decodeToken.badge).subscribe(res => {
+      this.user = res;
+      this.imgUser = this.user.img !== '' ? this.user.img : this.defaultUserImg;
+    }
+    )
+
+
   }
 
   changeScroll(e: any) {
@@ -80,15 +83,6 @@ export class HomeComponent implements OnInit {
       this.salutando = false
     }, 2000);
   }
-
-  // get username() {
-  //   return this.authService.loginResponse?.name ?? '';
-  // }
-  // OnClickLogOut(){
-  //   this.authService.onLogOut()
-  //   // this.toastService.inputMethod() // sacro !
-
-  // }
 
   getRouteAnimationData() {
     return this.contexts.getContext('primary')?.route?.snapshot?.data?.[

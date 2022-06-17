@@ -5,8 +5,7 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  /* height: 100%; */
-  /* position: relative; */
+
 }
 
 #head {
@@ -37,10 +36,9 @@
 }
 
 #login {
-  /* margin-top: 80px; */
+
   display: flex;
   flex-direction: column;
-  /* width: 83vw; */
   height: 100%;
   align-items: center;
   margin: 0 auto;
@@ -48,7 +46,6 @@
 
 #email {
   position: relative;
-  /* width: 83vw; */
   height: 80px;
   width: 100%;
   margin-top: 20px;
@@ -57,7 +54,6 @@
 #password {
   position: relative;
   margin-top: 30px;
-  /* width: 83vw; */
   width: 100%;
   height: 80px;
 }
@@ -87,8 +83,6 @@
   font-weight: 400;
   font-size: 16px;
   line-height: 22px;
-  /* position: relative; */
-  /* right: 0; */
   color: var(--bg-primary-color);
   display: flex;
   justify-content: flex-end;
@@ -110,19 +104,7 @@
   color: #eb5757;
 }
 
-/* .loader {
-    position: absolute;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    width: 100%;
-    background-color: rgba(128, 128, 128, 0.296);
-    z-index: 20;
-    margin: 0;
-    padding: 0;
-} */
+
 #register {
   font-family: "Hind Madurai";
   font-style: normal;
@@ -140,24 +122,12 @@
 }
 
 #logo {
-  /* display: flex;
-  justify-content: center;
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  height: auto;
-  margin-bottom: 30px; */
 
-  /* position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translate(-50%, -50%) */
   position: relative;
   margin-left: auto;
   margin-right: auto;
   left: 0;
   right: 0;
-  /* bottom: 5%; */
   text-align: center;
   bottom: 30px;
 }
@@ -173,6 +143,7 @@
   justify-content: space-between;
   height: 100vh;
   overflow: auto;
+  padding: 0 2rem;
 }
 
 @media only screen and (min-width: 1000px){

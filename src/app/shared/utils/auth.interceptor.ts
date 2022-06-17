@@ -20,8 +20,7 @@ export class AuthInterceptor implements HttpInterceptor {
   isAdminOrUser(token: any) {
     this.permissions.loadPermissions(token.admin ? ['ADMIN'] : ['USER']);
 
-    // Questa riga è per fare test
-    // this.router.navigate(['../home/']);
+
   }
 
   intercept(

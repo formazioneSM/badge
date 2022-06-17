@@ -18,6 +18,7 @@ import { GradientLoaderComponent } from './components/gradient-loader/gradient-l
 import { ModalComponent } from './components/modal/modal.component';
 import { ButtonLogoutComponent } from './components/button-logout/button-logout.component';
 import { SmLoaderComponent } from './components/sm-loader/sm-loader.component';
+import { ImgLoaderComponent } from './components/img-loader/img-loader.component';
 import { NgScrollbarModule } from 'ngx-scrollbar';
 
 
@@ -40,6 +41,7 @@ import { NgScrollbarModule } from 'ngx-scrollbar';
     GradientLoaderComponent,
     ModalComponent,
     ButtonLogoutComponent,
+    ImgLoaderComponent,
 
   ],
   imports: [
@@ -66,6 +68,7 @@ import { NgScrollbarModule } from 'ngx-scrollbar';
     CheckboxComponent,
     GradientLoaderComponent,
     ModalComponent,
+    ImgLoaderComponent,
 
     
 

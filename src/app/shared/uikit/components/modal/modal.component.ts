@@ -22,7 +22,6 @@ export class ModalComponent implements OnInit {
   }
 
   elimina(e:any){
-    // console.log('ciao')
     this.deleteEvent.emit(e)
   }
 

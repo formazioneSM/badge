@@ -34,7 +34,6 @@ export class ModificaAnagraficaComponent implements OnInit {
 
     let token: any = localStorage.getItem('token');
     this.decodeToken = jwtDecode(token);
-    console.log(this.decodeToken);
 
     this.prefillInputs();
   }
@@ -43,7 +42,6 @@ export class ModificaAnagraficaComponent implements OnInit {
     let badgeId = this.decodeToken.badge;
     this.usersService.getUser(badgeId).subscribe( (u:any) => {
       this.user = u
-      console.log(this.user.name)
       this.form.setValue({
       
         name: this.user.name,
@@ -58,11 +56,11 @@ export class ModificaAnagraficaComponent implements OnInit {
     this.usersService
       .editAnagrafica(this.form.value.name, this.form.value.cognome, this.form.value.badge)
       .subscribe((u: any) => {
-        console.log(u)
+
         this.router.navigate(['/impostazioni'])
         
       });
-    // console.log(this.resResponse,this.errorNumber)
+
   }
 
   get name() {

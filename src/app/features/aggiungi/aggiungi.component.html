@@ -1,21 +1,48 @@
 <div id="add">
   <div id="head">
     <div id="page-title-wrapper">
-      <img
+
+      <svg
         *ngIf="!stepOne && !editParams.id"
-        src="assets/images/chevron_left.png"
         (click)="backStepOne()"
-        class="back"
-      />
-      <p id="title"  *ngIf="!editParams.id">Aggiungi contenuto</p>
+        class="back cursor-pointer"
+        width="8"
+        height="14"
+        viewBox="0 0 8 14"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M6.29849 0.989502L0.288086 6.99991L6.29849 13.0103L7.71271 11.5961L3.11651 6.99991L7.71271 2.40372L6.29849 0.989502Z"
+          fill="#003594"
+        />
+      </svg>
+
+      <p id="title" *ngIf="!editParams.id">Aggiungi contenuto</p>
       <p id="title" *ngIf="editParams.id">Modifica contenuto</p>
     </div>
-    <img class="close" src="assets/images/off_close.png" (click)="esc()" />
+
+    <svg
+      class="close cursor-pointer"
+      (click)="esc()"
+      width="20"
+      height="20"
+      viewBox="0 0 20 20"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        fill-rule="evenodd"
+        clip-rule="evenodd"
+        d="M0 10C0 4.47 4.47 0 10 0C15.53 0 20 4.47 20 10C20 15.53 15.53 20 10 20C4.47 20 0 15.53 0 10ZM10 8.59L12.59 6L14 7.41L11.41 10L14 12.59L12.59 14L10 11.41L7.41 14L6 12.59L8.59 10L6 7.41L7.41 6L10 8.59Z"
+        fill="#003594"
+      />
+    </svg>
   </div>
 
   <div class="steps" *ngIf="stepOne">
     <p class="subtitle"><b>1 </b>di 2 Scelta tipologia</p>
-    <div *ngFor="let t of postTypes" class="scelta">
+    <div *ngFor="let t of postTypes" class="scelta cursor-pointer">
       <app-card-aggiungi
         [selected]="t.selected"
         [icon]="t.icon"
@@ -36,7 +63,9 @@
 
   <div *ngIf="!stepOne || modifica" [ngSwitch]="type">
     <div *ngSwitchCase="types.BACHECA">
-      <p  *ngIf="!editParams.id" class="subtitle"><b>2 </b>di 2 Scelta tipologia</p>
+      <p *ngIf="!editParams.id" class="subtitle">
+        <b>2 </b>di 2 Scelta tipologia
+      </p>
 
       <form [formGroup]="formAddBacheca" (ngSubmit)="onPostSubmit()">
         <div class="textarea">
@@ -82,7 +111,6 @@
               name="radio"
               value="{{ c.value }}"
               formControlName="radio"
-             
             />
             <span id="testo">{{ c.text }}</span>
           </div>
@@ -91,14 +119,16 @@
         <app-button
           class="btn"
           [typeButton]="'submit'"
-          [textButton]="editParams.id?'Aggiorna':'Pubblica'"
+          [textButton]="editParams.id ? 'Aggiorna' : 'Pubblica'"
           [disabled]="formAddBacheca.invalid"
         >
         </app-button>
       </form>
     </div>
     <div *ngSwitchCase="types.LINK">
-      <p class="subtitle"  *ngIf="!editParams.id"><b>2 </b>di 2 Scelta tipologia</p>
+      <p class="subtitle" *ngIf="!editParams.id">
+        <b>2 </b>di 2 Scelta tipologia
+      </p>
       <div *ngIf="formAddLink">
         <form [formGroup]="formAddLink" (ngSubmit)="addLink(formAddLink)">
           <div class="marginInput">
@@ -137,7 +167,7 @@
           <app-button
             class="btn"
             [typeButton]="'submit'"
-            [textButton]="editParams.id?'Aggiorna':'Pubblica'"
+            [textButton]="editParams.id ? 'Aggiorna' : 'Pubblica'"
             [disabled]="formAddLink.invalid"
           >
           </app-button>
@@ -145,7 +175,9 @@
       </div>
     </div>
     <div *ngSwitchCase="types.CONVENZIONI" id="convenzioni">
-      <p class="subtitle" *ngIf="!editParams.id"><b>2 </b>di 2 Scelta tipologia</p>
+      <p class="subtitle" *ngIf="!editParams.id">
+        <b>2 </b>di 2 Scelta tipologia
+      </p>
       <div *ngIf="formAddConvenzioni">
         <form
           [formGroup]="formAddConvenzioni"
@@ -171,7 +203,11 @@
               [textLabel]="'Contenuto*'"
               [placeholder]="'Inserisci qui il contenuto del tuo msg'"
               [background]="'var(--input-bg-color)'"
-              [border]="'1px solid #C6D1E4'"
+              [border]="
+                contenuto?.touched && contenuto?.invalid
+                  ? '1px solid #eb5757'
+                  : '1px solid #C6D1E4'
+              "
               [for]="'contenuto'"
               [parentFormGroup]="formAddConvenzioni"
               [controlName]="'contenuto'"
@@ -221,7 +257,7 @@
           <app-button
             class="btn"
             [typeButton]="'submit'"
-            [textButton]="editParams.id?'Aggiorna':'Pubblica'"
+            [textButton]="editParams.id ? 'Aggiorna' : 'Pubblica'"
             [disabled]="formAddConvenzioni.invalid"
           >
           </app-button>
