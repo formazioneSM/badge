@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
 import { ScrollService } from 'src/app/shared/uikit/services/scroll/scroll.service';
 import { NgxPermissionsService } from 'ngx-permissions';
 import { ChildrenOutletContexts, Router } from '@angular/router';
@@ -7,6 +7,7 @@ import { ToastService } from 'src/app/shared/uikit/services/toast/toast.service'
 import jwtDecode from 'jwt-decode';
 import { UsersService } from 'src/app/shared/uikit/services/users/users.service';
 import { slideInAnimation } from 'src/app/shared/utils/animation';
+import { LoaderService } from 'src/app/shared/uikit/services/loader/loader.service';
 
 @Component({
   selector: 'app-home',
@@ -14,13 +15,15 @@ import { slideInAnimation } from 'src/app/shared/utils/animation';
   styleUrls: ['./home.component.css'],
   animations: [slideInAnimation],
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit{
   actualScroll: number | undefined;
   scroll: boolean = false;
   user: any = {};
   decodeToken: any = '';
   imgUser: string = '';
   defaultUserImg = 'assets/images/profile.png'
+  salutando:boolean = false;
+  loading:boolean = true;
 
 
 
@@ -32,21 +35,21 @@ export class HomeComponent implements OnInit {
     private authService: AuthService,
     public toastService: ToastService,
     private contexts: ChildrenOutletContexts,
-    private userService: UsersService
+    private userService: UsersService,
   ) {
     this._scrollService.getScroll().subscribe((s) => {
       this.actualScroll = s;
     });
+
   }
 
   ngOnInit(): void {
-
-
 
     let token: any = localStorage.getItem('token');
     this.decodeToken = jwtDecode(token)
     this.userService.getUser(this.decodeToken.badge).subscribe(res => {
       this.user = res;
+      this.loading = false;
       this.imgUser = this.user.img !== '' ? this.user.img : this.defaultUserImg;
     }
     )
@@ -68,6 +71,13 @@ export class HomeComponent implements OnInit {
   isAdminOrUser(token: any) {
     this.permissions.loadPermissions(token.admin ? ['ADMIN'] : ['USER']);
     this.router.navigate(['../home/bacheca']);
+  }
+
+  saluta(){
+    this.salutando = true 
+    setTimeout(() => {
+      this.salutando = false
+    }, 3000);
   }
 
   getRouteAnimationData() {

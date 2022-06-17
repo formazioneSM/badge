@@ -30,9 +30,7 @@ export class ToastService {
 
   
 
-  // annullaTimer(f:any , time:any){
-  //   timer(time).subscribe(f)
-  // }
+
 
   annullaTimer=timer(4500)
   

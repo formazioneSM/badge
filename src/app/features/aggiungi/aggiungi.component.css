@@ -5,7 +5,7 @@
 #add {
   display: flex;
   flex-direction: column;
-  /* align-items: center; */
+
 }
 
 #head {
@@ -14,7 +14,7 @@
   justify-content: space-between;
   align-items: center;
   margin-top: 36px;
-  /* width: 80vw; */
+
   height: 100%;
   width: 100%;
   padding-bottom: 2.5rem;
@@ -49,7 +49,7 @@
 }
 
 .steps {
-  /* width: 80vw; */
+
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -80,7 +80,7 @@
 }
 
 form {
-  /* width: 80vw; */
+
   width: 100%;
   height: 100%;
 }

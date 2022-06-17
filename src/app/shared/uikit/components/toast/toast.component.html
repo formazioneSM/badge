@@ -5,7 +5,7 @@
       {{icon}}
     </div>
     <p>{{text}}</p>
-    <div *ngIf="this.toastService.isVisibleUndo" id="undo" (click)="onEmitAnnulla()">Annulla</div>
+    <div *ngIf="this.toastService.isVisibleUndo" id="undo" (click)="onEmitAnnulla()" class="cursor-pointer">Annulla</div>
   </div>
 </div>
 

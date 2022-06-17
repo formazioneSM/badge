@@ -29,7 +29,7 @@ const routes: Routes = [
           ),
           data: { animation: 'convenzioniPage'},
       },
-      {path:'', redirectTo:'bacheca'}
+      // {path:'', redirectTo:'bacheca'}
 
     ],
   },

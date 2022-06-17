@@ -5,8 +5,6 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-  /* padding-right: 20px;
-    padding-left: 20px; */
   box-sizing: border-box;
   align-items: center;
   padding: 0 2rem;
@@ -37,18 +35,15 @@
 }
 
 #login {
-  /* margin-top: 80px; */
+
   display: flex;
   flex-direction: column;
-  /* width: 83vw; */
   height: 100%;
   align-items: center;
-  /* margin-left: 25px; */
 }
 
 #name {
   position: relative;
-  /* width: 83vw; */
   width: 100%;
 
   height: 80px;
@@ -56,7 +51,6 @@
 
 #surname {
   position: relative;
-  /* width: 83vw; */
   width: 100%;
 
   height: 80px;
@@ -65,7 +59,6 @@
 
 #badge {
   position: relative;
-  /* width: 83vw; */
   width: 100%;
 
   height: 80px;
@@ -74,7 +67,6 @@
 
 #buttonLogin {
   position: relative;
-  /* width: 83vw; */
   width: 100%;
 
   height: 54px;
@@ -82,13 +74,13 @@
 }
 
 .validation {
-  position: relative;
   font-family: "Hind Madurai";
   font-style: normal;
-  color: var(--bg-primary-color);
-  font-weight: bold;
-  /* bottom: -3px; */
-  padding-top: 5px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 22px;
+  color: #eb5757;
+  margin-top: 5px;
 }
 
 #logout {

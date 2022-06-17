@@ -10,24 +10,24 @@ div {
 
 label {
 
-    /* position: absolute; */
     font-family: 'Hind Madurai';
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
     line-height: 22px;
-    /* display: flex; */
     align-items: center;
     color: #000000;
     left: 5px;
 }
 
 input {
+
     font-family: 'Hind Madurai';
     font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
     line-height: 22px;
     box-sizing: border-box;
-    /* position: absolute; */
     width: 100%;
     height: inherit;
     margin-top: 10px;
@@ -60,9 +60,6 @@ input.ng-invalid.ng-touched  {
     border: 1px solid #EB5757;
 }
 
-/* input.ng-untouched.ng-pristine.ng-invalid{
-    border: 1px solid #EB5757;
-} */
 
 .icon-container {
     position: absolute;
@@ -87,8 +84,3 @@ input.ng-invalid.ng-touched  {
     position: absolute;
 
 }
-
-/* .show-password:hover {
-    opacity: 1;
-    cursor: pointer;
-} */

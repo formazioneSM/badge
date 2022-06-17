@@ -76,7 +76,7 @@ export class BachecaComponent implements OnInit {
     );
       
     })
-    // Delete su backend
+
 
 
     

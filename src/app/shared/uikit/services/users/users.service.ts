@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, map } from 'rxjs';
+import { catchError, map } from 'rxjs/operators';
 import { base_path } from 'src/app/shared/utils/constants';
 
 @Injectable({
@@ -16,7 +16,7 @@ export class UsersService {
   getUser(badge: string) {
     return this.http.get(`${base_path}/users/${badge}`).pipe(
       map((val: any) => val[0]),
-      catchError((err) => {
+      catchError((err:any) => {
         throw err;
       })
     );

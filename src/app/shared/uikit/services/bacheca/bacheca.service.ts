@@ -40,22 +40,10 @@ export class BachecaService {
     );
   }
 
-  // editPost(postId: number | string, color: string, text: string, from: string) {
-  //   return this.http.put(
-  //     `https://be-system.herokuapp.com/api/bacheca/${postId}`,
-  //     {
-  //       color: color,
-  //       text: text,
-  //       from: from,
-  //     }
-  //   );
-  // }
 
   editPost(post: Post, postId:string){
     return this.http.put(`${base_path}/bacheca/${postId}`, post);
   }
 
-//   loadPosts() {
-//     return this.getAllPosts();
-//   }
+
 }
