@@ -12,7 +12,7 @@
       </div>
 
       
-      <img  *ngIf="imgUser" id="profile" [src]="imgUser" [routerLink]="'../profilo'" />
+      <img class="cursor-pointer" *ngIf="imgUser" id="profile" [src]="imgUser" [routerLink]="'../profilo'" />
       <div *ngIf="!imgUser" id="img-loader-wrapper">
         <app-img-loader></app-img-loader>
     </div>
