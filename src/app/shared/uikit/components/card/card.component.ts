@@ -55,7 +55,6 @@ export class CardComponent implements OnInit, AfterViewInit {
     if(this.calcHeightText > this.calcHeight){
       this.isScroll = true;
     }
-    console.log(this.calcHeight, this.calcHeightText)
   }
   clicked(){
    this.isClicked = true;
