@@ -1,5 +1,5 @@
-<div id="container" [ngStyle]="{ background: background ?? ' #F0F0F0' }">
-  <div *ngIf="!isClicked" id="wrapper">
+<div id="container" [ngStyle]="{ background: background ?? ' #F0F0F0' }" #card >
+  <div *ngIf="!isClicked" id="wrapper" >
     <div id="modal" *ngxPermissionsOnly="['ADMIN']">
       <app-modal (deleteEvent)="clicked()" (editEvent)="editPost()"></app-modal>
     </div>
@@ -11,11 +11,12 @@
       </h5>
     </div>
 
-    <div id="text-wrapper">
-    
-        <p id="text">{{ text }}</p>
- 
+    <div id="text-wrapper" >
+
+      <p id="text" #heightP>{{ text }}</p>
+
     </div>
+    <div class="shadow-bottom" *ngIf="isScroll" ></div>
     <span id="author">{{ author }}</span>
     <a href="{{ link }}" target="_blank" id="link">{{ textLink }}</a>
   </div>
@@ -23,7 +24,7 @@
     <p id="deleteText">Vuoi eliminare questo contenuto?</p>
     <div id="delete-buttons">
       <button id="back" (click)="back()" class="cursor-pointer">Indietro</button>
-      <button id="delete" (click)="delete($event)"  class="cursor-pointer">ELIMINA</button>
+      <button id="delete" (click)="delete($event)" class="cursor-pointer">ELIMINA</button>
     </div>
   </div>
 
