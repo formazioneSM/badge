@@ -55,7 +55,7 @@ export class AggiungiComponent implements OnInit {
     },
     {
       type: this.types.CONVENZIONI,
-      text: 'Inserisci le informazioni sulle convezioni attive!',
+      text: 'Inserisci le informazioni sulle convenzioni attive!',
       icon: 'assets/images/convenzioni.png',
       selected: false,
     },
