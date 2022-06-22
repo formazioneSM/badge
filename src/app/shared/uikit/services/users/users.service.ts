@@ -7,6 +7,7 @@ import { base_path } from 'src/app/shared/utils/constants';
   providedIn: 'root',
 })
 export class UsersService {
+  formData: any;
   constructor(private http: HttpClient) {}
 
   imgFile(id: string, formData: FormData) {
@@ -28,5 +29,15 @@ export class UsersService {
       surname: surname,
       badge: badgeId,
     });
+  }
+
+
+  // per salvare il form di registrazione
+  public setFormData(formData: any): void {
+    this.formData = formData;
+  }
+
+  public getFormData(): any {
+    return this.formData;  
   }
 }

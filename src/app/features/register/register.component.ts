@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/shared/uikit/services/auth/auth.service';
 import { ToastService } from 'src/app/shared/uikit/services/toast/toast.service';
 import { toastNames, types } from 'src/app/shared/utils/constants';
+import { UsersService } from 'src/app/shared/uikit/services/users/users.service';
 
 @Component({
   selector: 'app-register',
@@ -12,15 +13,16 @@ import { toastNames, types } from 'src/app/shared/utils/constants';
 export class RegisterComponent implements OnInit {
   form: FormGroup = {} as FormGroup;
   errorNumber: any;
+  
   res!: any;
-  isEmailSent: boolean = false;
-  constructor(
-    private _fb: FormBuilder,
-    private authService: AuthService,
-    private toastService: ToastService
-  ) {}
+  isEmailSent:boolean = false;
+  constructor(private _fb: FormBuilder, private authService: AuthService,public formCache:UsersService, private toastService: ToastService) {}
+
 
   ngOnInit(): void {
+
+    
+
     this.form = this._fb.group({
       name: ['', [Validators.required]],
       cognome: ['', Validators.required],
@@ -37,6 +39,12 @@ export class RegisterComponent implements OnInit {
       badge: ['', [Validators.required, Validators.pattern('^[0-9]*$')]], // il badge puo` contenere solo numeri
       checkbox: ['', [Validators.required]],
     });
+    if(this.formCache.formData){
+
+      this.form.setValue(this.formCache.formData)
+    }
+
+    
   }
   onSubmitRegister() {
     this.authService
@@ -53,7 +61,6 @@ export class RegisterComponent implements OnInit {
           this.isEmailSent = true;
         },
         (err: any) => {
-        //   console.log(err);
           this.isEmailSent = false;
 
           if (err.error.errors.status === 409) {
@@ -95,5 +102,10 @@ export class RegisterComponent implements OnInit {
   }
   get checkbox() {
     return this.form?.get('checkbox');
+  }
+
+  ngOnDestroy(){
+    this.formCache.setFormData(this.form.value)
+    //salvare valori form
   }
 }
