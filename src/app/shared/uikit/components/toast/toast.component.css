@@ -43,10 +43,10 @@ img {
   justify-self: flex-end;
 }
 #appToastStyleContainer {
-  position: absolute;
+  position: fixed;
   width: 375px;
   height: 62px;
-  bottom: 10px;
+  bottom: 1vh;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 10;
