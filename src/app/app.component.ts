@@ -35,18 +35,18 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     let token: any = localStorage.getItem('token');
     if (token) {
-      this.authService.checkTokenValidity().subscribe(
-        (res) => {
+      // this.authService.checkTokenValidity().subscribe(
+        // (res) => {
           let decodedToken: any = jwtDecode(token);
           this.isAdminOrUser(decodedToken);
           this.authService.setLoginResponse(decodedToken);
-        },
-        (err) => {
-          localStorage.removeItem('token');
+        // },
+      //   (err) => {
+      //     localStorage.removeItem('token');
 
-          this.router.navigate(['/login']);
-        }
-      );
+      //     this.router.navigate(['/login']);
+      //   }
+      // );
     }
   }
 

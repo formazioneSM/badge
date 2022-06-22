@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/shared/uikit/services/auth/auth.service';
+import { ToastService } from 'src/app/shared/uikit/services/toast/toast.service';
+import { toastNames, types } from 'src/app/shared/utils/constants';
 import { UsersService } from 'src/app/shared/uikit/services/users/users.service';
 
 @Component({
@@ -14,7 +16,8 @@ export class RegisterComponent implements OnInit {
   
   res!: any;
   isEmailSent:boolean = false;
-  constructor(private _fb: FormBuilder, private authService: AuthService,public formCache:UsersService) {}
+  constructor(private _fb: FormBuilder, private authService: AuthService,public formCache:UsersService, private toastService: ToastService) {}
+
 
   ngOnInit(): void {
 
@@ -44,7 +47,6 @@ export class RegisterComponent implements OnInit {
     
   }
   onSubmitRegister() {
-    this.isEmailSent = true;
     this.authService
       .OnRegister(
         this.name?.value,
@@ -56,16 +58,29 @@ export class RegisterComponent implements OnInit {
       .subscribe(
         (res) => {
           this.res = res;
-
+          this.isEmailSent = true;
         },
         (err: any) => {
+          this.isEmailSent = false;
 
+          if (err.error.errors.status === 409) {
+              this.toastService.setMessage(
+                toastNames.REGISTERED_USER_ALREADY_EXISTS_ERROR
+              );
+            this.form.controls['name'].setErrors({ incorrect: true });
+            this.form.controls['cognome'].setErrors({ incorrect: true });
+            this.form.controls['email'].setErrors({ incorrect: true });
+            this.form.controls['password'].setErrors({ incorrect: true });
+            this.form.controls['badge'].setErrors({ incorrect: true });
+
+          } else {
+            this.toastService.setMessage(toastNames.GENERIC_ERROR)
+            
+          }
 
           this.errorNumber = err.status;
-
         }
       );
-
   }
 
   get name() {
@@ -92,6 +107,5 @@ export class RegisterComponent implements OnInit {
   ngOnDestroy(){
     this.formCache.setFormData(this.form.value)
     //salvare valori form
-    console.log(this.formCache.formData)
   }
 }
