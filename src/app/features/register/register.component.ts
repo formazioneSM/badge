@@ -67,11 +67,6 @@ export class RegisterComponent implements OnInit {
               this.toastService.setMessage(
                 toastNames.REGISTERED_USER_ALREADY_EXISTS_ERROR
               );
-            this.form.controls['name'].setErrors({ incorrect: true });
-            this.form.controls['cognome'].setErrors({ incorrect: true });
-            this.form.controls['email'].setErrors({ incorrect: true });
-            this.form.controls['password'].setErrors({ incorrect: true });
-            this.form.controls['badge'].setErrors({ incorrect: true });
 
           } else {
             this.toastService.setMessage(toastNames.GENERIC_ERROR)
