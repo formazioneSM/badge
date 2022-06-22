@@ -46,7 +46,9 @@ export const toastNames = {
   ADDED_CONV_ERROR: 'ADDED_CONV_ERROR',
   DELETED_CONV_ERROR: 'DELETED_CONV_ERROR',
 
-  REGISTER_USER_ALREADY_EXISTS_ERROR: 'REGISTER_USER_ALREADY_EXISTS_ERROR',
+  REGISTERED_USER_ALREADY_EXISTS_ERROR: 'REGISTERED_USER_ALREADY_EXISTS_ERROR',
+
+  GENERIC_ERROR: 'GENERIC_ERROR',
 };
 
 export const toast = {
@@ -98,9 +100,12 @@ export const toast = {
     message: 'Errore rimozione Convenzione!',
     icon: '❌',
   },
-  [toastNames.REGISTER_USER_ALREADY_EXISTS_ERROR]: {
+  [toastNames.REGISTERED_USER_ALREADY_EXISTS_ERROR]: {
     message: "L'utente inserito è già registrato!",
     icon: '❌',
   },
-  
+  [toastNames.GENERIC_ERROR]: {
+    message: "C'è stato un errore, riprova!",
+    icon: '❌',
+  },
 };

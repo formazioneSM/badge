@@ -14,7 +14,11 @@ export class RegisterComponent implements OnInit {
   errorNumber: any;
   res!: any;
   isEmailSent: boolean = false;
-  constructor(private _fb: FormBuilder, private authService: AuthService, private toastService: ToastService) {}
+  constructor(
+    private _fb: FormBuilder,
+    private authService: AuthService,
+    private toastService: ToastService
+  ) {}
 
   ngOnInit(): void {
     this.form = this._fb.group({
@@ -49,13 +53,25 @@ export class RegisterComponent implements OnInit {
           this.isEmailSent = true;
         },
         (err: any) => {
-          console.log(err);
-
+        //   console.log(err);
           this.isEmailSent = false;
 
-          this.errorNumber = err.status;
+          if (err.error.errors.status === 409) {
+              this.toastService.setMessage(
+                toastNames.REGISTERED_USER_ALREADY_EXISTS_ERROR
+              );
+            this.form.controls['name'].setErrors({ incorrect: true });
+            this.form.controls['cognome'].setErrors({ incorrect: true });
+            this.form.controls['email'].setErrors({ incorrect: true });
+            this.form.controls['password'].setErrors({ incorrect: true });
+            this.form.controls['badge'].setErrors({ incorrect: true });
 
-         this.toastService.setMessage(toastNames.REGISTER_USER_ALREADY_EXISTS_ERROR)
+          } else {
+            this.toastService.setMessage(toastNames.GENERIC_ERROR)
+            
+          }
+
+          this.errorNumber = err.status;
         }
       );
   }
