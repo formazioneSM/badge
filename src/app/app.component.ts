@@ -13,9 +13,7 @@ import { Post } from './shared/utils/interfaces';
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  animations: [
-    slideInAnimation
-  ]
+  animations: [slideInAnimation],
 })
 export class AppComponent implements OnInit {
   title = 'badgeverso';
@@ -27,38 +25,42 @@ export class AppComponent implements OnInit {
     public permissions: NgxPermissionsService,
     private router: Router,
     private authService: AuthService,
-    private contexts: ChildrenOutletContexts,
-  ) {
-
-  }
+    private contexts: ChildrenOutletContexts
+  ) {}
 
   isAdminOrUser(token: any) {
     this.permissions.loadPermissions(token.admin ? ['ADMIN'] : ['USER']);
-
   }
 
   ngOnInit() {
-
     let token: any = localStorage.getItem('token');
     if (token) {
-      let decodedToken: any = jwtDecode(token);
-      this.isAdminOrUser(decodedToken);
-      this.authService.setLoginResponse(decodedToken);
-    }
+      this.authService.checkTokenValidity().subscribe(
+        (res) => {
+          let decodedToken: any = jwtDecode(token);
+          this.isAdminOrUser(decodedToken);
+          this.authService.setLoginResponse(decodedToken);
+        },
+        (err) => {
+          localStorage.removeItem('token');
 
+          this.router.navigate(['/login']);
+        }
+      );
+    }
   }
 
   undoAction() {
-
     switch (this.router.url) {
       case '/home/bacheca': {
-
         break;
       }
     }
   }
 
   getRouteAnimationData() {
-    return this.contexts.getContext('primary')?.route?.snapshot?.data?.['animation'];
+    return this.contexts.getContext('primary')?.route?.snapshot?.data?.[
+      'animation'
+    ];
   }
 }

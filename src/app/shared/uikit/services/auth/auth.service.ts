@@ -10,6 +10,11 @@ export class AuthService {
   apiToken: any = '';
   loginResponse!: LoginResponse;
 
+    checkTokenValidity() {
+        return this.http.get(`https://be-system.herokuapp.com/api/auth/checkToken`)
+
+    }
+
   onLogin(email: any, password: any) {
     return this.http.post(`https://be-system.herokuapp.com/api/auth/login`, {
       email: email,
