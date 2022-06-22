@@ -9,6 +9,7 @@ export class AuthService {
   constructor(private http: HttpClient, private router: Router) {}
   apiToken: any = '';
   loginResponse!: LoginResponse;
+  isUserRegistered: boolean = false;
 
     checkTokenValidity() {
         return this.http.get(`https://be-system.herokuapp.com/api/auth/checkToken`)

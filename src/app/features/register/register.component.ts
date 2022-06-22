@@ -16,6 +16,7 @@ export class RegisterComponent implements OnInit {
   
   res!: any;
   isEmailSent:boolean = false;
+  
   constructor(private _fb: FormBuilder, private authService: AuthService,public formCache:UsersService, private toastService: ToastService) {}
 
 
@@ -39,9 +40,12 @@ export class RegisterComponent implements OnInit {
       badge: ['', [Validators.required, Validators.pattern('^[0-9]*$')]], // il badge puo` contenere solo numeri
       checkbox: ['', [Validators.required]],
     });
-    if(this.formCache.formData){
+    if(!this.authService.isUserRegistered){
 
-      this.form.setValue(this.formCache.formData)
+      if(this.formCache.formData){
+  
+        this.form.setValue(this.formCache.formData)
+      }
     }
 
     
@@ -59,6 +63,7 @@ export class RegisterComponent implements OnInit {
         (res) => {
           this.res = res;
           this.isEmailSent = true;
+          this.authService.isUserRegistered = true
         },
         (err: any) => {
           this.isEmailSent = false;
