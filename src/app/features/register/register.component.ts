@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/shared/uikit/services/auth/auth.service';
+import { ToastService } from 'src/app/shared/uikit/services/toast/toast.service';
+import { toastNames, types } from 'src/app/shared/utils/constants';
 
 @Component({
   selector: 'app-register',
@@ -11,8 +13,8 @@ export class RegisterComponent implements OnInit {
   form: FormGroup = {} as FormGroup;
   errorNumber: any;
   res!: any;
-  isEmailSent:boolean = false;
-  constructor(private _fb: FormBuilder, private authService: AuthService) {}
+  isEmailSent: boolean = false;
+  constructor(private _fb: FormBuilder, private authService: AuthService, private toastService: ToastService) {}
 
   ngOnInit(): void {
     this.form = this._fb.group({
@@ -33,7 +35,6 @@ export class RegisterComponent implements OnInit {
     });
   }
   onSubmitRegister() {
-    this.isEmailSent = true;
     this.authService
       .OnRegister(
         this.name?.value,
@@ -45,16 +46,18 @@ export class RegisterComponent implements OnInit {
       .subscribe(
         (res) => {
           this.res = res;
-
+          this.isEmailSent = true;
         },
         (err: any) => {
+          console.log(err);
 
+          this.isEmailSent = false;
 
           this.errorNumber = err.status;
 
+         this.toastService.setMessage(toastNames.REGISTER_USER_ALREADY_EXISTS_ERROR)
         }
       );
-
   }
 
   get name() {
