@@ -41,10 +41,16 @@
       <div id="email">
         <app-input [textLabel]="'Email*'" [placeholder]="'Inserisci la tua email di dominio'"
           [backgroundInput]="'var(--input-bg-color)'" [for]="'email'" [parentFormGroup]="form" [controlName]="'email'"
-          [name]="'email'">
+          [name]="'email'" [type]="'email'">
         </app-input>
         <div *ngIf="email?.errors && email?.touched">
-          <p class="validation">Campo obbligatorio</p>
+          <div *ngIf="email?.errors?.['required']">
+            <p class="validation">Campo obbligatorio.</p>
+          </div>
+          <div class="validation" *ngIf="email?.errors?.['email']">
+            <p >Email non valida
+            </p>
+          </div>
         </div>
       </div>
       <div id="password">
