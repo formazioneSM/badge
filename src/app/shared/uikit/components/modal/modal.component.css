@@ -21,6 +21,9 @@
     z-index: 2;
 
 }
+.pointerEventNone{
+    pointer-events: none;
+}
 #scelta{
     position: relative;
     z-index: 1;

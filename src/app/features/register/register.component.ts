@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/shared/uikit/services/auth/auth.service';
+import { UsersService } from 'src/app/shared/uikit/services/users/users.service';
 
 @Component({
   selector: 'app-register',
@@ -10,11 +11,15 @@ import { AuthService } from 'src/app/shared/uikit/services/auth/auth.service';
 export class RegisterComponent implements OnInit {
   form: FormGroup = {} as FormGroup;
   errorNumber: any;
+  
   res!: any;
   isEmailSent:boolean = false;
-  constructor(private _fb: FormBuilder, private authService: AuthService) {}
+  constructor(private _fb: FormBuilder, private authService: AuthService,public formCache:UsersService) {}
 
   ngOnInit(): void {
+
+    
+
     this.form = this._fb.group({
       name: ['', [Validators.required]],
       cognome: ['', Validators.required],
@@ -31,6 +36,12 @@ export class RegisterComponent implements OnInit {
       badge: ['', [Validators.required, Validators.pattern('^[0-9]*$')]], // il badge puo` contenere solo numeri
       checkbox: ['', [Validators.required]],
     });
+    if(this.formCache.formData){
+
+      this.form.setValue(this.formCache.formData)
+    }
+
+    
   }
   onSubmitRegister() {
     this.isEmailSent = true;
@@ -76,5 +87,11 @@ export class RegisterComponent implements OnInit {
   }
   get checkbox() {
     return this.form?.get('checkbox');
+  }
+
+  ngOnDestroy(){
+    this.formCache.setFormData(this.form.value)
+    //salvare valori form
+    console.log(this.formCache.formData)
   }
 }

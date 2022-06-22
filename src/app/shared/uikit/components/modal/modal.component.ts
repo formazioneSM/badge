@@ -1,4 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { ToastService } from '../../services/toast/toast.service';
+
 
 @Component({
   selector: 'app-modal',
@@ -10,7 +12,7 @@ export class ModalComponent implements OnInit {
   @Output('deleteEvent') deleteEvent = new EventEmitter();
   @Output('editEvent') editEvent = new EventEmitter();
 
-  constructor() { }
+  constructor(public toastService:ToastService) { }
 
   ngOnInit(): void {
   }

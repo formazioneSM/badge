@@ -1,6 +1,6 @@
 <div *ngIf="modal" class="overlay" (mousedown)="visible()"></div>
 <div>
-    <div (mousedown)="visible()" id="scelta"  class="cursor-pointer">
+    <div (mousedown)="visible()" [ngClass]="{'pointerEventNone': this.toastService.isVisibleUndo }" id="scelta"  class="cursor-pointer">
         <svg width="4" height="16" viewBox="0 0 4 16" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M2 4C3.1 4 4 3.1 4 2C4 0.9 3.1 0 2 0C0.9 0 0 0.9 0 2C0 3.1 0.9 4 2 4Z" fill="#2E3A59" />
             <path d="M2 6C0.9 6 0 6.9 0 8C0 9.1 0.9 10 2 10C3.1 10 4 9.1 4 8C4 6.9 3.1 6 2 6Z" fill="#2E3A59" />
@@ -23,7 +23,7 @@
             <p>Modifica</p>
         </div>
         <hr>
-        <div class="internalModal delete cursor-pointer" (click)="elimina($event)">
+        <div class="internalModal delete cursor-pointer"   (click)="elimina($event)">
             <span>
                 <svg width="18" height="21" viewBox="0 0 18 21" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path
