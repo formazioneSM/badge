@@ -75,4 +75,7 @@ export class ProfiloComponent implements OnInit {
   trigger() {
     this.fileUpload.nativeElement.click();
   }
+  switchImg(event:any){
+    console.log(event.target)
+  }
 }
