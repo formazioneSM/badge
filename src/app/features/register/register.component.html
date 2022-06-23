@@ -12,7 +12,7 @@
           [backgroundInput]="'var(--input-bg-color)'" [for]="'name'" [parentFormGroup]="form" [controlName]="'name'"
           [name]="'name'">
         </app-input>
-        <div *ngIf="name?.errors && name?.touched">
+        <div *ngIf="name?.errors?.['required'] && name?.touched">
           <p class="validation">Campo obbligatorio</p>
         </div>
       </div>
@@ -21,7 +21,7 @@
           [backgroundInput]="'var(--input-bg-color)'" [for]="'cognome'" [parentFormGroup]="form"
           [controlName]="'cognome'" [name]="'cognome'">
         </app-input>
-        <div *ngIf="cognome?.errors && cognome?.touched">
+        <div *ngIf="cognome?.errors?.['required'] && cognome?.touched">
           <p class="validation">Campo obbligatorio</p>
         </div>
       </div>
@@ -34,17 +34,23 @@
             <app-tooltip></app-tooltip>
           </div>
         </app-input>
-        <div *ngIf="badge?.errors && badge?.touched">
+        <div *ngIf="badge?.errors?.['required'] && badge?.touched">
           <p class="validation">Campo obbligatorio</p>
         </div>
       </div>
       <div id="email">
         <app-input [textLabel]="'Email*'" [placeholder]="'Inserisci la tua email di dominio'"
           [backgroundInput]="'var(--input-bg-color)'" [for]="'email'" [parentFormGroup]="form" [controlName]="'email'"
-          [name]="'email'">
+          [name]="'email'" [type]="'email'">
         </app-input>
-        <div *ngIf="email?.errors && email?.touched">
-          <p class="validation">Campo obbligatorio</p>
+        <div *ngIf="email?.errors && email?.touched ">
+          <div *ngIf="email?.errors?.['required']">
+            <p class="validation">Campo obbligatorio.</p>
+          </div>
+          <div *ngIf="email?.errors?.['email']">
+            <p  class="validation" >Email non valida
+            </p>
+          </div>
         </div>
       </div>
       <div id="password">
@@ -53,11 +59,11 @@
           [type]="'password'">
         </app-input>
         <div *ngIf="password?.errors && password?.touched">
-          <div *ngIf="password?.errors?.['required']">
+          <div *ngIf=" password?.errors?.['required']">
             <p class="validation">Campo obbligatorio.</p>
           </div>
-          <div class="validation" *ngIf="password?.errors?.['pattern']" style="font-size: 9px;">
-            <p >Deve contenere almeno 8 caratteri, una maiuscola, un numero e un carattere speciale.
+          <div  *ngIf="password?.errors?.['pattern']" >
+            <p class="validation" style="font-size: 9px;" >Almeno 8 caratteri, una maiuscola, un numero e un carattere speciale.
             </p>
           </div>
 
@@ -65,7 +71,7 @@
       </div>
       <div id="checkbox">
         <app-checkbox [parentFormGroup]="form" [controlName]="'checkbox'" [name]="'checkbox'">
-          <span>*Accetto i <a [routerLink]="'/termini-e-condizioni'">termini</a> e la <a [routerLink]="'/termini-e-condizioni'">privacy</a></span>
+          <span>*Accetto <a [routerLink]="'/termini-e-condizioni'">termini e condizioni</a></span>
         </app-checkbox>
 
       </div>

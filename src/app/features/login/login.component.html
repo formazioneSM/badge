@@ -13,7 +13,7 @@
         <div id="email">
           <app-input [textLabel]="'Email*'" [placeholder]="'Inserisci la tua email'"
             [backgroundInput]="'var(--input-bg-color)'" [for]="'email'" [parentFormGroup]="form" [controlName]="'email'"
-            [name]="'email'">
+            [name]="'email'" [type]="'email'">
           </app-input>
           <div *ngIf="email?.errors?.['invalidEmail']">
             <p class="validation">{{email?.errors?.['invalidEmail']}}</p>

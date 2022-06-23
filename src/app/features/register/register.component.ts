@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/shared/uikit/services/auth/auth.service';
 import { ToastService } from 'src/app/shared/uikit/services/toast/toast.service';
 import { toastNames, types } from 'src/app/shared/utils/constants';
+import { UsersService } from 'src/app/shared/uikit/services/users/users.service';
 
 @Component({
   selector: 'app-register',
@@ -12,15 +13,17 @@ import { toastNames, types } from 'src/app/shared/utils/constants';
 export class RegisterComponent implements OnInit {
   form: FormGroup = {} as FormGroup;
   errorNumber: any;
+  
   res!: any;
-  isEmailSent: boolean = false;
-  constructor(
-    private _fb: FormBuilder,
-    private authService: AuthService,
-    private toastService: ToastService
-  ) {}
+  isEmailSent:boolean = false;
+  
+  constructor(private _fb: FormBuilder, private authService: AuthService,public formCache:UsersService, private toastService: ToastService) {}
+
 
   ngOnInit(): void {
+
+    
+
     this.form = this._fb.group({
       name: ['', [Validators.required]],
       cognome: ['', Validators.required],
@@ -37,6 +40,15 @@ export class RegisterComponent implements OnInit {
       badge: ['', [Validators.required, Validators.pattern('^[0-9]*$')]], // il badge puo` contenere solo numeri
       checkbox: ['', [Validators.required]],
     });
+    if(!this.authService.isUserRegistered){
+
+      if(this.formCache.formData){
+  
+        this.form.setValue(this.formCache.formData)
+      }
+    }
+
+    
   }
   onSubmitRegister() {
     this.authService
@@ -51,20 +63,15 @@ export class RegisterComponent implements OnInit {
         (res) => {
           this.res = res;
           this.isEmailSent = true;
+          this.authService.isUserRegistered = true
         },
         (err: any) => {
-        //   console.log(err);
           this.isEmailSent = false;
 
           if (err.error.errors.status === 409) {
               this.toastService.setMessage(
                 toastNames.REGISTERED_USER_ALREADY_EXISTS_ERROR
               );
-            this.form.controls['name'].setErrors({ incorrect: true });
-            this.form.controls['cognome'].setErrors({ incorrect: true });
-            this.form.controls['email'].setErrors({ incorrect: true });
-            this.form.controls['password'].setErrors({ incorrect: true });
-            this.form.controls['badge'].setErrors({ incorrect: true });
 
           } else {
             this.toastService.setMessage(toastNames.GENERIC_ERROR)
@@ -95,5 +102,10 @@ export class RegisterComponent implements OnInit {
   }
   get checkbox() {
     return this.form?.get('checkbox');
+  }
+
+  ngOnDestroy(){
+    this.formCache.setFormData(this.form.value)
+    //salvare valori form
   }
 }

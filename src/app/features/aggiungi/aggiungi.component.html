@@ -1,63 +1,35 @@
+<app-sm-loader></app-sm-loader>
 <div id="add">
   <div id="head">
     <div id="page-title-wrapper">
 
-      <svg
-        *ngIf="!stepOne && !editParams.id"
-        (click)="backStepOne()"
-        class="back cursor-pointer"
-        width="8"
-        height="14"
-        viewBox="0 0 8 14"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
+      <svg *ngIf="!stepOne && !editParams.id" (click)="backStepOne()" class="back cursor-pointer" width="8" height="14"
+        viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path
           d="M6.29849 0.989502L0.288086 6.99991L6.29849 13.0103L7.71271 11.5961L3.11651 6.99991L7.71271 2.40372L6.29849 0.989502Z"
-          fill="#003594"
-        />
+          fill="#003594" />
       </svg>
 
       <p id="title" *ngIf="!editParams.id">Aggiungi contenuto</p>
       <p id="title" *ngIf="editParams.id">Modifica contenuto</p>
     </div>
 
-    <svg
-      class="close cursor-pointer"
-      (click)="esc()"
-      width="20"
-      height="20"
-      viewBox="0 0 20 20"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path
-        fill-rule="evenodd"
-        clip-rule="evenodd"
+    <svg class="close cursor-pointer" (click)="esc()" width="20" height="20" viewBox="0 0 20 20" fill="none"
+      xmlns="http://www.w3.org/2000/svg">
+      <path fill-rule="evenodd" clip-rule="evenodd"
         d="M0 10C0 4.47 4.47 0 10 0C15.53 0 20 4.47 20 10C20 15.53 15.53 20 10 20C4.47 20 0 15.53 0 10ZM10 8.59L12.59 6L14 7.41L11.41 10L14 12.59L12.59 14L10 11.41L7.41 14L6 12.59L8.59 10L6 7.41L7.41 6L10 8.59Z"
-        fill="#003594"
-      />
+        fill="#003594" />
     </svg>
   </div>
 
   <div class="steps" *ngIf="stepOne">
     <p class="subtitle"><b>1 </b>di 2 Scelta tipologia</p>
     <div *ngFor="let t of postTypes" class="scelta cursor-pointer">
-      <app-card-aggiungi
-        [selected]="t.selected"
-        [icon]="t.icon"
-        [title]="t.type"
-        [text]="t.text"
-        (click)="selectCard(t)"
-      ></app-card-aggiungi>
+      <app-card-aggiungi [selected]="t.selected" [icon]="t.icon" [title]="t.type" [text]="t.text"
+        (click)="selectCard(t)"></app-card-aggiungi>
     </div>
-    <app-button
-      (click)="goToSecondStep(postTypes)"
-      class="btn"
-      [typeButton]="'button'"
-      [textButton]="'Avanti'"
-      [disabled]="disabled"
-    >
+    <app-button (click)="goToSecondStep(postTypes)" class="btn" [typeButton]="'button'" [textButton]="'Avanti'"
+      [disabled]="disabled">
     </app-button>
   </div>
 
@@ -69,59 +41,38 @@
 
       <form [formGroup]="formAddBacheca" (ngSubmit)="onPostSubmit()">
         <div class="textarea">
-          <app-textarea
-            [boxshadow]="type == types.BACHECA"
-            [textLabel]="'Contenuto*'"
-            [placeholder]="'Inserisci qui il contenuto del tuo msg'"
-            [parentFormGroup]="formAddBacheca"
-            [border]="'#FEDD2E'"
-            [controlName]="'contenutoBacheca'"
-            [name]="'contenutoBacheca'"
-            [background]="bgcolor"
-          >
+          <app-textarea [boxshadow]="type == types.BACHECA" [textLabel]="'Contenuto*'"
+            [placeholder]="'Inserisci qui il contenuto del tuo msg'" [parentFormGroup]="formAddBacheca"
+            [border]="'#FEDD2E'" [controlName]="'contenutoBacheca'" [name]="'contenutoBacheca'" [background]="bgcolor">
             <div id="containerColorPicker">
-              <app-color-select
-                (changeColor)="changeColorTextarea($event)"
-              ></app-color-select>
+              <app-color-select (changeColor)="changeColorTextarea($event)"></app-color-select>
             </div>
           </app-textarea>
 
-          <div
-            *ngIf="contenutoBacheca?.touched && contenutoBacheca?.invalid"
-            class="validation"
-          >
-            <p>Campo obbligatorio</p>
+          <div *ngIf="contenutoBacheca?.touched && contenutoBacheca?.invalid || contenutoBacheca?.errors?.['minLength']"
+            class="validation">
+
+            <p>Campo obbligatorio, minimo 4 caratteri</p>
+
+
           </div>
+
+
         </div>
 
         <div id="label">
           <label>Publica come*</label>
         </div>
         <div *ngFor="let c of configuration">
-          <div
-            class="customRadio"
-            [class.active]="c.selected"
-            (click)="triggerRadio($event, c)"
-            [id]="c.text"
-          >
-            <input
-              type="radio"
-              class="hiddenRadio"
-              (click)="preventDef($event)"
-              name="radio"
-              value="{{ c.value }}"
-              formControlName="radio"
-            />
+          <div class="customRadio" [class.active]="c.selected" (click)="triggerRadio($event, c)" [id]="c.text">
+            <input type="radio" class="hiddenRadio" (click)="preventDef($event)" name="radio" value="{{ c.value }}"
+              formControlName="radio" />
             <span id="testo">{{ c.text }}</span>
           </div>
         </div>
 
-        <app-button
-          class="btn"
-          [typeButton]="'submit'"
-          [textButton]="editParams.id ? 'Aggiorna' : 'Pubblica'"
-          [disabled]="formAddBacheca.invalid"
-        >
+        <app-button class="btn" [typeButton]="'submit'" [textButton]="editParams.id ? 'Aggiorna' : 'Pubblica'"
+          [disabled]="formAddBacheca.invalid">
         </app-button>
       </form>
     </div>
@@ -132,44 +83,25 @@
       <div *ngIf="formAddLink">
         <form [formGroup]="formAddLink" (ngSubmit)="addLink(formAddLink)">
           <div class="marginInput">
-            <app-input
-              [textLabel]="'Nome link*'"
-              [placeholder]="'Inserisci il contenuto del tuo msg'"
-              [backgroundInput]="'var(--input-bg-color)'"
-              [for]="'nomeLink'"
-              [parentFormGroup]="formAddLink"
-              [controlName]="'nomeLink'"
-              [name]="'nomeLink'"
-            >
+            <app-input [textLabel]="'Nome link*'" [placeholder]="'Inserisci il contenuto del tuo msg'"
+              [backgroundInput]="'var(--input-bg-color)'" [for]="'nomeLink'" [parentFormGroup]="formAddLink"
+              [controlName]="'nomeLink'" [name]="'nomeLink'">
             </app-input>
-            <div
-              *ngIf="nomeLink?.touched && nomeLink?.invalid"
-              class="validation"
-            >
+            <div *ngIf="nomeLink?.touched && nomeLink?.invalid" class="validation">
               <p>Campo obbligatorio</p>
             </div>
           </div>
           <div class="marginInput">
-            <app-input
-              [textLabel]="'link*'"
-              [placeholder]="'Inserisci il contenuto del tuo msg'"
-              [backgroundInput]="'var(--input-bg-color)'"
-              [for]="'link'"
-              [parentFormGroup]="formAddLink"
-              [controlName]="'link'"
-              [name]="'link'"
-            >
+            <app-input [textLabel]="'link*'" [placeholder]="'Inserisci il contenuto del tuo msg'"
+              [backgroundInput]="'var(--input-bg-color)'" [for]="'link'" [parentFormGroup]="formAddLink"
+              [controlName]="'link'" [name]="'link'">
             </app-input>
             <div *ngIf="link?.touched && link?.invalid" class="validation">
               <p>Campo obbligatorio</p>
             </div>
           </div>
-          <app-button
-            class="btn"
-            [typeButton]="'submit'"
-            [textButton]="editParams.id ? 'Aggiorna' : 'Pubblica'"
-            [disabled]="formAddLink.invalid"
-          >
+          <app-button class="btn" [typeButton]="'submit'" [textButton]="editParams.id ? 'Aggiorna' : 'Pubblica'"
+            [disabled]="formAddLink.invalid">
           </app-button>
         </form>
       </div>
@@ -179,87 +111,49 @@
         <b>2 </b>di 2 Scelta tipologia
       </p>
       <div *ngIf="formAddConvenzioni">
-        <form
-          [formGroup]="formAddConvenzioni"
-          (ngSubmit)="addConvenzione(formAddConvenzioni)"
-        >
+        <form [formGroup]="formAddConvenzioni" (ngSubmit)="addConvenzione(formAddConvenzioni)">
           <div class="marginInput">
-            <app-input
-              [textLabel]="'Titolo*'"
-              [placeholder]="'Inserisci il contenuto del tuo msg'"
-              [backgroundInput]="'var(--input-bg-color)'"
-              [for]="'titolo'"
-              [parentFormGroup]="formAddConvenzioni"
-              [controlName]="'titolo'"
-              [name]="'titolo'"
-            >
+            <app-input [textLabel]="'Titolo*'" [placeholder]="'Inserisci il contenuto del tuo msg'"
+              [backgroundInput]="'var(--input-bg-color)'" [for]="'titolo'" [parentFormGroup]="formAddConvenzioni"
+              [controlName]="'titolo'" [name]="'titolo'">
             </app-input>
             <div *ngIf="titolo?.touched && titolo?.invalid" class="validation">
               <p>Campo obbligatorio</p>
             </div>
           </div>
           <div class="marginInput">
-            <app-textarea
-              [textLabel]="'Contenuto*'"
-              [placeholder]="'Inserisci qui il contenuto del tuo msg'"
-              [background]="'var(--input-bg-color)'"
-              [border]="
+            <app-textarea [textLabel]="'Contenuto*'" [placeholder]="'Inserisci qui il contenuto del tuo msg'"
+              [background]="'var(--input-bg-color)'" [border]="
                 contenuto?.touched && contenuto?.invalid
                   ? '1px solid #eb5757'
                   : '1px solid #C6D1E4'
-              "
-              [for]="'contenuto'"
-              [parentFormGroup]="formAddConvenzioni"
-              [controlName]="'contenuto'"
-              [name]="'contenuto'"
-            >
+              " [for]="'contenuto'" [parentFormGroup]="formAddConvenzioni" [controlName]="'contenuto'"
+              [name]="'contenuto'">
             </app-textarea>
-            <div
-              *ngIf="contenuto?.touched && contenuto?.invalid"
-              class="validation"
-            >
-              <p>Campo obbligatorio</p>
+            <div *ngIf="contenuto?.touched && contenuto?.invalid || contenuto?.errors?.['minLength']" class="validation">
+              <p>Campo obbligatorio, minimo 4 caratteri</p>
             </div>
           </div>
           <div class="marginInput">
-            <app-input
-              [textLabel]="'Titolo link*'"
-              [placeholder]="'Inserisci un titolo'"
-              [backgroundInput]="'var(--input-bg-color)'"
-              [for]="'titoloLink'"
-              [parentFormGroup]="formAddConvenzioni"
-              [controlName]="'titoloLink'"
-              [name]="'titoloLink'"
-            >
+            <app-input [textLabel]="'Titolo link*'" [placeholder]="'Inserisci un titolo'"
+              [backgroundInput]="'var(--input-bg-color)'" [for]="'titoloLink'" [parentFormGroup]="formAddConvenzioni"
+              [controlName]="'titoloLink'" [name]="'titoloLink'">
             </app-input>
-            <div
-              *ngIf="titoloLink?.touched && titoloLink?.invalid"
-              class="validation"
-            >
+            <div *ngIf="titoloLink?.touched && titoloLink?.invalid" class="validation">
               <p>Campo obbligatorio</p>
             </div>
           </div>
           <div class="marginInput">
-            <app-input
-              [textLabel]="'Url*'"
-              [placeholder]="'Inserisci un url'"
-              [backgroundInput]="'var(--input-bg-color)'"
-              [for]="'url'"
-              [parentFormGroup]="formAddConvenzioni"
-              [controlName]="'url'"
-              [name]="'url'"
-              ><a></a>
+            <app-input [textLabel]="'Url*'" [placeholder]="'Inserisci un url'"
+              [backgroundInput]="'var(--input-bg-color)'" [for]="'url'" [parentFormGroup]="formAddConvenzioni"
+              [controlName]="'url'" [name]="'url'"><a></a>
             </app-input>
             <div *ngIf="url?.touched && url?.invalid" class="validation">
               <p>Campo obbligatorio</p>
             </div>
           </div>
-          <app-button
-            class="btn"
-            [typeButton]="'submit'"
-            [textButton]="editParams.id ? 'Aggiorna' : 'Pubblica'"
-            [disabled]="formAddConvenzioni.invalid"
-          >
+          <app-button class="btn" [typeButton]="'submit'" [textButton]="editParams.id ? 'Aggiorna' : 'Pubblica'"
+            [disabled]="formAddConvenzioni.invalid">
           </app-button>
         </form>
       </div>

@@ -91,7 +91,7 @@ export class AggiungiComponent implements OnInit {
     this.disabled = this.postTypes.every((p) => !p?.selected);
 
     this.formAddBacheca = this._fb.group({
-      contenutoBacheca: ['', [Validators.required, Validators.pattern(/[\S]/)]],
+      contenutoBacheca: ['', [Validators.required, Validators.pattern(/[\S]/), Validators.minLength(4)]],
       radio: ['', Validators.required],
     });
 
@@ -102,7 +102,7 @@ export class AggiungiComponent implements OnInit {
 
     this.formAddConvenzioni = this._fb.group({
       titolo: ['', [Validators.required, Validators.pattern(/[\S]/)]],
-      contenuto: ['', [Validators.required, Validators.pattern(/[\S]/)]],
+      contenuto: ['', [Validators.required, Validators.pattern(/[\S]/), Validators.minLength(4)]],
       titoloLink: ['', [Validators.required, Validators.pattern(/[\S]/)]],
       url: ['', [Validators.required, Validators.pattern(/[\S]/)]],
     });

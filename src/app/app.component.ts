@@ -26,7 +26,7 @@ export class AppComponent implements OnInit {
     private router: Router,
     private authService: AuthService,
     private contexts: ChildrenOutletContexts
-  ) {}
+  ) { }
 
   isAdminOrUser(token: any) {
     this.permissions.loadPermissions(token.admin ? ['ADMIN'] : ['USER']);
@@ -35,18 +35,11 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     let token: any = localStorage.getItem('token');
     if (token) {
-      this.authService.checkTokenValidity().subscribe(
-        (res) => {
-          let decodedToken: any = jwtDecode(token);
-          this.isAdminOrUser(decodedToken);
-          this.authService.setLoginResponse(decodedToken);
-        },
-        (err) => {
-          localStorage.removeItem('token');
 
-          this.router.navigate(['/login']);
-        }
-      );
+      let decodedToken: any = jwtDecode(token);
+      this.isAdminOrUser(decodedToken);
+      this.authService.setLoginResponse(decodedToken);
+
     }
   }
 
