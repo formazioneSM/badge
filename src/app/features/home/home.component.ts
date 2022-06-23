@@ -48,9 +48,13 @@ export class HomeComponent implements OnInit{
     let token: any = localStorage.getItem('token');
     this.decodeToken = jwtDecode(token)
     this.userService.getUser(this.decodeToken.badge).subscribe(res => {
-      this.user = res;
-      this.loading = false;
-      this.imgUser = this.user.img !== '' ? this.user.img : this.defaultUserImg;
+      if(this.decodeToken.hasOwnProperty('name', 'surname', 'badge', 'img', 'activationKey', 'active', 'badgeImg', 'createdAt', 'email', 'password', 'passwordChangeKey', 'role','updatedAt', '__v', '_id')){
+        this.user = res;
+        this.loading = false;
+        this.imgUser = this.user.img !== '' ? this.user.img : this.defaultUserImg;
+      }else{
+        this.router.navigate([('/login')])
+      }
     }
     )
 
@@ -83,5 +87,9 @@ export class HomeComponent implements OnInit{
     return this.contexts.getContext('primary')?.route?.snapshot?.data?.[
       'animation'
     ];
+  }
+
+  switchImg(event:any){
+    event.target.src = this.defaultUserImg
   }
 }

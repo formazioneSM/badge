@@ -13,7 +13,7 @@ export class FaqComponent implements OnInit {
       indice: 0,
       isClicked: false,
       faqTitle: 'Perchè esiste il Badgeverso?',
-      text: "Il Badgeverso è stato creato per facilitare la comunicazione all'interno dell'azienda. (In realtà però è solo un'esercitazione 🙃)",
+      text: "Il Badgeverso è stato creato per facilitare la comunicazione all'interno dell'azienda (in realtà è solo un'esercitazione 🙃).",
     },
     {
       indice: 1,

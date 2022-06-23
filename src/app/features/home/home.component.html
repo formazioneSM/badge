@@ -12,7 +12,7 @@
       </div>
 
       
-      <img class="cursor-pointer" *ngIf="imgUser" id="profile" [src]="imgUser" [routerLink]="'../profilo'" />
+      <img class="cursor-pointer" *ngIf="imgUser" id="profile" [src]="imgUser" [routerLink]="'../profilo'" (error)="switchImg($event)"/>
       <div *ngIf="!imgUser" id="img-loader-wrapper">
         <app-img-loader></app-img-loader>
     </div>
