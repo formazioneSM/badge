@@ -18,16 +18,22 @@ export class ModalComponent implements OnInit {
   }
 
   modal:boolean = false;
+ 
 
   visible(){
     this.modal= !this.modal
+    this.toastService.aModalIsOpen =  !this.toastService.aModalIsOpen 
+ 
   }
+
 
   elimina(e:any){
     this.deleteEvent.emit(e)
+    this.toastService.aModalIsOpen = false
   }
 
   modifica(e:any){
     this.editEvent.emit(e)
+    this.toastService.aModalIsOpen = false
   }
 }
