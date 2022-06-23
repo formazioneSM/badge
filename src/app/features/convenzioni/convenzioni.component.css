@@ -5,6 +5,12 @@
 
     height: auto;
 }
+
+.cards-loader {
+    width: 100%;
+    height: 121px;
+}
+
 .card{
     margin-top: 10px;
     margin-bottom: 15px;
