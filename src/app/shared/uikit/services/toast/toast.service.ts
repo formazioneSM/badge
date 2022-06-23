@@ -13,6 +13,7 @@ export class ToastService {
 
   isVisibleUndo: boolean = false; // per far visualizzare undo
   annulla: Subject<any> = new Subject();
+  aModalIsOpen:boolean = false
 
   constructor() {}
 
