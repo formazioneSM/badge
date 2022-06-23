@@ -37,7 +37,7 @@ export class ProfiloComponent implements OnInit {
         this.user = res;
         this.imgUser =
           this.user.img !== '' ? this.user.img : this.defaultUserImg;
-      },
+      }
     );
   }
 
