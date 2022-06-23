@@ -18,6 +18,7 @@ export const toastMessages = {
 };
 
 export const temi = [
+  'var(--bg-primary-color)',
   'assets/images/tema1.png',
   'assets/images/tema2.png',
   'assets/images/tema3.png',
