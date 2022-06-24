@@ -8,7 +8,7 @@
   height: 100vh;
   top: 0;
   left: 0;
-  
+  z-index: 10 !important ;
   background-color: rgba(255, 255, 255, 0.5);;
 }
 #container {
@@ -26,6 +26,7 @@
   border: 1px solid lightgray;
   border-radius: 10px;
   padding: 0 1.5rem;
+  
 }
 
 p {
@@ -52,6 +53,7 @@ img {
   align-items: center;
   text-decoration: underline;
   justify-self: flex-end;
+  
 }
 #appToastStyleContainer {
   position: fixed;
@@ -61,7 +63,7 @@ img {
   left: 50%;
   transform: translate(-50%, -50%);
   pointer-events:all;
-  z-index: 10 ;
+  z-index: 10 !important ;
 }
 
 @media only screen and (min-width: 800px){
