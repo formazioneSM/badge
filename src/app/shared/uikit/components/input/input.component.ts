@@ -1,10 +1,13 @@
 import {
+  AfterViewInit,
   Component,
+  ElementRef,
   EventEmitter,
   forwardRef,
   Input,
   OnInit,
   Output,
+  ViewChild,
 } from '@angular/core';
 import {
   AbstractControl,
@@ -25,7 +28,7 @@ import {
     },
   ],
 })
-export class InputComponent implements OnInit {
+export class InputComponent implements OnInit, AfterViewInit {
   @Input('textLabel') textLabel: string | undefined;
   @Input('placeholder') placeholder: string | undefined;
   @Input('backgroundInput') backgroundInput: string | undefined;
@@ -36,12 +39,19 @@ export class InputComponent implements OnInit {
   @Input('controlName') controlName: string = '';
   @Input('parentFormGroup') parentFormGroup: FormGroup = {} as FormGroup;
   @Input('type') type: string | undefined;
+  @ViewChild('input') input: ElementRef | any;
   @Output('blurForRer') blurForRed = new EventEmitter();
+  @Input ('value') value: string | undefined;
+  @Input('autocomplete') autocomplete: string | undefined;
 
 
   constructor() {}
 
   ngOnInit(): void {}
+
+ ngAfterViewInit(): void {
+   this.input.nativeElement.value= this.value ?? ''
+ }
 
   onShowPasswordClicked() {
     if (this.type == 'password') {
@@ -54,4 +64,6 @@ export class InputComponent implements OnInit {
   blurInput(){
    this.blurForRed.emit()
   }
+
+
 }

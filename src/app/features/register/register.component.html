@@ -34,21 +34,29 @@
             <app-tooltip></app-tooltip>
           </div>
         </app-input>
-        <div *ngIf="badge?.errors?.['required'] && badge?.touched">
-          <p class="validation">Campo obbligatorio</p>
+        <div *ngIf="badge?.errors && badge?.touched">
+          <div *ngIf="badge?.errors?.['required']">
+
+            <p class="validation">Campo obbligatorio</p>
+          </div>
+
+
+          <div *ngIf="badge?.errors?.['pattern']">
+            <p class="validation">Inserire solo numeri</p>
+          </div>
         </div>
       </div>
       <div id="email">
         <app-input [textLabel]="'Email*'" [placeholder]="'Inserisci la tua email di dominio'"
           [backgroundInput]="'var(--input-bg-color)'" [for]="'email'" [parentFormGroup]="form" [controlName]="'email'"
-          [name]="'email'" [type]="'email'">
+          [name]="'email'" [type]="'email'" [value]="dominio" >
         </app-input>
         <div *ngIf="email?.errors && email?.touched ">
           <div *ngIf="email?.errors?.['required']">
             <p class="validation">Campo obbligatorio.</p>
           </div>
           <div *ngIf="email?.errors?.['email']">
-            <p  class="validation" >Email non valida
+            <p class="validation">Email non valida
             </p>
           </div>
         </div>
@@ -56,14 +64,15 @@
       <div id="password">
         <app-input [textLabel]="'Password*'" [placeholder]="'8+ caratteri'" [backgroundInput]="'var(--input-bg-color)'"
           [for]="'password'" [parentFormGroup]="form" [controlName]="'password'" [name]="'password'"
-          [type]="'password'">
+          [type]="'password'" [autocomplete]="'current-password'">
         </app-input>
         <div *ngIf="password?.errors && password?.touched">
           <div *ngIf=" password?.errors?.['required']">
             <p class="validation">Campo obbligatorio.</p>
           </div>
-          <div  *ngIf="password?.errors?.['pattern']" >
-            <p class="validation" style="font-size: 9px;" >Almeno 8 caratteri, una maiuscola, un numero e un carattere speciale.
+          <div *ngIf="password?.errors?.['pattern']">
+            <p class="validation" style="font-size: 9px;">Almeno 8 caratteri, una maiuscola, un numero e un carattere
+              speciale.
             </p>
           </div>
 
