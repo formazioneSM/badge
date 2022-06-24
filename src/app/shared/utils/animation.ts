@@ -104,7 +104,7 @@ transition('* => aggiungiPage', [
 
       }),
     ]),
-    query(':enter', [style({ bottom: '-200%' })]),
+    query(':enter', [style({ left: '200%' })]),
     query(':leave', animateChild()),
     group([
       query(':leave', [animate('300ms ease-in-out', style({ left: '-150%' }))]),
