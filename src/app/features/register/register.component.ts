@@ -4,6 +4,7 @@ import { AuthService } from 'src/app/shared/uikit/services/auth/auth.service';
 import { ToastService } from 'src/app/shared/uikit/services/toast/toast.service';
 import { toastNames, types } from 'src/app/shared/utils/constants';
 import { UsersService } from 'src/app/shared/uikit/services/users/users.service';
+import dominioMail from 'src/app/shared/utils/constants';
 
 @Component({
   selector: 'app-register',
@@ -13,6 +14,7 @@ import { UsersService } from 'src/app/shared/uikit/services/users/users.service'
 export class RegisterComponent implements OnInit {
   form: FormGroup = {} as FormGroup;
   errorNumber: any;
+  dominio = dominioMail;
   
   res!: any;
   isEmailSent:boolean = false;

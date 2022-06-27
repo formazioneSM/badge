@@ -5,6 +5,7 @@ import jwt_decode from 'jwt-decode';
 import { NgxPermissionsService } from 'ngx-permissions';
 import { Router } from '@angular/router';
 import { ToastService } from 'src/app/shared/uikit/services/toast/toast.service';
+import dominioMail from 'src/app/shared/utils/constants';
 
 @Component({
   selector: 'app-login',
@@ -16,6 +17,8 @@ export class LoginComponent implements OnInit {
   form: FormGroup = {} as FormGroup;
   errorMessage: string | undefined;
   type: string = 'password';
+  dominio = dominioMail;
+  
 
   constructor(
     private _fb: FormBuilder,

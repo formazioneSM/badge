@@ -9,6 +9,10 @@
     [placeholder]="placeholder"
     [ngStyle]="{ background: backgroundInput, height: height ?? '48px' }"
     [type]="type"
+    [autocomplete]="autocomplete"
+    #input
+    
+
   />
   <div [ngSwitch]="type" class="icon-container">
     <div *ngSwitchCase="'password'" (click)="onShowPasswordClicked()">
@@ -52,5 +56,6 @@
           /></svg
       ></span>
     </div>
+    
   </div>
 </div>
