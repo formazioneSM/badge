@@ -1,14 +1,18 @@
-<div *ngIf="this.toastService.overlayVisible" class="overlay">
+<div *ngIf="this.toastService.overlayVisible" class="overlay"></div>
 
-</div>
-<div id="appToastStyleContainer" *ngIf="this.isVisible">
-  <div  id="container">
+<div id="appToastStyleContainer" *ngIf="this.isVisible" [@fadeInUpOnEnter] [@fadeOutDownOnLeave]>
+  <div id="container" >
     <div id="img-wrapper">
-
-      {{icon}}
+      {{ icon }}
     </div>
-    <p>{{text}}</p>
-    <div *ngIf="this.toastService.isVisibleUndo" id="undo" (click)="onEmitAnnulla()" class="cursor-pointer">Annulla</div>
+    <p>{{ text }}</p>
+    <div
+      *ngIf="this.toastService.isVisibleUndo"
+      id="undo"
+      (click)="onEmitAnnulla()"
+      class="cursor-pointer"
+    >
+      Annulla
+    </div>
   </div>
 </div>
-

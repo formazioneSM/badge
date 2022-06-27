@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import {
+  fadeInOnEnterAnimation,
+  fadeOutRightOnLeaveAnimation,
+} from 'angular-animations';
 import { Subscription, timer } from 'rxjs';
 import { BachecaService } from 'src/app/shared/uikit/services/bacheca/bacheca.service';
 import { LoaderService } from 'src/app/shared/uikit/services/loader/loader.service';
@@ -10,6 +14,7 @@ import { Post } from '../../shared/utils/interfaces';
   selector: 'app-bacheca',
   templateUrl: './bacheca.component.html',
   styleUrls: ['./bacheca.component.css'],
+  animations: [fadeInOnEnterAnimation(), fadeOutRightOnLeaveAnimation()],
 })
 export class BachecaComponent implements OnInit {
   toast: boolean = false;
@@ -17,9 +22,8 @@ export class BachecaComponent implements OnInit {
   card: boolean = true;
   loading = false;
   posts: Post[] = [];
-  postsOld:Post[]=[]
-  annulla:any;
-
+  postsOld: Post[] = [];
+  annulla: any;
 
   constructor(
     public bachecaService: BachecaService,
@@ -31,55 +35,43 @@ export class BachecaComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {    
-    this.toastService.annulla.subscribe((res)=>{
-      if(res){
-        this.posts = this.postsOld
-        this.toastService.annulla.next(false)
-        if(this.annulla){
-
-          this.annulla.unsubscribe()
+  ngOnInit(): void {
+    this.toastService.annulla.subscribe((res) => {
+      if (res) {
+        this.posts = this.postsOld;
+        this.toastService.annulla.next(false);
+        if (this.annulla) {
+          this.annulla.unsubscribe();
         }
       }
-    } )
-    
-        this.getAllPosts();
-      }
-      
-      getAllPosts() {
-        this.bachecaService.getAllPosts().subscribe((data: any) => {
-          this.posts = data;
-          this.postsOld = [...this.posts]
+    });
 
+    this.getAllPosts();
+  }
+
+  getAllPosts() {
+    this.bachecaService.getAllPosts().subscribe((data: any) => {
+      this.posts = data;
+      this.postsOld = [...this.posts];
     });
   }
 
   onPostDelete(id: any) {
-    
     this.toastService.isVisibleUndo = true;
 
     let postId = id;
 
-    this.posts = this.posts.filter(p => p._id != postId);
+    this.posts = this.posts.filter((p) => p._id != postId);
     this.toastService.setMessage(toastNames.DELETED_POST_SUCCESS);
 
-    
-
-   this.annulla = this.toastService.annullaTimer.subscribe((res)=>{     
-          this.bachecaService.deletePost(postId).subscribe(
-      (res: any) => {
-      },
-      (err) => {
-        this.toastService.isVisibleUndo = false;
-        this.toastService.setMessage(toastNames.DELETED_POST_ERROR);
-      }
-    );
-      
-    })
-
-
-
-    
-
+    this.annulla = this.toastService.annullaTimer.subscribe((res) => {
+      this.bachecaService.deletePost(postId).subscribe(
+        (res: any) => {},
+        (err) => {
+          this.toastService.isVisibleUndo = false;
+          this.toastService.setMessage(toastNames.DELETED_POST_ERROR);
+        }
+      );
+    });
   }
 }

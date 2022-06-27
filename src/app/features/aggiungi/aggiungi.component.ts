@@ -17,7 +17,7 @@ import { ToastService } from 'src/app/shared/uikit/services/toast/toast.service'
 @Component({
   selector: 'app-aggiungi',
   templateUrl: './aggiungi.component.html',
-  styleUrls: ['./aggiungi.component.css'],
+  styleUrls: ['./aggiungi.component.css']
 })
 export class AggiungiComponent implements OnInit {
   modifica: boolean = false;

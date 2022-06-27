@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { LinkService } from 'src/app/shared/uikit/services/link/link.service';
 import { LoaderService } from 'src/app/shared/uikit/services/loader/loader.service';
+
+import {
+  fadeInOnEnterAnimation,
+  fadeOutRightOnLeaveAnimation,
+} from 'angular-animations';
 import { Router } from '@angular/router';
 import { toastNames, types } from 'src/app/shared/utils/constants';
 import { ToastService } from 'src/app/shared/uikit/services/toast/toast.service';
@@ -9,6 +14,7 @@ import { ToastService } from 'src/app/shared/uikit/services/toast/toast.service'
   selector: 'app-link',
   templateUrl: './link.component.html',
   styleUrls: ['./link.component.css'],
+  animations: [fadeInOnEnterAnimation(), fadeOutRightOnLeaveAnimation()],
 })
 export class LinkComponent implements OnInit {
   loading = false;

@@ -3,11 +3,16 @@ import { ConvenzioniService } from 'src/app/shared/uikit/services/convenzioni/co
 import { LoaderService } from 'src/app/shared/uikit/services/loader/loader.service';
 import { ToastService } from 'src/app/shared/uikit/services/toast/toast.service';
 import { toastNames } from 'src/app/shared/utils/constants';
+import {
+    fadeInOnEnterAnimation,
+    fadeOutRightOnLeaveAnimation,
+  } from 'angular-animations';
 
 @Component({
   selector: 'app-convenzioni',
   templateUrl: './convenzioni.component.html',
   styleUrls: ['./convenzioni.component.css'],
+  animations: [fadeInOnEnterAnimation(), fadeOutRightOnLeaveAnimation()],
 })
 export class ConvenzioniComponent implements OnInit {
   convenzioni: any = [];
