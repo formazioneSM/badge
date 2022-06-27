@@ -1,5 +1,6 @@
 <div *ngIf="!loading" class="cards">
   <app-card
+  [@fadeInOnEnter] [@fadeOutRightOnLeave]
     *ngFor="let c of convenzioni"
     class="card"
     title="{{ c.titolo }}"
@@ -15,5 +16,5 @@
 </div>
 
 <div *ngIf="loading" class="cards-loader">
-  <app-gradient-loader *ngFor="let c of [].constructor(5)"></app-gradient-loader>
+  <app-gradient-loader *ngFor="let c of [].constructor(5)" [@fadeInOnEnter]></app-gradient-loader>
 </div>

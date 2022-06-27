@@ -21,7 +21,6 @@ import { SmLoaderComponent } from './components/sm-loader/sm-loader.component';
 import { ImgLoaderComponent } from './components/img-loader/img-loader.component';
 
 
-
 @NgModule({
   declarations: [
     InputComponent,
