@@ -37,6 +37,7 @@ export class ToastComponent implements OnInit {
     this.toastService.newEvent.subscribe((res) => {
       this.isVisible = true;
       timer(4000).subscribe(() => {
+        this.toastService.overlayVisible = false;
         this.isVisible = false;
         this.toastService.isVisibleUndo = false;
       });
@@ -53,7 +54,7 @@ export class ToastComponent implements OnInit {
 
     this.toastService.annulla.next(true)
     this.isVisible=false
-
+    this.toastService.overlayVisible = false;
   }
 
 }
