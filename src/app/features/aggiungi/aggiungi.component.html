@@ -164,6 +164,19 @@
               <p>Campo obbligatorio</p>
             </div>
           </div>
+          <div class="marginInput">
+            <div class="checkbox">
+              <app-checkbox
+                [parentFormGroup]="formAddLink"
+                [controlName]="'checkbox'"
+                [name]="'checkbox'"
+                ><span>File da scaricare?</span></app-checkbox
+              >
+            </div>
+            <!-- <div *ngIf="link?.touched && link?.invalid" class="validation">
+              <p>Campo obbligatorio</p>
+            </div> -->
+          </div>
           <app-button
             class="btn"
             [typeButton]="'submit'"

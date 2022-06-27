@@ -1,6 +1,11 @@
 <div id="container">
-  <div *ngIf="!loading" >
-    <div *ngFor="let link of links" class="linkWrapper" [@fadeInOnEnter] [@fadeOutRightOnLeave]>
+  <div *ngIf="!loading">
+    <div
+      *ngFor="let link of links"
+      class="linkWrapper"
+      [@fadeInOnEnter]
+      [@fadeOutRightOnLeave]
+    >
       <a [href]="link.url" target="_blank">
         <app-button
           class="buttonLink"
