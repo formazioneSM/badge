@@ -5,7 +5,7 @@ import {
 } from 'angular-animations';
 import { Subscription, timer } from 'rxjs';
 import { BachecaService } from 'src/app/shared/uikit/services/bacheca/bacheca.service';
-import { LoaderService } from 'src/app/shared/uikit/services/loader/loader.service';
+// import { LoaderService } from 'src/app/shared/uikit/services/loader/loader.service';
 import { ToastService } from 'src/app/shared/uikit/services/toast/toast.service';
 import { toastMessages, toastNames } from 'src/app/shared/utils/constants';
 import { Post } from '../../shared/utils/interfaces';
@@ -28,11 +28,11 @@ export class BachecaComponent implements OnInit {
   constructor(
     public bachecaService: BachecaService,
     public toastService: ToastService,
-    public loaderService: LoaderService
+    // public loaderService: LoaderService
   ) {
-    this.loaderService.isLoading.subscribe((v) => {
-      this.loading = v;
-    });
+    // this.loaderService.isLoading.subscribe((v) => {
+    //   this.loading = v;
+    // });
   }
 
   ngOnInit(): void {
@@ -50,8 +50,10 @@ export class BachecaComponent implements OnInit {
   }
 
   getAllPosts() {
+    this.loading = true;
     this.bachecaService.getAllPosts().subscribe((data: any) => {
       this.posts = data;
+      this.loading = false;
       this.postsOld = [...this.posts];
     });
   }
