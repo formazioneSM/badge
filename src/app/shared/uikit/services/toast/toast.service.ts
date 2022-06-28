@@ -11,30 +11,23 @@ export class ToastService {
   newEvent: EventEmitter<any> = new EventEmitter();
   newPost: EventEmitter<any> = new EventEmitter();
 
+  overlayVisible = false;
   isVisibleUndo: boolean = false; // per far visualizzare undo
   annulla: Subject<any> = new Subject();
-  aModalIsOpen:boolean = false
+  aModalIsOpen: boolean = false;
 
   constructor() {}
 
   setMessage(toastName: string) {
     const t = toast[toastName];
 
-
     const newToast = {
-        message: t['message'],
-        icon: t['icon'],
-    }
+      message: t['message'],
+      icon: t['icon'],
+    };
 
     this.newEvent.emit(newToast);
   }
 
-  
-
-
-
-  annullaTimer=timer(4500)
-  
-
-
+  annullaTimer = timer(4500);
 }

@@ -66,6 +66,8 @@ export class CardComponent implements OnInit, AfterViewInit {
   }
 
   delete(e:any){
+    this.toastService.overlayVisible = true;
+
     this.deletePost.emit(e);
   }
   editPost(){

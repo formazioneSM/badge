@@ -14,8 +14,6 @@ import { BachecaService } from './shared/uikit/services/bacheca/bacheca.service'
 import { LoaderService } from './shared/uikit/services/loader/loader.service';
 import { LoaderInterceptor } from './shared/utils/loader.interceptor';
 import { UikitModule } from './shared/uikit/uikit.module';
-import { AggiungiComponent } from './features/aggiungi/aggiungi.component';
-import { AddContentModule } from './features/aggiungi/aggiungi.module';
 
 
 export function playerFactory() {

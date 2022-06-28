@@ -10,6 +10,7 @@ import { slideInAnimation } from 'src/app/shared/utils/animation';
 import { toastNames } from 'src/app/shared/utils/constants';
 import { timer } from 'rxjs';
 
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -26,9 +27,6 @@ export class HomeComponent implements OnInit {
   salutando: boolean = false;
   loading: boolean = true;
   timer: any
-
-
-
 
 
   constructor(

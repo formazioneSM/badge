@@ -1,16 +1,16 @@
 @import url("https://fonts.googleapis.com/css2?family=Hind+Madurai&display=swap");
 
-
-.overlay{
-  pointer-events: none;
+.overlay {
+  /* pointer-events: none; */
   position: fixed;
   width: 100vw;
   height: 100vh;
   top: 0;
   left: 0;
-  z-index: 10 !important ;
-  background-color: rgba(255, 255, 255, 0.5);;
+  z-index: 99 !important ;
+  background-color: rgba(255, 255, 255, 0.418);
 }
+
 #container {
   display: flex;
   align-items: center;
@@ -26,7 +26,6 @@
   border: 1px solid lightgray;
   border-radius: 10px;
   padding: 0 1.5rem;
-  
 }
 
 p {
@@ -40,7 +39,6 @@ img {
   width: 23px;
   height: 15px;
   margin-right: 1.5rem;
-
 }
 
 #img-wrapper {
@@ -48,32 +46,32 @@ img {
 }
 
 #undo {
-
   display: flex;
   align-items: center;
   text-decoration: underline;
   justify-self: flex-end;
-  
 }
+
 #appToastStyleContainer {
   position: fixed;
   width: 375px;
   height: 62px;
-  bottom: 1vh;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  pointer-events:all;
-  z-index: 10 !important ;
+  bottom: 5vh;
+  /* left: 50%;
+  transform: translateX(-50%); */
+  pointer-events: all;
+  z-index: 100 !important ;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
 
-@media only screen and (min-width: 800px){
-    /*Big smartphones [426px -> 600px]*/
-    #appToastStyleContainer {
-        width: 35%;
-    }
-}
-@media only screen and (max-width: 400px){
+@media only screen and (min-width: 800px) {
+  /*Big smartphones [426px -> 600px]*/
   #appToastStyleContainer {
-      width: 320px;
+    width: 35%;
+  }
+}
+@media only screen and (max-width: 400px) {
+  #appToastStyleContainer {
+    width: 320px;
   }
 }

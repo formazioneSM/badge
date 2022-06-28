@@ -8,18 +8,30 @@
   <div *ngIf="form">
     <form id="login" [formGroup]="form" (ngSubmit)="onSubmitRegister()">
       <div id="name">
-        <app-input [textLabel]="'Nome*'" [placeholder]="'Inserisci il tuo nome'"
-          [backgroundInput]="'var(--input-bg-color)'" [for]="'name'" [parentFormGroup]="form" [controlName]="'name'"
-          [name]="'name'">
+        <app-input
+          [textLabel]="'Nome*'"
+          [placeholder]="'Inserisci il tuo nome'"
+          [backgroundInput]="'var(--input-bg-color)'"
+          [for]="'name'"
+          [parentFormGroup]="form"
+          [controlName]="'name'"
+          [name]="'name'"
+        >
         </app-input>
         <div *ngIf="name?.errors?.['required'] && name?.touched">
           <p class="validation">Campo obbligatorio</p>
         </div>
       </div>
       <div id="surname">
-        <app-input [textLabel]="'Cognome*'" [placeholder]="'Inserisci il tuo cognome'"
-          [backgroundInput]="'var(--input-bg-color)'" [for]="'cognome'" [parentFormGroup]="form"
-          [controlName]="'cognome'" [name]="'cognome'">
+        <app-input
+          [textLabel]="'Cognome*'"
+          [placeholder]="'Inserisci il tuo cognome'"
+          [backgroundInput]="'var(--input-bg-color)'"
+          [for]="'cognome'"
+          [parentFormGroup]="form"
+          [controlName]="'cognome'"
+          [name]="'cognome'"
+        >
         </app-input>
         <div *ngIf="cognome?.errors?.['required'] && cognome?.touched">
           <p class="validation">Campo obbligatorio</p>
@@ -27,19 +39,23 @@
       </div>
 
       <div id="badge">
-        <app-input [textLabel]="'ID Badge*'" [placeholder]="'Inserisci il numero ID Badge'"
-          [backgroundInput]="'var(--input-bg-color)'" [for]="'badge'" [parentFormGroup]="form" [controlName]="'badge'"
-          [name]="'badge'">
+        <app-input
+          [textLabel]="'ID Badge*'"
+          [placeholder]="'Inserisci il numero ID Badge'"
+          [backgroundInput]="'var(--input-bg-color)'"
+          [for]="'badge'"
+          [parentFormGroup]="form"
+          [controlName]="'badge'"
+          [name]="'badge'"
+        >
           <div id="tooltip">
             <app-tooltip></app-tooltip>
           </div>
         </app-input>
         <div *ngIf="badge?.errors && badge?.touched">
           <div *ngIf="badge?.errors?.['required']">
-
             <p class="validation">Campo obbligatorio</p>
           </div>
-
 
           <div *ngIf="badge?.errors?.['pattern']">
             <p class="validation">Inserire solo numeri</p>
@@ -47,51 +63,79 @@
         </div>
       </div>
       <div id="email">
-        <app-input [textLabel]="'Email*'" [placeholder]="'Inserisci la tua email di dominio'"
-          [backgroundInput]="'var(--input-bg-color)'" [for]="'email'" [parentFormGroup]="form" [controlName]="'email'"
-          [name]="'email'" [type]="'email'" [value]="dominio" >
+        <app-input
+          [textLabel]="'Email*'"
+          [placeholder]="'Inserisci la tua email di dominio'"
+          [backgroundInput]="'var(--input-bg-color)'"
+          [for]="'email'"
+          [parentFormGroup]="form"
+          [controlName]="'email'"
+          [name]="'email'"
+          [type]="'email'"
+          [value]="dominio"
+        >
         </app-input>
-        <div *ngIf="email?.errors && email?.touched ">
+        <div *ngIf="email?.errors && email?.touched">
           <div *ngIf="email?.errors?.['required']">
             <p class="validation">Campo obbligatorio.</p>
           </div>
           <div *ngIf="email?.errors?.['email']">
-            <p class="validation">Email non valida
-            </p>
+            <p class="validation">Email non valida</p>
           </div>
         </div>
       </div>
       <div id="password">
-        <app-input [textLabel]="'Password*'" [placeholder]="'8+ caratteri'" [backgroundInput]="'var(--input-bg-color)'"
-          [for]="'password'" [parentFormGroup]="form" [controlName]="'password'" [name]="'password'"
-          [type]="'password'" [autocomplete]="'current-password'">
+        <app-input
+          [textLabel]="'Password*'"
+          [placeholder]="'8+ caratteri'"
+          [backgroundInput]="'var(--input-bg-color)'"
+          [for]="'password'"
+          [parentFormGroup]="form"
+          [controlName]="'password'"
+          [name]="'password'"
+          [type]="'password'"
+          [autocomplete]="'current-password'"
+        >
         </app-input>
         <div *ngIf="password?.errors && password?.touched">
           <div *ngIf=" password?.errors?.['required']">
             <p class="validation">Campo obbligatorio.</p>
           </div>
           <div *ngIf="password?.errors?.['pattern']">
-            <p class="validation" style="font-size: 9px;">Almeno 8 caratteri, una maiuscola, un numero e un carattere
+            <p class="validation" style="font-size: 9px">
+              Almeno 8 caratteri, una maiuscola, un numero e un carattere
               speciale.
             </p>
           </div>
-
         </div>
       </div>
       <div id="checkbox">
-        <app-checkbox [parentFormGroup]="form" [controlName]="'checkbox'" [name]="'checkbox'">
-          <span>*Accetto <a [routerLink]="'/termini-e-condizioni'">termini e condizioni</a></span>
+        <app-checkbox
+          [parentFormGroup]="form"
+          [controlName]="'checkbox'"
+          [name]="'checkbox'"
+        >
+          <span
+            >*Accetto
+            <a [routerLink]="'/termini-e-condizioni'"
+              >termini e condizioni</a
+            ></span
+          >
         </app-checkbox>
-
       </div>
       <div id="buttonLogin">
-        <app-button [typeButton]="'submit'" [textButton]="'Registrati'" [disabled]="form.invalid">
+        <app-button
+          [typeButton]="'submit'"
+          [textButton]="'Registrati'"
+          [disabled]="form.invalid"
+        >
         </app-button>
       </div>
     </form>
-    <p id="go-to-login">Hai già un account?<a [routerLink]="['/login']">Accedi</a></p>
+    <p id="go-to-login">
+      Hai già un account?<a [routerLink]="['/login']">Accedi</a>
+    </p>
   </div>
-
 </div>
 
 <div *ngIf="isEmailSent" class="email-sent">
@@ -102,10 +146,15 @@
 
     <div>
       <div class="message">
-        Controlla la tua casella di posta per verificare la corretta registrazione.
+        Controlla la tua casella di posta per verificare la corretta
+        registrazione.
       </div>
       <div class="buttonContainer">
-        <app-button [routerLink]="'/login'" [typeButton]="'button'" [textButton]="'Vai al Login'"></app-button>
+        <app-button
+          [routerLink]="'/login'"
+          [typeButton]="'button'"
+          [textButton]="'Vai al Login'"
+        ></app-button>
       </div>
     </div>
   </div>
