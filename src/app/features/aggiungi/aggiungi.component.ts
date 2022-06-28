@@ -29,7 +29,7 @@ export class AggiungiComponent implements OnInit {
   stepOne: boolean = true;
   type: string | undefined;
   editParams: { id?: string; type?: string } = {};
-  http: string = 'http://'
+  http: string = 'http://';
 
   configuration = [
     {
@@ -71,10 +71,9 @@ export class AggiungiComponent implements OnInit {
     private route: ActivatedRoute,
     private location: Location,
     private toastService: ToastService
-  ) { }
+  ) {}
   preventDef(e: any) {
     e.stopPropagation();
-
   }
   triggerRadio(e: any, c: any) {
     if (e) {
@@ -91,18 +90,33 @@ export class AggiungiComponent implements OnInit {
     this.disabled = this.postTypes.every((p) => !p?.selected);
 
     this.formAddBacheca = this._fb.group({
-      contenutoBacheca: ['', [Validators.required, Validators.pattern(/[\S]/), Validators.minLength(4)]],
+      contenutoBacheca: [
+        '',
+        [
+          Validators.required,
+          Validators.pattern(/[\S]/),
+          Validators.minLength(4),
+        ],
+      ],
       radio: ['', Validators.required],
     });
 
     this.formAddLink = this._fb.group({
       nomeLink: ['', [Validators.required, Validators.pattern(/[\S]/)]],
       link: ['', [Validators.required, Validators.pattern(/[\S]/)]],
+      checkbox: [''],
     });
 
     this.formAddConvenzioni = this._fb.group({
       titolo: ['', [Validators.required, Validators.pattern(/[\S]/)]],
-      contenuto: ['', [Validators.required, Validators.pattern(/[\S]/), Validators.minLength(4)]],
+      contenuto: [
+        '',
+        [
+          Validators.required,
+          Validators.pattern(/[\S]/),
+          Validators.minLength(4),
+        ],
+      ],
       titoloLink: ['', [Validators.required, Validators.pattern(/[\S]/)]],
       url: ['', [Validators.required, Validators.pattern(/[\S]/)]],
     });
@@ -166,6 +180,10 @@ export class AggiungiComponent implements OnInit {
     return this.formAddLink?.get('link');
   }
 
+  get checkbox() {
+    return this.formAddLink?.get('checkbox');
+  }
+
   get titolo() {
     return this.formAddConvenzioni?.get('titolo');
   }
@@ -182,11 +200,9 @@ export class AggiungiComponent implements OnInit {
     return this.formAddConvenzioni?.get('url');
   }
 
-  addBacheca(formAddBacheca: FormGroup) {
-  }
+  addBacheca(formAddBacheca: FormGroup) {}
 
   addLink(formAddLink: FormGroup) {
-
     if (this.editParams.id && this.editParams.type === 'Link') {
       this.linkService
         .editLink(
@@ -197,34 +213,36 @@ export class AggiungiComponent implements OnInit {
         .subscribe();
       this._router.navigate(['home/link']);
     } else {
-      if (this.formAddLink.value.link.includes('http://') || this.formAddLink.value.link.includes('https://')) {
+      if (
+        this.formAddLink.value.link.includes('http://') ||
+        this.formAddLink.value.link.includes('https://')
+      ) {
         this.linkService
           .addLink(formAddLink.value.nomeLink, formAddLink.value.link)
           .subscribe(
             (res) => {
-
               this.toastService.setMessage(toastNames.ADDED_LINK_SUCCESS);
             },
             (err) => {
-
               this.toastService.setMessage(toastNames.ADDED_LINK_ERROR);
             }
           );
         this._router.navigate(['home/link']);
-      }else{
+      } else {
         this.linkService
-        .addLink(formAddLink.value.nomeLink, this.http + formAddLink.value.link)
-        .subscribe(
-          (res) => {
-
-            this.toastService.setMessage(toastNames.ADDED_LINK_SUCCESS);
-          },
-          (err) => {
-
-            this.toastService.setMessage(toastNames.ADDED_LINK_ERROR);
-          }
-        );
-      this._router.navigate(['home/link']);
+          .addLink(
+            formAddLink.value.nomeLink,
+            this.http + formAddLink.value.link
+          )
+          .subscribe(
+            (res) => {
+              this.toastService.setMessage(toastNames.ADDED_LINK_SUCCESS);
+            },
+            (err) => {
+              this.toastService.setMessage(toastNames.ADDED_LINK_ERROR);
+            }
+          );
+        this._router.navigate(['home/link']);
       }
     }
   }
@@ -242,14 +260,16 @@ export class AggiungiComponent implements OnInit {
         .subscribe();
       this._router.navigate(['home/convenzioni']);
     } else {
-      if (this.formAddConvenzioni.value.url.includes('http://') || this.formAddConvenzioni.value.url.includes('https://')) {
+      if (
+        this.formAddConvenzioni.value.url.includes('http://') ||
+        this.formAddConvenzioni.value.url.includes('https://')
+      ) {
         this.convenzioniService
           .addNewConvenzione(
             this.formAddConvenzioni.value.titolo,
             this.formAddConvenzioni.value.contenuto,
             this.formAddConvenzioni.value.titoloLink,
             this.formAddConvenzioni.value.url
-
           )
           .subscribe(
             (c) => {
@@ -261,16 +281,13 @@ export class AggiungiComponent implements OnInit {
               this.toastService.setMessage(toastNames.ADDED_CONV_ERROR);
             }
           );
-      }
-
-      else {
+      } else {
         this.convenzioniService
           .addNewConvenzione(
             this.formAddConvenzioni.value.titolo,
             this.formAddConvenzioni.value.contenuto,
             this.formAddConvenzioni.value.titoloLink,
             this.http + this.formAddConvenzioni.value.url
-
           )
           .subscribe(
             (c) => {
@@ -283,7 +300,6 @@ export class AggiungiComponent implements OnInit {
             }
           );
       }
-
     }
   }
 
@@ -345,13 +361,9 @@ export class AggiungiComponent implements OnInit {
       };
       this.bachecaService.createNewPost(post).subscribe(
         (res) => {
-
-
           this.toastService.setMessage(toastNames.ADDED_POST_SUCCESS);
         },
         (err) => {
-
-
           this.toastService.setMessage(toastNames.ADDED_POST_ERROR);
         }
       );

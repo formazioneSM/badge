@@ -13,7 +13,7 @@
         <div id="email">
           <app-input [textLabel]="'Email*'" [placeholder]="'Inserisci la tua email'"
             [backgroundInput]="'var(--input-bg-color)'" [for]="'email'" [parentFormGroup]="form" [controlName]="'email'"
-            [name]="'email'" [type]="'email'">
+            [name]="'email'" [type]="'email'" [value]="dominio" >
           </app-input>
           <div *ngIf="email?.errors?.['invalidEmail']">
             <p class="validation">{{email?.errors?.['invalidEmail']}}</p>
@@ -28,7 +28,7 @@
         <div id="password">
           <app-input [textLabel]="'Password*'" [placeholder]="'Inserisci la tua password'"
             [backgroundInput]="'var(--input-bg-color)'" [for]="'password'" [parentFormGroup]="form"
-            [controlName]="'password'" [name]="'password'" [type]="type">
+            [controlName]="'password'" [name]="'password'" [type]="type" [autocomplete]="'current-password'">
           </app-input>
           <div *ngIf="password?.touched && password?.errors">
             <div *ngIf="password?.errors?.['required']">
@@ -40,7 +40,9 @@
 
 
           </div>
-          <a id="forgottenPassword" [routerLink]="['/passwordrecovery']">Password dimenticata? </a>
+          <div  id="forgottenPassword" >
+          <a [routerLink]="['/passwordrecovery']">Password dimenticata? </a>
+        </div>
         </div>
 
 

@@ -1,4 +1,6 @@
 export const colorDefault: string = '#FEE979';
+let dominio = '@sysmanagement.it'
+export default  dominio
 export const colors_palette = [
   '#B1BCCD',
   '#F3B2A6',
@@ -18,6 +20,7 @@ export const toastMessages = {
 };
 
 export const temi = [
+  '',
   'assets/images/tema1.png',
   'assets/images/tema2.png',
   'assets/images/tema3.png',
@@ -108,4 +111,6 @@ export const toast = {
     message: "C'è stato un errore, riprova!",
     icon: '❌',
   },
+
+  
 };

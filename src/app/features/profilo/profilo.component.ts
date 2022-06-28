@@ -37,7 +37,7 @@ export class ProfiloComponent implements OnInit {
         this.user = res;
         this.imgUser =
           this.user.img !== '' ? this.user.img : this.defaultUserImg;
-      },
+      }
     );
   }
 
@@ -74,5 +74,9 @@ export class ProfiloComponent implements OnInit {
 
   trigger() {
     this.fileUpload.nativeElement.click();
+  }
+  
+  switchImg(event:any){
+    console.log(event.target)
   }
 }

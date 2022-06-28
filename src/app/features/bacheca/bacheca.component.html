@@ -1,6 +1,7 @@
 <div *ngIf="!loading" class="cards">
-    
-    <app-card
+  <app-card
+    [@fadeInOnEnter]
+    [@fadeOutRightOnLeave]
     *ngFor="let post of this.posts"
     class="card"
     background="{{ post.color }}"
@@ -8,12 +9,14 @@
     author="@{{ post.from }}"
     postId="{{ post._id }}"
     (deletePost)="onPostDelete(post._id)"
-    [isBacheca]=" true"
-    >
-</app-card>
+    [isBacheca]="true"
+  >
+  </app-card>
 </div>
 
-<div *ngIf="loading" class="cards">
-  <app-gradient-loader *ngFor="let p of [].constructor(5)"></app-gradient-loader>
+<div *ngIf="loading" class="cards-loader" [@fadeInOnEnter]>
+  <app-gradient-loader
+    
+    *ngFor="let p of [].constructor(5)"
+  ></app-gradient-loader>
 </div>
-

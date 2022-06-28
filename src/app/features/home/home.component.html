@@ -1,41 +1,72 @@
-
-
-<div  (scroll)="changeScroll($event)" id="wrapper" #scrollToTop>
-   
-    <div id="header" [ngClass]="actualScroll ?? 0 > 0 ? 'paddingBottomScroll': ''">
-
-      <div id="welcome-wrapper">
-        <img id="imgHello" src="assets/images/hello.png" (click)="saluta()" [class.saluta]="salutando || loading" />
-        <p id="hello" *ngIf=" !loading">
-          Ciao, <b> {{user.name}}</b>
-        </p>
-      </div>
-
-      
-      <img class="cursor-pointer" *ngIf="imgUser" id="profile" [src]="imgUser" [routerLink]="'../profilo'" />
-      <div *ngIf="!imgUser" id="img-loader-wrapper">
-        <app-img-loader></app-img-loader>
-    </div>
+<div (scroll)="changeScroll($event)" id="wrapper" #scrollToTop>
+  <div
+    id="header"
+    [ngClass]="actualScroll ?? 0 > 0 ? 'paddingBottomScroll' : ''"
+  >
+    <div id="welcome-wrapper">
+      <img
+        id="imgHello"
+        src="assets/images/hello.png"
+        (click)="saluta()"
+        [class.saluta]="salutando || loading"
+      />
+      <p id="hello" *ngIf="!loading">
+        Ciao, <b> {{ user.name }}</b>
+      </p>
     </div>
 
-    
-    <div class="roundButtons" *ngIf="!actualScroll">
+    <img
+      class="cursor-pointer"
+      *ngIf="imgUser"
+      id="profile"
+      [src]="imgUser"
+      [routerLink]="'../profilo'"
+      (error)="switchImg($event)"
+    />
+    <div *ngIf="!imgUser" id="img-loader-wrapper">
+      <app-img-loader></app-img-loader>
+    </div>
+  </div>
+
+  <div class="roundButtons" *ngIf="!actualScroll">
     <div class="button" *ngxPermissionsOnly="['ADMIN']">
-
-      <app-round-button [routerLink]="['aggiungi']" [image]="'assets/images/aggiungi.png'" [text]="'Aggiungi'"
-      [border]="'none'" [background]="'#D8E3F8'"></app-round-button>
+      <app-round-button
+        [routerLink]="['aggiungi']"
+        [image]="'assets/images/aggiungi.png'"
+        [text]="'Aggiungi'"
+        [border]="'none'"
+        [background]="'#D8E3F8'"
+      ></app-round-button>
     </div>
-    
-    <app-round-button routerLinkActive="active" [routerLink]="'bacheca'" class="button"
-    [image]="'assets/images/bacheca.png'" [text]="'Bacheca'" [border]="' 1px solid var(--bg-primary-color)'"
-    [background]="'transparent'"></app-round-button>
-    <app-round-button routerLinkActive="active" [routerLink]="'link'" class="button" [image]="'assets/images/link.png'"
-    [text]="'Link'" [border]="' 1px solid var(--bg-primary-color)'" [background]="'transparent'"></app-round-button>
-    <app-round-button class="button" routerLinkActive="active" [routerLink]="'convenzioni'"
-    [image]="'assets/images/convenzioni.png'" [text]="'Convenzioni'" [border]="' 1px solid var(--bg-primary-color)'"
-    [background]="'transparent'"></app-round-button>
+
+    <app-round-button
+      routerLinkActive="active"
+      [routerLink]="'bacheca'"
+      class="button"
+      [image]="'assets/images/bacheca.png'"
+      [text]="'Bacheca'"
+      [border]="' 1px solid var(--bg-primary-color)'"
+      [background]="'transparent'"
+    ></app-round-button>
+    <app-round-button
+      routerLinkActive="active"
+      [routerLink]="'link'"
+      class="button"
+      [image]="'assets/images/link.png'"
+      [text]="'Link'"
+      [border]="' 1px solid var(--bg-primary-color)'"
+      [background]="'transparent'"
+    ></app-round-button>
+    <app-round-button
+      class="button"
+      routerLinkActive="active"
+      [routerLink]="'convenzioni'"
+      [image]="'assets/images/convenzioni.png'"
+      [text]="'Convenzioni'"
+      [border]="' 1px solid var(--bg-primary-color)'"
+      [background]="'transparent'"
+    ></app-round-button>
     <div class="button invisible" *ngxPermissionsOnly="['USER']">
-     
       <app-round-button
         [routerLink]="''"
         [image]="''"
@@ -46,30 +77,59 @@
       </app-round-button>
     </div>
   </div>
-  
-  <div class="roundButtonsSide" [class.startAnimation]="actualScroll ?? 0 > 0" [class.endAnimation]="actualScroll == 0">
+
+  <div
+    class="roundButtonsSide"
+    [class.startAnimation]="actualScroll ?? 0 > 0"
+    [class.endAnimation]="actualScroll == 0"
+  >
     <div *ngxPermissionsOnly="['ADMIN']" class="buttonScroll">
-      <app-round-button [routerLink]="'aggiungi'" [image]="'assets/images/aggiungi.png'" [border]="'none'"
-      [background]="'#D8E3F8'"></app-round-button>
+      <app-round-button
+        [routerLink]="'aggiungi'"
+        [image]="'assets/images/aggiungi.png'"
+        [border]="'none'"
+        [background]="'#D8E3F8'"
+      ></app-round-button>
     </div>
-    <app-round-button class="buttonScroll" routerLinkActive="active" [routerLink]="'bacheca'"
-    [image]="'assets/images/bacheca.png'" [border]="' 1px solid var(--bg-primary-color)'"
-    [background]="'transparent'"></app-round-button>
-    <app-round-button class="buttonScroll" routerLinkActive="active" [routerLink]="'link'"
-    [image]="'assets/images/link.png'" [background]="'transparent'" [border]="' 1px solid var(--bg-primary-color)'">
+    <app-round-button
+      class="buttonScroll"
+      routerLinkActive="active"
+      [routerLink]="'bacheca'"
+      [image]="'assets/images/bacheca.png'"
+      [border]="' 1px solid var(--bg-primary-color)'"
+      [background]="'transparent'"
+    ></app-round-button>
+    <app-round-button
+      class="buttonScroll"
+      routerLinkActive="active"
+      [routerLink]="'link'"
+      [image]="'assets/images/link.png'"
+      [background]="'transparent'"
+      [border]="' 1px solid var(--bg-primary-color)'"
+    >
     </app-round-button>
-    <app-round-button class="buttonScroll" routerLinkActive="active" [background]="'transparent'"
-    [routerLink]="'convenzioni'" [image]="'assets/images/convenzioni.png'"
-    [border]="' 1px solid var(--bg-primary-color)'"></app-round-button>
-    
+    <app-round-button
+      class="buttonScroll"
+      routerLinkActive="active"
+      [background]="'transparent'"
+      [routerLink]="'convenzioni'"
+      [image]="'assets/images/convenzioni.png'"
+      [border]="' 1px solid var(--bg-primary-color)'"
+    ></app-round-button>
   </div>
-  <div class="roundButtonsSideScrollTop" [class.startAnimation]="actualScroll ?? 0 > 0"
-    [class.endAnimation]="actualScroll == 0">
-    <app-round-button [image]="'assets/images/back_arrow.png'" [background]="'var(--bg-primary-color)'"
-    [border]="'none '" (click)="backTop()"></app-round-button>
+  <div
+    class="roundButtonsSideScrollTop"
+    [class.startAnimation]="actualScroll ?? 0 > 0"
+    [class.endAnimation]="actualScroll == 0"
+  >
+    <app-round-button
+      [image]="'assets/images/back_arrow.png'"
+      [background]="'var(--bg-primary-color)'"
+      [border]="'none '"
+      (click)="backTop()"
+    ></app-round-button>
   </div>
   <div [@routeAnimations]="getRouteAnimationData()">
     <router-outlet></router-outlet>
   </div>
-
 </div>
