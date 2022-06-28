@@ -57,6 +57,7 @@ export class BachecaComponent implements OnInit {
   }
 
   onPostDelete(id: any) {
+
     this.toastService.isVisibleUndo = true;
 
     let postId = id;
