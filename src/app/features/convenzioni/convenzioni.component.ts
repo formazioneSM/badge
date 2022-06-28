@@ -54,6 +54,7 @@ export class ConvenzioniComponent implements OnInit {
     this.annulla = this.toastService.annullaTimer.subscribe((res)=>{     
       this.convenzioniService.deleteConvenzioni(_id).subscribe(
   (res: any) => {
+    this.convenzioniOld = this.convenzioniOld.filter((c:any) => c._id != _id);
   },
   (err) => {
     this.toastService.setMessage(toastNames.DELETED_CONV_ERROR);

@@ -36,6 +36,7 @@ export class BachecaComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.getAllPosts();
     this.toastService.annulla.subscribe((res) => {
       if (res) {
         this.posts = this.postsOld;
@@ -46,7 +47,6 @@ export class BachecaComponent implements OnInit {
       }
     });
 
-    this.getAllPosts();
   }
 
   getAllPosts() {
@@ -66,7 +66,9 @@ export class BachecaComponent implements OnInit {
 
     this.annulla = this.toastService.annullaTimer.subscribe((res) => {
       this.bachecaService.deletePost(postId).subscribe(
-        (res: any) => {},
+        (res: any) => {
+          this.postsOld = this.postsOld.filter((p:any) => p._id != postId);
+        },
         (err) => {
           this.toastService.isVisibleUndo = false;
           this.toastService.setMessage(toastNames.DELETED_POST_ERROR);
