@@ -164,7 +164,22 @@
               <p>Campo obbligatorio</p>
             </div>
           </div>
-          <div class="marginInput">
+          <!-- <div class="marginInput">
+            <app-input
+              [textLabel]="'file'"
+              [placeholder]="'Inserisci un file '"
+              [for]="'file'"
+              [parentFormGroup]="formAddLink"
+              [controlName]="'file'"
+              [name]="'file'"
+              [type]="'file'"
+
+            >
+            </app-input>
+            (change)="onFileSelected($event)" 
+
+          </div> -->
+          <!-- <div class="marginInput">
             <div class="checkbox">
               <app-checkbox
                 [parentFormGroup]="formAddLink"
@@ -173,10 +188,10 @@
                 ><span>File da scaricare?</span></app-checkbox
               >
             </div>
-            <!-- <div *ngIf="link?.touched && link?.invalid" class="validation">
+            <div *ngIf="link?.touched && link?.invalid" class="validation">
               <p>Campo obbligatorio</p>
-            </div> -->
-          </div>
+            </div>
+          </div> -->
           <app-button
             class="btn"
             [typeButton]="'submit'"

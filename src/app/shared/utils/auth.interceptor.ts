@@ -68,5 +68,3 @@ export class AuthInterceptor implements HttpInterceptor {
     return next.handle(request);
   }
 }
-  // if( decodedToken.hasOwnProperty('name', 'surname', 'badge', 'img', 'activationKey', 'active', 'badgeImg', 'createdAt', 'email', 'password', 'passwordChangeKey', 'role', 'updatedAt', '__v', '_id')){}
-  // this.toastService.setMessage(toastNames.GENERIC_ERROR)

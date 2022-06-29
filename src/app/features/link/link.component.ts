@@ -60,7 +60,10 @@ export class LinkComponent implements OnInit {
 
     this.annulla = this.toastService.annullaTimer.subscribe((res) => {
       this.linkService.deleteLink(_id).subscribe(
-        (res: any) => {},
+        (res: any) => {
+          this.linksOld = this.linksOld.filter((l: any) => l._id != _id);
+          
+        },
         (err) => {
           this.toastService.setMessage(toastNames.DELETED_POST_ERROR);
         }

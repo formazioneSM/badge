@@ -7,8 +7,6 @@ import { ToastService } from 'src/app/shared/uikit/services/toast/toast.service'
 import jwtDecode from 'jwt-decode';
 import { UsersService } from 'src/app/shared/uikit/services/users/users.service';
 import { slideInAnimation } from 'src/app/shared/utils/animation';
-import { toastNames } from 'src/app/shared/utils/constants';
-import { timer } from 'rxjs';
 
 
 @Component({

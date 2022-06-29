@@ -30,6 +30,7 @@ export class AggiungiComponent implements OnInit {
   type: string | undefined;
   editParams: { id?: string; type?: string } = {};
   http: string = 'http://';
+  // fileName: string = '';
 
   configuration = [
     {
@@ -104,7 +105,8 @@ export class AggiungiComponent implements OnInit {
     this.formAddLink = this._fb.group({
       nomeLink: ['', [Validators.required, Validators.pattern(/[\S]/)]],
       link: ['', [Validators.required, Validators.pattern(/[\S]/)]],
-      checkbox: [''],
+      // checkbox: [''],
+      // file:['']
     });
 
     this.formAddConvenzioni = this._fb.group({
@@ -180,9 +182,12 @@ export class AggiungiComponent implements OnInit {
     return this.formAddLink?.get('link');
   }
 
-  get checkbox() {
-    return this.formAddLink?.get('checkbox');
-  }
+  // get checkbox() {
+  //   return this.formAddLink?.get('checkbox');
+  // }
+    // get file() {
+  //   return this.formAddLink?.get('file');
+  // }
 
   get titolo() {
     return this.formAddConvenzioni?.get('titolo');
@@ -370,4 +375,13 @@ export class AggiungiComponent implements OnInit {
       this._router.navigate(['home/bacheca']);
     }
   }
+
+  // onFileSelected(event: any) {
+  //   let file = event.target.files[0];
+  //   if (file) {
+  //     this.fileName = file.name;
+  //     let formData = new FormData();
+  //     formData.append('file', file);
+  //   }
+  // }
 }

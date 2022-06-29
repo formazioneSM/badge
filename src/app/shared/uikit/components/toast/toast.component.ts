@@ -32,7 +32,7 @@ export class ToastComponent implements OnInit {
     this.toastService.newPost.subscribe((post: Post) => {
       this.post = post;
       this.isVisible = true;
-      timer(4000).subscribe(() => {
+      timer(3000).subscribe(() => {
         this.isVisible = false;
         this.post = null;
       });
