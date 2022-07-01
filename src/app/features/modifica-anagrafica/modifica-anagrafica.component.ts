@@ -5,6 +5,8 @@ import jwtDecode from 'jwt-decode';
 import { AuthService } from 'src/app/shared/uikit/services/auth/auth.service';
 import { UsersService } from 'src/app/shared/uikit/services/users/users.service';
 import { Location } from '@angular/common';
+import { ToastService } from 'src/app/shared/uikit/services/toast/toast.service';
+import { toastNames } from 'src/app/shared/utils/constants';
 
 @Component({
   selector: 'app-modifica-anagrafica',
@@ -22,7 +24,8 @@ export class ModificaAnagraficaComponent implements OnInit {
     private authService: AuthService,
     private usersService: UsersService,
     private router: Router,
-    private location: Location
+    private location: Location,
+    private toastService : ToastService
   ) {}
 
   ngOnInit(): void {
@@ -59,7 +62,11 @@ export class ModificaAnagraficaComponent implements OnInit {
 
         this.router.navigate(['/impostazioni'])
         
-      });
+      },
+      (err) => {
+        this.toastService.setMessage(toastNames.GENERIC_ERROR)
+      }
+      );
 
   }
 

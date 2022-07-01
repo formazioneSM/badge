@@ -29,5 +29,5 @@ export class ToastService {
     this.newEvent.emit(newToast);
   }
 
-  annullaTimer = timer(4500);
+  annullaTimer = timer(3500);
 }

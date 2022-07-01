@@ -54,11 +54,13 @@ export class ConvenzioniComponent implements OnInit {
     this.toastService.setMessage(toastNames.DELETED_CONV_SUCCESS);
     this.annulla = this.toastService.annullaTimer.subscribe((res) => {
       this.convenzioniService.deleteConvenzioni(_id).subscribe(
-        (res: any) => {},
+        (res: any) => {
+          this.convenzioniOld = this.convenzioniOld.filter((c: any) => c._id != _id);
+        },
         (err) => {
           this.toastService.setMessage(toastNames.DELETED_CONV_ERROR);
-        }
-      );
-    });
+        })
+    })
   }
+
 }
