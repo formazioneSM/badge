@@ -23,8 +23,8 @@ export class LinkComponent implements OnInit {
   annulla: any;
 
   constructor(
-    private linkService: LinkService,
-    // public loaderService: LoaderService,
+    public linkService: LinkService,
+    public loaderService: LoaderService,
     private router: Router,
     private toastService: ToastService
   ) {

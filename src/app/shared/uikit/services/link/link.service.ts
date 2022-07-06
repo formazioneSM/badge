@@ -6,7 +6,7 @@ import { base_path } from 'src/app/shared/utils/constants';
   providedIn: 'root'
 })
 export class LinkService {
-  
+  isAlinkToDownload!: false
   
   constructor(private http:HttpClient) { }
   
@@ -32,6 +32,8 @@ export class LinkService {
   editLink(id: string, text:string, url:string){
     return this.http.put(`${base_path}/link/${id}`,{ text, url});
   }
+
+  
 
 
 }
