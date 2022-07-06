@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LinkService } from 'src/app/shared/uikit/services/link/link.service';
-import { LoaderService } from 'src/app/shared/uikit/services/loader/loader.service';
+// import { LoaderService } from 'src/app/shared/uikit/services/loader/loader.service';
 
 import {
   fadeInOnEnterAnimation,
@@ -24,13 +24,13 @@ export class LinkComponent implements OnInit {
 
   constructor(
     private linkService: LinkService,
-    public loaderService: LoaderService,
+    // public loaderService: LoaderService,
     private router: Router,
     private toastService: ToastService
   ) {
-    this.loaderService.isLoading.subscribe((v) => {
-      this.loading = v;
-    });
+    // this.loaderService.isLoading.subscribe((v) => {
+    //   this.loading = v;
+    // });
   }
 
   ngOnInit(): void {
@@ -44,9 +44,11 @@ export class LinkComponent implements OnInit {
       }
     });
 
+    this.loading = true;
     this.linkService.loadAllLinks().subscribe((res) => {
       this.links = res;
       this.linksOld = [...this.links];
+      this.loading = false;
     });
   }
 
@@ -58,7 +60,10 @@ export class LinkComponent implements OnInit {
 
     this.annulla = this.toastService.annullaTimer.subscribe((res) => {
       this.linkService.deleteLink(_id).subscribe(
-        (res: any) => {},
+        (res: any) => {
+          this.linksOld = this.linksOld.filter((l: any) => l._id != _id);
+          
+        },
         (err) => {
           this.toastService.setMessage(toastNames.DELETED_POST_ERROR);
         }
