@@ -10,6 +10,7 @@ export class ButtonComponent implements OnInit {
  @Input('textButton') textButton:string | undefined;
  @Input('typeButton') typeButton:string | undefined;
  @Input('disabled') disabled:boolean | undefined;
+ @Input('download') download!:boolean
 
   constructor() { }
 

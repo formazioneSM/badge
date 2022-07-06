@@ -20,6 +20,7 @@ import { ToastService } from 'src/app/shared/uikit/services/toast/toast.service'
   styleUrls: ['./aggiungi.component.css'],
 })
 export class AggiungiComponent implements OnInit {
+  [x: string]: any;
   modifica: boolean = false;
   newConvenzione: any = [];
   bgcolor = colorDefault;
@@ -105,8 +106,7 @@ export class AggiungiComponent implements OnInit {
     this.formAddLink = this._fb.group({
       nomeLink: ['', [Validators.required, Validators.pattern(/[\S]/)]],
       link: ['', [Validators.required, Validators.pattern(/[\S]/)]],
-      // checkbox: [''],
-      // file:['']
+      // checkbox: [false],
     });
 
     this.formAddConvenzioni = this._fb.group({
@@ -376,12 +376,4 @@ export class AggiungiComponent implements OnInit {
     }
   }
 
-  // onFileSelected(event: any) {
-  //   let file = event.target.files[0];
-  //   if (file) {
-  //     this.fileName = file.name;
-  //     let formData = new FormData();
-  //     formData.append('file', file);
-  //   }
-  // }
 }
