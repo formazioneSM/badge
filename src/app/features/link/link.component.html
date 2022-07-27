@@ -1,17 +1,8 @@
 <div id="container">
   <div *ngIf="!loading">
-    <div
-      *ngFor="let link of links"
-      class="linkWrapper"
-      [@fadeInOnEnter]
-      [@fadeOutRightOnLeave]
-    >
+    <div *ngFor="let link of links" class="linkWrapper" [@fadeInOnEnter] [@fadeOutRightOnLeave]>
       <a [href]="link.url" target="_blank">
-        <app-button
-          class="buttonLink"
-          [typeButton]="'button'"
-          [textButton]="link.text"          
-        ></app-button>
+        <app-button class="buttonLink" [typeButton]="'button'" [textButton]="link.text"></app-button>
       </a>
       <div id="wrapper" *ngxPermissionsOnly="['ADMIN']">
         <div id="deleteIcon">
