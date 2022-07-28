@@ -11,8 +11,9 @@
     end
   ></mat-calendar>
 </div>
-<p *ngIf="selectedDateRange">Data inizio: {{ selectedDateRange.start._d }}</p>
-<p *ngIf="selectedDateRange && selectedDateRange?.end?._d">Data fine: {{ selectedDateRange.end._d }}</p>
-
-
-
+<p *ngIf="selectedDateRange">
+  Data inizio: {{ selectedDateRange.start | date: "longDate" }}
+</p>
+<p *ngIf="selectedDateRange && selectedDateRange?.end">
+  Data fine: {{ selectedDateRange.end | date: "longDate" }}
+</p>

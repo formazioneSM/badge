@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, LOCALE_ID, OnInit } from '@angular/core';
 import {
   MAT_MOMENT_DATE_ADAPTER_OPTIONS,
   MomentDateAdapter,
@@ -15,6 +15,7 @@ import {
 } from '@angular/material/datepicker';
 import { MatFormField } from '@angular/material/form-field';
 import * as moment from 'moment';
+import localeIt from '@angular/common/locales/it';
 
 export const MY_FORMATS = {
   parse: {
@@ -46,6 +47,7 @@ export const MY_FORMATS = {
       useClass: DefaultMatCalendarRangeStrategy,
     },
     { provide: MAT_DATE_FORMATS, useValue: MY_FORMATS },
+    {provide: LOCALE_ID, useValue: localeIt}
   ],
 })
 export class CalendarComponent implements OnInit {
@@ -59,7 +61,8 @@ export class CalendarComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.minDate._d);
+    // console.log(this.minDate._d);
+   
   }
 
   _onSelectedChange(date: Date): void {
@@ -74,17 +77,11 @@ export class CalendarComponent implements OnInit {
         this.selectedDateRange.start,
         date
         );
-        console.log('data inizio ' + this.selectedDateRange.start._d)
-        console.log('data fine ' + this.selectedDateRange.end._d)
+        console.log('data inizio ' + this.selectedDateRange.start.format('LLLL'))
+        console.log('data fine ' + this.selectedDateRange.end.format('LLLL'))
 
     } else {
       this.selectedDateRange = new DateRange(date, null);
     }
-    // console.log('data inizio ' + this.selectedDateRange.start._d)
-
-    // if(this.selectedDateRange.end._d ) {
-        
-    // }
-
   }
 }

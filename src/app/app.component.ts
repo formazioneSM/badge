@@ -1,6 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { ChildrenOutletContexts, NavigationEnd, Router } from '@angular/router';
 import jwtDecode from 'jwt-decode';
+import * as moment from 'moment';
 import { NgxPermissionsService } from 'ngx-permissions';
 import { filter } from 'rxjs/operators';
 import { AuthService } from './shared/uikit/services/auth/auth.service';
@@ -8,6 +9,7 @@ import { BachecaService } from './shared/uikit/services/bacheca/bacheca.service'
 import { ToastService } from './shared/uikit/services/toast/toast.service';
 import { slideInAnimation } from './shared/utils/animation';
 import { Post } from './shared/utils/interfaces';
+
 
 @Component({
   selector: 'app-root',
@@ -41,6 +43,7 @@ export class AppComponent implements OnInit {
       this.authService.setLoginResponse(decodedToken);
 
     }
+    moment.locale('it')
   }
 
   undoAction() {
