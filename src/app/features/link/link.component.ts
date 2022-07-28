@@ -9,6 +9,7 @@ import {
 import { Router } from '@angular/router';
 import { toastNames, types } from 'src/app/shared/utils/constants';
 import { ToastService } from 'src/app/shared/uikit/services/toast/toast.service';
+import { LoaderService } from 'src/app/shared/uikit/services/loader/loader.service';
 
 @Component({
   selector: 'app-link',
@@ -23,8 +24,8 @@ export class LinkComponent implements OnInit {
   annulla: any;
 
   constructor(
-    private linkService: LinkService,
-    // public loaderService: LoaderService,
+    public linkService: LinkService,
+    public loaderService: LoaderService,
     private router: Router,
     private toastService: ToastService
   ) {
