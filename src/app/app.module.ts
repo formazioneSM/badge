@@ -16,6 +16,7 @@ import { LoaderInterceptor } from './shared/utils/loader.interceptor';
 import { UikitModule } from './shared/uikit/uikit.module';
 
 
+
 export function playerFactory() {
   return player;
 }
@@ -28,6 +29,7 @@ export function playerFactory() {
     BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
+
     LottieModule.forRoot({ player: playerFactory }),
     NgxPermissionsModule.forRoot()
   ],

@@ -1,0 +1,18 @@
+<!-- <mat-slider min="1" max="100" step="1" value="50"></mat-slider> -->
+
+<div class="calendar-wrapper">
+  <mat-calendar
+    (selectedChange)="_onSelectedChange($event)"
+    [minDate]="minDate"
+    [selected]="selectedDateRange"
+    matStartDate
+    matEndDate
+    start
+    end
+  ></mat-calendar>
+</div>
+<p *ngIf="selectedDateRange">Data inizio: {{ selectedDateRange.start._d }}</p>
+<p *ngIf="selectedDateRange && selectedDateRange?.end?._d">Data fine: {{ selectedDateRange.end._d }}</p>
+
+
+
