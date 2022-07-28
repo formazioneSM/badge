@@ -72,6 +72,6 @@ export class LoginComponent implements OnInit {
   isAdminOrUser(input: any) {
     this.permissionsService.loadPermissions(input ? ['ADMIN'] : ['USER']);
 
-    this.router.navigate(['../home/bacheca']);
+    this.router.navigate(['../main-home']);
   }
 }
