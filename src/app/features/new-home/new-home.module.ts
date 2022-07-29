@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { NewHomeRoutingModule } from './new-home-routing.module';
 import { NewHomeComponent } from './new-home.component';
+import { UikitModule } from 'src/app/shared/uikit/uikit.module';
 
 
 @NgModule({
@@ -11,7 +12,8 @@ import { NewHomeComponent } from './new-home.component';
   ],
   imports: [
     CommonModule,
-    NewHomeRoutingModule
+    NewHomeRoutingModule,
+    UikitModule,
   ]
 })
 export class NewHomeModule { }
