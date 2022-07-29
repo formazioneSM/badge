@@ -19,7 +19,17 @@ import { ModalComponent } from './components/modal/modal.component';
 import { ButtonLogoutComponent } from './components/button-logout/button-logout.component';
 import { SmLoaderComponent } from './components/sm-loader/sm-loader.component';
 import { ImgLoaderComponent } from './components/img-loader/img-loader.component';
-
+import { CalendarComponent, MY_FORMATS } from './components/calendar/calendar.component';
+import { MatSliderModule } from '@angular/material/slider';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule, MAT_DATE_FORMATS } from '@angular/material/core';
+import {
+  MatMomentDateModule,
+  MAT_MOMENT_DATE_ADAPTER_OPTIONS,
+  MomentDateModule,
+} from '@angular/material-moment-adapter';
+import * as _moment from 'moment';
+import {MatFormFieldModule} from '@angular/material/form-field';
 
 @NgModule({
   declarations: [
@@ -40,13 +50,23 @@ import { ImgLoaderComponent } from './components/img-loader/img-loader.component
     ModalComponent,
     ButtonLogoutComponent,
     ImgLoaderComponent,
-
+    CalendarComponent,
   ],
   imports: [
     NgxPermissionsModule,
     CommonModule,
     ReactiveFormsModule,
-    LottieModule
+    LottieModule,
+    MatSliderModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MomentDateModule,
+    MatFormFieldModule,
+  ],
+  providers: [
+    {
+      provide: MAT_DATE_FORMATS,
+      useValue: {MY_FORMATS} },
   ],
   exports: [
     InputComponent,
@@ -66,9 +86,7 @@ import { ImgLoaderComponent } from './components/img-loader/img-loader.component
     GradientLoaderComponent,
     ModalComponent,
     ImgLoaderComponent,
-
-    
-
-  ]
+    CalendarComponent,
+  ],
 })
-export class UikitModule { }
+export class UikitModule {}
