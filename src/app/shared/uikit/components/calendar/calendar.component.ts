@@ -47,14 +47,15 @@ export const MY_FORMATS = {
       useClass: DefaultMatCalendarRangeStrategy,
     },
     { provide: MAT_DATE_FORMATS, useValue: MY_FORMATS },
-    {provide: LOCALE_ID, useValue: localeIt}
+
   ],
 })
 export class CalendarComponent implements OnInit {
   selected: Date | null | undefined;
   minDate: any = moment();
   selectedDateRange: any | undefined;
- 
+ start:any;
+ end:any;
 
   constructor(private dateAdapter: DateAdapter<Date>) {
     this.dateAdapter.setLocale('it');
@@ -64,9 +65,7 @@ export class CalendarComponent implements OnInit {
     // console.log(this.minDate._d);
    
   }
-
-  _onSelectedChange(date: Date): void {
-    
+  _onSelectedChange(date: any): void {
     if (
       this.selectedDateRange &&
       this.selectedDateRange.start &&
@@ -77,11 +76,11 @@ export class CalendarComponent implements OnInit {
         this.selectedDateRange.start,
         date
         );
-        console.log('data inizio ' + this.selectedDateRange.start.format('LLLL'))
-        console.log('data fine ' + this.selectedDateRange.end.format('LLLL'))
-
-    } else {
-      this.selectedDateRange = new DateRange(date, null);
-    }
+        this.end = this.selectedDateRange.end.format('LL')
+        
+      } else {
+        this.selectedDateRange = new DateRange(date, null);
+        this.start =  this.selectedDateRange.start.format('LL')
+      }
   }
 }
