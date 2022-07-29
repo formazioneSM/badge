@@ -1,6 +1,6 @@
 <!-- <mat-slider min="1" max="100" step="1" value="50"></mat-slider> -->
 
-<div class="calendar-wrapper">
+<mat-card class="calendar-wrapper">
   <mat-calendar
     (selectedChange)="_onSelectedChange($event)"
     [minDate]="minDate"
@@ -10,10 +10,10 @@
     start
     end
   ></mat-calendar>
-</div>
+</mat-card>
 <p *ngIf="selectedDateRange">
-  Data inizio: {{ selectedDateRange.start | date: "longDate" }}
+  Data inizio: {{ start }}
 </p>
 <p *ngIf="selectedDateRange && selectedDateRange?.end">
-  Data fine: {{ selectedDateRange.end | date: "longDate" }}
+  Data fine: {{ end}}
 </p>
