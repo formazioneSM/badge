@@ -126,7 +126,7 @@ const routes: Routes = [
       },
     },
   },
-  { path: '**', redirectTo: 'main-home' },
+  { path: '**', redirectTo: 'home' },
 ];
 
 @NgModule({

@@ -29,9 +29,8 @@ const routes: Routes = [
           ),
           data: { animation: 'convenzioniPage'},
       },
-      // {path:'', redirectTo:'bacheca'}
-
-    ],
+      {path:'**', redirectTo:'bacheca'}
+    ]
   },
   {
     path: 'aggiungi',
@@ -46,7 +45,7 @@ const routes: Routes = [
     data: {
         animation: 'aggiungiPage'
     }
-  },
+  }
 
 ];
 
