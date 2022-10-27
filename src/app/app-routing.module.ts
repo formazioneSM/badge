@@ -116,11 +116,21 @@ const routes: Routes = [
     loadChildren: () =>
       import('./features/faq/faq.module').then((m) => m.FaqModule),
   },
-  { path: '**', redirectTo: 'home/bacheca' },
+  {
+    path: 'main-home', loadChildren: () => import('./features/new-home/new-home.module').then(m => m.NewHomeModule),
+    canLoad: [NgxPermissionsGuard],
+    data: {
+      permissions: {
+        only: ['ADMIN', 'USER'],
+        redirectTo: 'login',
+      },
+    },
+  },
+  { path: '**', redirectTo: 'main-home' },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes, { useHash: true })],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

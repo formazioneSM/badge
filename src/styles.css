@@ -70,7 +70,10 @@ app-aggiungi {
 @media only screen and (min-width: 900px) {
   body {
     margin: 0 auto;
-    width: 33%;
+    width: 44%;
   }
 }
+
+
+html, body { height: 100%; }
 
